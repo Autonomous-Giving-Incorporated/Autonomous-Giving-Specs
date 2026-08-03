@@ -35,12 +35,23 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 - [Glossary](glossary/README.md)
 - [Platform traceability matrix](docs/traceability.md)
 
+## Executable validation
+
+```bash
+pip install -r requirements-validation.txt
+python validation/validate_all.py
+```
+
+This command is the merge gate: it validates metadata, references, schemas, examples, lifecycle, ownership, terminology, conformance manifests, and the Community AI Lab demo fixture. See [validation/README.md](validation/README.md).
+
+Machine-readable indexes for portals and explorers live under [`generated/`](generated/). Consumer conformance examples: [`conformance/examples/`](conformance/examples/). Pin a release package from `dist/` (built by `python validation/package_release.py`).
+
 ## Contribution workflow
 
 1. Open or update a SPEC before changing a normative contract.
 2. Record material architectural choices as an ADR using the Nygard format.
 3. Update affected schemas, events, glossary terms, examples, and references in one change.
-4. Run the [validation checklist](docs/validation.md); a release cannot contain broken internal links or unowned contracts.
+4. Run `python validation/validate_all.py` (must report `PASS`); see [validation](docs/validation.md).
 5. Obtain review from the listed owner and one consuming implementation repository.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the required change and review process.

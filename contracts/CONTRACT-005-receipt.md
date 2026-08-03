@@ -1,3 +1,21 @@
+---
+id: CONTRACT-005
+version: 1.0.0
+status: accepted
+authority: normative
+title: Receipt
+owner: Autonomous Giving
+lifecycle_stage: Receipt
+schema: ../schemas/receipt.json
+producer: Autonomous Giving
+consumer: Impact Relay
+related_specs:
+- SPEC-005
+- SPEC-007
+related_events:
+- EVENT-008
+---
+
 # CONTRACT-005: Receipt
 
 | Field | Value |

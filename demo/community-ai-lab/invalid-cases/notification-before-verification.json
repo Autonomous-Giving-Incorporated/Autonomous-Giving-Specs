@@ -1,0 +1,27 @@
+{
+  "name": "notification-before-verification",
+  "expect_error": "DEMO_NOTIFICATION_ORDER",
+  "description": "NotificationSent must follow VerificationCompleted",
+  "events": [
+    {
+      "eventType": "NotificationSent",
+      "payload": {
+        "notificationId": "f6c2e191-3000-4000-8000-000000000001",
+        "timelineEventId": "a6c2e191-3000-4000-8000-000000000002",
+        "channel": "in_app",
+        "createdAt": "2026-08-03T16:30:00Z"
+      }
+    },
+    {
+      "eventType": "VerificationCompleted",
+      "payload": {
+        "verificationId": "e0c2e191-3000-4000-8000-000000000001",
+        "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+        "evidenceIds": ["d6c2e191-3000-4000-8000-000000000001"],
+        "outcome": "verified",
+        "verifiedAt": "2026-08-03T16:28:00Z",
+        "verifier": "impact-relay-reviewer"
+      }
+    }
+  ]
+}

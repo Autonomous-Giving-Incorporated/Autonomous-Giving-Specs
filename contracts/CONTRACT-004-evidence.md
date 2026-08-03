@@ -1,3 +1,21 @@
+---
+id: CONTRACT-004
+version: 1.0.0
+status: accepted
+authority: normative
+title: Evidence
+owner: Impact Relay
+lifecycle_stage: Evidence
+schema: ../schemas/evidence.json
+producer: Impact Relay
+consumer: Autonomous Giving
+related_specs:
+- SPEC-005
+- SPEC-007
+related_events:
+- EVENT-007
+---
+
 # CONTRACT-004: Evidence
 
 | Field | Value |

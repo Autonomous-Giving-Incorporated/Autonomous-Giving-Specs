@@ -1,0 +1,54 @@
+name: Spec release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish specification package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: pip install -r requirements-validation.txt
+
+      - name: Validate
+        run: python validation/validate_all.py --output validation-report.json
+
+      - name: Derive version
+        id: ver
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Package
+        run: python validation/package_release.py --version "${{ steps.ver.outputs.version }}"
+
+      - name: Archive package
+        run: |
+          cd dist
+          tar -czf "autonomous-giving-spec-v${{ steps.ver.outputs.version }}.tar.gz" \
+            "autonomous-giving-spec-v${{ steps.ver.outputs.version }}"
+          zip -r "autonomous-giving-spec-v${{ steps.ver.outputs.version }}.zip" \
+            "autonomous-giving-spec-v${{ steps.ver.outputs.version }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/autonomous-giving-spec-v${{ steps.ver.outputs.version }}.tar.gz
+            dist/autonomous-giving-spec-v${{ steps.ver.outputs.version }}.zip
+            dist/checksums.txt
+            validation-report.json
+          generate_release_notes: true

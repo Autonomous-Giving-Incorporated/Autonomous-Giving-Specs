@@ -1,3 +1,21 @@
+---
+id: CONTRACT-006
+version: 1.0.0
+status: accepted
+authority: normative
+title: Notification
+owner: Impact Relay
+lifecycle_stage: Notification
+schema: ../schemas/notification.json
+producer: Impact Relay
+consumer: Channel adapter
+related_specs:
+- SPEC-006
+- SPEC-007
+related_events:
+- EVENT-010
+---
+
 # CONTRACT-006: Notification
 
 | Field | Value |

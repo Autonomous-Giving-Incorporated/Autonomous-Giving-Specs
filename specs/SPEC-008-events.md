@@ -1,3 +1,26 @@
+---
+id: SPEC-008
+title: Events
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-005
+- SPEC-007
+related_adrs:
+- ADR-003
+- ADR-007
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-008: Events
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |

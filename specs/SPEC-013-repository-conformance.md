@@ -1,3 +1,27 @@
+---
+id: SPEC-013
+title: Repository Conformance
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-001
+- SPEC-007
+- SPEC-012
+related_adrs:
+- ADR-001
+- ADR-004
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-013: Repository Conformance
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |

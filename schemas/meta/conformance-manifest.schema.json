@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autonomousgiving.org/schemas/meta/conformance-manifest/1.0.0",
+  "title": "Consumer conformance manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["platform_spec", "service", "implements"],
+  "properties": {
+    "platform_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "version"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        }
+      }
+    },
+    "service": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["fund-intel", "autonomous-giving", "impact-relay"]
+        },
+        "role": {
+          "type": "string",
+          "enum": ["intelligence", "governance", "execution", "evidence", "transparency"]
+        },
+        "name": { "type": "string" }
+      }
+    },
+    "implements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["specs", "contracts", "events"],
+      "properties": {
+        "specs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^SPEC-[0-9]{3}$" },
+          "uniqueItems": true
+        },
+        "contracts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "produces": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^CONTRACT-[0-9]{3}$" },
+              "uniqueItems": true
+            },
+            "consumes": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^CONTRACT-[0-9]{3}$" },
+              "uniqueItems": true
+            }
+          }
+        },
+        "events": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "produces": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^EVENT-[0-9]{3}$" },
+              "uniqueItems": true
+            },
+            "consumes": {
+              "type": "array",
+              "items": { "type": "string", "pattern": "^EVENT-[0-9]{3}$" },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "integration_tests": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,3 +1,26 @@
+---
+id: SPEC-011
+title: Demo Specification
+version: 1.0.0
+status: proposed
+authority: normative
+owner: Platform Product
+related_specs:
+- SPEC-005
+- SPEC-007
+- SPEC-009
+related_adrs:
+- ADR-009
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-011: Demo Specification
 | Version | 1.0.0 | Owner | Platform Product | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |

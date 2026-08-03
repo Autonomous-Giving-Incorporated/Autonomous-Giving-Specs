@@ -1,3 +1,16 @@
+---
+id: ADR-004
+version: 1.0.0
+authority: normative
+owner: Platform Architecture
+date: '2026-08-03'
+title: Repository Ownership
+status: accepted
+related_specs:
+- SPEC-001
+- SPEC-009
+---
+
 # ADR-004: Repository Ownership
 
 | Status | Accepted |

@@ -1,3 +1,24 @@
+---
+id: SPEC-002
+title: Platform Principles
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-001
+related_adrs:
+- ADR-002
+- ADR-006
+- ADR-007
+related_contracts:
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-002: Platform Principles
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |

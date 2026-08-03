@@ -1,3 +1,21 @@
+---
+id: CONTRACT-002
+version: 1.0.0
+status: accepted
+authority: normative
+title: Recommendation
+owner: Fund Intel
+lifecycle_stage: Recommendation
+schema: ../schemas/recommendation.json
+producer: Fund Intel
+consumer: Autonomous Giving
+related_specs:
+- SPEC-003
+- SPEC-007
+related_events:
+- EVENT-003
+---
+
 # CONTRACT-002: Recommendation
 
 | Field | Value |

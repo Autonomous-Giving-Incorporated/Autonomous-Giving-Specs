@@ -1,3 +1,19 @@
+---
+id: SPEC-009
+title: Design System
+version: 1.0.0
+status: proposed
+authority: normative
+owner: Platform Product
+related_specs:
+- SPEC-004
+- SPEC-011
+related_adrs:
+- ADR-009
+related_contracts:
+- CONTRACT-007
+---
+
 # SPEC-009: Design System
 | Version | 1.0.0 | Owner | Platform Product | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |

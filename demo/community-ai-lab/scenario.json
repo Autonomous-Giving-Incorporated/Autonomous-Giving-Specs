@@ -1,0 +1,25 @@
+{
+  "id": "community-ai-lab",
+  "title": "Community AI Lab",
+  "organization": "Community AI Lab",
+  "needId": "need-community-ai-lab",
+  "need": "25 laptops for a neighborhood AI learning lab",
+  "opportunityId": "a6c2e191-3000-4000-8000-000000000001",
+  "recommendationId": "b6c2e191-3000-4000-8000-000000000001",
+  "approvalId": "approval-community-ai-lab",
+  "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+  "amount": 2500,
+  "currency": "USD",
+  "executionId": "f0c2e191-3000-4000-8000-000000000001",
+  "evidenceId": "d6c2e191-3000-4000-8000-000000000001",
+  "receiptId": "e6c2e191-3000-4000-8000-000000000001",
+  "verificationId": "e0c2e191-3000-4000-8000-000000000001",
+  "notificationId": "f6c2e191-3000-4000-8000-000000000001",
+  "timelineEventId": "a6c2e191-3000-4000-8000-000000000002",
+  "invariants": [
+    "No allocation before ApprovalGranted",
+    "Receipt amount equals allocation amount",
+    "Impact claim names verification and evidence identifiers",
+    "Replay yields identical IDs, order, amounts, and states"
+  ]
+}

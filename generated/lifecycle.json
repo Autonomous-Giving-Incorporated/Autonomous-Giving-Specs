@@ -1,0 +1,20 @@
+{
+  "platformSpecVersion": "1.0.0",
+  "sequence": [
+    "Need",
+    "Signal",
+    "Opportunity",
+    "Recommendation",
+    "Approval",
+    "Allocation",
+    "Execution",
+    "Evidence",
+    "Receipt",
+    "Verification",
+    "Impact"
+  ],
+  "projections": [
+    "Notification",
+    "TimelineEvent"
+  ]
+}

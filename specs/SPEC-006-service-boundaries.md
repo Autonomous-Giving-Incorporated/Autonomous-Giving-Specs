@@ -1,3 +1,25 @@
+---
+id: SPEC-006
+title: Service Boundaries
+version: 1.0.0
+status: proposed
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-002
+- SPEC-005
+related_adrs:
+- ADR-010
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-006: Service Boundaries
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |

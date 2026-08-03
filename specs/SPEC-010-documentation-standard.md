@@ -1,3 +1,18 @@
+---
+id: SPEC-010
+title: Documentation Standard
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-004
+- SPEC-012
+related_adrs:
+- ADR-008
+related_contracts: []
+---
+
 # SPEC-010: Documentation Standard
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
