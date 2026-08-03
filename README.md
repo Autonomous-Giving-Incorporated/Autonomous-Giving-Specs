@@ -33,6 +33,7 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 - [Contract library](contracts/README.md)
 - [Schema library](schemas/README.md)
 - [Glossary](glossary/README.md)
+- [Platform traceability matrix](docs/traceability.md)
 
 ## Contribution workflow
 
