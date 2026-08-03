@@ -14,6 +14,17 @@ Phase 4  Distributed Platform
 Phase 5  Enterprise Deployment
 ```
 
+## Client product path (allocation middleware)
+
+Informative product roadmap aligned to [allocation middleware design](../docs/superpowers/specs/2026-08-03-allocation-middleware-design.md):
+
+1. every.org connector + campaign/program pots + allocate + exception inbox  
+2. Trail + board packet  
+3. Additional donation-platform adapters (Givebutter, Donorbox, …)  
+4. Funder multi-grantee portfolio  
+
+Not a specification milestone; guides implementation repositories.
+
 The platform evolves toward distribution only when operational criteria warrant it. Specs remain deployment-independent throughout.
 
 ## Specification milestones

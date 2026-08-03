@@ -70,6 +70,7 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
+- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
 
 ## Executable validation
 
