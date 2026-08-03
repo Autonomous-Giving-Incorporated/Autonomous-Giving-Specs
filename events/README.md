@@ -1,6 +1,6 @@
 # Event library
 
-All events use an immutable envelope: `eventId` (UUID), `eventType`, `occurredAt` (RFC 3339), `schemaVersion`, `correlationId`, and `payload`. Producers guarantee at-least-once delivery; consumers deduplicate on `eventId`. Ordering is guaranteed only per aggregate identifier, and consumers must tolerate reordering across aggregates.
+All events use the immutable [event envelope schema](../schemas/event-envelope.json): `eventId` (UUID), `eventType`, `occurredAt` (RFC 3339), `schemaVersion`, `correlationId`, and `payload`. Producers guarantee at-least-once delivery; consumers deduplicate on `eventId`. Ordering is guaranteed only per aggregate identifier, and consumers must tolerate reordering across aggregates.
 
 | ID | Event | Stage | Contract |
 | --- | --- | --- | --- |

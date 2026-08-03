@@ -4,15 +4,15 @@ This matrix is the navigation layer between lifecycle authority and machine-read
 
 | Lifecycle stage | Governing specification | Decision | Event | Contract / schema | Accountable owner |
 | --- | --- | --- | --- | --- | --- |
-| Signal | [SPEC-002](../specs/SPEC-002-signals-stack.md) | [ADR-002](../adr/ADR-002-signals-stack.md) | [EVENT-001](../events/EVENT-001-signal-detected.md) | Signal payload documented by event | Fund Intel |
+| Signal | [SPEC-002](../specs/SPEC-002-signals-stack.md) | [ADR-002](../adr/ADR-002-signals-stack.md) | [EVENT-001](../events/EVENT-001-signal-detected.md) | [signal schema](../schemas/signal-detected.json) | Fund Intel |
 | Opportunity | [SPEC-002](../specs/SPEC-002-signals-stack.md) | [ADR-002](../adr/ADR-002-signals-stack.md) | [EVENT-002](../events/EVENT-002-opportunity-created.md) | [CONTRACT-001](../contracts/CONTRACT-001-opportunity.md) / [schema](../schemas/opportunity.json) | Fund Intel |
 | Recommendation | [SPEC-002](../specs/SPEC-002-signals-stack.md) | [ADR-006](../adr/ADR-006-human-approval.md) | [EVENT-003](../events/EVENT-003-recommendation-generated.md) | [CONTRACT-002](../contracts/CONTRACT-002-recommendation.md) / [schema](../schemas/recommendation.json) | Fund Intel |
-| Approval | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-006](../adr/ADR-006-human-approval.md) | [EVENT-004](../events/EVENT-004-approval-granted.md) | [CONTRACT-007](../contracts/CONTRACT-007-timeline-event.md) / [schema](../schemas/timeline-event.json) | Governance |
+| Approval | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-006](../adr/ADR-006-human-approval.md) | [EVENT-004](../events/EVENT-004-approval-granted.md) | [approval schema](../schemas/approval-granted.json) | Governance |
 | Allocation | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-005](../adr/ADR-005-allocation-id.md) | [EVENT-005](../events/EVENT-005-allocation-created.md) | [CONTRACT-003](../contracts/CONTRACT-003-allocation.md) / [schema](../schemas/allocation.json) | Allocation |
-| Execution | [SPEC-005](../specs/SPEC-005-service-boundaries.md) | [ADR-010](../adr/ADR-010-future-services.md) | [EVENT-006](../events/EVENT-006-execution-started.md) | Allocation reference | Execution |
+| Execution | [SPEC-005](../specs/SPEC-005-service-boundaries.md) | [ADR-010](../adr/ADR-010-future-services.md) | [EVENT-006](../events/EVENT-006-execution-started.md) | [execution schema](../schemas/execution-started.json) | Execution |
 | Evidence | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-007](../events/EVENT-007-evidence-attached.md) | [CONTRACT-004](../contracts/CONTRACT-004-evidence.md) / [schema](../schemas/evidence.json) | Evidence |
 | Receipt | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-008](../events/EVENT-008-receipt-generated.md) | [CONTRACT-005](../contracts/CONTRACT-005-receipt.md) / [schema](../schemas/receipt.json) | Execution |
-| Verification | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-009](../events/EVENT-009-verification-completed.md) | Evidence reference | Verification |
+| Verification | [SPEC-004](../specs/SPEC-004-event-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-009](../events/EVENT-009-verification-completed.md) | [verification schema](../schemas/verification-completed.json) | Verification |
 | Notification | [SPEC-005](../specs/SPEC-005-service-boundaries.md) | [ADR-004](../adr/ADR-004-repository-ownership.md) | [EVENT-010](../events/EVENT-010-notification-sent.md) | [CONTRACT-006](../contracts/CONTRACT-006-notification.md) / [schema](../schemas/notification.json) | Transparency |
 
 ## Cross-cutting invariants

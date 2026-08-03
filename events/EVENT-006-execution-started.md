@@ -3,7 +3,7 @@
 | Producer | Execution |
 | --- | --- |
 | Consumers | Evidence, Transparency |
-| Schema | [CONTRACT-003](../contracts/CONTRACT-003-allocation.md) reference |
+| Schema | [execution-started.json](../schemas/execution-started.json) in the common event envelope |
 | Stage / ordering | Execution / per `allocationId` |
 | Idempotency | `eventId` |
 

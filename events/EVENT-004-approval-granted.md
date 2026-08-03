@@ -3,7 +3,7 @@
 | Producer | Governance |
 | --- | --- |
 | Consumers | Allocation, Transparency |
-| Schema | [CONTRACT-007](../contracts/CONTRACT-007-timeline-event.md) |
+| Schema | [approval-granted.json](../schemas/approval-granted.json) in the common event envelope |
 | Stage / ordering | Approval / per `recommendationId` |
 | Idempotency | `eventId` |
 

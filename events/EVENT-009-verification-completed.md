@@ -3,7 +3,7 @@
 | Producer | Verification |
 | --- | --- |
 | Consumers | Transparency, Impact |
-| Schema | [CONTRACT-004](../contracts/CONTRACT-004-evidence.md) reference |
+| Schema | [verification-completed.json](../schemas/verification-completed.json) in the common event envelope |
 | Stage / ordering | Verification / per `allocationId` |
 | Idempotency | `eventId` |
 

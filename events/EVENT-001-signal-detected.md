@@ -3,7 +3,7 @@
 | Producer | Intelligence |
 | --- | --- |
 | Consumers | Opportunity, Transparency |
-| Schema | Opportunity envelope |
+| Schema | [signal-detected.json](../schemas/signal-detected.json) in the common event envelope |
 | Stage / ordering | Signal / per `signalId` |
 | Idempotency | `eventId` |
 
