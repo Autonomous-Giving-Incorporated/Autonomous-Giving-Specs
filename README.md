@@ -52,3 +52,5 @@ Platform releases use semantic versioning. A major version may change a required
 ## Implementation repositories
 
 Fund Intel, Impact Relay, and future services implement these artifacts. They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own API documentation.
+
+The [implementation consumption guide](docs/implementation-consumption.md) defines the required adoption and migration path.
