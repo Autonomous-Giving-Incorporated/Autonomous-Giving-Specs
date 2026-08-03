@@ -112,6 +112,46 @@
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-014-future-services.md"
+    },
+    {
+      "id": "SPEC-015",
+      "title": "Compatibility and Evolution",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-015-compatibility-and-evolution.md"
+    },
+    {
+      "id": "SPEC-016",
+      "title": "Security and Trust Boundaries",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-016-security-and-trust-boundaries.md"
+    },
+    {
+      "id": "SPEC-017",
+      "title": "Data Classification and Privacy",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-017-data-classification-and-privacy.md"
+    },
+    {
+      "id": "SPEC-018",
+      "title": "Evidence Integrity and Provenance",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Impact Relay",
+      "path": "specs/SPEC-018-evidence-integrity-and-provenance.md"
+    },
+    {
+      "id": "SPEC-019",
+      "title": "Identity and Authorization",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-019-identity-and-authorization.md"
     }
   ],
   "adrs": [
@@ -194,6 +234,14 @@
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "adr/ADR-010-future-services.md"
+    },
+    {
+      "id": "ADR-011",
+      "title": "Contract Evolution Policy",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-011-contract-evolution-policy.md"
     }
   ],
   "contracts": [

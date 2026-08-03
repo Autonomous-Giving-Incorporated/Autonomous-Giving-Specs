@@ -15,6 +15,10 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 - Consumer conformance manifests for Fund Intel, Autonomous Giving, and Impact Relay.
 - Deterministic Community AI Lab demo fixtures under `demo/community-ai-lab/`.
 - Distributable release packaging (`validation/package_release.py`) and CI gates.
+- **SPEC-015** Compatibility and Evolution; **ADR-011** Contract Evolution Policy.
+- **SPEC-016–019** security trust boundaries, data classification/privacy, evidence integrity, identity/authorization (proposed unless noted).
+- RFC process, artifact status transitions, reviewer matrix, emergency correction, and release authority (`docs/rfc-process.md`, governance updates).
+- Baseline migration guide `docs/migrations/v1.0.0-baseline.md`.
 
 ### Compatibility
 

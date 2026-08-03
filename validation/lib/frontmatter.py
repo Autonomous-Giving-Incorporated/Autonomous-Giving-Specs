@@ -3,12 +3,26 @@
 from __future__ import annotations
 
 import re
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
 import yaml
 
 FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n?", re.DOTALL)
+
+
+def _normalize(value: Any) -> Any:
+    """Coerce YAML-native types into JSON-schema-friendly values."""
+    if isinstance(value, datetime):
+        return value.date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {str(k): _normalize(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_normalize(v) for v in value]
+    return value
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, Any] | None, str]:
@@ -22,7 +36,7 @@ def parse_frontmatter(text: str) -> tuple[dict[str, Any] | None, str]:
         data = {}
     if not isinstance(data, dict):
         raise ValueError("frontmatter must be a YAML mapping")
-    return data, text[match.end() :]
+    return _normalize(data), text[match.end() :]
 
 
 def read_document(path: Path) -> tuple[dict[str, Any] | None, str]:

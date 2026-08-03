@@ -42,7 +42,9 @@
         "EVENT-009",
         "EVENT-010"
       ],
-      "specs": []
+      "specs": [
+        "SPEC-018"
+      ]
     },
     {
       "owner": "Platform Architecture",
@@ -59,7 +61,11 @@
         "SPEC-010",
         "SPEC-012",
         "SPEC-013",
-        "SPEC-014"
+        "SPEC-014",
+        "SPEC-015",
+        "SPEC-016",
+        "SPEC-017",
+        "SPEC-019"
       ]
     },
     {

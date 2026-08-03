@@ -34,6 +34,9 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 - [Schema library](schemas/README.md)
 - [Glossary](glossary/README.md)
 - [Platform traceability matrix](docs/traceability.md)
+- [Generated machine-readable catalog](generated/catalog.json)
+- [RFC process](docs/rfc-process.md)
+- [Repository governance](docs/repository-governance.md)
 
 ## Executable validation
 

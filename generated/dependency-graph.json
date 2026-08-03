@@ -58,6 +58,26 @@
       "type": "spec"
     },
     {
+      "id": "SPEC-015",
+      "type": "spec"
+    },
+    {
+      "id": "SPEC-016",
+      "type": "spec"
+    },
+    {
+      "id": "SPEC-017",
+      "type": "spec"
+    },
+    {
+      "id": "SPEC-018",
+      "type": "spec"
+    },
+    {
+      "id": "SPEC-019",
+      "type": "spec"
+    },
+    {
       "id": "EVENT-001",
       "type": "event"
     },
@@ -163,6 +183,10 @@
     },
     {
       "id": "ADR-010",
+      "type": "adr"
+    },
+    {
+      "id": "ADR-011",
       "type": "adr"
     }
   ],
@@ -745,6 +769,256 @@
     {
       "from": "SPEC-014",
       "to": "CONTRACT-007",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "SPEC-007",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "SPEC-008",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "SPEC-012",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "SPEC-013",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "ADR-001",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "ADR-011",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-001",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-002",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-004",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-005",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-006",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-015",
+      "to": "CONTRACT-007",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "SPEC-002",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "SPEC-006",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "SPEC-017",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "SPEC-018",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "SPEC-019",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "ADR-004",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "ADR-006",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "ADR-007",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "CONTRACT-004",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "CONTRACT-005",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-016",
+      "to": "CONTRACT-006",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "SPEC-004",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "SPEC-016",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "SPEC-019",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "ADR-004",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "ADR-007",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "CONTRACT-004",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "CONTRACT-005",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "CONTRACT-006",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-017",
+      "to": "CONTRACT-007",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "SPEC-002",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "SPEC-005",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "SPEC-007",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "SPEC-016",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "ADR-007",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "CONTRACT-004",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-018",
+      "to": "CONTRACT-005",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "SPEC-006",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "SPEC-016",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "SPEC-017",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "ADR-004",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "ADR-006",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-019",
+      "to": "CONTRACT-006",
       "type": "related_contract"
     },
     {

@@ -14,3 +14,4 @@ ADRs use Michael Nygard's lightweight format: context, decision, status, consequ
 | ADR-008 | [Documentation Strategy](ADR-008-documentation-strategy.md) | Accepted |
 | ADR-009 | [Deterministic Demo](ADR-009-deterministic-demo.md) | Proposed |
 | ADR-010 | [Service Independence](ADR-010-future-services.md) | Proposed |
+| ADR-011 | [Contract Evolution Policy](ADR-011-contract-evolution-policy.md) | Accepted |
