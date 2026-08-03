@@ -1,0 +1,10 @@
+# EVENT-003: RecommendationGenerated
+
+| Producer | Intelligence |
+| --- | --- |
+| Consumers | Governance, Transparency |
+| Schema | [CONTRACT-002](../contracts/CONTRACT-002-recommendation.md) |
+| Stage / ordering | Recommendation / per `opportunityId` |
+| Idempotency | `eventId` |
+
+Records a proposed allocation, never an authorization. Payload validates as Recommendation. Example: `{"eventType":"RecommendationGenerated","payload":{"recommendationId":"b6c2e191-3000-4000-8000-000000000001","proposedAmount":2500,"currency":"USD"}}`.

@@ -1,0 +1,10 @@
+# EVENT-010: NotificationSent
+
+| Producer | Transparency |
+| --- | --- |
+| Consumers | Channel adapter, audit |
+| Schema | [CONTRACT-006](../contracts/CONTRACT-006-notification.md) |
+| Stage / ordering | Notification / per `notificationId` |
+| Idempotency | `eventId` |
+
+Records attempted delivery of a timeline update. Payload validates as Notification; delivery does not alter history. Example: `{"eventType":"NotificationSent","payload":{"notificationId":"f6c2e191-3000-4000-8000-000000000001","channel":"in_app"}}`.
