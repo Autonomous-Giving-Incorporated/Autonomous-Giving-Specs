@@ -1,0 +1,24 @@
+# Copy into a consuming repository and replace the example values.
+platformSpecificationRelease: v1.0.0
+repository: example-service
+conformance:
+  required:
+    - SPEC-001
+    - SPEC-002
+    - SPEC-004
+    - SPEC-005
+    - SPEC-007
+    - SPEC-008
+  recommended:
+    - SPEC-009
+    - SPEC-010
+  optional: []
+  experimental: []
+produces:
+  - EVENT-002
+consumes:
+  - EVENT-004
+contracts:
+  - CONTRACT-001@1.0.0
+evidence:
+  integrationTests: replace-with-link-or-path

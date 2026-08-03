@@ -1,8 +1,8 @@
 # EVENT-008: ReceiptGenerated
 
-| Producer | Execution |
+| Producer | Autonomous Giving |
 | --- | --- |
-| Consumers | Verification, Transparency |
+| Consumers | Impact Relay |
 | Schema | [CONTRACT-005](../contracts/CONTRACT-005-receipt.md) |
 | Stage / ordering | Receipt / per `allocationId` |
 | Idempotency | `eventId` |

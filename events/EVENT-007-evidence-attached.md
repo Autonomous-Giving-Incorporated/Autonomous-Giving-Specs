@@ -1,8 +1,8 @@
 # EVENT-007: EvidenceAttached
 
-| Producer | Evidence |
+| Producer | Impact Relay |
 | --- | --- |
-| Consumers | Verification, Transparency |
+| Consumers | Impact Relay, Autonomous Giving |
 | Schema | [CONTRACT-004](../contracts/CONTRACT-004-evidence.md) |
 | Stage / ordering | Evidence / per `allocationId` |
 | Idempotency | `eventId` |

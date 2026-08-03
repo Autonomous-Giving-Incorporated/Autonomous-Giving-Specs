@@ -1,8 +1,8 @@
 # EVENT-006: ExecutionStarted
 
-| Producer | Execution |
+| Producer | Autonomous Giving |
 | --- | --- |
-| Consumers | Evidence, Transparency |
+| Consumers | Impact Relay |
 | Schema | [execution-started.json](../schemas/execution-started.json) in the common event envelope |
 | Stage / ordering | Execution / per `allocationId` |
 | Idempotency | `eventId` |

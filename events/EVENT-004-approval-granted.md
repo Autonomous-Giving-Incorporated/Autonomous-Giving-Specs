@@ -1,8 +1,8 @@
 # EVENT-004: ApprovalGranted
 
-| Producer | Governance |
+| Producer | Autonomous Giving |
 | --- | --- |
-| Consumers | Allocation, Transparency |
+| Consumers | Autonomous Giving, Impact Relay |
 | Schema | [approval-granted.json](../schemas/approval-granted.json) in the common event envelope |
 | Stage / ordering | Approval / per `recommendationId` |
 | Idempotency | `eventId` |

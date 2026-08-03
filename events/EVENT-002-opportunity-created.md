@@ -1,8 +1,8 @@
 # EVENT-002: OpportunityCreated
 
-| Producer | Intelligence |
+| Producer | Fund Intel |
 | --- | --- |
-| Consumers | Governance, Transparency |
+| Consumers | Autonomous Giving, Impact Relay |
 | Schema | [CONTRACT-001](../contracts/CONTRACT-001-opportunity.md) |
 | Stage / ordering | Opportunity / per `opportunityId` |
 | Idempotency | `eventId` |

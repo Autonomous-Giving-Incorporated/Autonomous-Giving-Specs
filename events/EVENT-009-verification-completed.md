@@ -1,8 +1,8 @@
 # EVENT-009: VerificationCompleted
 
-| Producer | Verification |
+| Producer | Impact Relay |
 | --- | --- |
-| Consumers | Transparency, Impact |
+| Consumers | Autonomous Giving, Impact Relay |
 | Schema | [verification-completed.json](../schemas/verification-completed.json) in the common event envelope |
 | Stage / ordering | Verification / per `allocationId` |
 | Idempotency | `eventId` |

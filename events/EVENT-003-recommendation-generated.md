@@ -1,8 +1,8 @@
 # EVENT-003: RecommendationGenerated
 
-| Producer | Intelligence |
+| Producer | Fund Intel |
 | --- | --- |
-| Consumers | Governance, Transparency |
+| Consumers | Autonomous Giving, Impact Relay |
 | Schema | [CONTRACT-002](../contracts/CONTRACT-002-recommendation.md) |
 | Stage / ordering | Recommendation / per `opportunityId` |
 | Idempotency | `eventId` |

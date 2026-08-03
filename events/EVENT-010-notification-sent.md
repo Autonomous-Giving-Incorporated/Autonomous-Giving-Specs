@@ -1,8 +1,8 @@
 # EVENT-010: NotificationSent
 
-| Producer | Transparency |
+| Producer | Impact Relay |
 | --- | --- |
-| Consumers | Channel adapter, audit |
+| Consumers | Channel adapter, Autonomous Giving |
 | Schema | [CONTRACT-006](../contracts/CONTRACT-006-notification.md) |
 | Stage / ordering | Notification / per `notificationId` |
 | Idempotency | `eventId` |

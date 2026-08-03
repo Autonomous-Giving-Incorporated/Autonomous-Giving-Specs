@@ -1,8 +1,8 @@
 # EVENT-001: SignalDetected
 
-| Producer | Intelligence |
+| Producer | Fund Intel |
 | --- | --- |
-| Consumers | Opportunity, Transparency |
+| Consumers | Fund Intel, Impact Relay |
 | Schema | [signal-detected.json](../schemas/signal-detected.json) in the common event envelope |
 | Stage / ordering | Signal / per `signalId` |
 | Idempotency | `eventId` |

@@ -1,8 +1,8 @@
 # EVENT-005: AllocationCreated
 
-| Producer | Allocation |
+| Producer | Autonomous Giving |
 | --- | --- |
-| Consumers | Execution, Transparency |
+| Consumers | Autonomous Giving, Impact Relay |
 | Schema | [CONTRACT-003](../contracts/CONTRACT-003-allocation.md) |
 | Stage / ordering | Allocation / per `allocationId` |
 | Idempotency | `eventId` |
