@@ -1,3 +1,16 @@
+---
+id: ADR-006
+version: 1.0.0
+authority: normative
+owner: Platform Architecture
+date: '2026-08-03'
+title: Human Approval
+status: accepted
+related_specs:
+- SPEC-001
+- SPEC-004
+---
+
 # ADR-006: Human Approval
 
 | Status | Accepted |

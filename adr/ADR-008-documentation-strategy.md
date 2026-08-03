@@ -1,3 +1,15 @@
+---
+id: ADR-008
+version: 1.0.0
+authority: normative
+owner: Platform Architecture
+date: '2026-08-03'
+title: Documentation Strategy
+status: accepted
+related_specs:
+- SPEC-010
+---
+
 # ADR-008: Documentation Strategy
 
 | Status | Accepted |

@@ -1,0 +1,24 @@
+{
+  "scenarioId": "community-ai-lab",
+  "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+  "stages": [
+    "Need",
+    "Signal",
+    "Opportunity",
+    "Recommendation",
+    "Approval",
+    "Allocation",
+    "Execution",
+    "Evidence",
+    "Receipt",
+    "Verification",
+    "Impact",
+    "Notification"
+  ],
+  "rules": {
+    "approvalBeforeAllocation": true,
+    "evidenceBeforeVerification": true,
+    "notificationAfterVerification": true,
+    "allocationIdImmutable": true
+  }
+}

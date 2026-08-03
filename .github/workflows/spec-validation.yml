@@ -1,0 +1,62 @@
+name: Spec validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Executable canon validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: pip install -r requirements-validation.txt
+
+      - name: Markdown link validation
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --include-mail=false README.md '**/*.md'
+          fail: true
+
+      - name: Run full specification validation
+        run: python validation/validate_all.py --output validation-report.json
+
+      - name: Generate indexes
+        run: python validation/generate_indexes.py
+
+      - name: Package release (smoke)
+        run: python validation/package_release.py --version 1.0.0
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: |
+            validation-report.json
+            generated/
+            dist/checksums.txt
+
+  inventory:
+    name: Canonical inventory counts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require expected artifact floors
+        run: |
+          test -f CONSTITUTION.md
+          test "$(find specs -name 'SPEC-*.md' | wc -l | tr -d ' ')" -ge 19
+          test "$(find adr -name 'ADR-*.md' | wc -l | tr -d ' ')" -ge 11
+          test "$(find events -name 'EVENT-*.md' | wc -l | tr -d ' ')" -ge 10
+          test "$(find contracts -name 'CONTRACT-*.md' | wc -l | tr -d ' ')" -ge 7
+          test "$(find schemas -name '*.json' | wc -l | tr -d ' ')" -ge 8

@@ -1,24 +1,37 @@
 # Copy into a consuming repository and replace the example values.
-platformSpecificationRelease: v1.0.0
-repository: example-service
-conformance:
-  required:
+# Schema: schemas/meta/conformance-manifest.schema.json
+# Examples: conformance/examples/
+
+platform_spec:
+  repository: scrimshawlife-ctrl/Autonomous-Giving-Specs
+  version: 1.0.0
+
+service:
+  id: fund-intel  # fund-intel | autonomous-giving | impact-relay
+  role: intelligence  # intelligence | governance | execution | evidence | transparency
+  name: Example Service
+
+implements:
+  specs:
     - SPEC-001
     - SPEC-002
     - SPEC-004
     - SPEC-005
     - SPEC-007
     - SPEC-008
-  recommended:
-    - SPEC-009
-    - SPEC-010
-  optional: []
-  experimental: []
-produces:
-  - EVENT-002
-consumes:
-  - EVENT-004
-contracts:
-  - CONTRACT-001@1.0.0
+    - SPEC-012
+    - SPEC-013
+  contracts:
+    produces:
+      - CONTRACT-001
+    consumes:
+      - CONTRACT-003
+  events:
+    produces:
+      - EVENT-002
+    consumes:
+      - EVENT-004
+
 evidence:
-  integrationTests: replace-with-link-or-path
+  integration_tests: replace-with-link-or-path
+  notes: ""

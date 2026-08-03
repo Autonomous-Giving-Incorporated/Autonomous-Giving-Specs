@@ -1,0 +1,13 @@
+{
+  "name": "receipt-amount-mismatch",
+  "expect_error": "DEMO_RECEIPT_AMOUNT",
+  "description": "Receipt amount must equal allocation amount",
+  "receipt": {
+    "receiptId": "e6c2e191-3000-4000-8000-000000000001",
+    "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+    "amount": 9999,
+    "currency": "USD",
+    "issuedAt": "2026-08-03T16:25:00Z",
+    "issuer": "Community Technology Supply"
+  }
+}

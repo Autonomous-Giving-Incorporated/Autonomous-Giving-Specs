@@ -1,3 +1,17 @@
+---
+id: SPEC-001
+title: Platform Mission
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs: []
+related_adrs:
+- ADR-001
+- ADR-002
+related_contracts: []
+---
+
 # SPEC-001: Platform Mission
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |

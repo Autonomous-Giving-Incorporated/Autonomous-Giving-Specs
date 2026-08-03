@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autonomousgiving.org/schemas/meta/event-document/1.0.0",
+  "title": "EVENT document frontmatter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "version",
+    "status",
+    "authority",
+    "owner",
+    "lifecycle_stage",
+    "producer",
+    "schema"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EVENT-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "proposed", "accepted", "deprecated", "superseded"]
+    },
+    "authority": {
+      "type": "string",
+      "enum": ["normative", "informative"]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "consumers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract": {
+      "type": ["string", "null"],
+      "pattern": "^CONTRACT-[0-9]{3}$"
+    },
+    "idempotency": {
+      "type": "string"
+    },
+    "related_specs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^SPEC-[0-9]{3}$" },
+      "uniqueItems": true
+    },
+    "related_contracts": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^CONTRACT-[0-9]{3}$" },
+      "uniqueItems": true
+    }
+  }
+}

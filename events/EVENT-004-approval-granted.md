@@ -1,3 +1,23 @@
+---
+id: EVENT-004
+version: 1.0.0
+status: accepted
+authority: normative
+title: ApprovalGranted
+owner: Autonomous Giving
+lifecycle_stage: Approval
+producer: Autonomous Giving
+consumers:
+- Autonomous Giving
+- Impact Relay
+schema: ../schemas/approval-granted.json
+idempotency: eventId
+related_specs:
+- SPEC-005
+- SPEC-008
+related_contracts: []
+---
+
 # EVENT-004: ApprovalGranted
 
 | Producer | Autonomous Giving |
@@ -8,6 +28,19 @@
 | Idempotency | `eventId` |
 
 Records an explicit human approval. Payload contains `approvalId`, `recommendationId`, `approvedBy`, `approvedAt`, and policy reference. Example: `{"eventType":"ApprovalGranted","payload":{"approvalId":"approval-community-ai-lab","approvedBy":"human-reviewer"}}`.
+
+
+## Example payload
+
+```json
+{
+  "approvalId": "approval-community-ai-lab",
+  "recommendationId": "b6c2e191-3000-4000-8000-000000000001",
+  "approvedBy": "human-reviewer",
+  "approvedAt": "2026-08-03T16:08:00Z",
+  "policyReference": "policy-human-approval-v1"
+}
+```
 
 ## Version history
 

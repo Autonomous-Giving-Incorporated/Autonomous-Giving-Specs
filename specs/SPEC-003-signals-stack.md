@@ -1,3 +1,20 @@
+---
+id: SPEC-003
+title: Signals Stack
+version: 1.0.0
+status: proposed
+authority: normative
+owner: Fund Intel
+related_specs:
+- SPEC-004
+- SPEC-005
+related_adrs:
+- ADR-003
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+---
+
 # SPEC-003: Signals Stack
 | Version | 1.0.0 | Owner | Fund Intel | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |

@@ -1,3 +1,15 @@
+---
+id: ADR-009
+version: 1.0.0
+authority: normative
+owner: Platform Architecture
+date: '2026-08-03'
+title: Deterministic Demo
+status: accepted
+related_specs:
+- SPEC-011
+---
+
 # ADR-009: Deterministic Demo
 
 | Status | Proposed |

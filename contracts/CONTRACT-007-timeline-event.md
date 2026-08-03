@@ -1,3 +1,20 @@
+---
+id: CONTRACT-007
+version: 1.0.0
+status: accepted
+authority: normative
+title: TimelineEvent
+owner: Impact Relay
+lifecycle_stage: Notification
+schema: ../schemas/timeline-event.json
+producer: Ecosystem boundary
+consumer: Impact Relay
+related_specs:
+- SPEC-007
+- SPEC-009
+related_events: []
+---
+
 # CONTRACT-007: TimelineEvent
 
 | Field | Value |

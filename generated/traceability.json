@@ -1,0 +1,98 @@
+{
+  "platformSpecVersion": "1.0.0",
+  "stages": [
+    {
+      "stage": "Need",
+      "events": [],
+      "contracts": []
+    },
+    {
+      "stage": "Signal",
+      "events": [
+        "EVENT-001"
+      ],
+      "contracts": []
+    },
+    {
+      "stage": "Opportunity",
+      "events": [
+        "EVENT-002"
+      ],
+      "contracts": [
+        "CONTRACT-001"
+      ]
+    },
+    {
+      "stage": "Recommendation",
+      "events": [
+        "EVENT-003"
+      ],
+      "contracts": [
+        "CONTRACT-002"
+      ]
+    },
+    {
+      "stage": "Approval",
+      "events": [
+        "EVENT-004"
+      ],
+      "contracts": []
+    },
+    {
+      "stage": "Allocation",
+      "events": [
+        "EVENT-005"
+      ],
+      "contracts": [
+        "CONTRACT-003"
+      ]
+    },
+    {
+      "stage": "Execution",
+      "events": [
+        "EVENT-006"
+      ],
+      "contracts": []
+    },
+    {
+      "stage": "Evidence",
+      "events": [
+        "EVENT-007"
+      ],
+      "contracts": [
+        "CONTRACT-004"
+      ]
+    },
+    {
+      "stage": "Receipt",
+      "events": [
+        "EVENT-008"
+      ],
+      "contracts": [
+        "CONTRACT-005"
+      ]
+    },
+    {
+      "stage": "Verification",
+      "events": [
+        "EVENT-009"
+      ],
+      "contracts": []
+    },
+    {
+      "stage": "Impact",
+      "events": [],
+      "contracts": []
+    },
+    {
+      "stage": "Notification",
+      "events": [
+        "EVENT-010"
+      ],
+      "contracts": [
+        "CONTRACT-006",
+        "CONTRACT-007"
+      ]
+    }
+  ]
+}

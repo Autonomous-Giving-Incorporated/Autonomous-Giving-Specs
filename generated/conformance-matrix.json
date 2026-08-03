@@ -1,0 +1,147 @@
+{
+  "platformSpecVersion": "1.0.0",
+  "services": [
+    {
+      "service": {
+        "id": "autonomous-giving",
+        "role": "governance",
+        "name": "Autonomous Giving Incorporated"
+      },
+      "platform_spec": {
+        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "version": "1.0.0"
+      },
+      "specs": [
+        "SPEC-001",
+        "SPEC-002",
+        "SPEC-004",
+        "SPEC-005",
+        "SPEC-006",
+        "SPEC-007",
+        "SPEC-008",
+        "SPEC-012",
+        "SPEC-013"
+      ],
+      "contracts": {
+        "produces": [
+          "CONTRACT-003",
+          "CONTRACT-005"
+        ],
+        "consumes": [
+          "CONTRACT-001",
+          "CONTRACT-002",
+          "CONTRACT-004",
+          "CONTRACT-006"
+        ]
+      },
+      "events": {
+        "produces": [
+          "EVENT-004",
+          "EVENT-005",
+          "EVENT-006",
+          "EVENT-008"
+        ],
+        "consumes": [
+          "EVENT-002",
+          "EVENT-003",
+          "EVENT-007",
+          "EVENT-009",
+          "EVENT-010"
+        ]
+      },
+      "path": "conformance/examples/autonomous-giving.yml"
+    },
+    {
+      "service": {
+        "id": "fund-intel",
+        "role": "intelligence",
+        "name": "Fund Intel"
+      },
+      "platform_spec": {
+        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "version": "1.0.0"
+      },
+      "specs": [
+        "SPEC-001",
+        "SPEC-002",
+        "SPEC-003",
+        "SPEC-004",
+        "SPEC-005",
+        "SPEC-007",
+        "SPEC-008",
+        "SPEC-012",
+        "SPEC-013"
+      ],
+      "contracts": {
+        "produces": [
+          "CONTRACT-001",
+          "CONTRACT-002"
+        ],
+        "consumes": []
+      },
+      "events": {
+        "produces": [
+          "EVENT-001",
+          "EVENT-002",
+          "EVENT-003"
+        ],
+        "consumes": [
+          "EVENT-004",
+          "EVENT-005"
+        ]
+      },
+      "path": "conformance/examples/fund-intel.yml"
+    },
+    {
+      "service": {
+        "id": "impact-relay",
+        "role": "evidence",
+        "name": "Impact Relay"
+      },
+      "platform_spec": {
+        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "version": "1.0.0"
+      },
+      "specs": [
+        "SPEC-001",
+        "SPEC-002",
+        "SPEC-004",
+        "SPEC-005",
+        "SPEC-006",
+        "SPEC-007",
+        "SPEC-008",
+        "SPEC-009",
+        "SPEC-012",
+        "SPEC-013"
+      ],
+      "contracts": {
+        "produces": [
+          "CONTRACT-004",
+          "CONTRACT-006",
+          "CONTRACT-007"
+        ],
+        "consumes": [
+          "CONTRACT-003",
+          "CONTRACT-005"
+        ]
+      },
+      "events": {
+        "produces": [
+          "EVENT-007",
+          "EVENT-009",
+          "EVENT-010"
+        ],
+        "consumes": [
+          "EVENT-001",
+          "EVENT-002",
+          "EVENT-003",
+          "EVENT-004",
+          "EVENT-005",
+          "EVENT-006",
+          "EVENT-008"
+        ]
+      },
+      "path": "conformance/examples/impact-relay.yml"
+    }
+  ]
+}

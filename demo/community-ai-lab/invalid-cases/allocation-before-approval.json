@@ -1,0 +1,28 @@
+{
+  "name": "allocation-before-approval",
+  "expect_error": "DEMO_APPROVAL_ORDER",
+  "description": "AllocationCreated must not precede ApprovalGranted",
+  "events": [
+    {
+      "eventType": "AllocationCreated",
+      "payload": {
+        "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+        "recommendationId": "b6c2e191-3000-4000-8000-000000000001",
+        "approvalId": "approval-community-ai-lab",
+        "amount": 2500,
+        "currency": "USD",
+        "createdAt": "2026-08-03T16:10:00Z"
+      }
+    },
+    {
+      "eventType": "ApprovalGranted",
+      "payload": {
+        "approvalId": "approval-community-ai-lab",
+        "recommendationId": "b6c2e191-3000-4000-8000-000000000001",
+        "approvedBy": "human-reviewer",
+        "approvedAt": "2026-08-03T16:08:00Z",
+        "policyReference": "policy-human-approval-v1"
+      }
+    }
+  ]
+}

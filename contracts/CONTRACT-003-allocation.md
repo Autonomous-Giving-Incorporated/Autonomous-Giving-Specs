@@ -1,3 +1,21 @@
+---
+id: CONTRACT-003
+version: 1.0.0
+status: accepted
+authority: normative
+title: Allocation
+owner: Autonomous Giving
+lifecycle_stage: Allocation
+schema: ../schemas/allocation.json
+producer: Autonomous Giving
+consumer: Impact Relay
+related_specs:
+- SPEC-005
+- SPEC-007
+related_events:
+- EVENT-005
+---
+
 # CONTRACT-003: Allocation
 
 | Field | Value |

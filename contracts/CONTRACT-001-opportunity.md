@@ -1,3 +1,21 @@
+---
+id: CONTRACT-001
+version: 1.0.0
+status: accepted
+authority: normative
+title: Opportunity
+owner: Fund Intel
+lifecycle_stage: Opportunity
+schema: ../schemas/opportunity.json
+producer: Fund Intel
+consumer: Autonomous Giving
+related_specs:
+- SPEC-003
+- SPEC-007
+related_events:
+- EVENT-002
+---
+
 # CONTRACT-001: Opportunity
 
 | Field | Value |

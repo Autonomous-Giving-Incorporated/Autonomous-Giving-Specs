@@ -1,3 +1,25 @@
+---
+id: SPEC-014
+title: Future Services
+version: 1.0.0
+status: proposed
+authority: normative
+owner: Platform Architecture
+related_specs:
+- SPEC-006
+- SPEC-013
+related_adrs:
+- ADR-010
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-014: Future Services
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |

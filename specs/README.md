@@ -18,3 +18,8 @@ All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted`
 | [SPEC-012](SPEC-012-versioning.md) | Versioning | Accepted |
 | [SPEC-013](SPEC-013-repository-conformance.md) | Repository Conformance | Accepted |
 | [SPEC-014](SPEC-014-future-services.md) | Future Services | Proposed |
+| [SPEC-015](SPEC-015-compatibility-and-evolution.md) | Compatibility and Evolution | Accepted |
+| [SPEC-016](SPEC-016-security-and-trust-boundaries.md) | Security and Trust Boundaries | Proposed |
+| [SPEC-017](SPEC-017-data-classification-and-privacy.md) | Data Classification and Privacy | Proposed |
+| [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md) | Evidence Integrity and Provenance | Proposed |
+| [SPEC-019](SPEC-019-identity-and-authorization.md) | Identity and Authorization | Proposed |

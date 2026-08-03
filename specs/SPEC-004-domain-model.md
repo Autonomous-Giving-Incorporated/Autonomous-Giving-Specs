@@ -1,3 +1,23 @@
+---
+id: SPEC-004
+title: Domain Model
+version: 1.0.0
+status: accepted
+authority: normative
+owner: Platform Architecture
+related_specs: []
+related_adrs:
+- ADR-002
+related_contracts:
+- CONTRACT-001
+- CONTRACT-002
+- CONTRACT-003
+- CONTRACT-004
+- CONTRACT-005
+- CONTRACT-006
+- CONTRACT-007
+---
+
 # SPEC-004: Domain Model
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |

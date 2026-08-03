@@ -1,0 +1,554 @@
+{
+  "platformSpecVersion": "1.0.0",
+  "specifications": [
+    {
+      "id": "SPEC-001",
+      "title": "Platform Mission",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-001-platform-mission.md"
+    },
+    {
+      "id": "SPEC-002",
+      "title": "Platform Principles",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-002-platform-principles.md"
+    },
+    {
+      "id": "SPEC-003",
+      "title": "Signals Stack",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Fund Intel",
+      "path": "specs/SPEC-003-signals-stack.md"
+    },
+    {
+      "id": "SPEC-004",
+      "title": "Domain Model",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-004-domain-model.md"
+    },
+    {
+      "id": "SPEC-005",
+      "title": "Lifecycle",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-005-lifecycle.md"
+    },
+    {
+      "id": "SPEC-006",
+      "title": "Service Boundaries",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-006-service-boundaries.md"
+    },
+    {
+      "id": "SPEC-007",
+      "title": "Contracts",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-007-contracts.md"
+    },
+    {
+      "id": "SPEC-008",
+      "title": "Events",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-008-events.md"
+    },
+    {
+      "id": "SPEC-009",
+      "title": "Design System",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Product",
+      "path": "specs/SPEC-009-design-system.md"
+    },
+    {
+      "id": "SPEC-010",
+      "title": "Documentation Standard",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-010-documentation-standard.md"
+    },
+    {
+      "id": "SPEC-011",
+      "title": "Demo Specification",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Product",
+      "path": "specs/SPEC-011-demo-specification.md"
+    },
+    {
+      "id": "SPEC-012",
+      "title": "Versioning",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-012-versioning.md"
+    },
+    {
+      "id": "SPEC-013",
+      "title": "Repository Conformance",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-013-repository-conformance.md"
+    },
+    {
+      "id": "SPEC-014",
+      "title": "Future Services",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-014-future-services.md"
+    },
+    {
+      "id": "SPEC-015",
+      "title": "Compatibility and Evolution",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-015-compatibility-and-evolution.md"
+    },
+    {
+      "id": "SPEC-016",
+      "title": "Security and Trust Boundaries",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-016-security-and-trust-boundaries.md"
+    },
+    {
+      "id": "SPEC-017",
+      "title": "Data Classification and Privacy",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-017-data-classification-and-privacy.md"
+    },
+    {
+      "id": "SPEC-018",
+      "title": "Evidence Integrity and Provenance",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Impact Relay",
+      "path": "specs/SPEC-018-evidence-integrity-and-provenance.md"
+    },
+    {
+      "id": "SPEC-019",
+      "title": "Identity and Authorization",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-019-identity-and-authorization.md"
+    }
+  ],
+  "adrs": [
+    {
+      "id": "ADR-001",
+      "title": "Repository Strategy",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-001-repository-strategy.md"
+    },
+    {
+      "id": "ADR-002",
+      "title": "Platform Canon",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-002-signals-stack.md"
+    },
+    {
+      "id": "ADR-003",
+      "title": "Signals Stack",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-003-platform-canon.md"
+    },
+    {
+      "id": "ADR-004",
+      "title": "Repository Ownership",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-004-repository-ownership.md"
+    },
+    {
+      "id": "ADR-005",
+      "title": "allocationId",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-005-allocation-id.md"
+    },
+    {
+      "id": "ADR-006",
+      "title": "Human Approval",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-006-human-approval.md"
+    },
+    {
+      "id": "ADR-007",
+      "title": "Evidence Chain",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-007-evidence-chain.md"
+    },
+    {
+      "id": "ADR-008",
+      "title": "Documentation Strategy",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-008-documentation-strategy.md"
+    },
+    {
+      "id": "ADR-009",
+      "title": "Deterministic Demo",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-009-deterministic-demo.md"
+    },
+    {
+      "id": "ADR-010",
+      "title": "Future Services",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-010-future-services.md"
+    },
+    {
+      "id": "ADR-011",
+      "title": "Contract Evolution Policy",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-011-contract-evolution-policy.md"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "CONTRACT-001",
+      "title": "Opportunity",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "schema": "../schemas/opportunity.json",
+      "lifecycle_stage": "Opportunity",
+      "path": "contracts/CONTRACT-001-opportunity.md"
+    },
+    {
+      "id": "CONTRACT-002",
+      "title": "Recommendation",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "schema": "../schemas/recommendation.json",
+      "lifecycle_stage": "Recommendation",
+      "path": "contracts/CONTRACT-002-recommendation.md"
+    },
+    {
+      "id": "CONTRACT-003",
+      "title": "Allocation",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/allocation.json",
+      "lifecycle_stage": "Allocation",
+      "path": "contracts/CONTRACT-003-allocation.md"
+    },
+    {
+      "id": "CONTRACT-004",
+      "title": "Evidence",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "schema": "../schemas/evidence.json",
+      "lifecycle_stage": "Evidence",
+      "path": "contracts/CONTRACT-004-evidence.md"
+    },
+    {
+      "id": "CONTRACT-005",
+      "title": "Receipt",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/receipt.json",
+      "lifecycle_stage": "Receipt",
+      "path": "contracts/CONTRACT-005-receipt.md"
+    },
+    {
+      "id": "CONTRACT-006",
+      "title": "Notification",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "schema": "../schemas/notification.json",
+      "lifecycle_stage": "Notification",
+      "path": "contracts/CONTRACT-006-notification.md"
+    },
+    {
+      "id": "CONTRACT-007",
+      "title": "TimelineEvent",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "schema": "../schemas/timeline-event.json",
+      "lifecycle_stage": "Notification",
+      "path": "contracts/CONTRACT-007-timeline-event.md"
+    }
+  ],
+  "events": [
+    {
+      "id": "EVENT-001",
+      "title": "SignalDetected",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "lifecycle_stage": "Signal",
+      "producer": "Fund Intel",
+      "schema": "../schemas/signal-detected.json",
+      "contract": null,
+      "path": "events/EVENT-001-signal-detected.md"
+    },
+    {
+      "id": "EVENT-002",
+      "title": "OpportunityCreated",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "lifecycle_stage": "Opportunity",
+      "producer": "Fund Intel",
+      "schema": "../schemas/opportunity.json",
+      "contract": "CONTRACT-001",
+      "path": "events/EVENT-002-opportunity-created.md"
+    },
+    {
+      "id": "EVENT-003",
+      "title": "RecommendationGenerated",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "lifecycle_stage": "Recommendation",
+      "producer": "Fund Intel",
+      "schema": "../schemas/recommendation.json",
+      "contract": "CONTRACT-002",
+      "path": "events/EVENT-003-recommendation-generated.md"
+    },
+    {
+      "id": "EVENT-004",
+      "title": "ApprovalGranted",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "lifecycle_stage": "Approval",
+      "producer": "Autonomous Giving",
+      "schema": "../schemas/approval-granted.json",
+      "contract": null,
+      "path": "events/EVENT-004-approval-granted.md"
+    },
+    {
+      "id": "EVENT-005",
+      "title": "AllocationCreated",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "lifecycle_stage": "Allocation",
+      "producer": "Autonomous Giving",
+      "schema": "../schemas/allocation.json",
+      "contract": "CONTRACT-003",
+      "path": "events/EVENT-005-allocation-created.md"
+    },
+    {
+      "id": "EVENT-006",
+      "title": "ExecutionStarted",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "lifecycle_stage": "Execution",
+      "producer": "Autonomous Giving",
+      "schema": "../schemas/execution-started.json",
+      "contract": null,
+      "path": "events/EVENT-006-execution-started.md"
+    },
+    {
+      "id": "EVENT-007",
+      "title": "EvidenceAttached",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "lifecycle_stage": "Evidence",
+      "producer": "Impact Relay",
+      "schema": "../schemas/evidence.json",
+      "contract": "CONTRACT-004",
+      "path": "events/EVENT-007-evidence-attached.md"
+    },
+    {
+      "id": "EVENT-008",
+      "title": "ReceiptGenerated",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "lifecycle_stage": "Receipt",
+      "producer": "Autonomous Giving",
+      "schema": "../schemas/receipt.json",
+      "contract": "CONTRACT-005",
+      "path": "events/EVENT-008-receipt-generated.md"
+    },
+    {
+      "id": "EVENT-009",
+      "title": "VerificationCompleted",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "lifecycle_stage": "Verification",
+      "producer": "Impact Relay",
+      "schema": "../schemas/verification-completed.json",
+      "contract": null,
+      "path": "events/EVENT-009-verification-completed.md"
+    },
+    {
+      "id": "EVENT-010",
+      "title": "NotificationSent",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "lifecycle_stage": "Notification",
+      "producer": "Impact Relay",
+      "schema": "../schemas/notification.json",
+      "contract": "CONTRACT-006",
+      "path": "events/EVENT-010-notification-sent.md"
+    }
+  ],
+  "schemas": [
+    {
+      "id": "SCHEMA-001",
+      "title": "Opportunity",
+      "file": "opportunity.json",
+      "contract": "CONTRACT-001",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-002",
+      "title": "Recommendation",
+      "file": "recommendation.json",
+      "contract": "CONTRACT-002",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-003",
+      "title": "Allocation",
+      "file": "allocation.json",
+      "contract": "CONTRACT-003",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-004",
+      "title": "Evidence",
+      "file": "evidence.json",
+      "contract": "CONTRACT-004",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-005",
+      "title": "Receipt",
+      "file": "receipt.json",
+      "contract": "CONTRACT-005",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-006",
+      "title": "Notification",
+      "file": "notification.json",
+      "contract": "CONTRACT-006",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-007",
+      "title": "TimelineEvent",
+      "file": "timeline-event.json",
+      "contract": "CONTRACT-007",
+      "version": "1.0.0"
+    }
+  ],
+  "glossary": [
+    {
+      "id": "TERM-001",
+      "term": "Organization"
+    },
+    {
+      "id": "TERM-002",
+      "term": "Program"
+    },
+    {
+      "id": "TERM-003",
+      "term": "Need"
+    },
+    {
+      "id": "TERM-004",
+      "term": "Signal"
+    },
+    {
+      "id": "TERM-005",
+      "term": "Opportunity"
+    },
+    {
+      "id": "TERM-006",
+      "term": "Recommendation"
+    },
+    {
+      "id": "TERM-007",
+      "term": "Approval"
+    },
+    {
+      "id": "TERM-008",
+      "term": "Allocation"
+    },
+    {
+      "id": "TERM-009",
+      "term": "Execution"
+    },
+    {
+      "id": "TERM-010",
+      "term": "Evidence"
+    },
+    {
+      "id": "TERM-011",
+      "term": "Receipt"
+    },
+    {
+      "id": "TERM-012",
+      "term": "Verification"
+    },
+    {
+      "id": "TERM-013",
+      "term": "Impact"
+    },
+    {
+      "id": "TERM-014",
+      "term": "Notification"
+    },
+    {
+      "id": "TERM-015",
+      "term": "TimelineEvent"
+    }
+  ]
+}

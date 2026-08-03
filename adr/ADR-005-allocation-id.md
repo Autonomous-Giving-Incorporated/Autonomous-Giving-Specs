@@ -1,3 +1,16 @@
+---
+id: ADR-005
+version: 1.0.0
+authority: normative
+owner: Platform Architecture
+date: '2026-08-03'
+title: allocationId
+status: accepted
+related_specs:
+- SPEC-004
+- SPEC-006
+---
+
 # ADR-005: allocationId
 
 | Status | Accepted |
