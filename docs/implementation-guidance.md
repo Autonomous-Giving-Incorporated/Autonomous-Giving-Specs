@@ -86,3 +86,4 @@ Extract a capability into a separately deployable **service** only when one or m
 - [implementation-consumption.md](implementation-consumption.md) — pin and replace duplicates
 - [SPEC-013](../specs/SPEC-013-repository-conformance.md) — conformance (topology-agnostic)
 - [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) — profiles A–D
+- [Allocation middleware product design](superpowers/specs/2026-08-03-allocation-middleware-design.md) — client product: every.org-first, pot hierarchy, exception inbox

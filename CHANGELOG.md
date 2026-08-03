@@ -3,6 +3,12 @@
 All notable changes to the Autonomous Giving Platform Specification are documented here.
 Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
+## [Unreleased]
+
+### Added
+
+- Product design: [allocation middleware](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (every.org-first, pot hierarchy, exception-only ops).
+
 ## [1.1.0] — 2026-08-03
 
 ### Changed (architecture simplification — capability-first)
