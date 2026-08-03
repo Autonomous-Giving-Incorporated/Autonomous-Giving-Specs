@@ -45,7 +45,7 @@ FORBIDDEN_SYNONYMS: list[tuple[str, str]] = [
 ]
 
 ID_PATTERNS = {
-    "spec": r"^SPEC-\d{3}$",
+    "spec": r"^SPEC-\d{3}[A-Z]?$",
     "adr": r"^ADR-\d{3}$",
     "event": r"^EVENT-\d{3}$",
     "contract": r"^CONTRACT-\d{3}$",

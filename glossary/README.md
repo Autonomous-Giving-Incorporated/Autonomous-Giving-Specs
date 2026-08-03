@@ -19,5 +19,12 @@ The glossary is normative under [SPEC-004](../specs/SPEC-004-domain-model.md). E
 | TERM-013 | Impact | Verified outcome claim attributable to an Allocation. |
 | TERM-014 | Notification | Delivery request or record for a lifecycle update. |
 | TERM-015 | TimelineEvent | Immutable human-readable projection of an authoritative lifecycle event. |
+| TERM-016 | Capability | Logical responsibility with owned contracts and boundaries (e.g. Fund Intel). Not a deployment unit. |
+| TERM-017 | Module | Implementation unit that realizes a Capability inside a codebase (may share a process). |
+| TERM-018 | Deployment | Operational topology: how modules are packaged, hosted, and operated. |
+| TERM-019 | Service | Optional deployment model in which one or more capabilities run as a separately operable unit. Not required by the platform. |
+| TERM-020 | Modular Monolith | Reference implementation shape: one primary deployable containing multiple capability modules with clear boundaries. |
 
 No synonym may substitute for an identified term. A proposed new concept requires a glossary identifier and a review against existing terms.
+
+**Note:** Platform vocabulary for lifecycle and domain concepts is unchanged. Capability/deployment terms clarify architecture without renaming Need, Allocation, Impact, or other lifecycle terms.

@@ -7,7 +7,7 @@ RFCs are the proposal path for material changes to platform authority before SPE
 Open an RFC when a change:
 
 - Alters a required contract field, event, or lifecycle invariant
-- Introduces a new cross-boundary contract or service responsibility
+- Introduces a new cross-boundary contract or capability responsibility
 - Changes security, privacy, or identity norms
 - Requires a MAJOR version assessment under [SPEC-012](../specs/SPEC-012-versioning.md)
 - Needs multi-owner design discussion before drafting normative text
@@ -40,10 +40,10 @@ RFCs live as pull-request descriptions or documents under `docs/rfcs/` named `RF
 | --- | --- |
 | SPEC (cross-cutting) | Platform Architecture + one consumer implementation |
 | SPEC (domain) | Domain owner + Platform Architecture |
-| CONTRACT / EVENT / SCHEMA | Owner service + at least one consuming service |
+| CONTRACT / EVENT / SCHEMA | Owner capability + at least one consuming capability |
 | ADR | Platform Architecture; domain owner when domain-specific |
 | Security/privacy SPECs | Platform Architecture + owner of affected boundary |
-| MAJOR breaking change | Platform Architecture + all directly affected service owners |
+| MAJOR breaking change | Platform Architecture + all directly affected capability owners |
 
 Maintainers MUST NOT merge without the required approvals and a green `python validation/validate_all.py`.
 

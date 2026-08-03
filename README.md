@@ -1,6 +1,6 @@
 # Autonomous Giving Platform Specifications
 
-**Platform Specification v1.0** · Status: proposed canon · Owner: Autonomous Giving Incorporated
+**Platform Specification v1.1** · Status: proposed canon · Owner: Autonomous Giving Incorporated
 
 ## Mission
 
@@ -13,6 +13,38 @@ This repository owns platform architecture, contracts, schemas, lifecycle, termi
 ## Architecture
 
 The platform converts an observed `Need` into an auditable `Impact` through a canonical lifecycle. Intelligence may discover and recommend; governance authorizes; execution performs; evidence proves. See [SPEC-005](specs/SPEC-005-lifecycle.md) and the [lifecycle diagram](diagrams/lifecycle.md).
+
+**Logical architecture** (capabilities) and **physical deployment** are independent. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
+
+## Reference deployment
+
+The **recommended MVP** is a modular monolith (Profile B). Capabilities stay separate in code; deployment stays unified.
+
+```text
+GitHub Pages
+      ↓
+   Backend  (single executable)
+      ↓
+   Modules
+   ┌─────────────┬──────────────────┬──────────────┐
+   │ Fund Intel  │ Autonomous Giving│ Impact Relay │
+   └─────────────┴──────────────────┴──────────────┘
+      ↓                    ↓
+  PostgreSQL         Object Storage
+      ↓
+  Background Worker  (optional same unit)
+```
+
+| Profile | Intent |
+| --- | --- |
+| A Demo | Static fixtures, no backend |
+| **B MVP** | **Recommended:** one app, one database, modular capabilities |
+| C Production | Optional scale-out of the same modular unit |
+| D Enterprise | Optional extraction, streaming, multi-region |
+
+Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-deployment-profiles.md) and [implementation guidance](docs/implementation-guidance.md).
+
+**No Kubernetes, event broker, or service mesh is required for a conformant MVP.**
 
 ## Repository layout
 
@@ -37,6 +69,7 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 - [Generated machine-readable catalog](generated/catalog.json)
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
+- [Implementation guidance](docs/implementation-guidance.md)
 
 ## Executable validation
 
@@ -65,6 +98,6 @@ Platform releases use semantic versioning. A major version may change a required
 
 ## Implementation repositories
 
-Fund Intel, Impact Relay, and future services implement these artifacts. They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own API documentation.
+Fund Intel, Impact Relay, and Autonomous Giving Incorporated implement these artifacts as **capabilities** (optionally co-located). They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own documentation.
 
-The [implementation consumption guide](docs/implementation-consumption.md) defines the required adoption and migration path.
+The [implementation consumption guide](docs/implementation-consumption.md) and [implementation guidance](docs/implementation-guidance.md) define adoption and the modular-monolith-first path.

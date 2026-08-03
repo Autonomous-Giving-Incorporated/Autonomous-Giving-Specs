@@ -1,8 +1,12 @@
 # Lifecycle diagram
 
-```mermaid
-flowchart LR
-  Need --> Signal --> Opportunity --> Recommendation --> Approval --> Allocation --> Execution --> Evidence --> Receipt --> Verification --> Impact
+Canonical logical progression ([SPEC-005](../specs/SPEC-005-lifecycle.md)):
+
+```text
+Need → Signal → Opportunity → Recommendation → Approval → Allocation
+  → Execution → Evidence → Receipt → Verification → Impact
 ```
 
-`Approval → Allocation` is a mandatory human gate in the MVP. See [SPEC-005](../specs/SPEC-005-lifecycle.md).
+Projections (not alternate stages): `TimelineEvent`, `Notification`.
+
+No transport or deployable is implied per stage.

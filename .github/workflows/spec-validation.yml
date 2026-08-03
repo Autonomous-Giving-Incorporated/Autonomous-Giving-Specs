@@ -55,7 +55,7 @@ jobs:
       - name: Require expected artifact floors
         run: |
           test -f CONSTITUTION.md
-          test "$(find specs -name 'SPEC-*.md' | wc -l | tr -d ' ')" -ge 19
+          test "$(find specs -name 'SPEC-*.md' | wc -l | tr -d ' ')" -ge 21
           test "$(find adr -name 'ADR-*.md' | wc -l | tr -d ' ')" -ge 11
           test "$(find events -name 'EVENT-*.md' | wc -l | tr -d ' ')" -ge 10
           test "$(find contracts -name 'CONTRACT-*.md' | wc -l | tr -d ' ')" -ge 7

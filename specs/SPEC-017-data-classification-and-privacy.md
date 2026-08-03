@@ -26,7 +26,7 @@ related_contracts:
 | Dependencies | SPEC-004, SPEC-016 | Related ADRs | ADR-004, ADR-007 | Related contracts | CONTRACT-003–007 |
 
 ## Purpose
-Classify platform data so public, tenant, and private fields are handled consistently across services.
+Classify platform data so public, tenant, and private fields are handled consistently across capabilities.
 
 ## Scope
 Data at rest and in events/contracts for the Autonomous Giving Platform. Legal jurisdiction mapping is left to operators; classification labels are platform-normative.
@@ -36,8 +36,8 @@ Data at rest and in events/contracts for the Autonomous Giving Platform. Legal j
 | Label | Meaning | Default handling |
 | --- | --- | --- |
 | `public` | Safe for unrestricted timeline projection | May appear in TimelineEvent and public demos |
-| `tenant` | Visible to the operating organization and authorized services | Not donor-public by default |
-| `restricted` | Need-to-know within a service or role | Not placed in Notification bodies without purpose |
+| `tenant` | Visible to the operating organization and authorized capabilities | Not donor-public by default |
+| `restricted` | Need-to-know within a capability or role | Not placed in Notification bodies without purpose |
 | `pii` | Identifies or reasonably links to a person | Minimized; access logged; redacted in public views |
 | `sensitive-financial` | Amounts linked to account or payment instruments | Amounts on Allocation/Receipt may be tenant-visible; payment instrument data is out of band |
 
@@ -61,7 +61,7 @@ Data at rest and in events/contracts for the Autonomous Giving Platform. Legal j
 ### Notification consent
 1. Notification delivery presupposes a lawful basis or consent tracked outside the core lifecycle contracts.
 2. `NotificationSent` records delivery attempts; they are not consent records.
-3. Channel adapters MUST honor suppression/unsubscribe signals from the owning transparency service.
+3. Channel adapters MUST honor suppression/unsubscribe signals from the owning transparency capability.
 
 ### Redaction
 1. Public TimelineEvent projections MUST redact `pii` and `restricted` fields.

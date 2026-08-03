@@ -1,5 +1,7 @@
 # Domain model diagram
 
+Logical relationships among glossary terms (unchanged by deployment topology):
+
 ```mermaid
 erDiagram
   ORGANIZATION ||--o{ PROGRAM : operates
@@ -17,3 +19,16 @@ erDiagram
 ```
 
 Terms are defined in the [glossary](../glossary/README.md).
+
+## Capability ownership (logical)
+
+```text
+Fund Intel module          Autonomous Giving module       Impact Relay module
+─────────────────          ────────────────────────       ───────────────────
+Signal                     Approval                       Evidence
+Opportunity                Allocation                     Verification
+Recommendation             Execution                      Notification
+                           Receipt                        TimelineEvent
+```
+
+These modules may share one process (modular monolith) or run separately. Ownership of contracts does not change.
