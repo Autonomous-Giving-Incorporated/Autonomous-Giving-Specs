@@ -8,3 +8,9 @@
 | Idempotency | `eventId` |
 
 Records a captured external observation. Payload contains `signalId`, `needId`, `source`, `observedAt`, and `confidence`. Example: `{"eventType":"SignalDetected","payload":{"signalId":"signal-1","needId":"need-community-ai-lab"}}`.
+
+## Version history
+
+| Version | Change |
+| --- | --- |
+| 1.0.0 | Initial canonical event definition. |

@@ -4,7 +4,7 @@
 
 ## Mission
 
-Provide the authoritative, implementation-neutral definition of the Autonomous Giving Platform: how needs become verified impact through governed, attributable allocations.
+Provide the authoritative, implementation-neutral definition of the Autonomous Giving Platform: how needs become verified impact through governed, attributable allocations. The [Platform Constitution](CONSTITUTION.md) is the highest-order normative document.
 
 ## Purpose and boundaries
 
@@ -12,7 +12,7 @@ This repository owns platform architecture, contracts, schemas, lifecycle, termi
 
 ## Architecture
 
-The platform converts an observed `Need` into an auditable `Impact` through a canonical lifecycle. Intelligence may discover and recommend; governance authorizes; execution performs; evidence proves. See [SPEC-004](specs/SPEC-004-event-lifecycle.md) and the [lifecycle diagram](diagrams/lifecycle.md).
+The platform converts an observed `Need` into an auditable `Impact` through a canonical lifecycle. Intelligence may discover and recommend; governance authorizes; execution performs; evidence proves. See [SPEC-005](specs/SPEC-005-lifecycle.md) and the [lifecycle diagram](diagrams/lifecycle.md).
 
 ## Repository layout
 
@@ -47,7 +47,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the required change and review proces
 
 ## Versioning
 
-Platform releases use semantic versioning. A major version may change a required contract or lifecycle invariant; a minor version adds backward-compatible authority; a patch clarifies without changing normative behavior. Details: [SPEC-010](specs/SPEC-010-versioning.md).
+Platform releases use semantic versioning. A major version may change a required contract or lifecycle invariant; a minor version adds backward-compatible authority; a patch clarifies without changing normative behavior. Details: [SPEC-012](specs/SPEC-012-versioning.md).
 
 ## Implementation repositories
 

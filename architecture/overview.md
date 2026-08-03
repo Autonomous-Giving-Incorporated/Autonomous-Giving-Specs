@@ -10,4 +10,4 @@ The platform is an event-oriented, implementation-neutral system with five respo
 | Evidence and Verification | Execution artifacts | Evidence, verification, impact support | Preserves provenance |
 | Transparency | Canonical events | Timeline and notifications | Never edits history |
 
-See [SPEC-005](../specs/SPEC-005-service-boundaries.md) and [domain diagram](../diagrams/domain-model.md).
+See [SPEC-006](../specs/SPEC-006-service-boundaries.md) and [domain diagram](../diagrams/domain-model.md).

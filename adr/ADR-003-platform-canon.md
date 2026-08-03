@@ -1,18 +1,18 @@
-# ADR-003: Platform Canon
+# ADR-003: Signals Stack
 
 | Status | Accepted |
 | --- | --- |
 | Date | 2026-08-03 |
-| Related specs | SPEC-001, SPEC-003, SPEC-004 |
+| Related specs | SPEC-003, SPEC-004, SPEC-005 |
 
 ## Context
 
-Autonomous giving requires shared definitions for audit and interoperability.
+Observed information and evaluative judgement have different provenance and reliability.
 
 ## Decision
 
-Adopt the glossary and the canonical lifecycle as platform authority.
+Model signals as immutable observations; derive opportunities and recommendations separately.
 
 ## Consequences
 
-New concepts must be reconciled with the existing vocabulary and lifecycle.
+Consumers can evaluate source quality independently of recommendation policy.

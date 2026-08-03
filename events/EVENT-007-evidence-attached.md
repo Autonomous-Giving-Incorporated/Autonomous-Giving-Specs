@@ -8,3 +8,9 @@
 | Idempotency | `eventId` |
 
 Records attributable evidence without editing prior evidence. Payload validates as Evidence. Example: `{"eventType":"EvidenceAttached","payload":{"evidenceId":"d6c2e191-3000-4000-8000-000000000001","type":"delivery_photo"}}`.
+
+## Version history
+
+| Version | Change |
+| --- | --- |
+| 1.0.0 | Initial canonical event definition. |

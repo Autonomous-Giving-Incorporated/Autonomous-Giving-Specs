@@ -1,16 +1,20 @@
-# Specification index
+# Specification library
 
-All specifications are normative unless explicitly marked informative. Owner: Platform Architecture. Status and dependencies appear in each document.
+All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted` documents are normative; `Proposed` documents are review candidates.
 
 | ID | Specification | Status |
 | --- | --- | --- |
-| [SPEC-001](SPEC-001-platform.md) | Platform | Accepted |
-| [SPEC-002](SPEC-002-signals-stack.md) | Signals Stack | Proposed |
-| [SPEC-003](SPEC-003-domain-model.md) | Domain Model | Accepted |
-| [SPEC-004](SPEC-004-event-lifecycle.md) | Event Lifecycle | Accepted |
-| [SPEC-005](SPEC-005-service-boundaries.md) | Service Boundaries | Proposed |
-| [SPEC-006](SPEC-006-contracts.md) | Contracts | Accepted |
-| [SPEC-007](SPEC-007-demo.md) | Deterministic Demo | Proposed |
-| [SPEC-008](SPEC-008-design-system.md) | Design System | Proposed |
-| [SPEC-009](SPEC-009-documentation.md) | Documentation | Accepted |
-| [SPEC-010](SPEC-010-versioning.md) | Versioning | Accepted |
+| [SPEC-001](SPEC-001-platform-mission.md) | Platform Mission | Accepted |
+| [SPEC-002](SPEC-002-platform-principles.md) | Platform Principles | Accepted |
+| [SPEC-003](SPEC-003-signals-stack.md) | Signals Stack | Proposed |
+| [SPEC-004](SPEC-004-domain-model.md) | Domain Model | Accepted |
+| [SPEC-005](SPEC-005-lifecycle.md) | Lifecycle | Accepted |
+| [SPEC-006](SPEC-006-service-boundaries.md) | Service Boundaries | Proposed |
+| [SPEC-007](SPEC-007-contracts.md) | Contracts | Accepted |
+| [SPEC-008](SPEC-008-events.md) | Events | Accepted |
+| [SPEC-009](SPEC-009-design-system.md) | Design System | Proposed |
+| [SPEC-010](SPEC-010-documentation-standard.md) | Documentation Standard | Accepted |
+| [SPEC-011](SPEC-011-demo-specification.md) | Demo Specification | Proposed |
+| [SPEC-012](SPEC-012-versioning.md) | Versioning | Accepted |
+| [SPEC-013](SPEC-013-repository-conformance.md) | Repository Conformance | Accepted |
+| [SPEC-014](SPEC-014-future-services.md) | Future Services | Proposed |

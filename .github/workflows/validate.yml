@@ -37,10 +37,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Require expected artifact counts
         run: |
-          test "$(find specs -name 'SPEC-*.md' | wc -l | tr -d ' ')" = 10
+          test -f CONSTITUTION.md
+          test -d design-system
+          test -d validation
+          test "$(find specs -name 'SPEC-*.md' | wc -l | tr -d ' ')" = 14
           test "$(find adr -name 'ADR-*.md' | wc -l | tr -d ' ')" = 10
           test "$(find events -name 'EVENT-*.md' | wc -l | tr -d ' ')" = 10
           test "$(find contracts -name 'CONTRACT-*.md' | wc -l | tr -d ' ')" = 7
+          test "$(find schemas -name '*.json' | wc -l | tr -d ' ')" -ge 8
       - name: Detect duplicate glossary terms
         run: |
           duplicates="$(awk -F'|' '/^\|/ && $2 !~ /Term|---/ {gsub(/^[[:space:]]+|[[:space:]]+$/, \"\", $2); print $2}' glossary/README.md | sort | uniq -d)"

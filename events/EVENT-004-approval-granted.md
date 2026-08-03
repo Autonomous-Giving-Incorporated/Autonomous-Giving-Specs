@@ -8,3 +8,9 @@
 | Idempotency | `eventId` |
 
 Records an explicit human approval. Payload contains `approvalId`, `recommendationId`, `approvedBy`, `approvedAt`, and policy reference. Example: `{"eventType":"ApprovalGranted","payload":{"approvalId":"approval-community-ai-lab","approvedBy":"human-reviewer"}}`.
+
+## Version history
+
+| Version | Change |
+| --- | --- |
+| 1.0.0 | Initial canonical event definition. |

@@ -14,7 +14,7 @@ Store Mermaid source in `diagrams/`; do not commit opaque diagram-only artifacts
 
 ## Ownership and review
 
-The named owner approves changes. Contract or lifecycle changes also require a consumer review. Breaking changes require an ADR and major version assessment under [SPEC-010](../specs/SPEC-010-versioning.md).
+The named owner approves changes. Contract or lifecycle changes also require a consumer review. Breaking changes require an ADR and major version assessment under [SPEC-012](../specs/SPEC-012-versioning.md).
 
 ## Cross references
 

@@ -1,5 +1,15 @@
 # Schema library
 
-JSON Schema Draft 2020-12 validation artifacts for [contracts](../contracts/README.md). Schemas are normative; descriptions explain fields but do not relax `required`, type, or format constraints.
+JSON Schema Draft 2020-12 artifacts are normative under [SPEC-007](../specs/SPEC-007-contracts.md). Contract schemas define public boundary payloads; event-specific schemas define payloads where no public contract applies.
 
-The contract schemas are public boundary contracts. The additional event payload schemas (`signal-detected`, `approval-granted`, `execution-started`, and `verification-completed`) define event-specific data where no public contract applies. [event-envelope.json](event-envelope.json) defines the common event metadata.
+| ID | Schema | Contract | Version |
+| --- | --- | --- | --- |
+| SCHEMA-001 | [Opportunity](opportunity.json) | CONTRACT-001 | 1.0.0 |
+| SCHEMA-002 | [Recommendation](recommendation.json) | CONTRACT-002 | 1.0.0 |
+| SCHEMA-003 | [Allocation](allocation.json) | CONTRACT-003 | 1.0.0 |
+| SCHEMA-004 | [Evidence](evidence.json) | CONTRACT-004 | 1.0.0 |
+| SCHEMA-005 | [Receipt](receipt.json) | CONTRACT-005 | 1.0.0 |
+| SCHEMA-006 | [Notification](notification.json) | CONTRACT-006 | 1.0.0 |
+| SCHEMA-007 | [TimelineEvent](timeline-event.json) | CONTRACT-007 | 1.0.0 |
+
+[event-envelope.json](event-envelope.json) defines event metadata. `signal-detected`, `approval-granted`, `execution-started`, and `verification-completed` are event-specific payload schemas.

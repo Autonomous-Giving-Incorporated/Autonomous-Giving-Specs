@@ -1,18 +1,18 @@
-# ADR-002: Signals Stack
+# ADR-002: Platform Canon
 
 | Status | Proposed |
 | --- | --- |
 | Date | 2026-08-03 |
-| Related specs | SPEC-002, SPEC-004 |
+| Related specs | SPEC-001, SPEC-004, SPEC-005 |
 
 ## Context
 
-Observed information and evaluative judgement have different provenance and reliability.
+The ecosystem requires a single source of authority for terminology, lifecycle, and cross-boundary definitions.
 
 ## Decision
 
-Model signals as immutable observations; derive opportunities and recommendations separately.
+Adopt the Constitution, glossary, and canonical lifecycle as the platform canon.
 
 ## Consequences
 
-Consumers can evaluate source quality independently of recommendation policy.
+Implementations link to this repository rather than redefining platform concepts.
