@@ -247,3 +247,7 @@ Capability alignment (logical only):
 | Autonomous-Giving-Incorporated | PRODUCT-ALLOCATION-MIDDLEWARE.md; ROADMAP pointer |
 | Fund-Intel | docs/ALLOCATION-MIDDLEWARE.md (intelligence/observe role) |
 | Impact-Relay | docs/ALLOCATION-MIDDLEWARE.md (proof/trail role) |
+
+## 19. Implementation plan
+
+[docs/superpowers/plans/2026-08-03-allocation-middleware.md](../plans/2026-08-03-allocation-middleware.md)
