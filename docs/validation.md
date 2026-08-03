@@ -18,7 +18,7 @@ CI also runs Markdown link validation and inventory floors. See [validation/READ
 - Required metadata (frontmatter) for every SPEC, ADR, EVENT, and CONTRACT
 - Stable identifier-to-path correspondence
 - Every event references an existing schema (and contract when applicable)
-- Every contract has exactly one owning service
+- Every contract has exactly one owning capability
 - Lifecycle stages are canonical
 - Every fenced JSON example validates against its schema
 - No broken relative normative links or unknown artifact IDs

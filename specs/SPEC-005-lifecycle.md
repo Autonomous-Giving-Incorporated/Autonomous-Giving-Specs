@@ -32,4 +32,4 @@ All lifecycle events and user-visible projections.
 ## Requirements
 The sequence SHALL be `Need → Signal → Opportunity → Recommendation → Approval → Allocation → Execution → Evidence → Receipt → Verification → Impact`. Approval SHALL precede Allocation; impact SHALL follow verification.
 ## Non-goals
-No transport, timing, or synchronous-processing requirement is implied.
+No transport, timing, asynchronous infrastructure, or synchronous-processing requirement is implied. Lifecycle stages are logical; they do not mandate separate deployables per stage.

@@ -40,8 +40,7 @@ python validation/validate_all.py --output validation-report.json
 | `validate_references.py` | Relative links; known IDs; event→contract/schema; circular related refs |
 | `validate_schemas.py` | Draft 2020-12; unique `$id`; catalog file existence |
 | `validate_lifecycle.py` | Canonical stages on events/contracts; SPEC-005 completeness |
-| `validate_ownership.py` | Exactly one contract owner from the service set |
-| `validate_examples.py` | Fenced JSON examples validate against linked schemas |
+| `validate_ownership.py` | Exactly one contract owner from the capability owner set || `validate_examples.py` | Fenced JSON examples validate against linked schemas |
 | `validate_manifests.py` | Conformance manifests against `schemas/meta/conformance-manifest.schema.json` |
 | `validate_terminology.py` | Forbidden synonyms; duplicate glossary terms |
 | `validate_demo.py` | Community AI Lab fixture order, continuity, and payloads |

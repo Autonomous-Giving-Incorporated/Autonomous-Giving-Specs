@@ -18,9 +18,17 @@
       "path": "specs/SPEC-002-platform-principles.md"
     },
     {
+      "id": "SPEC-002A",
+      "title": "Architectural Principles",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-002A-architectural-principles.md"
+    },
+    {
       "id": "SPEC-003",
       "title": "Signals Stack",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "proposed",
       "owner": "Fund Intel",
       "path": "specs/SPEC-003-signals-stack.md"
@@ -43,16 +51,16 @@
     },
     {
       "id": "SPEC-006",
-      "title": "Service Boundaries",
-      "version": "1.0.0",
-      "status": "proposed",
+      "title": "Capability Boundaries",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
-      "path": "specs/SPEC-006-service-boundaries.md"
+      "path": "specs/SPEC-006-capability-boundaries.md"
     },
     {
       "id": "SPEC-007",
       "title": "Contracts",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-007-contracts.md"
@@ -60,7 +68,7 @@
     {
       "id": "SPEC-008",
       "title": "Events",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-008-events.md"
@@ -100,18 +108,18 @@
     {
       "id": "SPEC-013",
       "title": "Repository Conformance",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-013-repository-conformance.md"
     },
     {
       "id": "SPEC-014",
-      "title": "Future Services",
-      "version": "1.0.0",
+      "title": "Future Capabilities",
+      "version": "1.1.0",
       "status": "proposed",
       "owner": "Platform Architecture",
-      "path": "specs/SPEC-014-future-services.md"
+      "path": "specs/SPEC-014-future-capabilities.md"
     },
     {
       "id": "SPEC-015",
@@ -148,10 +156,18 @@
     {
       "id": "SPEC-019",
       "title": "Identity and Authorization",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-019-identity-and-authorization.md"
+    },
+    {
+      "id": "SPEC-020",
+      "title": "Reference Deployment Profiles",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-020-reference-deployment-profiles.md"
     }
   ],
   "adrs": [
@@ -229,9 +245,9 @@
     },
     {
       "id": "ADR-010",
-      "title": "Future Services",
-      "version": "1.0.0",
-      "status": "proposed",
+      "title": "Capability Independence",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-010-future-services.md"
     },
@@ -549,6 +565,26 @@
     {
       "id": "TERM-015",
       "term": "TimelineEvent"
+    },
+    {
+      "id": "TERM-016",
+      "term": "Capability"
+    },
+    {
+      "id": "TERM-017",
+      "term": "Module"
+    },
+    {
+      "id": "TERM-018",
+      "term": "Deployment"
+    },
+    {
+      "id": "TERM-019",
+      "term": "Service"
+    },
+    {
+      "id": "TERM-020",
+      "term": "Modular Monolith"
     }
   ]
 }

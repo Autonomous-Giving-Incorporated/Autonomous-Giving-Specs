@@ -32,7 +32,7 @@ related_contracts:
 Define how platform contracts, events, schemas, and lifecycle authority may evolve without silently breaking consumers.
 
 ## Scope
-All normative payload schemas, event definitions, lifecycle stages, and platform releases. Applies to Fund Intel, Autonomous Giving Incorporated, Impact Relay, and future services.
+All normative payload schemas, event definitions, lifecycle stages, and platform releases. Applies to Fund Intel, Autonomous Giving Incorporated, Impact Relay, and future capabilities regardless of deployment topology.
 
 ## Requirements
 
@@ -92,4 +92,4 @@ All normative payload schemas, event definitions, lifecycle stages, and platform
 3. Release notes and checksummed packages are the pin targets; consumers MUST NOT treat `main` as an immutable pin.
 
 ## Non-goals
-This specification does not define transport protocols, broker topology, or implementation release calendars beyond pin and migration obligations.
+This specification does not define transport protocols, require brokers, or impose implementation release calendars beyond pin and migration obligations. Transport and deployment remain implementation choices.

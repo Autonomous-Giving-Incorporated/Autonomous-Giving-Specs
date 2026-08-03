@@ -1,6 +1,8 @@
 # Diagrams
 
-- [Lifecycle](lifecycle.md)
-- [Domain model](domain-model.md)
+| Diagram | Kind | Notes |
+| --- | --- | --- |
+| [lifecycle.md](lifecycle.md) | Logical | Canonical stage sequence |
+| [domain-model.md](domain-model.md) | Logical + ownership | Domain ER + capability modules |
 
-All diagrams are editable Mermaid source.
+Physical deployment diagrams live in [architecture/overview.md](../architecture/overview.md) and [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md). Keep logical diagrams free of container/orchestrator assumptions.

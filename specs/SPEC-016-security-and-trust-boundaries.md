@@ -46,14 +46,14 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 | External organization | Supplies Need and operational evidence | Self-approve Allocation |
 
 ## Requirements
-1. Each service boundary in [SPEC-006](SPEC-006-service-boundaries.md) is a trust boundary: cross-boundary data moves only through versioned contracts and events.
-2. Authentication and authorization decisions SHALL be attributable to a principal (human or service identity) per [SPEC-019](SPEC-019-identity-and-authorization.md).
+1. Each **capability** boundary in [SPEC-006](SPEC-006-capability-boundaries.md) is a trust boundary: cross-boundary data moves only through versioned contracts and events (including in-process module calls).
+2. Authentication and authorization decisions SHALL be attributable to a principal (human or workload identity) per [SPEC-019](SPEC-019-identity-and-authorization.md).
 3. Human Approval remains a hard gate before Allocation for the MVP ([ADR-006](../adr/ADR-006-human-approval.md)).
 4. Audit-relevant actions (approval, allocation, verification, receipt issuance) SHALL emit durable events suitable for independent review.
-5. Implementations SHALL assume hostile or compromised peers outside their trust domain and MUST validate inbound payloads against pinned schemas.
+5. Implementations SHALL assume hostile or compromised peers outside their trust domain and MUST validate inbound payloads against pinned schemas. In a modular monolith, module boundaries still enforce validation at capability edges.
 6. Secrets, credentials, and signing keys NEVER appear in contract payloads, events, demo fixtures, or this repository.
 7. Public projections (TimelineEvent, Notification content) SHALL apply data classification and redaction rules from [SPEC-017](SPEC-017-data-classification-and-privacy.md).
-8. Threat assumptions for the platform MVP include: forged events without authz, replay of stale approvals, evidence substitution, notification leakage, and confused-deputy calls across services. Mitigations are schema validation, authz checks, idempotent `eventId`, append-only evidence, and least-privilege service roles.
+8. Threat assumptions for the platform MVP include: forged events without authz, replay of stale approvals, evidence substitution, notification leakage, and confused-deputy calls across capabilities. Mitigations are schema validation, authz checks, idempotent `eventId`, append-only evidence, and least-privilege roles. Network-level controls apply only when deployment separates processes.
 
 ## Trust-boundary diagram (logical)
 
@@ -74,4 +74,4 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 ```
 
 ## Non-goals
-This specification does not mandate a particular IdP, KMS, network mesh, or cloud provider. It does not replace product threat models for each implementation repository.
+This specification does not mandate a particular IdP, KMS, network mesh, service mesh, Kubernetes, or cloud provider. It does not replace product threat models for each implementation repository.

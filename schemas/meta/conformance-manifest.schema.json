@@ -41,7 +41,7 @@
       "properties": {
         "specs": {
           "type": "array",
-          "items": { "type": "string", "pattern": "^SPEC-[0-9]{3}$" },
+          "items": { "type": "string", "pattern": "^SPEC-[0-9]{3}[A-Z]?$" },
           "uniqueItems": true
         },
         "contracts": {

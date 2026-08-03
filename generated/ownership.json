@@ -53,6 +53,7 @@
       "specs": [
         "SPEC-001",
         "SPEC-002",
+        "SPEC-002A",
         "SPEC-004",
         "SPEC-005",
         "SPEC-006",
@@ -65,7 +66,8 @@
         "SPEC-015",
         "SPEC-016",
         "SPEC-017",
-        "SPEC-019"
+        "SPEC-019",
+        "SPEC-020"
       ]
     },
     {

@@ -28,4 +28,4 @@ Represent evidence, receipts, and verification as immutable, attributable record
 
 ## Consequences
 
-Corrections are additive and no service may alter historical evidence.
+Corrections are additive and no capability may alter historical evidence.

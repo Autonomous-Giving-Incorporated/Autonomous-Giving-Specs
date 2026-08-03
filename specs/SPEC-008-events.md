@@ -1,11 +1,12 @@
 ---
 id: SPEC-008
 title: Events
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 owner: Platform Architecture
 related_specs:
+- SPEC-002A
 - SPEC-005
 - SPEC-007
 related_adrs:
@@ -22,14 +23,22 @@ related_contracts:
 ---
 
 # SPEC-008: Events
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-005, SPEC-007 | Related ADRs | ADR-003, ADR-007 | Related contracts | CONTRACT-001–007 |
+| Dependencies | SPEC-002A, SPEC-005, SPEC-007 | Related ADRs | ADR-003, ADR-007 | Related contracts | CONTRACT-001–007 |
+
 ## Purpose
-Define immutable lifecycle publication semantics.
+Define immutable lifecycle **publication semantics** (what happened, in what order, with which identity).
+
 ## Scope
 EVENT-001 through EVENT-010 and their envelope.
+
 ## Requirements
-Every event SHALL declare producer, consumers, payload, schema, ordering, idempotency, stage, example, and version history. Consumers SHALL deduplicate on `eventId`.
+1. Every event SHALL declare producer, consumers, payload, schema, ordering, idempotency, stage, example, and version history.
+2. Consumers SHALL deduplicate on `eventId`.
+3. Events describe platform behavior. They do **not** require asynchronous infrastructure.
+4. Implementations MAY record or deliver events by synchronous invocation, database persistence, a work queue, or a broker. All remain conformant when payloads and ordering invariants hold.
+5. No Kafka, NATS, or other broker is mandated.
+
 ## Non-goals
-Event transport and broker selection are excluded.
+Event transport technology, broker selection, and at-least-once vs exactly-once infrastructure guarantees beyond idempotent `eventId` handling are excluded.

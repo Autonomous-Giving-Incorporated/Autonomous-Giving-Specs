@@ -7,6 +7,7 @@ authority: normative
 owner: Platform Architecture
 related_specs:
 - SPEC-001
+- SPEC-002A
 related_adrs:
 - ADR-002
 - ADR-006
@@ -28,6 +29,6 @@ Turn the Constitution’s immutable principles into testable platform requiremen
 ## Scope
 Every producer, consumer, projection, and impact claim.
 ## Requirements
-Implementations SHALL enforce human approval before allocation, append-only evidence and history, provenance for impact claims, and single-responsibility ownership.
+Implementations SHALL enforce human approval before allocation, append-only evidence and history, provenance for impact claims, and single-responsibility **capability** ownership. Structural principles (capability-first, deployment independence, modular monolith by default) are in [SPEC-002A](SPEC-002A-architectural-principles.md).
 ## Non-goals
-It does not select policy engines or audit-storage technology.
+It does not select policy engines, audit-storage technology, brokers, or orchestrators.

@@ -65,4 +65,9 @@ def markdown_links(body: str) -> list[tuple[str, str]]:
 
 def id_references(body: str) -> set[str]:
     """Stable platform IDs mentioned in prose or links."""
-    return set(re.findall(r"\b(?:SPEC|ADR|EVENT|CONTRACT|SCHEMA|TERM)-\d{3}\b", body))
+    return set(
+        re.findall(
+            r"\b(?:SPEC-\d{3}[A-Z]?|ADR-\d{3}|EVENT-\d{3}|CONTRACT-\d{3}|SCHEMA-\d{3}|TERM-\d{3})\b",
+            body,
+        )
+    )

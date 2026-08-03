@@ -89,7 +89,7 @@ SPEC_META = {
         ],
     },
     "SPEC-006": {
-        "title": "Service Boundaries",
+        "title": "Capability Boundaries",
         "version": "1.0.0",
         "status": "proposed",
         "authority": "normative",
@@ -217,7 +217,7 @@ SPEC_META = {
         ],
     },
     "SPEC-014": {
-        "title": "Future Services",
+        "title": "Future Capabilities",
         "version": "1.0.0",
         "status": "proposed",
         "authority": "normative",
@@ -283,7 +283,7 @@ ADR_META = {
         "related_specs": ["SPEC-011"],
     },
     "ADR-010": {
-        "title": "Future Services",
+        "title": "Future Capabilities",
         "status": "proposed",
         "related_specs": ["SPEC-006", "SPEC-014"],
     },

@@ -89,7 +89,11 @@ def _load_markdown_artifacts(
 
 
 def _id_from_filename(name: str, prefix: str) -> str:
-    match = re.match(rf"({prefix}-\d{{3}})", name)
+    # SPECs may use a letter suffix (e.g. SPEC-002A).
+    if prefix == "SPEC":
+        match = re.match(rf"({prefix}-\d{{3}}[A-Z]?)", name)
+    else:
+        match = re.match(rf"({prefix}-\d{{3}})", name)
     return match.group(1) if match else name
 
 

@@ -1,3 +1,3 @@
 # Roadmap
 
-The [specification roadmap](specification-roadmap.md) sequences platform authority, not implementation delivery.
+See [specification-roadmap.md](specification-roadmap.md) for capability-first delivery phases and specification milestones. Scaling-first infrastructure roadmaps are intentionally out of scope.

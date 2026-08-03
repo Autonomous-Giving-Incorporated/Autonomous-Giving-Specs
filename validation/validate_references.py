@@ -63,7 +63,7 @@ def validate_references(index: DocumentIndex, report: Report) -> None:
         deps = art.meta.get("related_specs") or []
         # Also parse dependencies from legacy fields if present
         for dep in deps:
-            if isinstance(dep, str) and re.fullmatch(r"SPEC-\d{3}", dep):
+            if isinstance(dep, str) and re.fullmatch(r"SPEC-\d{3}[A-Z]?", dep):
                 graph[sid].add(dep)
                 if dep not in index.specs:
                     report.error(

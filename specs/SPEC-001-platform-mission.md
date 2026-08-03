@@ -19,8 +19,8 @@ related_contracts: []
 ## Purpose
 Define what it means to implement the platform.
 ## Scope
-All ecosystem services and public platform representations.
+All platform capabilities and public platform representations, regardless of deployment topology.
 ## Requirements
-An implementation SHALL translate evidenced needs into governed, attributable impact and SHALL preserve the Constitution’s responsibility separation.
+An implementation SHALL translate evidenced needs into governed, attributable impact and SHALL preserve the Constitution’s capability separation. Deployment form (modular monolith or distributed) is an implementation choice.
 ## Non-goals
-This does not prescribe code, vendors, APIs, or hosting.
+This does not prescribe code, vendors, APIs, hosting, orchestrators, or network topology.
