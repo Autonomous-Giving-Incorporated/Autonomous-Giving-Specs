@@ -251,3 +251,7 @@ Capability alignment (logical only):
 ## 19. Implementation plan
 
 [docs/superpowers/plans/2026-08-03-allocation-middleware.md](../plans/2026-08-03-allocation-middleware.md)
+
+## 20. Pilot hosting plan
+
+[docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md](../plans/2026-08-03-hacker-dojo-pilot-hosting.md)
