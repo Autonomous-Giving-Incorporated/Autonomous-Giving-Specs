@@ -71,6 +71,8 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
+- [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (implemented in Fund-Intel)
+- [Hacker Dojo pilot hosting plan](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md)
 
 ## Executable validation
 
@@ -102,3 +104,7 @@ Platform releases use semantic versioning. A major version may change a required
 Fund Intel, Impact Relay, and Autonomous Giving Incorporated implement these artifacts as **capabilities** (optionally co-located). They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own documentation.
 
 The [implementation consumption guide](docs/implementation-consumption.md) and [implementation guidance](docs/implementation-guidance.md) define adoption and the modular-monolith-first path.
+
+### Allocation middleware (informative)
+
+Client product direction: transaction-light pots → allocate → proof → packet (canonical connector **every.org**). Design and plans live under `docs/superpowers/`. First implementation: [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) (Hacker Dojo pilot seed; live webhook operator-owned). This specs repo remains free of application code.

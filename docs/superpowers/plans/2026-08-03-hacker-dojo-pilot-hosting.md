@@ -1,5 +1,7 @@
 # Hacker Dojo Pilot Hosting Implementation Plan
 
+> **Status (2026-08-03):** Seed-on-boot, npm pilot scripts, director login, and deploy helpers are **in Fund-Intel main**. Remaining: create named Fly (or other) host, set secrets, run smoke, attach live every.org webhook, director acceptance. Operator runbook: [Fund-Intel HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md).
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make the Hacker Dojo allocation pilot runnable on a hosted box with seed-on-boot, deploy scripts, and a clear operator checklist—without requiring live every.org data yet.
