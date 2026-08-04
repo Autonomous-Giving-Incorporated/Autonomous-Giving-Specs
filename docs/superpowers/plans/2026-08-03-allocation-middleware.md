@@ -1,5 +1,7 @@
 # Allocation Middleware MVP Implementation Plan
 
+> **Status (2026-08-03):** MVP **implemented** in Fund-Intel `services/allocation-middleware/` (domain, every.org webhook, UI, file store, proof, director login, pilot seed). Remaining work is operator hosting + live every.org — see [hacker-dojo-pilot-hosting](2026-08-03-hacker-dojo-pilot-hosting.md). Task checkboxes below are retained as historical execution checklist.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship a transaction-light allocation middleware MVP: every.org gift summaries credit campaign/program pots; humans approve allocations; exceptions drive day-to-day ops; trail and board packet expose the story.

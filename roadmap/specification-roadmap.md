@@ -16,14 +16,17 @@ Phase 5  Enterprise Deployment
 
 ## Client product path (allocation middleware)
 
-Informative product roadmap aligned to [allocation middleware design](../docs/superpowers/specs/2026-08-03-allocation-middleware-design.md):
+Informative product roadmap aligned to [allocation middleware design](../docs/superpowers/specs/2026-08-03-allocation-middleware-design.md). **Not a specification milestone**; guides implementation repositories.
 
-1. every.org connector + campaign/program pots + allocate + exception inbox  
-2. Trail + board packet  
-3. Additional donation-platform adapters (Givebutter, Donorbox, …)  
-4. Funder multi-grantee portfolio  
+| Step | State | Where |
+| --- | --- | --- |
+| 1. every.org connector + campaign/program pots + allocate + exception inbox | **MVP shipped** | Fund-Intel `services/allocation-middleware/` |
+| 2. Trail + board packet + proof SLA | **MVP shipped** | Same package |
+| 3. Hacker Dojo pilot host (seed → director login → live webhook) | **Active** | [pilot hosting plan](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) |
+| 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | Later | Adapter interface only in MVP |
+| 5. Funder multi-grantee portfolio | Later | Out of MVP scope |
 
-Not a specification milestone; guides implementation repositories.
+Plans: [MVP](../docs/superpowers/plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md).
 
 The platform evolves toward distribution only when operational criteria warrant it. Specs remain deployment-independent throughout.
 

@@ -1,9 +1,11 @@
 # Allocation Middleware Product Design
 
 **Date:** 2026-08-03  
-**Status:** Approved (brainstorming)  
+**Status:** Approved · MVP implemented in Fund-Intel (pilot host next)  
 **Owner:** Product / Platform Architecture  
 **Related:** Constitution, SPEC-002A, SPEC-006, SPEC-013, SPEC-020, implementation-guidance.md  
+**Implementation:** [Fund-Intel allocation-middleware](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) · [MVP plan](../plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../plans/2026-08-03-hacker-dojo-pilot-hosting.md)  
+
 
 ## 1. Problem
 
