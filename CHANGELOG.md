@@ -8,6 +8,14 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 ### Added
 
 - Product design: [allocation middleware](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (every.org-first, pot hierarchy, exception-only ops).
+- [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — informative map of Fund-Intel pilot + suite onboarding (2026-08-07).
+
+### Changed
+
+- [Pilot hosting plan](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md): refreshed status table; removed accidental shell-paste tail; linked closed #71/#72 and open #73/#74.
+- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) and [MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md): status lines aligned to pilot OBSERVED vs every.org pending.
+- [Specification roadmap](roadmap/specification-roadmap.md) client product path: steps 3a–3c; suite onboarding pointers.
+
 
 ## [1.1.0] — 2026-08-03
 

@@ -70,9 +70,10 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
-- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md)
-- [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (implemented in Fund-Intel)
-- [Hacker Dojo pilot hosting plan](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md)
+- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial)
+- [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Fund-Intel)
+- [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
+- [Implementation progress notes](docs/superpowers/IMPLEMENTATION-PROGRESS.md)
 
 ## Executable validation
 

@@ -1,6 +1,6 @@
 # Allocation Middleware MVP Implementation Plan
 
-> **Status (2026-08-03):** MVP **implemented** in Fund-Intel `services/allocation-middleware/` (domain, every.org webhook, UI, file store, proof, director login, pilot seed). Remaining work is operator hosting + live every.org — see [hacker-dojo-pilot-hosting](2026-08-03-hacker-dojo-pilot-hosting.md). Task checkboxes below are retained as historical execution checklist.
+> **Status (2026-08-07):** MVP **shipped** in Fund-Intel `services/allocation-middleware/` (domain, every.org webhook adapter, UI, file store, proof, director JWT, pilot seed, smoke, seed-loop accept). Pilot hosting progress: local Node + director auth + ephemeral public HTTPS OBSERVED; **live every.org webhook still open** — see [hacker-dojo-pilot-hosting](2026-08-03-hacker-dojo-pilot-hosting.md). Task checkboxes below are retained as historical execution checklist.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
