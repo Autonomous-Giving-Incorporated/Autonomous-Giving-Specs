@@ -30,6 +30,8 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 
 ## Suite commercial onboarding (Fund-Intel + IR)
 
+**Hub:** Fund-Intel [`docs/SUITE-ONBOARDING.md`](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/SUITE-ONBOARDING.md) (done without login vs needs every.org).
+
 Implementation runbooks (not Spec SPECs):
 
 | Slice | Topic | Runbook (Fund-Intel) |
@@ -39,6 +41,8 @@ Implementation runbooks (not Spec SPECs):
 | D | Second tenant + IR template clone | `docs/SECOND-TENANT-ONBOARDING.md` |
 
 Dry-runs: OBSERVED (see Fund-Intel CURRENT-STATE).
+
+**every.org setup wizard:** fixture chargeIds (`fixture-*`) do not mark Connected; only live (non-fixture) POSTs do (`counts.liveGifts` / `lastLiveGift`).
 
 ## Next operator actions
 
