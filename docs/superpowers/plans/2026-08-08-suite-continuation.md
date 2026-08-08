@@ -23,7 +23,7 @@
 | HD director Ed | OBSERVED membership; MFA pending (#110) |
 | HD canonical data behind login | OBSERVED (#111, residual fixtures #112) |
 | Onboarding pack **code** | MERGED (#104); activate script on main (#112) |
-| Onboarding pack **platform** | PENDING — tables PGRST205; Edge 404 |
+| Onboarding pack **platform** | Schema + Edge OBSERVED 2026-08-08; MFA dry-run PENDING |
 | C/B/D dry-runs | OBSERVED |
 | Allocation pilot local/ephemeral HTTPS / seed-loop | OBSERVED |
 | every.org live webhook + full #74 | OPEN |
@@ -47,11 +47,11 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 **Implementation plan:** Portofolio-Signals [`plans/2026-08-08-platform-activate-and-tenant-harden.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-platform-activate-and-tenant-harden.md)  
 **Script:** `scripts/platform/activate-onboarding-pack.sh`
 
-- [ ] **A1.** `supabase login` (or export access token); `supabase link --project-ref utdioxwiskzatwoejgiu`
-- [ ] **A2.** Apply migrations `202608080001_client_onboarding_pack.sql`, `202608080002_onboarding_pack_mime_types.sql` (via activate script or `apply-migrations.sh remote-linked` with `PLATFORM_CONFIRM_PROJECT_REF=utdioxwiskzatwoejgiu`)
-- [ ] **A3.** Deploy Edge: `upload-onboarding-document`, `onboarding-document-url`
-- [ ] **A4.** Probe: REST `client_onboarding_packs` → 200; Edge OPTIONS/POST without JWT → not 404 (expect 401)
-- [ ] **A5.** Update CURRENT-STATE: tables + Edge **OBSERVED**; pack dry-run still PENDING until MFA session
+- [x] **A1.** `supabase login` (or export access token); `supabase link --project-ref utdioxwiskzatwoejgiu`
+- [x] **A2.** Apply migrations `202608080001_client_onboarding_pack.sql`, `202608080002_onboarding_pack_mime_types.sql` (via activate script or `apply-migrations.sh remote-linked` with `PLATFORM_CONFIRM_PROJECT_REF=utdioxwiskzatwoejgiu`)
+- [x] **A3.** Deploy Edge: `upload-onboarding-document`, `onboarding-document-url`
+- [x] **A4.** Probe: REST `client_onboarding_packs` → 200; Edge OPTIONS/POST without JWT → not 404 (expect 401)
+- [x] **A5.** (CURRENT-STATE PLATFORM_SCHEMA_AND_EDGE_OBSERVED; full pack OBSERVED after C) Update CURRENT-STATE: tables + Edge **OBSERVED**; pack dry-run still PENDING until MFA session
 
 **Exit:** PostgREST no longer PGRST205 for pack tables; Edge functions respond.
 
@@ -62,7 +62,7 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 **Owner:** platform master_admin + each user for TOTP  
 **Blocked on:** Supabase Auth email rate limits (invite/magic-link)
 
-- [ ] **B1.** When rate limit clears: resend magic links / invites for `qi@enkeyai.com` and `ed@hackerdojo.org` (action links stay operator-local; never commit)
+- [x] **B1.** Action links regenerated 2026-08-08 via Admin `generate_link` → operator-local file (never commit); humans still must open links
 - [ ] **B2.** Qi: first workspace login → enroll TOTP → operator `set-mfa-enforced` for Qi
 - [ ] **B3.** Ed: first workspace login → enroll TOTP → operator `set-mfa-enforced` for Ed
 - [ ] **B4.** Verify Ed: `get_workspace_context` shows active director on `org_hacker_dojo` only; `is_master_admin=false`

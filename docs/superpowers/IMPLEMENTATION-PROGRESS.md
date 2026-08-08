@@ -42,7 +42,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 | --- | --- | --- | --- |
 | C | Operator / director access | `docs/OPERATOR-ACCESS-ONBOARDING.md` | **People registered** (see matrix); MFA incomplete for Qi/Ed |
 | B | Client provision → publish → activate | `docs/COMMERCIAL-CLIENT-LIFECYCLE.md` | Dry-run OBSERVED (`org_hacker_dojo`) |
-| Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Code MERGED** [#104](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/104); platform apply **PENDING** |
+| Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Platform schema + Edge OBSERVED** 2026-08-08; MFA dry-run **PENDING** ([#104](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/104), activate [#113](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/113)) |
 | D | Second tenant + IR template clone | `docs/SECOND-TENANT-ONBOARDING.md` | Dry-run OBSERVED |
 | Harden | Tenant chrome + HD data gate | — | **OBSERVED** on main [#108](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/108), [#111](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/111), [#112](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/112) |
 
@@ -52,7 +52,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 | --- | --- | --- | --- |
 | `scrimshawlife@gmail.com` | `master_admin` | All clients + platform admin | Enforced |
 | `qi@enkeyai.com` | `master_admin` | All clients + platform admin | Pending TOTP → then `set-mfa-enforced` |
-| `ed@hackerdojo.org` | **director only** | **`org_hacker_dojo` only** — not `platform_administrators`; no other client memberships | Pending TOTP → then `set-mfa-enforced` |
+| `ed@hackerdojo.org` | **director only** | **`org_hacker_dojo` only** — not `platform_administrators`; no other client memberships | Pending TOTP → then `set-mfa-enforced` (action_link regenerated operator-local 2026-08-08) |
 
 **Access rule (Ed):** Hacker Dojo tenant dataset and tenant-scoped workspace/onboarding functions for that `client_id` only. Master admins bypass membership checks; Ed does not.
 
@@ -69,7 +69,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 | #111 | Canonical HD campaign data behind tenant login |
 | #112 | Platform activate plan + residual HD fixture harden + `activate-onboarding-pack.sh` |
 
-Dry-runs (C/B/D): OBSERVED. Document pack: code + activate script on main; **OBSERVED** only after platform migrate + Edge deploy + MFA dry-run on `utdioxwiskzatwoejgiu`. Last probe: `client_onboarding_*` PGRST205; onboarding Edge 404.
+Dry-runs (C/B/D): OBSERVED. Document pack: tables REST 200 + Edge OPTIONS 200 / unauth 401 on `utdioxwiskzatwoejgiu` (2026-08-08). MFA workspace dry-run still PENDING before full pack OBSERVED.
 
 **every.org setup wizard:** fixture chargeIds (`fixture-*`) do not mark Connected; only live (non-fixture) POSTs do (`counts.liveGifts` / `lastLiveGift`).
 
@@ -81,9 +81,9 @@ Dry-runs (C/B/D): OBSERVED. Document pack: code + activate script on main; **OBS
 
 Ordered for least external dependency first. Detail: [suite continuation plan](plans/2026-08-08-suite-continuation.md).
 
-1. **Doc pack platform activate:** `supabase login` (or `SUPABASE_ACCESS_TOKEN`) → link `utdioxwiskzatwoejgiu` → `scripts/platform/activate-onboarding-pack.sh` (migrations `202608080001`/`0002` + Edge `upload-onboarding-document` / `onboarding-document-url`).  
-2. **People:** resend magic links when Auth rate limit clears; Qi + Ed enroll TOTP; `set-mfa-enforced` for both.  
-3. **Pack dry-run:** MFA director (or master) → Workspace Onboarding pack → 5 required + park xlsx → mark CURRENT-STATE OBSERVED.  
-4. **Live every.org webhook** for Hacker Dojo (#73) — stable HTTPS URL recommended.  
-5. **Director browser allocate** after live (or test) gift; sign off #74.  
-6. **Optional:** durable Render/Railway/Fly host; custom SMTP for invite volume.
+1. **People:** open operator-local action_links for Qi/Ed → enroll TOTP → `set-mfa-enforced`.  
+2. **Pack dry-run:** MFA director (or master) → Workspace Onboarding pack → 5 required + park xlsx → mark CURRENT-STATE full OBSERVED.  
+3. **Live every.org webhook** for Hacker Dojo (#73) — stable HTTPS URL recommended.  
+4. **Director browser allocate** after live (or test) gift; sign off #74.  
+5. **Optional:** durable Render/Railway/Fly host; custom SMTP for invite volume.  
+6. **Security:** revoke any PAT pasted into chat; regenerate if still needed.

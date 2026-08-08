@@ -13,6 +13,8 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Changed
 
+- [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) + [suite continuation](docs/superpowers/plans/2026-08-08-suite-continuation.md): Client Onboarding Pack **platform schema + Edge OBSERVED** (2026-08-08); MFA dry-run still pending.
+
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08 evening): people matrix (Ed = HD director only; Qi + primary master_admin); HD data gate #111/#112; pack activate still PENDING; links to continuation plan.
 - [Specification roadmap](roadmap/specification-roadmap.md): suite onboarding path + continuation plan pointer; people access note.
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08): Client Onboarding Pack **code MERGED** ([Portofolio-Signals #104](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/104)); platform apply still PENDING; suite hub + CURRENT-STATE links use Portofolio-Signals; C/B/D dry-runs OBSERVED; every.org #73/#74 remain open.
