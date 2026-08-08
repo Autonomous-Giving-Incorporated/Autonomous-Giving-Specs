@@ -4,7 +4,7 @@
 **Status:** Approved · MVP **shipped** in Fund-Intel · Pilot host **partially OBSERVED** (local Node, director JWT, ephemeral public HTTPS, seed-loop accept) · Live every.org webhook **open**  
 **Owner:** Product / Platform Architecture  
 **Related:** Constitution, SPEC-002A, SPEC-006, SPEC-013, SPEC-020, implementation-guidance.md  
-**Implementation:** [Fund-Intel allocation-middleware](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) · [MVP plan](../plans/2026-08-03-allocation-middleware.md) · [pilot hosting status](../plans/2026-08-03-hacker-dojo-pilot-hosting.md) · [Fund-Intel CURRENT-STATE](https://github.com/scrimshawlife-ctrl/Fund-Intel/blob/main/docs/CURRENT-STATE.md)  
+**Implementation:** [Fund-Intel allocation-middleware](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/tree/main/services/allocation-middleware) · [MVP plan](../plans/2026-08-03-allocation-middleware.md) · [pilot hosting status](../plans/2026-08-03-hacker-dojo-pilot-hosting.md) · [Fund-Intel CURRENT-STATE](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)  
 
 
 ## 1. Problem
