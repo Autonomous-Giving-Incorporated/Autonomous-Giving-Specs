@@ -71,9 +71,9 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial)
-- [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Fund-Intel)
+- [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portofolio-Signals / Fund-Intel)
 - [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
-- [Implementation progress notes](docs/superpowers/IMPLEMENTATION-PROGRESS.md)
+- [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08**)
 
 ## Executable validation
 
@@ -102,10 +102,16 @@ Platform releases use semantic versioning. A major version may change a required
 
 ## Implementation repositories
 
-Fund Intel, Impact Relay, and Autonomous Giving Incorporated implement these artifacts as **capabilities** (optionally co-located). They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own documentation.
+[Portofolio-Signals](https://github.com/scrimshawlife-ctrl/Portofolio-Signals) (Fund-Intel / Portfolio Signals), Impact Relay, and Autonomous Giving Incorporated implement these artifacts as **capabilities** (optionally co-located). They must identify the consumed specification version, validate produced messages against the linked schema, and retain platform references in their own documentation.
 
 The [implementation consumption guide](docs/implementation-consumption.md) and [implementation guidance](docs/implementation-guidance.md) define adoption and the modular-monolith-first path.
 
+Runtime evidence lives in implementation repos — especially Portofolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md) — not here. See [implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md).
+
 ### Allocation middleware (informative)
 
-Client product direction: transaction-light pots → allocate → proof → packet (canonical connector **every.org**). Design and plans live under `docs/superpowers/`. First implementation: [Fund-Intel `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Fund-Intel/tree/main/services/allocation-middleware) (Hacker Dojo pilot seed; live webhook operator-owned). This specs repo remains free of application code.
+Client product direction: transaction-light pots → allocate → proof → packet (canonical connector **every.org**). Design and plans live under `docs/superpowers/`. First implementation: [Portofolio-Signals `services/allocation-middleware/`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/tree/main/services/allocation-middleware) (Hacker Dojo pilot seed; live webhook operator-owned). This specs repo remains free of application code.
+
+### Suite commercial onboarding (informative)
+
+People (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Document pack phase 1 **code** is on Portofolio-Signals main (#104); platform OBSERVED still operator. Hub: [SUITE-ONBOARDING.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).

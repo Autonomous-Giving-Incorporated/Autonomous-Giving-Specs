@@ -20,15 +20,15 @@ Informative product roadmap aligned to [allocation middleware design](../docs/su
 
 | Step | State | Where |
 | --- | --- | --- |
-| 1. every.org connector + campaign/program pots + allocate + exception inbox | **MVP shipped** | Fund-Intel `services/allocation-middleware/` |
+| 1. every.org connector + campaign/program pots + allocate + exception inbox | **MVP shipped** | Portofolio-Signals `services/allocation-middleware/` |
 | 2. Trail + board packet + proof SLA | **MVP shipped** | Same package |
-| 3a. Pilot host: seed + local Node + director JWT | **Observed** | [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · Fund-Intel #72 |
-| 3b. Public HTTPS (ephemeral) + seed-loop accept | **Observed** | Fund-Intel #71 · `npm run accept:seed-loop` |
-| 3c. Live every.org webhook + full director acceptance | **Open** | Fund-Intel #73 · #74 remainder |
+| 3a. Pilot host: seed + local Node + director JWT | **Observed** | [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · #72 |
+| 3b. Public HTTPS (ephemeral) + seed-loop accept | **Observed** | #71 · `npm run accept:seed-loop` |
+| 3c. Live every.org webhook + full director acceptance | **Open** | #73 · #74 remainder |
 | 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | Later | Adapter interface only in MVP |
 | 5. Funder multi-grantee portfolio | Later | Out of MVP scope |
 
-**Suite onboarding (implementation repos, not Spec SPECs):** people path → commercial client lifecycle → second-tenant IR clone — Fund-Intel `OPERATOR-ACCESS-ONBOARDING` · `COMMERCIAL-CLIENT-LIFECYCLE` · `SECOND-TENANT-ONBOARDING`.
+**Suite onboarding (implementation repos, not Spec SPECs):** people (C) → client shell (B) → **document pack** → second-tenant IR clone (D) → allocation pilot. Runbooks on Portofolio-Signals: `OPERATOR-ACCESS-ONBOARDING` · `COMMERCIAL-CLIENT-LIFECYCLE` · `CLIENT-ONBOARDING-PACK` (code #104; platform PENDING) · `SECOND-TENANT-ONBOARDING`. Map: [IMPLEMENTATION-PROGRESS](../docs/superpowers/IMPLEMENTATION-PROGRESS.md) · hub [SUITE-ONBOARDING](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
 
 Plans: [MVP](../docs/superpowers/plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md).
 
