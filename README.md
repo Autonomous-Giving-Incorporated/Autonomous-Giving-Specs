@@ -73,7 +73,8 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial)
 - [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portofolio-Signals / Fund-Intel)
 - [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
-- [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08**)
+- [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08 evening**)
+- [Suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md) — pack activate, people MFA, pilot #73/#74
 
 ## Executable validation
 
@@ -114,4 +115,4 @@ Client product direction: transaction-light pots → allocate → proof → pack
 
 ### Suite commercial onboarding (informative)
 
-People (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Document pack phase 1 **code** is on Portofolio-Signals main (#104); platform OBSERVED still operator. Hub: [SUITE-ONBOARDING.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
+People (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Document pack phase 1 **code** is on Portofolio-Signals main (#104); platform OBSERVED still operator. HD data login-gated; Ed is HD director only. Continuation: [suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md). Hub: [SUITE-ONBOARDING.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).

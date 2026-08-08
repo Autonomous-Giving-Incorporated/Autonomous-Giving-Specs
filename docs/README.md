@@ -8,6 +8,7 @@
 - [Implementation guidance](implementation-guidance.md) defines modular-monolith MVP guidance and extraction criteria.
 - [Allocation middleware design](superpowers/specs/2026-08-03-allocation-middleware-design.md) defines the client-facing pot/allocation product (every.org-first).
 - [Implementation progress](superpowers/IMPLEMENTATION-PROGRESS.md) is the informative map of Portofolio-Signals pilot + suite onboarding (not normative SPECs).
+- [Suite continuation plan](superpowers/plans/2026-08-08-suite-continuation.md) orders remaining operator work (pack platform, MFA, pilot close).
 - [Repository governance](repository-governance.md) defines authority, status transitions, and review roles.
 - [RFC process](rfc-process.md) defines proposal lifecycle, reviewers, and emergency corrections.
 - [Migrations](migrations/) holds version-to-version consumer guides.

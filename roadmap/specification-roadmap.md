@@ -28,9 +28,9 @@ Informative product roadmap aligned to [allocation middleware design](../docs/su
 | 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | Later | Adapter interface only in MVP |
 | 5. Funder multi-grantee portfolio | Later | Out of MVP scope |
 
-**Suite onboarding (implementation repos, not Spec SPECs):** people (C) → client shell (B) → **document pack** → second-tenant IR clone (D) → allocation pilot. Runbooks on Portofolio-Signals: `OPERATOR-ACCESS-ONBOARDING` · `COMMERCIAL-CLIENT-LIFECYCLE` · `CLIENT-ONBOARDING-PACK` (code #104; platform PENDING) · `SECOND-TENANT-ONBOARDING`. Map: [IMPLEMENTATION-PROGRESS](../docs/superpowers/IMPLEMENTATION-PROGRESS.md) · hub [SUITE-ONBOARDING](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
+**Suite onboarding (implementation repos, not Spec SPECs):** people (C) → client shell (B) → **document pack** → second-tenant IR clone (D) → allocation pilot. Runbooks on Portofolio-Signals: `OPERATOR-ACCESS-ONBOARDING` · `COMMERCIAL-CLIENT-LIFECYCLE` · `CLIENT-ONBOARDING-PACK` (code #104; platform PENDING) · `SECOND-TENANT-ONBOARDING`. HD canonical data gated behind tenant login (#111). **Access:** `ed@hackerdojo.org` is director on `org_hacker_dojo` only (not master_admin). Map: [IMPLEMENTATION-PROGRESS](../docs/superpowers/IMPLEMENTATION-PROGRESS.md) · continuation [2026-08-08-suite-continuation](../docs/superpowers/plans/2026-08-08-suite-continuation.md) · hub [SUITE-ONBOARDING](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
 
-Plans: [MVP](../docs/superpowers/plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md).
+Plans: [MVP](../docs/superpowers/plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · [suite continuation](../docs/superpowers/plans/2026-08-08-suite-continuation.md).
 
 The platform evolves toward distribution only when operational criteria warrant it. Specs remain deployment-independent throughout.
 

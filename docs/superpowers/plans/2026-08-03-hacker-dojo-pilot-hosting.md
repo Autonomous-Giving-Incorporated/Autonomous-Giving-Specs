@@ -1,7 +1,7 @@
 # Hacker Dojo Pilot Hosting Implementation Plan
 
-> **Status (2026-08-07):** Seed-on-boot, pilot scripts, director JWT, local Node host, ephemeral public HTTPS, and seed-loop acceptance are **landed in Fund-Intel**. Remaining operator steps: durable named host (optional), **live every.org webhook** ([Fund-Intel#73](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/73)), full director browser sign-off ([#74](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/74)).  
-> Operator runbook: [Fund-Intel HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md) · Evidence: [CURRENT-STATE.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)
+> **Status (2026-08-08):** Seed-on-boot, pilot scripts, director JWT, local Node host, ephemeral public HTTPS, and seed-loop acceptance are **landed in Portofolio-Signals**. HD director membership: `ed@hackerdojo.org` on `org_hacker_dojo` only. Remaining operator steps: durable named host (optional), **live every.org webhook** ([#73](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/73)), full director browser sign-off ([#74](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/74)). Suite next steps: [suite continuation](2026-08-08-suite-continuation.md).  
+> Operator runbook: [HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md) · Evidence: [CURRENT-STATE.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)
 
 **Goal:** Make the Hacker Dojo allocation pilot runnable with seed-on-boot, deploy/smoke scripts, director auth, and a clear operator checklist—without requiring live every.org data for the first demo path.
 
