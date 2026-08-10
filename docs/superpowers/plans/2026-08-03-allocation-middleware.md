@@ -6,7 +6,7 @@
 
 **Goal:** Ship a transaction-light allocation middleware MVP: every.org gift summaries credit campaign/program pots; humans approve allocations; exceptions drive day-to-day ops; trail and board packet expose the story.
 
-**Architecture:** Modular monolith package inside Fund-Intel (`services/allocation-middleware/`) with pure domain modules (pots, gifts, allocations, exceptions), an every.org connector adapter, HTTP API (webhook + operator endpoints), and a minimal static operator UI. Persistence starts as an in-memory repository behind an interface so unit tests need no database; a later task swaps in Supabase. Aligns with Specs SPEC-002A / SPEC-020 Profile B and the approved design doc.
+**Architecture:** Modular monolith package inside Fund-Intel (`services/allocation-middleware/`) with pure domain modules (pots, gifts, allocations, exceptions), an every.org connector adapter, HTTP API (webhook + operator endpoints), and a minimal static operator UI. Persistence starts as an in-memory repository behind an interface so unit tests need no database; a later task was sketched as Supabase (**historical**). Aligns with Specs SPEC-002A / SPEC-020 Profile B modular-monolith idea; **preferred durable path for new work** is Render PostgreSQL + Drizzle ([ADR-012](../../../adr/ADR-012-render-first-platform.md), [SPEC-022](../../../specs/SPEC-022-postgresql-persistence.md)), not Supabase-as-primary.
 
 **Tech Stack:** Node.js 22, ESM (`.mjs`), `node:test` + `node:assert/strict`, built-in `node:http`, no framework required for MVP. Optional later: Supabase tables + RLS (Fund-Intel already has tenant patterns).
 
@@ -1177,7 +1177,7 @@ gh pr create --title "feat: allocation middleware MVP (every.org pots)" --body "
 | Modular monolith package | 1–7 |
 | No bank/QuickBooks | Global constraints |
 | CSV import | 8 |
-| Supabase persistence | **Deferred** — in-memory MVP; swap store later |
+| Supabase persistence | **Deferred / superseded preference** — in-memory MVP; durable path for new work prefers Render PostgreSQL + Drizzle (ADR-012), not Supabase-as-primary |
 | Multi-connector | interface.mjs only |
 
 ### Optional follow-on (not blocking first demo)

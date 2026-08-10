@@ -7,12 +7,27 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Added
 
+- **ADR-012** Render-First Platform and PostgreSQL Consolidation (accepted).
+- **SPEC-021** Preferred Application Stack (informative): Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI.
+- **SPEC-022** PostgreSQL Persistence and Domain Ownership (informative): entity ownership, design rules, Drizzle, optional pgvector.
+- **SPEC-023** Financial Ledger Invariants (normative): append-only finance, webhook idempotency, state separation, AI advisory limits.
+- **SPEC-024** Integration Boundaries (informative): Clerk / Stripe / Resend / OpenAI.
+- **SPEC-025** Operations, Deploy, Observability, and Scale (informative): env catalog, environments, Blueprint, jobs, cron, backups, scale triggers.
+- [Engineering onboarding](docs/onboarding.md), [recovery runbook](docs/recovery-runbook.md), [`.env.example`](.env.example), [`render.yaml.example`](render.yaml.example).
+- Glossary TERM-021–024 (Preferred Stack, Ledger Entry, Webhook Event, Job).
+- Roadmap **Next recommended steps** (implementation order, exit criteria, immediate checklist) linked from README, onboarding, and implementation guidance.
 - Product design: [allocation middleware](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (every.org-first, pot hierarchy, exception-only ops).
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — informative map of Portofolio-Signals (Fund-Intel) pilot + suite onboarding (refreshed 2026-08-08).
 - [Suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md) — post-#112 operator workstreams (pack activate, people MFA, pilot #73/#74).
 
 ### Changed
 
+- **SPEC-020** v2.0.0: recommended MVP profile is Render-first Next.js + PostgreSQL; GitHub Pages + generic backend diagram superseded as preferred physical path.
+- **SPEC-002A** v1.1.0: preferred physical realization pointer to ADR-012 / SPEC-021.
+- **SPEC-016** v1.1.0 / **SPEC-019** v1.2.0: webhook, secrets, SQL, PCI scope reduction, identity vs authorization (Clerk preferred).
+- Constitution: preferred physical path is informative and does not condition conformance.
+- README, architecture overview, implementation guidance, roadmap: aligned to Render-first baseline; workers/cron/KV as escalation only.
+- Superpowers pilot/suite plans: marked Supabase/multi-host/Vercel notes as historical where they conflict with preferred stack.
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) + [suite continuation](docs/superpowers/plans/2026-08-08-suite-continuation.md): Client Onboarding Pack **platform schema + Edge OBSERVED** (2026-08-08); MFA dry-run still pending.
 
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08 evening): people matrix (Ed = HD director only; Qi + primary master_admin); HD data gate #111/#112; pack activate still PENDING; links to continuation plan.

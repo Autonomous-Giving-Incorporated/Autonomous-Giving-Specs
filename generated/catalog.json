@@ -20,7 +20,7 @@
     {
       "id": "SPEC-002A",
       "title": "Architectural Principles",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-002A-architectural-principles.md"
@@ -132,7 +132,7 @@
     {
       "id": "SPEC-016",
       "title": "Security and Trust Boundaries",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-016-security-and-trust-boundaries.md"
@@ -156,7 +156,7 @@
     {
       "id": "SPEC-019",
       "title": "Identity and Authorization",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-019-identity-and-authorization.md"
@@ -164,10 +164,50 @@
     {
       "id": "SPEC-020",
       "title": "Reference Deployment Profiles",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-020-reference-deployment-profiles.md"
+    },
+    {
+      "id": "SPEC-021",
+      "title": "Preferred Application Stack",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-021-preferred-application-stack.md"
+    },
+    {
+      "id": "SPEC-022",
+      "title": "PostgreSQL Persistence and Domain Ownership",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-022-postgresql-persistence.md"
+    },
+    {
+      "id": "SPEC-023",
+      "title": "Financial Ledger Invariants",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "path": "specs/SPEC-023-financial-ledger-invariants.md"
+    },
+    {
+      "id": "SPEC-024",
+      "title": "Integration Boundaries",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-024-integration-boundaries.md"
+    },
+    {
+      "id": "SPEC-025",
+      "title": "Operations Deploy Observability and Scale",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "specs/SPEC-025-operations-deploy-and-scale.md"
     }
   ],
   "adrs": [
@@ -258,6 +298,14 @@
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-011-contract-evolution-policy.md"
+    },
+    {
+      "id": "ADR-012",
+      "title": "Render-First Platform and PostgreSQL Consolidation",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-012-render-first-platform.md"
     }
   ],
   "contracts": [
@@ -585,6 +633,22 @@
     {
       "id": "TERM-020",
       "term": "Modular Monolith"
+    },
+    {
+      "id": "TERM-021",
+      "term": "Preferred Stack"
+    },
+    {
+      "id": "TERM-022",
+      "term": "Ledger Entry"
+    },
+    {
+      "id": "TERM-023",
+      "term": "Webhook Event"
+    },
+    {
+      "id": "TERM-024",
+      "term": "Job"
     }
   ]
 }

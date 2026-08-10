@@ -1,26 +1,31 @@
 # Implementation guidance
 
-Practical guidance for product teams implementing the Autonomous Giving Platform. Normative rules remain in SPECs; this document is informative.
+Practical guidance for product teams implementing the Autonomous Giving Platform. Normative rules remain in SPECs; this document is informative unless it restates a normative requirement.
 
-## Reference implementation shape
+## Preferred implementation shape
 
-**Modular monolith by default** ([SPEC-002A](../specs/SPEC-002A-architectural-principles.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B).
+**Render-first modular monolith** ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B, [SPEC-021](../specs/SPEC-021-preferred-application-stack.md)).
 
 ```text
-GitHub Pages → Single backend → Capability modules → PostgreSQL + object storage
+GitHub → Render (Next.js web + PostgreSQL)
+           + Clerk + Stripe + Resend + OpenAI
 ```
 
-| Layer | Recommendation |
+| Layer | Preference |
 | --- | --- |
-| Frontend | GitHub Pages (or equivalent static host) |
-| Backend | Single application executable |
-| Language | Implementation choice |
-| Database | One PostgreSQL primary |
-| Storage | S3-compatible object storage for evidence binaries |
-| Worker | Background process (same codebase preferred) |
-| Auth | OIDC when required |
+| Platform | Render |
+| Application | Next.js + TypeScript (one web service) |
+| Database | Render PostgreSQL |
+| ORM / migrations | Drizzle (explicit SQL migrations) |
+| Authentication | Clerk |
+| Authorization | Application-owned roles and policies |
+| Payments | Stripe |
+| Email | Resend |
+| AI | OpenAI via provider abstraction |
+| Worker / cron / KV | Only when workload evidence requires |
+| IaC | `render.yaml` / Blueprints |
 
-**Not required for MVP:** Kubernetes, event broker, service mesh, multiple databases, per-capability containers.
+**Not required for MVP:** Kubernetes, event broker, service mesh, multiple databases, per-capability containers, Background Workers, Key Value, Workflows, separate vector DB.
 
 ## Capability modules
 
@@ -35,21 +40,48 @@ Co-location does not merge responsibilities.
 ## Contracts and events without brokers
 
 - Call module APIs in-process for MVP.
-- Persist events to the database for audit and replay.
-- Optionally enqueue background work for email/webhooks.
+- Persist events to PostgreSQL for audit and replay.
+- Optionally enqueue background jobs for email/webhooks/AI (same job contract whether in-process or worker).
 - Introduce a broker only when operational criteria justify it.
 
 Events describe **what happened**, not **which product hosts the queue**.
+
+## Financial core
+
+Follow [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md):
+
+- append-oriented financial history
+- Stripe webhook verification + idempotency
+- payment ≠ ledger ≠ allocation ≠ disbursement
+- AI recommendations advisory until authorized
+
+## Persistence
+
+Follow [SPEC-022](../specs/SPEC-022-postgresql-persistence.md):
+
+- PostgreSQL is AGI canonical application store
+- Clerk/Stripe remain sources of identity/processor truth
+- Prefer relational columns for money fields; JSONB for payloads/metadata
+- Optional pgvector before external vector DBs
+
+## Environment and deploy
+
+- Env catalog: [SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md), [`.env.example`](../.env.example)
+- Blueprint: [`render.yaml.example`](../render.yaml.example)
+- Onboarding: [onboarding.md](onboarding.md)
+- Recovery: [recovery-runbook.md](recovery-runbook.md)
 
 ## Optional evolution
 
 | Phase | When | What changes |
 | --- | --- | --- |
-| 1 Modular monolith | Default | Single deployable, modular code |
-| 2 Workers | Long-running or retryable I/O | Separate worker process, same DB |
-| 3 Extract capability | Decision matrix below | One capability becomes its own deployable |
-| 4 Distributed platform | Multiple extracted units | Network transports between capabilities |
-| 5 Enterprise | Org-scale ops | Multi-region, streaming, orchestration as needed |
+| 0 Spec consolidation | Now | Canon points at Render-first path |
+| 1 Platform foundation | Default | Next.js + Postgres + Drizzle + Clerk + Render |
+| 2 Financial core | Product need | Stripe + ledger + webhooks + receipts |
+| 3 Allocation system | Product need | Funds, programs, disbursements |
+| 4 Operations | Product need | Reconciliation, reporting, audit surfaces |
+| 5 AI assistance | Product need | Matching/analysis with provenance |
+| 6 Async/scale extraction | Metrics justify | Workers, cron, KV, private services |
 
 ## Decision matrix: when to extract a service
 
@@ -73,17 +105,37 @@ Extract a capability into a separately deployable **service** only when one or m
 - Before contracts and lifecycle tests are green
 - Before a single-database MVP has proven the product loop
 
-## Migration path
+## Superseded preferred assumptions
 
-1. Pin [Specs v1.x](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/releases) and ship a conformance manifest.
-2. Implement modules behind capability boundaries.
-3. Validate with Community AI Lab fixtures.
-4. Add workers for async side effects.
-5. Extract only with a recorded operational justification (ADR in the product repo is sufficient; platform ADR if contracts change).
+| Old preferred implication | Current preferred path |
+| --- | --- |
+| GitHub Pages + separate generic backend as sole MVP diagram | Next.js modular monolith on Render |
+| Supabase as default durable store/auth for new platform work | Render PostgreSQL + Clerk |
+| Multi-host recipe soup (Railway/Fly/Vercel) as platform default | Render primary; others may exist historically in pilots |
+| Convex / BaaS-as-primary-persistence | Not preferred; PostgreSQL is canonical application store |
+| Workers/cron mandatory for MVP | Escalation only with evidence |
+
+Historical pilot plans under `docs/superpowers/` may still describe prior product choices; they do not redefine the preferred platform stack.
+
+## Next recommended steps
+
+After pinning a specs release that includes ADR-012 and SPEC-020–025:
+
+1. Scaffold Next.js + Drizzle + Render Blueprint (web + Postgres only).
+2. Clerk → application principal + org membership tables.
+3. Stripe test webhooks with idempotent ledger writes ([SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md)).
+4. Receipts + Resend (non-blocking for settlement).
+5. Allocations / disbursements with Approval gates.
+6. Observability correlation + reconciliation job contract.
+7. AI provider abstraction with advisory-only financial outputs.
+8. Extract workers/cron/KV only with metrics.
+
+Full ordered table and exit criteria: [roadmap — Next recommended steps](../roadmap/specification-roadmap.md#next-recommended-steps-implementation). Day-one setup: [onboarding](onboarding.md).
 
 ## Related docs
 
 - [implementation-consumption.md](implementation-consumption.md) — pin and replace duplicates
 - [SPEC-013](../specs/SPEC-013-repository-conformance.md) — conformance (topology-agnostic)
-- [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) — profiles A–D
-- [Allocation middleware product design](superpowers/specs/2026-08-03-allocation-middleware-design.md) — client product: every.org-first, pot hierarchy, exception inbox
+- [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)
+- [ADR-012](../adr/ADR-012-render-first-platform.md)
+- [Roadmap next steps](../roadmap/specification-roadmap.md#next-recommended-steps-implementation)

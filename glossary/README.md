@@ -24,7 +24,11 @@ The glossary is normative under [SPEC-004](../specs/SPEC-004-domain-model.md). E
 | TERM-018 | Deployment | Operational topology: how modules are packaged, hosted, and operated. |
 | TERM-019 | Service | Optional deployment model in which one or more capabilities run as a separately operable unit. Not required by the platform. |
 | TERM-020 | Modular Monolith | Reference implementation shape: one primary deployable containing multiple capability modules with clear boundaries. |
+| TERM-021 | Preferred Stack | Informative physical architecture for new product work: Render + Next.js + PostgreSQL + Clerk + Stripe + Resend + OpenAI (ADR-012). Not a conformance mandate. |
+| TERM-022 | Ledger Entry | Append-oriented internal financial record used to reconstruct AGI book state (distinct from processor payment state). |
+| TERM-023 | Webhook Event | Persisted inbound provider event used for verification, idempotency, and replay. |
+| TERM-024 | Job | Durable unit of async work with idempotency key and lifecycle queued→running→terminal. |
 
 No synonym may substitute for an identified term. A proposed new concept requires a glossary identifier and a review against existing terms.
 
-**Note:** Platform vocabulary for lifecycle and domain concepts is unchanged. Capability/deployment terms clarify architecture without renaming Need, Allocation, Impact, or other lifecycle terms.
+**Note:** Platform vocabulary for lifecycle and domain concepts is unchanged. Capability/deployment terms and preferred-stack terms clarify architecture without renaming Need, Allocation, Impact, or other lifecycle terms.
