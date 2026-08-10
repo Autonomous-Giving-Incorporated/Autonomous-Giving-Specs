@@ -14,37 +14,35 @@ This repository owns platform architecture, contracts, schemas, lifecycle, termi
 
 The platform converts an observed `Need` into an auditable `Impact` through a canonical lifecycle. Intelligence may discover and recommend; governance authorizes; execution performs; evidence proves. See [SPEC-005](specs/SPEC-005-lifecycle.md) and the [lifecycle diagram](diagrams/lifecycle.md).
 
-**Logical architecture** (capabilities) and **physical deployment** are independent. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
+**Logical architecture** (capabilities) and **physical deployment** are independent for conformance. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
+
+**Preferred physical stack** ([ADR-012](adr/ADR-012-render-first-platform.md)): Render-first modular monolith with Render PostgreSQL and specialized externals (Clerk, Stripe, Resend, OpenAI). Workers, cron, Key Value, private services, and Workflows are **escalation layers**, not baseline.
 
 ## Reference deployment
 
-The **recommended MVP** is a modular monolith (Profile B). Capabilities stay separate in code; deployment stays unified.
+The **recommended MVP** is Profile B: one Next.js web service + one PostgreSQL on Render. Capabilities stay separate in code; deployment stays unified.
 
 ```text
-GitHub Pages
-      ↓
-   Backend  (single executable)
-      ↓
-   Modules
-   ┌─────────────┬──────────────────┬──────────────┐
-   │ Fund Intel  │ Autonomous Giving│ Impact Relay │
-   └─────────────┴──────────────────┴──────────────┘
-      ↓                    ↓
-  PostgreSQL         Object Storage
-      ↓
-  Background Worker  (optional same unit)
+GitHub
+  ↓
+Render
+├── Next.js web service  (TypeScript modular monolith)
+│     Fund Intel | Autonomous Giving | Impact Relay modules
+└── PostgreSQL           (canonical application datastore)
+
+External: Clerk · Stripe · Resend · OpenAI
 ```
 
 | Profile | Intent |
 | --- | --- |
 | A Demo | Static fixtures, no backend |
-| **B MVP** | **Recommended:** one app, one database, modular capabilities |
-| C Production | Optional scale-out of the same modular unit |
+| **B MVP** | **Recommended:** Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI |
+| C Production | Optional workers/cron/scale-out of the same modular unit |
 | D Enterprise | Optional extraction, streaming, multi-region |
 
-Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-deployment-profiles.md) and [implementation guidance](docs/implementation-guidance.md).
+Full detail: [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md).
 
-**No Kubernetes, event broker, or service mesh is required for a conformant MVP.**
+**No Kubernetes, event broker, service mesh, Background Worker, or Key Value is required for a conformant MVP.**
 
 ## Repository layout
 
@@ -70,7 +68,11 @@ Full detail: [SPEC-020 Reference Deployment Profiles](specs/SPEC-020-reference-d
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
-- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial)
+- [Engineering onboarding](docs/onboarding.md) (preferred Render path)
+- [Recovery runbook](docs/recovery-runbook.md)
+- [Next recommended implementation steps](roadmap/specification-roadmap.md#next-recommended-steps-implementation)
+- [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md)
+- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial; historical host notes)
 - [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portofolio-Signals / Fund-Intel)
 - [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
 - [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08 evening**)

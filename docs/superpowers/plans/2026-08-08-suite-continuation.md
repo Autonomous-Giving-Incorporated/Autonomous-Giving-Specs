@@ -10,6 +10,8 @@
 
 **Tech stack:** Supabase CLI / Management API, Deno Edge Functions, Portfolio Signals workspace, allocation-middleware Node pilot.
 
+> **Historical note (2026-08-10):** Suite continuation steps may reference platform Supabase and Vercel `service_role` anti-patterns as **product-local/historical**. Prefer Render PostgreSQL + Clerk for new greenfield paths ([ADR-012](../../../adr/ADR-012-render-first-platform.md)).
+
 ---
 
 ## Where we are (snapshot)

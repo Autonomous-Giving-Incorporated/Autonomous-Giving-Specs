@@ -28,7 +28,9 @@
         "EVENT-006",
         "EVENT-008"
       ],
-      "specs": []
+      "specs": [
+        "SPEC-023"
+      ]
     },
     {
       "owner": "Impact Relay",
@@ -67,7 +69,11 @@
         "SPEC-016",
         "SPEC-017",
         "SPEC-019",
-        "SPEC-020"
+        "SPEC-020",
+        "SPEC-021",
+        "SPEC-022",
+        "SPEC-024",
+        "SPEC-025"
       ]
     },
     {

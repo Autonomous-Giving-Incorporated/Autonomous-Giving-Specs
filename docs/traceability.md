@@ -21,3 +21,5 @@ This matrix is the navigation layer between lifecycle authority and machine-read
 - [SPEC-004](../specs/SPEC-004-domain-model.md) owns the terminology used in every linked artifact.
 - [SPEC-007](../specs/SPEC-007-contracts.md) and [SPEC-012](../specs/SPEC-012-versioning.md) govern all contract evolution.
 - [SPEC-011](../specs/SPEC-011-demo-specification.md) applies this path deterministically in the Community AI Lab demonstration.
+- [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md) governs donation, payment, ledger, allocation, and disbursement correctness (append-oriented finance; webhook idempotency).
+- Preferred physical path (informative): [ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md).

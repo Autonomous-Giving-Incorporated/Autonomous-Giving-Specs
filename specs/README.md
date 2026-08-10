@@ -25,3 +25,8 @@ All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted`
 | [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md) | Evidence Integrity and Provenance | Proposed |
 | [SPEC-019](SPEC-019-identity-and-authorization.md) | Identity and Authorization | Proposed |
 | [SPEC-020](SPEC-020-reference-deployment-profiles.md) | Reference Deployment Profiles | Accepted (informative) |
+| [SPEC-021](SPEC-021-preferred-application-stack.md) | Preferred Application Stack | Accepted (informative) |
+| [SPEC-022](SPEC-022-postgresql-persistence.md) | PostgreSQL Persistence and Domain Ownership | Accepted (informative) |
+| [SPEC-023](SPEC-023-financial-ledger-invariants.md) | Financial Ledger Invariants | Accepted (normative) |
+| [SPEC-024](SPEC-024-integration-boundaries.md) | Integration Boundaries | Accepted (informative) |
+| [SPEC-025](SPEC-025-operations-deploy-and-scale.md) | Operations, Deploy, Observability, and Scale | Accepted (informative) |

@@ -35,6 +35,8 @@ Platform specifications define **capabilities**. Implementations choose **deploy
 
 Logical architecture and physical deployment are independent concepts. Specifications remain conformant regardless of topology. The recommended default is a modular monolith; distributed infrastructure is an optional future profile, not the reference shape of the platform.
 
+The **preferred** physical path for new product implementations is documented as informative guidance (Render-first modular monolith with PostgreSQL; see [ADR-012](adr/ADR-012-render-first-platform.md) and [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md)). Preference does not condition conformance class.
+
 ## Immutable principles
 
 1. Intelligence never allocates.
