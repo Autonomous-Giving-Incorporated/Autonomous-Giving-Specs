@@ -17,17 +17,18 @@ related_adrs:
 - ADR-001
 - ADR-010
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-020: Reference Deployment Profiles
 | Version | 2.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-006, SPEC-021 | Related ADRs | ADR-001, ADR-010, ADR-012 | Related contracts | None |
+| Dependencies | SPEC-002A, SPEC-006, SPEC-021 | Related ADRs | ADR-001, ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
-Publish **informative** reference deployment profiles so implementers share a clear MVP path without reading premature distribution into the platform canon. Version 2 aligns the recommended physical profile with the **Render-first** preferred stack ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)).
+Publish **informative** reference deployment profiles so implementers share a clear MVP path without reading premature distribution into the platform canon. Version 2 aligns the recommended physical profile with the **Render-first** preferred stack ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)). Public AGI suite static and edge surfaces prefer Cloudflare Workers / Pages ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)); Profile B still describes the optional durable application path.
 
 ## Scope
 

@@ -1,8 +1,10 @@
-# Engineering onboarding (preferred Render path)
+# Engineering onboarding (public Cloudflare path; optional Render durable app)
 
 Short, executable path for a new engineer or coding agent. Product repositories implement this; this specs repo contains **no application code**.
 
-Normative platform rules: SPECs and Constitution. Preferred stack: [ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](../specs/SPEC-021-preferred-application-stack.md), [SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md).
+Normative platform rules: SPECs and Constitution. **Public AGI suite** host: [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Cloudflare Workers / Pages). Render is **not** the only public host. **Durable application** path (when a PostgreSQL-backed service is required): [ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](../specs/SPEC-021-preferred-application-stack.md), [SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md).
+
+The numbered steps below remain the durable-app bring-up. For public static/edge surfaces, deploy the Next.js export (or Workers static assets) to Cloudflare from the product repository—not from this specs repo.
 
 ## 1. Prerequisites
 
@@ -10,7 +12,7 @@ Normative platform rules: SPECs and Constitution. Preferred stack: [ADR-012](../
 - npm/pnpm/yarn as documented in the product repo
 - Docker (optional, for local Postgres) or a local PostgreSQL 15+
 - GitHub access to product + specs repos
-- Accounts (as needed): Render, Clerk, Stripe, Resend, OpenAI
+- Accounts (as needed): Cloudflare (public suite), Render (optional durable app), Clerk, Stripe, Resend, OpenAI; existing Supabase workspace remains an external
 
 ## 2. Clone
 
@@ -136,4 +138,5 @@ Ordered exit criteria for the whole program: [roadmap — Next recommended steps
 
 - [implementation-guidance.md](implementation-guidance.md)
 - [recovery-runbook.md](recovery-runbook.md)
+- [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) — public suite host
 - [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)

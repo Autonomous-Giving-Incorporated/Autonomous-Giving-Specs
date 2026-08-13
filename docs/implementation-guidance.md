@@ -4,28 +4,32 @@ Practical guidance for product teams implementing the Autonomous Giving Platform
 
 ## Preferred implementation shape
 
-**Render-first modular monolith** ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B, [SPEC-021](../specs/SPEC-021-preferred-application-stack.md)).
+**Public AGI suite** (workbench, Portfolio Signals public, Impact Relay public): Cloudflare Workers with static assets and/or Pages ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). The public AGI site is a static Next.js export; Cloudflare is the preferred public host. Render is **not** the only public host.
+
+**Durable application** (allocation middleware, webhooks, PostgreSQL-backed services): **Render-first modular monolith** ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B, [SPEC-021](../specs/SPEC-021-preferred-application-stack.md)). ADR-012 is not repealed.
 
 ```text
-GitHub → Render (Next.js web + PostgreSQL)
-           + Clerk + Stripe + Resend + OpenAI
+Public suite:  GitHub → Cloudflare Workers / Pages (static Next.js / edge)
+Durable app:   GitHub → Render (Next.js web + PostgreSQL)  [optional]
+Externals:     Clerk + Stripe + Resend + OpenAI + existing Supabase
 ```
 
 | Layer | Preference |
 | --- | --- |
-| Platform | Render |
-| Application | Next.js + TypeScript (one web service) |
-| Database | Render PostgreSQL |
+| Public host | Cloudflare Workers / Pages |
+| Durable application platform | Render (or similar); optional |
+| Application | Next.js + TypeScript (static export for public suite; one web service when a durable app exists) |
+| Database | Existing Supabase workspace as an external, or Render PostgreSQL for new canonical app stores; not D1 by default |
 | ORM / migrations | Drizzle (explicit SQL migrations) |
 | Authentication | Clerk |
 | Authorization | Application-owned roles and policies |
 | Payments | Stripe |
 | Email | Resend |
 | AI | OpenAI via provider abstraction |
-| Worker / cron / KV | Only when workload evidence requires |
-| IaC | `render.yaml` / Blueprints |
+| Worker / cron / KV / D1 | Only when workload evidence requires |
+| IaC | Product repos: Wrangler/Pages for public suite; `render.yaml` / Blueprints for optional durable app. This specs repo has neither. |
 
-**Not required for MVP:** Kubernetes, event broker, service mesh, multiple databases, per-capability containers, Background Workers, Key Value, Workflows, separate vector DB.
+**Not required for MVP:** Kubernetes, event broker, service mesh, multiple databases, per-capability containers, Background Workers, Key Value, D1, Workflows, separate vector DB.
 
 ## Capability modules
 
@@ -109,9 +113,9 @@ Extract a capability into a separately deployable **service** only when one or m
 
 | Old preferred implication | Current preferred path |
 | --- | --- |
-| GitHub Pages + separate generic backend as sole MVP diagram | Next.js modular monolith on Render |
+| GitHub Pages + separate generic backend as sole MVP diagram | Public suite on Cloudflare (ADR-013); durable app Next.js modular monolith on Render (ADR-012) |
 | Supabase as default durable store/auth for new platform work | Render PostgreSQL + Clerk |
-| Multi-host recipe soup (Railway/Fly/Vercel) as platform default | Render primary; others may exist historically in pilots |
+| Multi-host recipe soup (Railway/Fly/Vercel) as platform default | Cloudflare for public suite (ADR-013); Render for optional durable app (ADR-012); Vercel/Railway/Fly remain historical unless re-justified |
 | Convex / BaaS-as-primary-persistence | Not preferred; PostgreSQL is canonical application store |
 | Workers/cron mandatory for MVP | Escalation only with evidence |
 
@@ -119,7 +123,7 @@ Historical pilot plans under `docs/superpowers/` may still describe prior produc
 
 ## Next recommended steps
 
-After pinning a specs release that includes ADR-012 and SPEC-020–025:
+After pinning a specs release that includes ADR-012, ADR-013, and SPEC-020–025:
 
 1. Scaffold Next.js + Drizzle + Render Blueprint (web + Postgres only).
 2. Clerk → application principal + org membership tables.
@@ -137,5 +141,6 @@ Full ordered table and exit criteria: [roadmap — Next recommended steps](../ro
 - [implementation-consumption.md](implementation-consumption.md) — pin and replace duplicates
 - [SPEC-013](../specs/SPEC-013-repository-conformance.md) — conformance (topology-agnostic)
 - [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)
-- [ADR-012](../adr/ADR-012-render-first-platform.md)
+- [ADR-012](../adr/ADR-012-render-first-platform.md) — durable application / PostgreSQL
+- [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) — public suite Cloudflare host
 - [Roadmap next steps](../roadmap/specification-roadmap.md#next-recommended-steps-implementation)

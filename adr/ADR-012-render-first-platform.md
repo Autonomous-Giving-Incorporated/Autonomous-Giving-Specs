@@ -82,4 +82,4 @@ Goals for the preferred implementation path:
 
 ## Status
 
-**Accepted** (2026-08-10). Supersedes preferred-stack implications of GitHub Pages + generic backend as the sole recommended MVP diagram; logical modular-monolith principle is unchanged.
+**Accepted** (2026-08-10). Supersedes preferred-stack implications of GitHub Pages + generic backend as the sole recommended MVP diagram; logical modular-monolith principle is unchanged. Public static and edge suite hosting is specialized by [ADR-013](ADR-013-cloudflare-workers-public-host.md); this ADR is **not** superseded for durable application, allocation middleware, or PostgreSQL.

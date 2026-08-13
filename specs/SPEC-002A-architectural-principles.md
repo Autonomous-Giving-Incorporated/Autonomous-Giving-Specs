@@ -17,13 +17,14 @@ related_adrs:
 - ADR-003
 - ADR-010
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-002A: Architectural Principles
 | Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | Constitution, SPEC-001, SPEC-002 | Related ADRs | ADR-001, ADR-003, ADR-010, ADR-012 | Related contracts | None |
+| Dependencies | Constitution, SPEC-001, SPEC-002 | Related ADRs | ADR-001, ADR-003, ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 State foundational architectural principles that separate logical capability from physical deployment. This specification complements [SPEC-002](SPEC-002-platform-principles.md) (platform principles of authority and proof) with **how the platform is structured**, not **how it must be hosted**.
@@ -55,7 +56,7 @@ All platform specifications, implementation repositories, and reference deployme
 ### Modular Monolith by Default
 1. The **recommended MVP** is a modular monolith: one operational unit, one primary database, modular capability packages.
 2. Reference deployment profiles are informative examples ([SPEC-020](SPEC-020-reference-deployment-profiles.md)).
-3. The **preferred physical realization** of that MVP is Render + Next.js + PostgreSQL with Clerk, Stripe, Resend, and OpenAI as specialized externals ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)). Preference is not a conformance mandate.
+3. The **preferred physical realization** of that MVP is Render + Next.js + PostgreSQL with Clerk, Stripe, Resend, and OpenAI as specialized externals ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)). Public AGI suite static and edge surfaces prefer Cloudflare Workers / Pages ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). Preference is not a conformance mandate.
 
 ### Evidence Before Scale
 1. Operational complexity (workers, cron, caches, extraction, brokers, orchestration) is justified by measured need, not by architectural fashion.
@@ -66,4 +67,4 @@ All platform specifications, implementation repositories, and reference deployme
 2. If none apply, the implementation SHOULD remain a modular monolith.
 
 ## Non-goals
-This specification does not require a single cloud vendor for conformance. Preferred stack choices are informative under SPEC-020/021 and ADR-012. It does not change lifecycle stages, domain vocabulary, or contract ownership.
+This specification does not require a single cloud vendor for conformance. Preferred stack choices are informative under SPEC-020/021, ADR-012, and ADR-013. It does not change lifecycle stages, domain vocabulary, or contract ownership.

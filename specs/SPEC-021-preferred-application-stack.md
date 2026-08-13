@@ -17,13 +17,14 @@ related_specs:
 related_adrs:
 - ADR-010
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-021: Preferred Application Stack
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012 | Related contracts | None |
+| Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
@@ -35,7 +36,7 @@ Physical application platform, runtime shape, preferred source layout, and optio
 
 ## Authority
 
-**Informative preferred architecture** under [ADR-012](../adr/ADR-012-render-first-platform.md). Do not treat this as a conformance mandate to use Render.
+**Informative preferred architecture** under [ADR-012](../adr/ADR-012-render-first-platform.md) for durable application hosting. Public static/edge suite hosting is [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). Do not treat this as a conformance mandate to use Render.
 
 ## Architectural rule
 

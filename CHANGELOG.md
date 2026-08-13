@@ -7,6 +7,7 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Added
 
+- **ADR-013** Cloudflare Workers Public Host for the AGI Suite (accepted): preferred host for public workbench, Portfolio Signals public, and Impact Relay public; Clerk/Stripe/Resend/OpenAI/Supabase remain externals; does not supersede ADR-012 for durable application hosting.
 - **ADR-012** Render-First Platform and PostgreSQL Consolidation (accepted).
 - **SPEC-021** Preferred Application Stack (informative): Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI.
 - **SPEC-022** PostgreSQL Persistence and Domain Ownership (informative): entity ownership, design rules, Drizzle, optional pgvector.
@@ -22,6 +23,10 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Changed
 
+- README preferred physical stack and reference deployment: public suite on Cloudflare (ADR-013); Render remains optional durable application host (ADR-012).
+- `docs/implementation-guidance.md` and `docs/onboarding.md`: Cloudflare note for public suite; Render is not the only public host.
+- SPEC-020 / SPEC-021 / SPEC-002A: one-line cross-link to ADR-013 for public static/edge surfaces (profile definitions unchanged).
+- Glossary TERM-021: preferred stack includes Cloudflare public host overlay.
 - **SPEC-020** v2.0.0: recommended MVP profile is Render-first Next.js + PostgreSQL; GitHub Pages + generic backend diagram superseded as preferred physical path.
 - **SPEC-002A** v1.1.0: preferred physical realization pointer to ADR-012 / SPEC-021.
 - **SPEC-016** v1.1.0 / **SPEC-019** v1.2.0: webhook, secrets, SQL, PCI scope reduction, identity vs authorization (Clerk preferred).
