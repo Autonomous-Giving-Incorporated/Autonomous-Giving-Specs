@@ -24,7 +24,7 @@ The glossary is normative under [SPEC-004](../specs/SPEC-004-domain-model.md). E
 | TERM-018 | Deployment | Operational topology: how modules are packaged, hosted, and operated. |
 | TERM-019 | Service | Optional deployment model in which one or more capabilities run as a separately operable unit. Not required by the platform. |
 | TERM-020 | Modular Monolith | Reference implementation shape: one primary deployable containing multiple capability modules with clear boundaries. |
-| TERM-021 | Preferred Stack | Informative physical architecture for new product work: Cloudflare Workers/Pages for public static and edge surfaces (ADR-013); Render (or similar) plus PostgreSQL for optional durable application hosting (ADR-012); Clerk, Stripe, Resend, OpenAI, and existing Supabase as externals. Not a conformance mandate. |
+| TERM-021 | Preferred Stack | Informative physical architecture for new product work: Cloudflare (Workers, static assets/Pages, Durable Objects if needed, Queues/Cron Triggers) + Supabase (Auth, PostgreSQL, Storage) per ADR-013. Stripe, Resend, OpenAI, and Clerk only if still required. ADR-012 (Render-first) is superseded. Not a conformance mandate. |
 | TERM-022 | Ledger Entry | Append-oriented internal financial record used to reconstruct AGI book state (distinct from processor payment state). |
 | TERM-023 | Webhook Event | Persisted inbound provider event used for verification, idempotency, and replay. |
 | TERM-024 | Job | Durable unit of async work with idempotency key and lifecycle queued→running→terminal. |

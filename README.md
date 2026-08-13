@@ -16,39 +16,38 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 
 **Logical architecture** (capabilities) and **physical deployment** are independent for conformance. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
 
-**Preferred physical stack:** Cloudflare Workers with static assets and/or Pages for **public AGI suite** surfaces ([ADR-013](adr/ADR-013-cloudflare-workers-public-host.md)). Render (or similar) remains the optional **durable application** host with PostgreSQL ([ADR-012](adr/ADR-012-render-first-platform.md)). Specialized externals: Clerk, Stripe, Resend, OpenAI, and existing Supabase workspaces. Workers, cron, Key Value, D1, private services, Workflows, and Kubernetes are **escalation layers**, not baseline.
+**Preferred physical stack** ([ADR-013](adr/ADR-013-cloudflare-workers-public-host.md)): **Cloudflare + Supabase**. Cloudflare provides Workers, static assets/Pages, Durable Objects when live coordination is needed, and Queues/Cron Triggers for deferred/webhook/retry work. Supabase provides Auth, PostgreSQL (canonical datastore), and Storage. Stripe, Resend, and OpenAI remain externals only if the product still requires them; Clerk likewise only if still required (Supabase Auth is preferred identity). [ADR-012](adr/ADR-012-render-first-platform.md) (Render-first) is **superseded**. Kubernetes, D1, and extra app hosts are **not** baseline.
 
 ## Reference deployment
 
-The **public AGI suite** (workbench, Portfolio Signals public, Impact Relay public) prefers GitHub → Cloudflare Workers / Pages. The public AGI site is a static Next.js export; it does not require a backend on the public host. Capabilities stay separate logically ([SPEC-002A](specs/SPEC-002A-architectural-principles.md)); public hosting is edge/static.
-
-When a durable application is required (allocation middleware, webhooks, ledger), GitHub → Render (or similar) + PostgreSQL remains the ADR-012 path. Do not treat Render as the only public-suite host.
+The **public AGI suite** (workbench, Portfolio Signals public, Impact Relay public) and **application backends** (allocation middleware, webhooks, PostgreSQL-backed services) share one hosted path: GitHub → Cloudflare, with Supabase for Auth, Postgres, and Storage. Capabilities stay separate logically ([SPEC-002A](specs/SPEC-002A-architectural-principles.md)). Render is not the path.
 
 ```text
-Public suite (preferred)
-GitHub → Cloudflare Workers / Pages
-  ├── AGI workbench          (static Next.js export)
-  ├── Portfolio Signals public
-  └── Impact Relay public
+GitHub
+  ↓
+Cloudflare
+├── Workers / Pages / static assets   (public suite + Worker APIs)
+├── Durable Objects                   (only if live coordination is needed)
+└── Queues / Cron Triggers            (deferred, webhook, retry work)
+        ↓
+Supabase
+├── Auth
+├── PostgreSQL                        (canonical application datastore)
+└── Storage
 
-Durable application (optional)
-GitHub → Render (or similar)
-  ├── Next.js web service    (TypeScript modular monolith)
-  └── PostgreSQL             (canonical application datastore)
-
-External: Clerk · Stripe · Resend · OpenAI · Supabase (existing workspace)
+External if still required: Stripe · Resend · OpenAI · Clerk
 ```
 
 | Profile | Intent |
 | --- | --- |
 | A Demo | Static fixtures, no backend |
-| **B MVP** | Public suite on Cloudflare; optional Render + Next.js + PostgreSQL when a durable app is required |
-| C Production | Optional workers/cron/scale-out of the same modular unit |
+| **B MVP** | **Recommended:** Cloudflare + Supabase + optional Stripe/Resend/OpenAI |
+| C Production | Optional Durable Objects, Queues, Cron, scale-out of the same modular unit |
 | D Enterprise | Optional extraction, streaming, multi-region |
 
-Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md) (public host), [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md).
+Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md). SPEC-020/021 Render diagrams are historical; follow ADR-013.
 
-**No Kubernetes, event broker, service mesh, Background Worker, D1, or Key Value is required for a conformant public suite or MVP.**
+**No Kubernetes, event broker, service mesh, Render app, or D1 is required for a conformant public suite or MVP.**
 
 ## Repository layout
 
@@ -74,7 +73,7 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md) (public ho
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
-- [Engineering onboarding](docs/onboarding.md) (public Cloudflare path; optional Render durable app)
+- [Engineering onboarding](docs/onboarding.md) (Cloudflare + Supabase)
 - [Recovery runbook](docs/recovery-runbook.md)
 - [Next recommended implementation steps](roadmap/specification-roadmap.md#next-recommended-steps-implementation)
 - [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md)

@@ -15,5 +15,5 @@ ADRs use Michael Nygard's lightweight format: context, decision, status, consequ
 | ADR-009 | [Deterministic Demo](ADR-009-deterministic-demo.md) | Proposed |
 | ADR-010 | [Capability Independence](ADR-010-future-services.md) | Accepted |
 | ADR-011 | [Contract Evolution Policy](ADR-011-contract-evolution-policy.md) | Accepted |
-| ADR-012 | [Render-First Platform and PostgreSQL Consolidation](ADR-012-render-first-platform.md) | Accepted |
-| ADR-013 | [Cloudflare Workers Public Host for the AGI Suite](ADR-013-cloudflare-workers-public-host.md) | Accepted |
+| ADR-012 | [Render-First Platform and PostgreSQL Consolidation](ADR-012-render-first-platform.md) | Superseded by ADR-013 |
+| ADR-013 | [Cloudflare and Supabase Hosted Platform](ADR-013-cloudflare-workers-public-host.md) | Accepted |

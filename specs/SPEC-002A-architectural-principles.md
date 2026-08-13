@@ -56,7 +56,7 @@ All platform specifications, implementation repositories, and reference deployme
 ### Modular Monolith by Default
 1. The **recommended MVP** is a modular monolith: one operational unit, one primary database, modular capability packages.
 2. Reference deployment profiles are informative examples ([SPEC-020](SPEC-020-reference-deployment-profiles.md)).
-3. The **preferred physical realization** of that MVP is Render + Next.js + PostgreSQL with Clerk, Stripe, Resend, and OpenAI as specialized externals ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)). Public AGI suite static and edge surfaces prefer Cloudflare Workers / Pages ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). Preference is not a conformance mandate.
+3. The **preferred physical realization** of that MVP is Cloudflare + Supabase ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)): Workers / Pages, optional Durable Objects and Queues/Cron Triggers, with Supabase Auth, PostgreSQL, and Storage. Stripe, Resend, OpenAI, and Clerk remain externals only if still required. [ADR-012](../adr/ADR-012-render-first-platform.md) (Render-first) is superseded. Preference is not a conformance mandate.
 
 ### Evidence Before Scale
 1. Operational complexity (workers, cron, caches, extraction, brokers, orchestration) is justified by measured need, not by architectural fashion.
@@ -67,4 +67,4 @@ All platform specifications, implementation repositories, and reference deployme
 2. If none apply, the implementation SHOULD remain a modular monolith.
 
 ## Non-goals
-This specification does not require a single cloud vendor for conformance. Preferred stack choices are informative under SPEC-020/021, ADR-012, and ADR-013. It does not change lifecycle stages, domain vocabulary, or contract ownership.
+This specification does not require a single cloud vendor for conformance. Preferred stack choices are informative under ADR-013 (Cloudflare + Supabase). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded. It does not change lifecycle stages, domain vocabulary, or contract ownership.
