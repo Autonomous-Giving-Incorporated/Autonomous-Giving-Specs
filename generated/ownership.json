@@ -13,7 +13,8 @@
         "EVENT-003"
       ],
       "specs": [
-        "SPEC-003"
+        "SPEC-003",
+        "SPEC-026"
       ]
     },
     {
@@ -42,15 +43,18 @@
         "CONTRACT-004",
         "CONTRACT-006",
         "CONTRACT-007",
-        "CONTRACT-012"
+        "CONTRACT-012",
+        "CONTRACT-013"
       ],
       "events": [
         "EVENT-007",
         "EVENT-009",
-        "EVENT-010"
+        "EVENT-010",
+        "EVENT-011"
       ],
       "specs": [
-        "SPEC-018"
+        "SPEC-018",
+        "SPEC-027"
       ]
     },
     {

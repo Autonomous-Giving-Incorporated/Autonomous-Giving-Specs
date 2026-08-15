@@ -20,7 +20,9 @@
         "SPEC-007",
         "SPEC-008",
         "SPEC-012",
-        "SPEC-013"
+        "SPEC-013",
+        "SPEC-023",
+        "SPEC-026"
       ],
       "contracts": {
         "produces": [
@@ -70,7 +72,8 @@
         "SPEC-007",
         "SPEC-008",
         "SPEC-012",
-        "SPEC-013"
+        "SPEC-013",
+        "SPEC-026"
       ],
       "contracts": {
         "produces": [
@@ -112,13 +115,15 @@
         "SPEC-008",
         "SPEC-009",
         "SPEC-012",
-        "SPEC-013"
+        "SPEC-013",
+        "SPEC-027"
       ],
       "contracts": {
         "produces": [
           "CONTRACT-004",
           "CONTRACT-006",
-          "CONTRACT-007"
+          "CONTRACT-007",
+          "CONTRACT-013"
         ],
         "consumes": [
           "CONTRACT-003",
@@ -129,7 +134,8 @@
         "produces": [
           "EVENT-007",
           "EVENT-009",
-          "EVENT-010"
+          "EVENT-010",
+          "EVENT-011"
         ],
         "consumes": [
           "EVENT-001",

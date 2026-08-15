@@ -19,17 +19,17 @@ Informative operational placeholder for product teams. Customize RPO/RTO, contac
 ## Restore procedure (outline)
 
 1. **Declare incident** — freeze non-essential writes if corruption is active.
-2. **Identify restore point** — time of last known good state; note in-flight Stripe events.
+2. **Identify restore point** — time of last known good state; note in-flight connector webhook events (and Stripe billing events only if tenants are charged).
 3. **Restore Postgres** — use Supabase backup/PITR to a new database instance (prefer not overwriting until verified).
 4. **Point staging/canary Worker** at restored DB; run integrity checks:
-   - row counts for donations, ledger_entries, webhook_events
-   - sample reconciliation vs Stripe test/live as appropriate
+   - row counts for gift summaries / `am_gifts`, pots, allocations, webhook_events
+   - sample reconciliation vs connector completions (not Stripe donation charges)
 5. **Cut over** production `DATABASE_URL` only after checks pass.
 6. **Replay webhooks** — for gaps since restore point:
-   - re-fetch events from Stripe API, or
+   - re-fetch events from the donation-source connector, or
    - reprocess stored `webhook_events` that were unprocessed
    - handlers MUST remain idempotent
-7. **Reconcile** — run payment reconciliation job; open operator queue for mismatches.
+7. **Reconcile** — compare connector gifts vs pots; open operator queue for mismatches. Tenant-billing reconciliation is separate and optional.
 8. **Communications** — notify stakeholders; never claim PCI or financial closure without reconciliation evidence.
 
 ## Migration recovery

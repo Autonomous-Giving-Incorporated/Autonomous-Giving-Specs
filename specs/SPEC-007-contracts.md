@@ -1,7 +1,7 @@
 ---
 id: SPEC-007
 title: Contracts
-version: 1.1.0
+version: 1.2.0
 status: accepted
 authority: normative
 owner: Platform Architecture
@@ -22,18 +22,19 @@ related_contracts:
 - CONTRACT-005
 - CONTRACT-006
 - CONTRACT-007
+- CONTRACT-013
 ---
 
 # SPEC-007: Contracts
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-004, SPEC-012 | Related ADRs | ADR-005, ADR-007, ADR-011 | Related contracts | CONTRACT-001–007 |
+| Dependencies | SPEC-002A, SPEC-004, SPEC-012 | Related ADRs | ADR-005, ADR-007, ADR-011 | Related contracts | CONTRACT-001–007, CONTRACT-013 |
 
 ## Purpose
 Govern shared data exchanged across **capability** boundaries.
 
 ## Scope
-The seven contracts in the [contract library](../contracts/README.md).
+Contracts in the [contract library](../contracts/README.md), including lifecycle contracts CONTRACT-001–007, control-plane contracts CONTRACT-008–012, and ImpactNotice (CONTRACT-013). CONTRACT-008 remains AGI Auth Context; ImpactNotice is CONTRACT-013.
 
 ## Requirements
 1. Each contract SHALL have one owner, semantic definition, schema, producer capability, consumer capability, validation rules, version, and example.

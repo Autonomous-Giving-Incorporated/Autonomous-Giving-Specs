@@ -6,7 +6,7 @@ The platform is capability-oriented, with five responsibility domains:
 
 | Domain | Capability home | Input | Output | Constraint |
 | --- | --- | --- | --- | --- |
-| Intelligence | Fund Intel | Needs and external observations | Signals, Opportunities, Recommendations | Never allocates |
+| Intelligence | Fund Intel | Needs, external observations, and connector gift summaries | Signals, Opportunities, Recommendations, pot credits | Never allocates |
 | Governance | Autonomous Giving | Recommendations and policy | Approvals | Never fabricates evidence |
 | Allocation and Execution | Autonomous Giving | Approvals | Allocations, execution records, receipts | Requires authorization |
 | Evidence and Verification | Impact Relay | Execution artifacts | Evidence, verification, impact support | Preserves provenance |
@@ -24,7 +24,7 @@ Logical diagram (capabilities, not deployables):
                       └──────────────► Impact Relay → Evidence → Verification → Impact
                                               │
                                               ▼
-                                         Notification / Timeline
+                                         Notification / Timeline / ImpactNotice
 ```
 
 See [SPEC-006](../specs/SPEC-006-capability-boundaries.md), [SPEC-002A](../specs/SPEC-002A-architectural-principles.md), and the [domain diagram](../diagrams/domain-model.md).

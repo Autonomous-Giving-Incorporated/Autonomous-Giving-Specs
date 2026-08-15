@@ -19,11 +19,13 @@ implements:
     - SPEC-009
     - SPEC-012
     - SPEC-013
+    - SPEC-027
   contracts:
     produces:
       - CONTRACT-004
       - CONTRACT-006
       - CONTRACT-007
+      - CONTRACT-013
     consumes:
       - CONTRACT-003
       - CONTRACT-005
@@ -32,6 +34,7 @@ implements:
       - EVENT-007
       - EVENT-009
       - EVENT-010
+      - EVENT-011
     consumes:
       - EVENT-001
       - EVENT-002

@@ -14,3 +14,4 @@ All events use the immutable [event envelope schema](../schemas/event-envelope.j
 | EVENT-008 | [ReceiptGenerated](EVENT-008-receipt-generated.md) | Receipt | Receipt |
 | EVENT-009 | [VerificationCompleted](EVENT-009-verification-completed.md) | Verification | Evidence |
 | EVENT-010 | [NotificationSent](EVENT-010-notification-sent.md) | Notification | Notification |
+| EVENT-011 | [ImpactNoticeIssued](EVENT-011-impact-notice-issued.md) | Notification | ImpactNotice |

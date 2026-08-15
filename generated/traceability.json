@@ -94,10 +94,12 @@
     {
       "stage": "Notification",
       "events": [
-        "EVENT-010"
+        "EVENT-010",
+        "EVENT-011"
       ],
       "contracts": [
         "CONTRACT-006",
+        "CONTRACT-013",
         "CONTRACT-007"
       ]
     }

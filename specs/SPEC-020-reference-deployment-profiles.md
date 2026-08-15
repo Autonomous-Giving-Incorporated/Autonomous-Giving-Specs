@@ -1,7 +1,7 @@
 ---
 id: SPEC-020
 title: Reference Deployment Profiles
-version: 2.1.0
+version: 2.2.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -22,7 +22,7 @@ related_contracts: []
 ---
 
 # SPEC-020: Reference Deployment Profiles
-| Version | 2.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 2.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-002A, SPEC-006, SPEC-021 | Related ADRs | ADR-001, ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
@@ -73,7 +73,8 @@ Supabase
 └── Storage                           (evidence / large artifacts)
 
 External if still required:
-├── Stripe   (payments)
+├── every.org (P0 donation-source connector)
+├── Stripe   (tenant/SaaS billing only)
 ├── Resend   (transactional email)
 ├── OpenAI   (primary AI; provider abstraction)
 └── Clerk    (only if a product still requires it)
@@ -87,7 +88,7 @@ External if still required:
 | Object files | Supabase Storage when binaries are needed |
 | ORM / migrations | Explicit reviewable SQL migrations (Drizzle acceptable) |
 | Auth | Supabase Auth (identity); AGI owns authorization |
-| Payments | Stripe, if still required |
+| Payments | Stripe for tenant/SaaS billing only, if tenants are charged |
 | Email | Resend, if still required |
 | AI | OpenAI primary, if still required |
 | Durable Objects | **Not** required for baseline |
@@ -108,7 +109,7 @@ Capabilities remain separate **in code**. Deployment remains **unified**.
 | Migrations | Explicit SQL migrations (Drizzle acceptable) |
 | Authentication | Supabase Auth |
 | Authorization | Application-owned policies |
-| Payments | Stripe, if still required |
+| Payments | Stripe for tenant/SaaS billing only, if tenants are charged |
 | Email | Resend, if still required |
 | AI | OpenAI via `AIProvider` abstraction, if still required |
 | IaC | Product-repo Wrangler/Pages + Supabase project (none in this specs repo) |
@@ -137,7 +138,7 @@ Optional extraction of capabilities, optional private services, optional streami
 ```text
 Phase 0  Spec consolidation (this repository)
 Phase 1  Platform foundation (Next.js + Workers + Supabase Auth/Postgres/Storage)
-Phase 2  Financial core (Stripe + ledger + Worker/Queue webhooks + receipts)
+Phase 2  Tracking core (every.org connector + pots + Worker webhooks + ImpactNotice)
 Phase 3  Allocation system (funds, programs, disbursements)
 Phase 4  Operations (reconciliation, reporting, audit surfaces)
 Phase 5  AI assistance (matching, analysis, recommendations + provenance)

@@ -36,7 +36,7 @@
     {
       "id": "SPEC-004",
       "title": "Domain Model",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-004-domain-model.md"
@@ -44,7 +44,7 @@
     {
       "id": "SPEC-005",
       "title": "Lifecycle",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-005-lifecycle.md"
@@ -52,7 +52,7 @@
     {
       "id": "SPEC-006",
       "title": "Capability Boundaries",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-006-capability-boundaries.md"
@@ -60,7 +60,7 @@
     {
       "id": "SPEC-007",
       "title": "Contracts",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-007-contracts.md"
@@ -68,7 +68,7 @@
     {
       "id": "SPEC-008",
       "title": "Events",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-008-events.md"
@@ -132,7 +132,7 @@
     {
       "id": "SPEC-016",
       "title": "Security and Trust Boundaries",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-016-security-and-trust-boundaries.md"
@@ -164,7 +164,7 @@
     {
       "id": "SPEC-020",
       "title": "Reference Deployment Profiles",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-020-reference-deployment-profiles.md"
@@ -172,7 +172,7 @@
     {
       "id": "SPEC-021",
       "title": "Preferred Application Stack",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-021-preferred-application-stack.md"
@@ -180,7 +180,7 @@
     {
       "id": "SPEC-022",
       "title": "PostgreSQL Persistence and Domain Ownership",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-022-postgresql-persistence.md"
@@ -188,7 +188,7 @@
     {
       "id": "SPEC-023",
       "title": "Financial Ledger Invariants",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "status": "accepted",
       "owner": "Autonomous Giving",
       "path": "specs/SPEC-023-financial-ledger-invariants.md"
@@ -196,7 +196,7 @@
     {
       "id": "SPEC-024",
       "title": "Integration Boundaries",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-024-integration-boundaries.md"
@@ -204,10 +204,26 @@
     {
       "id": "SPEC-025",
       "title": "Operations Deploy Observability and Scale",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-025-operations-deploy-and-scale.md"
+    },
+    {
+      "id": "SPEC-026",
+      "title": "Donation-source Connectors",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Fund Intel",
+      "path": "specs/SPEC-026-donation-source-connectors.md"
+    },
+    {
+      "id": "SPEC-027",
+      "title": "Impact Loop",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "path": "specs/SPEC-027-impact-loop.md"
     }
   ],
   "adrs": [
@@ -322,6 +338,14 @@
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "adr/ADR-014-agi-control-plane.md"
+    },
+    {
+      "id": "ADR-015",
+      "title": "Donation Tracking versus Tenant Billing",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-015-donation-tracking-money-boundary.md"
     }
   ],
   "contracts": [
@@ -378,7 +402,7 @@
     {
       "id": "CONTRACT-006",
       "title": "Notification",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Impact Relay",
       "schema": "../schemas/notification.json",
@@ -444,6 +468,16 @@
       "schema": "../schemas/public-projection.json",
       "lifecycle_stage": "Impact",
       "path": "contracts/CONTRACT-012-public-projection.md"
+    },
+    {
+      "id": "CONTRACT-013",
+      "title": "ImpactNotice",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "schema": "../schemas/impact-notice.json",
+      "lifecycle_stage": "Notification",
+      "path": "contracts/CONTRACT-013-impact-notice.md"
     }
   ],
   "events": [
@@ -558,7 +592,7 @@
     {
       "id": "EVENT-010",
       "title": "NotificationSent",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Impact Relay",
       "lifecycle_stage": "Notification",
@@ -566,6 +600,18 @@
       "schema": "../schemas/notification.json",
       "contract": "CONTRACT-006",
       "path": "events/EVENT-010-notification-sent.md"
+    },
+    {
+      "id": "EVENT-011",
+      "title": "ImpactNoticeIssued",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Impact Relay",
+      "lifecycle_stage": "Notification",
+      "producer": "Impact Relay",
+      "schema": "../schemas/impact-notice.json",
+      "contract": "CONTRACT-013",
+      "path": "events/EVENT-011-impact-notice-issued.md"
     }
   ],
   "schemas": [
@@ -609,13 +655,20 @@
       "title": "Notification",
       "file": "notification.json",
       "contract": "CONTRACT-006",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "id": "SCHEMA-007",
       "title": "TimelineEvent",
       "file": "timeline-event.json",
       "contract": "CONTRACT-007",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-013",
+      "title": "ImpactNotice",
+      "file": "impact-notice.json",
+      "contract": "CONTRACT-013",
       "version": "1.0.0"
     }
   ],
@@ -715,6 +768,26 @@
     {
       "id": "TERM-024",
       "term": "Job"
+    },
+    {
+      "id": "TERM-025",
+      "term": "Gift Summary"
+    },
+    {
+      "id": "TERM-026",
+      "term": "Pot"
+    },
+    {
+      "id": "TERM-027",
+      "term": "Donation-source Connector"
+    },
+    {
+      "id": "TERM-028",
+      "term": "ImpactNotice"
+    },
+    {
+      "id": "TERM-029",
+      "term": "Donation Link"
     }
   ]
 }

@@ -1,6 +1,6 @@
 ---
 id: EVENT-010
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 title: NotificationSent
@@ -47,4 +47,5 @@ Records attempted delivery of a timeline update. Payload validates as Notificati
 
 | Version | Change |
 | --- | --- |
+| 1.1.0 | Channel enum widened to include `push` (CONTRACT-006 / notification schema 1.1.0). |
 | 1.0.0 | Initial canonical event definition. |

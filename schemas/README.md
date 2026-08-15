@@ -9,7 +9,8 @@ JSON Schema Draft 2020-12 artifacts are normative under [SPEC-007](../specs/SPEC
 | SCHEMA-003 | [Allocation](allocation.json) | CONTRACT-003 | 1.0.0 |
 | SCHEMA-004 | [Evidence](evidence.json) | CONTRACT-004 | 1.0.0 |
 | SCHEMA-005 | [Receipt](receipt.json) | CONTRACT-005 | 1.0.0 |
-| SCHEMA-006 | [Notification](notification.json) | CONTRACT-006 | 1.0.0 |
+| SCHEMA-006 | [Notification](notification.json) | CONTRACT-006 | 1.1.0 |
 | SCHEMA-007 | [TimelineEvent](timeline-event.json) | CONTRACT-007 | 1.0.0 |
+| SCHEMA-013 | [ImpactNotice](impact-notice.json) | CONTRACT-013 | 1.0.0 |
 
 [event-envelope.json](event-envelope.json) defines event metadata. `signal-detected`, `approval-granted`, `execution-started`, and `verification-completed` are event-specific payload schemas.

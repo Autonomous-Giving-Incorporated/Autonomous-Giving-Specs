@@ -14,6 +14,7 @@ This matrix is the navigation layer between lifecycle authority and machine-read
 | Receipt | [SPEC-005](../specs/SPEC-005-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-008](../events/EVENT-008-receipt-generated.md) | [CONTRACT-005](../contracts/CONTRACT-005-receipt.md) / [schema](../schemas/receipt.json) | Autonomous Giving |
 | Verification | [SPEC-005](../specs/SPEC-005-lifecycle.md) | [ADR-007](../adr/ADR-007-evidence-chain.md) | [EVENT-009](../events/EVENT-009-verification-completed.md) | [verification schema](../schemas/verification-completed.json) | Impact Relay |
 | Notification | [SPEC-006](../specs/SPEC-006-capability-boundaries.md) | [ADR-004](../adr/ADR-004-repository-ownership.md) | [EVENT-010](../events/EVENT-010-notification-sent.md) | [CONTRACT-006](../contracts/CONTRACT-006-notification.md) / [schema](../schemas/notification.json) | Impact Relay |
+| ImpactNotice (projection) | [SPEC-027](../specs/SPEC-027-impact-loop.md) | [ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md) | [EVENT-011](../events/EVENT-011-impact-notice-issued.md) | [CONTRACT-013](../contracts/CONTRACT-013-impact-notice.md) / [schema](../schemas/impact-notice.json) | Impact Relay |
 
 ## Cross-cutting invariants
 
@@ -21,5 +22,5 @@ This matrix is the navigation layer between lifecycle authority and machine-read
 - [SPEC-004](../specs/SPEC-004-domain-model.md) owns the terminology used in every linked artifact.
 - [SPEC-007](../specs/SPEC-007-contracts.md) and [SPEC-012](../specs/SPEC-012-versioning.md) govern all contract evolution.
 - [SPEC-011](../specs/SPEC-011-demo-specification.md) applies this path deterministically in the Community AI Lab demonstration.
-- [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md) governs donation, payment, ledger, allocation, and disbursement correctness (append-oriented finance; webhook idempotency).
-- Preferred physical path (informative): [ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md).
+- [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md) governs gift-summary, pot, allocation, and Evidence correctness (append-oriented tracking; connector webhook idempotency). AGI does not process donations ([ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md)).
+- Preferred physical path (informative): [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded.
