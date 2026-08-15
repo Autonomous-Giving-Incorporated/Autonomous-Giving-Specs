@@ -33,6 +33,7 @@ The glossary is normative under [SPEC-004](../specs/SPEC-004-domain-model.md). E
 | TERM-027 | Donation-source Connector | Adapter that verifies and normalizes third-party gift-completed events (P0: every.org) or the CSV twin. |
 | TERM-028 | ImpactNotice | Notification projection that tells a contactable donor where/what allocated funds were used for and CTAs to the tenant Donation Link. |
 | TERM-029 | Donation Link | Outbound HTTPS URL on the tenant record pointing at the tenant’s own receiver. Not a checkout session. |
+| TERM-030 | AGI Control Plane | Autonomous Giving’s authenticated admin/login edge: session, authorization, tenant/project selection, routing, and short-lived capability JWTs. Not a fourth capability. |
 
 No synonym may substitute for an identified term. A proposed new concept requires a glossary identifier and a review against existing terms.
 

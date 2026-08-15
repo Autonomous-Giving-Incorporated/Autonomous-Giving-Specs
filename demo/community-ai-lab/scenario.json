@@ -16,10 +16,21 @@
   "verificationId": "e0c2e191-3000-4000-8000-000000000001",
   "notificationId": "f6c2e191-3000-4000-8000-000000000001",
   "timelineEventId": "a6c2e191-3000-4000-8000-000000000002",
+  "giftTracked": true,
+  "agiProcessedDonation": false,
+  "stripeDonation": false,
+  "connector": "every.org",
+  "chargeId": "synthetic-charge-community-ai-lab",
+  "netAmount": 2500,
+  "contactableDonor": false,
+  "impactNoticeIssued": false,
+  "donationLink": "https://example.com/tenant-fundraiser",
   "invariants": [
     "No allocation before ApprovalGranted",
     "Receipt amount equals allocation amount",
     "Impact claim names verification and evidence identifiers",
-    "Replay yields identical IDs, order, amounts, and states"
+    "Replay yields identical IDs, order, amounts, and states",
+    "Gift is tracked not processed; no Stripe donation",
+    "ImpactNotice skipped because contactableDonor is false"
   ]
 }

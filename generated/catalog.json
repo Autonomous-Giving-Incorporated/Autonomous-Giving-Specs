@@ -28,8 +28,8 @@
     {
       "id": "SPEC-003",
       "title": "Signals Stack",
-      "version": "1.1.0",
-      "status": "proposed",
+      "version": "2.0.0",
+      "status": "accepted",
       "owner": "Fund Intel",
       "path": "specs/SPEC-003-signals-stack.md"
     },
@@ -76,8 +76,8 @@
     {
       "id": "SPEC-009",
       "title": "Design System",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "2.0.0",
+      "status": "accepted",
       "owner": "Platform Product",
       "path": "specs/SPEC-009-design-system.md"
     },
@@ -92,8 +92,8 @@
     {
       "id": "SPEC-011",
       "title": "Demo Specification",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "2.0.0",
+      "status": "accepted",
       "owner": "Platform Product",
       "path": "specs/SPEC-011-demo-specification.md"
     },
@@ -116,8 +116,8 @@
     {
       "id": "SPEC-014",
       "title": "Future Capabilities",
-      "version": "1.1.0",
-      "status": "proposed",
+      "version": "2.0.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-014-future-capabilities.md"
     },
@@ -132,32 +132,32 @@
     {
       "id": "SPEC-016",
       "title": "Security and Trust Boundaries",
-      "version": "1.3.0",
-      "status": "proposed",
+      "version": "1.4.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-016-security-and-trust-boundaries.md"
     },
     {
       "id": "SPEC-017",
       "title": "Data Classification and Privacy",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-017-data-classification-and-privacy.md"
     },
     {
       "id": "SPEC-018",
       "title": "Evidence Integrity and Provenance",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Impact Relay",
       "path": "specs/SPEC-018-evidence-integrity-and-provenance.md"
     },
     {
       "id": "SPEC-019",
       "title": "Identity and Authorization",
-      "version": "1.3.0",
-      "status": "proposed",
+      "version": "1.4.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-019-identity-and-authorization.md"
     },
@@ -224,6 +224,14 @@
       "status": "accepted",
       "owner": "Impact Relay",
       "path": "specs/SPEC-027-impact-loop.md"
+    },
+    {
+      "id": "SPEC-028",
+      "title": "AGI Control Plane",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "path": "specs/SPEC-028-agi-control-plane.md"
     }
   ],
   "adrs": [
@@ -238,8 +246,8 @@
     {
       "id": "ADR-002",
       "title": "Platform Canon",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-002-signals-stack.md"
     },
@@ -294,7 +302,7 @@
     {
       "id": "ADR-009",
       "title": "Deterministic Demo",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-009-deterministic-demo.md"
@@ -334,8 +342,8 @@
     {
       "id": "ADR-014",
       "title": "AGI-Owned Control Plane and Secure Cross-Repository Integration",
-      "version": "1.0.0",
-      "status": "proposed",
+      "version": "1.1.0",
+      "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-014-agi-control-plane.md"
     },
@@ -352,7 +360,7 @@
     {
       "id": "CONTRACT-001",
       "title": "Opportunity",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Fund Intel",
       "schema": "../schemas/opportunity.json",
@@ -423,7 +431,7 @@
       "id": "CONTRACT-008",
       "title": "AGI Auth Context",
       "version": "1.0.0",
-      "status": "proposed",
+      "status": "accepted",
       "owner": "Autonomous Giving",
       "schema": "../schemas/auth-context.json",
       "lifecycle_stage": "Approval",
@@ -433,7 +441,7 @@
       "id": "CONTRACT-009",
       "title": "Tenant Project Context",
       "version": "1.0.0",
-      "status": "proposed",
+      "status": "accepted",
       "owner": "Autonomous Giving",
       "schema": "../schemas/tenant-project-context.json",
       "lifecycle_stage": "Opportunity",
@@ -443,7 +451,7 @@
       "id": "CONTRACT-010",
       "title": "Capability Route Intent",
       "version": "1.0.0",
-      "status": "proposed",
+      "status": "accepted",
       "owner": "Autonomous Giving",
       "schema": "../schemas/route-intent.json",
       "lifecycle_stage": "Approval",
@@ -453,7 +461,7 @@
       "id": "CONTRACT-011",
       "title": "Delegation Approval Policy",
       "version": "1.0.0",
-      "status": "proposed",
+      "status": "accepted",
       "owner": "Autonomous Giving",
       "schema": "../schemas/delegation-policy.json",
       "lifecycle_stage": "Approval",
@@ -463,7 +471,7 @@
       "id": "CONTRACT-012",
       "title": "Public Impact Projection",
       "version": "1.0.0",
-      "status": "proposed",
+      "status": "accepted",
       "owner": "Impact Relay",
       "schema": "../schemas/public-projection.json",
       "lifecycle_stage": "Impact",
@@ -484,7 +492,7 @@
     {
       "id": "EVENT-001",
       "title": "SignalDetected",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Fund Intel",
       "lifecycle_stage": "Signal",
@@ -612,6 +620,18 @@
       "schema": "../schemas/impact-notice.json",
       "contract": "CONTRACT-013",
       "path": "events/EVENT-011-impact-notice-issued.md"
+    },
+    {
+      "id": "EVENT-012",
+      "title": "CapabilityContextIssued",
+      "version": "1.0.0",
+      "status": "accepted",
+      "owner": "Autonomous Giving",
+      "lifecycle_stage": "Approval",
+      "producer": "Autonomous Giving",
+      "schema": "../schemas/auth-context.json",
+      "contract": "CONTRACT-008",
+      "path": "events/EVENT-012-capability-context-issued.md"
     }
   ],
   "schemas": [
@@ -620,7 +640,7 @@
       "title": "Opportunity",
       "file": "opportunity.json",
       "contract": "CONTRACT-001",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "id": "SCHEMA-002",
@@ -662,6 +682,41 @@
       "title": "TimelineEvent",
       "file": "timeline-event.json",
       "contract": "CONTRACT-007",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-008",
+      "title": "AGI Auth Context",
+      "file": "auth-context.json",
+      "contract": "CONTRACT-008",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-009",
+      "title": "Tenant Project Context",
+      "file": "tenant-project-context.json",
+      "contract": "CONTRACT-009",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-010",
+      "title": "Capability Route Intent",
+      "file": "route-intent.json",
+      "contract": "CONTRACT-010",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-011",
+      "title": "Delegation Approval Policy",
+      "file": "delegation-policy.json",
+      "contract": "CONTRACT-011",
+      "version": "1.0.0"
+    },
+    {
+      "id": "SCHEMA-012",
+      "title": "Public Impact Projection",
+      "file": "public-projection.json",
+      "contract": "CONTRACT-012",
       "version": "1.0.0"
     },
     {
@@ -788,6 +843,10 @@
     {
       "id": "TERM-029",
       "term": "Donation Link"
+    },
+    {
+      "id": "TERM-030",
+      "term": "AGI Control Plane"
     }
   ]
 }

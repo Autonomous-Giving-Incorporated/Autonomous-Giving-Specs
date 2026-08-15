@@ -1,6 +1,6 @@
 # Design system specification
 
-This directory contains platform design requirements, not components or implementation assets. The normative source is [SPEC-009](../specs/SPEC-009-design-system.md).
+This directory contains platform design requirements, not components or implementation assets. The normative source is [SPEC-009](../specs/SPEC-009-design-system.md) (accepted; audit-visible information design, not a Figma or React kit).
 
 ## Information design requirements
 

@@ -15,7 +15,8 @@ idempotency: eventId
 related_specs:
 - SPEC-005
 - SPEC-008
-related_contracts: []
+related_contracts:
+- CONTRACT-012
 ---
 
 # EVENT-009: VerificationCompleted
@@ -27,7 +28,7 @@ related_contracts: []
 | Stage / ordering | Verification / per `allocationId` |
 | Idempotency | `eventId` |
 
-Records an evidence assessment. Payload contains `verificationId`, `allocationId`, `evidenceIds`, `outcome`, `verifiedAt`, and verifier. Example: `{"eventType":"VerificationCompleted","payload":{"verificationId":"verification-1","outcome":"verified"}}`.
+Records an evidence assessment. Payload contains `verificationId`, `allocationId`, `evidenceIds`, `outcome`, `verifiedAt`, and verifier. Public projections ([CONTRACT-012](../contracts/CONTRACT-012-public-projection.md)) MUST remain reconcilable to this Verification. Example: `{"eventType":"VerificationCompleted","payload":{"verificationId":"verification-1","outcome":"verified"}}`.
 
 
 ## Example payload

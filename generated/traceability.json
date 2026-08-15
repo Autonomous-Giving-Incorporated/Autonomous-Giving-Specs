@@ -35,7 +35,8 @@
     {
       "stage": "Approval",
       "events": [
-        "EVENT-004"
+        "EVENT-004",
+        "EVENT-012"
       ],
       "contracts": [
         "CONTRACT-008",

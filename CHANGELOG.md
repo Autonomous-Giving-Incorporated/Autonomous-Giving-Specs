@@ -7,6 +7,28 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Added
 
+- **SPEC-028** AGI Control Plane (normative, accepted): authenticated admin/login surface, capability JWTs (CONTRACT-008), fail-closed tenant checks, optional dual approval, Cloudflare + Supabase topology; Cloud Run historical/optional only.
+- **EVENT-012** CapabilityContextIssued (audit of AGI-issued auth context).
+- **SCHEMA-008–012** catalog rows for control-plane contracts.
+- Glossary **TERM-030** AGI Control Plane.
+- Roadmap specification milestones **19** (donation-tracking money boundary, already on main) and **20** (control plane + trust layer).
+- Community AI Lab declared negative vectors: unverified webhook, duplicate `chargeId`, over-allocation, missing proof, invented PII.
+
+### Changed
+
+- **ADR-014** v1.1.0 **Accepted** (2026-08-15): host language aligned to ADR-013 / SPEC-028; Cloud Run demoted to historical/optional for an existing Impact Relay implementation.
+- **SPEC-016–019** accepted; wired to ADR-014, SPEC-028, SPEC-027 / CONTRACT-013 (privacy / ImpactNotice / no invented PII); SPEC-019 requires capability JWTs and deny-by-default on unverified downstream context.
+- **CONTRACT-008–012** accepted; schemas already present and validating.
+- **SPEC-003** v2.0.0 accepted: observation→recommendation rules, gift-summary vs recommendation split, negative cases.
+- **SPEC-009** v2.0.0 accepted: audit-visible information design (not a UI kit).
+- **SPEC-011** v2.0.0 accepted: Community AI Lab written to actual fixtures (2500 USD); gift tracked / ImpactNotice skip / no Stripe donation.
+- **SPEC-014** v2.0.0 accepted: fourth-capability admission; control plane is AGI’s edge; P1 connectors are adapters.
+- **ADR-009** accepted; Community AI Lab amount narrative aligned to `scenario.json` (2500 USD).
+- README preferred-stack sentence: Stripe is tenant/SaaS billing only.
+- Architecture overview: Stripe-as-donation-processor language withdrawn.
+
+### Added (prior)
+
 - **SPEC-026** Donation-source Connectors (normative): every.org P0 adapter, verify, raw payload, idempotent `chargeId`, `netAmount` default, auto-create pot/slice, exception catalog, CSV twin, no AGI checkout.
 - **SPEC-027** Impact Loop (normative): ImpactNotice only after Evidence or explicit human waive; channels email/push/in_app; CTA = tenant Donation Link; no invented PII.
 - **CONTRACT-013** / **SCHEMA-013** / **EVENT-011** ImpactNotice (CONTRACT-008 remains AGI Auth Context).

@@ -1,0 +1,9 @@
+{
+  "name": "missing-proof",
+  "expect_error": "MISSING_PROOF",
+  "description": "Allocation without Evidence and without an explicit human waive is not ImpactNotice-eligible; MISSING_PROOF is not a waive",
+  "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+  "evidenceAttached": false,
+  "proofWaived": false,
+  "impactNoticeIssued": false
+}

@@ -22,13 +22,18 @@ related_contracts:
 - CONTRACT-005
 - CONTRACT-006
 - CONTRACT-007
+- CONTRACT-008
+- CONTRACT-009
+- CONTRACT-010
+- CONTRACT-011
+- CONTRACT-012
 - CONTRACT-013
 ---
 
 # SPEC-007: Contracts
 | Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-004, SPEC-012 | Related ADRs | ADR-005, ADR-007, ADR-011 | Related contracts | CONTRACT-001–007, CONTRACT-013 |
+| Dependencies | SPEC-002A, SPEC-004, SPEC-012 | Related ADRs | ADR-005, ADR-007, ADR-011 | Related contracts | CONTRACT-001–013 |
 
 ## Purpose
 Govern shared data exchanged across **capability** boundaries.

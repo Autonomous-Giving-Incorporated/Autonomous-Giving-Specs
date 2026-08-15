@@ -1,18 +1,18 @@
 # AGI control-plane architecture
 
-This document defines the engineering direction for the AGI control plane. It is normative only where it links to accepted Specs and ADRs. Implementation repositories own concrete routes, migrations, provider configuration, and operational runbooks.
+This document is engineering direction. It is normative only where it links to accepted Specs and ADRs — especially [SPEC-028](../specs/SPEC-028-agi-control-plane.md) and [ADR-014](../adr/ADR-014-agi-control-plane.md). Implementation repositories own concrete routes, migrations, provider configuration, and operational runbooks.
 
 ## Responsibilities
 
 | Surface | Owns | Must not own |
 | --- | --- | --- |
-| AGI control plane | Authentication orchestration, authorization, tenant/project context, admin navigation, capability routing | Fund-Intel project records, Impact Relay evidence history, private donor projections |
-| Fund-Intel | Hacker Dojo tenant implementation, project discovery, recommendations, approvals, allocations | Evidence verification or public impact truth |
+| AGI control plane | Authentication orchestration, authorization, tenant/project context, admin navigation, capability routing | Fund-Intel project records, Impact Relay evidence history, private donor projections, donation checkout |
+| Fund-Intel | Hacker Dojo tenant implementation, project discovery, recommendations, approvals data path, allocations | Evidence verification or public impact truth |
 | Impact Relay | Delegation evidence, evidence storage, verification, timeline/impact projection | Allocation approval or authoritative allocation mutation |
 | Specs | Engineering direction, shared contracts, lifecycle, security boundaries, ADRs | Application code, deployables, secrets, operational credentials |
 | Private harness | Cross-repository acceptance and security verification | Production data, long-lived credentials, domain authority |
 
-The logical boundaries follow [SPEC-006](../specs/SPEC-006-capability-boundaries.md). The preferred hosted path follows [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). Impact Relay may remain on Cloud Run as an implementation choice because deployment topology does not change capability ownership.
+The logical boundaries follow [SPEC-006](../specs/SPEC-006-capability-boundaries.md). The preferred hosted path follows [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md): Cloudflare + Supabase for AGI, Fund Intel, and Impact Relay. If an existing Impact Relay implementation still runs on Cloud Run, that host is **historical or optional for that implementation** — not a new preferred host and not a conformance requirement.
 
 ## Request flow
 
@@ -20,8 +20,8 @@ The logical boundaries follow [SPEC-006](../specs/SPEC-006-capability-boundaries
 1. User authenticates with Supabase Auth.
 2. AGI verifies the session and maps the stable subject to an AGI principal.
 3. AGI evaluates role, capability, client_id, tenant_id, and project policy.
-4. AGI creates a short-lived audience-scoped route context.
-5. The AGI gateway or server-side handoff routes to Fund-Intel or Impact Relay.
+4. AGI creates a short-lived audience-scoped capability JWT (CONTRACT-008).
+5. The AGI gateway or server-side handoff routes to Fund-Intel or Impact Relay (CONTRACT-010).
 6. The receiving capability validates issuer, signature, audience, expiry,
    tenant identity, project scope, and requested capability.
 7. The receiving capability applies its own tenant-scoped database/storage/RPC policy.
@@ -61,7 +61,7 @@ Sensitive authority is expressed as capabilities:
 - `evidence:review`
 - `impact:publish`
 
-A tenant director may configure `single` or `dual` approval for a project, action class, or amount threshold. Single approval is the default. The policy is evaluated server-side and is recorded with approval events. No client-supplied role claim is authoritative.
+A tenant director may configure `single` or `dual` approval for a project, action class, or amount threshold. Single approval is the default. The policy is evaluated server-side and is recorded with approval events. No client-supplied role claim is authoritative. Human Approval still gates allocations ([ADR-006](../adr/ADR-006-human-approval.md)).
 
 ## Route map direction
 
@@ -81,14 +81,12 @@ The public AGI narrative may remain available at `/`, but authenticated administ
 
 ## Contract direction
 
-The proposed cross-boundary contracts are:
+| Contract | Purpose | Owner | Status |
+| --- | --- | --- | --- |
+| [CONTRACT-008](../contracts/CONTRACT-008-auth-context.md) | AGI-issued authenticated capability context | Autonomous Giving | Accepted |
+| [CONTRACT-009](../contracts/CONTRACT-009-tenant-project-context.md) | Shared client/tenant/project identity | Autonomous Giving | Accepted |
+| [CONTRACT-010](../contracts/CONTRACT-010-route-intent.md) | Authorized capability routing intent | Autonomous Giving | Accepted |
+| [CONTRACT-011](../contracts/CONTRACT-011-delegation-policy.md) | Optional single/dual approval policy | Autonomous Giving | Accepted |
+| [CONTRACT-012](../contracts/CONTRACT-012-public-projection.md) | Aggregate-safe impact projection | Impact Relay | Accepted |
 
-| Contract | Purpose | Owner |
-| --- | --- | --- |
-| [CONTRACT-008](../contracts/CONTRACT-008-auth-context.md) | AGI-issued authenticated capability context | Autonomous Giving |
-| [CONTRACT-009](../contracts/CONTRACT-009-tenant-project-context.md) | Shared client/tenant/project identity | Platform Architecture |
-| [CONTRACT-010](../contracts/CONTRACT-010-route-intent.md) | Authorized capability routing intent | Autonomous Giving |
-| [CONTRACT-011](../contracts/CONTRACT-011-delegation-policy.md) | Optional single/dual approval policy | Autonomous Giving |
-| [CONTRACT-012](../contracts/CONTRACT-012-public-projection.md) | Aggregate-safe impact projection | Impact Relay |
-
-These contracts are proposed until the next Specs release. Existing lifecycle contracts remain authoritative for Need through Impact.
+These contracts are accepted. Existing lifecycle contracts remain authoritative for Need through Impact. This document does not pin a platform release tag.
