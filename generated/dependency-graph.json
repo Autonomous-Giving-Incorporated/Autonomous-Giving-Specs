@@ -220,6 +220,10 @@
     {
       "id": "ADR-012",
       "type": "adr"
+    },
+    {
+      "id": "ADR-013",
+      "type": "adr"
     }
   ],
   "edges": [
@@ -331,6 +335,11 @@
     {
       "from": "SPEC-002A",
       "to": "ADR-012",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-002A",
+      "to": "ADR-013",
       "type": "related_adr"
     },
     {
@@ -1254,6 +1263,11 @@
       "type": "related_adr"
     },
     {
+      "from": "SPEC-020",
+      "to": "ADR-013",
+      "type": "related_adr"
+    },
+    {
       "from": "SPEC-021",
       "to": "SPEC-002A",
       "type": "related_spec"
@@ -1301,6 +1315,11 @@
     {
       "from": "SPEC-021",
       "to": "ADR-012",
+      "type": "related_adr"
+    },
+    {
+      "from": "SPEC-021",
+      "to": "ADR-013",
       "type": "related_adr"
     },
     {

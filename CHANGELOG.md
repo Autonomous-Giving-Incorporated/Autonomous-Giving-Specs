@@ -7,7 +7,8 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Added
 
-- **ADR-012** Render-First Platform and PostgreSQL Consolidation (accepted).
+- **ADR-013** Cloudflare and Supabase Hosted Platform (accepted, v1.1.0): canonical stack is Cloudflare (Workers, static assets/Pages, Durable Objects if needed, Queues/Cron Triggers) + Supabase (Auth, PostgreSQL, Storage). Allocation middleware, webhooks, and Postgres-backed services run as Workers talking to Supabase. **Supersedes ADR-012.** Stripe/Resend/OpenAI/Clerk remain only if still required.
+- **ADR-012** Render-First Platform and PostgreSQL Consolidation (superseded 2026-08-13 by ADR-013; file retained).
 - **SPEC-021** Preferred Application Stack (informative): Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI.
 - **SPEC-022** PostgreSQL Persistence and Domain Ownership (informative): entity ownership, design rules, Drizzle, optional pgvector.
 - **SPEC-023** Financial Ledger Invariants (normative): append-only finance, webhook idempotency, state separation, AI advisory limits.
@@ -22,6 +23,11 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ### Changed
 
+- README preferred physical stack and reference deployment: Cloudflare + Supabase (ADR-013); Render is not the path.
+- `docs/implementation-guidance.md` and `docs/onboarding.md`: Cloudflare + Supabase; Workers (or Worker + Queue) talk to Supabase; ADR-012 superseded.
+- SPEC-020 / SPEC-021 / SPEC-002A / Constitution: preferred hosted platform is ADR-013; ADR-012 and Render diagrams are historical.
+- Glossary TERM-021: Preferred Stack is Cloudflare + Supabase (ADR-013).
+- **ADR-012** marked superseded by ADR-013 (file retained).
 - **SPEC-020** v2.0.0: recommended MVP profile is Render-first Next.js + PostgreSQL; GitHub Pages + generic backend diagram superseded as preferred physical path.
 - **SPEC-002A** v1.1.0: preferred physical realization pointer to ADR-012 / SPEC-021.
 - **SPEC-016** v1.1.0 / **SPEC-019** v1.2.0: webhook, secrets, SQL, PCI scope reduction, identity vs authorization (Clerk preferred).

@@ -16,33 +16,38 @@ The platform converts an observed `Need` into an auditable `Impact` through a ca
 
 **Logical architecture** (capabilities) and **physical deployment** are independent for conformance. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
 
-**Preferred physical stack** ([ADR-012](adr/ADR-012-render-first-platform.md)): Render-first modular monolith with Render PostgreSQL and specialized externals (Clerk, Stripe, Resend, OpenAI). Workers, cron, Key Value, private services, and Workflows are **escalation layers**, not baseline.
+**Preferred physical stack** ([ADR-013](adr/ADR-013-cloudflare-workers-public-host.md)): **Cloudflare + Supabase**. Cloudflare provides Workers, static assets/Pages, Durable Objects when live coordination is needed, and Queues/Cron Triggers for deferred/webhook/retry work. Supabase provides Auth, PostgreSQL (canonical datastore), and Storage. Stripe, Resend, and OpenAI remain externals only if the product still requires them; Clerk likewise only if still required (Supabase Auth is preferred identity). [ADR-012](adr/ADR-012-render-first-platform.md) (Render-first) is **superseded**. Kubernetes, D1, and extra app hosts are **not** baseline.
 
 ## Reference deployment
 
-The **recommended MVP** is Profile B: one Next.js web service + one PostgreSQL on Render. Capabilities stay separate in code; deployment stays unified.
+The **public AGI suite** (workbench, Portfolio Signals public, Impact Relay public) and **application backends** (allocation middleware, webhooks, PostgreSQL-backed services) share one hosted path: GitHub → Cloudflare, with Supabase for Auth, Postgres, and Storage. Capabilities stay separate logically ([SPEC-002A](specs/SPEC-002A-architectural-principles.md)). Render is not the path.
 
 ```text
 GitHub
   ↓
-Render
-├── Next.js web service  (TypeScript modular monolith)
-│     Fund Intel | Autonomous Giving | Impact Relay modules
-└── PostgreSQL           (canonical application datastore)
+Cloudflare
+├── Workers / Pages / static assets   (public suite + Worker APIs)
+├── Durable Objects                   (only if live coordination is needed)
+└── Queues / Cron Triggers            (deferred, webhook, retry work)
+        ↓
+Supabase
+├── Auth
+├── PostgreSQL                        (canonical application datastore)
+└── Storage
 
-External: Clerk · Stripe · Resend · OpenAI
+External if still required: Stripe · Resend · OpenAI · Clerk
 ```
 
 | Profile | Intent |
 | --- | --- |
 | A Demo | Static fixtures, no backend |
-| **B MVP** | **Recommended:** Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI |
-| C Production | Optional workers/cron/scale-out of the same modular unit |
+| **B MVP** | **Recommended:** Cloudflare + Supabase + optional Stripe/Resend/OpenAI |
+| C Production | Optional Durable Objects, Queues, Cron, scale-out of the same modular unit |
 | D Enterprise | Optional extraction, streaming, multi-region |
 
-Full detail: [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md).
+Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md). SPEC-020/021 Render diagrams are historical; follow ADR-013.
 
-**No Kubernetes, event broker, service mesh, Background Worker, or Key Value is required for a conformant MVP.**
+**No Kubernetes, event broker, service mesh, Render app, or D1 is required for a conformant public suite or MVP.**
 
 ## Repository layout
 
@@ -68,7 +73,7 @@ Full detail: [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-
 - [RFC process](docs/rfc-process.md)
 - [Repository governance](docs/repository-governance.md)
 - [Implementation guidance](docs/implementation-guidance.md)
-- [Engineering onboarding](docs/onboarding.md) (preferred Render path)
+- [Engineering onboarding](docs/onboarding.md) (Cloudflare + Supabase)
 - [Recovery runbook](docs/recovery-runbook.md)
 - [Next recommended implementation steps](roadmap/specification-roadmap.md#next-recommended-steps-implementation)
 - [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md)

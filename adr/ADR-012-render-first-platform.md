@@ -5,7 +5,7 @@ authority: normative
 owner: Platform Architecture
 date: '2026-08-10'
 title: Render-First Platform and PostgreSQL Consolidation
-status: accepted
+status: superseded
 related_specs:
 - SPEC-002A
 - SPEC-016
@@ -20,7 +20,7 @@ related_specs:
 
 # ADR-012: Render-First Platform and PostgreSQL Consolidation
 
-| Status | Accepted |
+| Status | Superseded by [ADR-013](ADR-013-cloudflare-workers-public-host.md) |
 | --- | --- |
 | Date | 2026-08-10 |
 | Related specs | SPEC-002A, SPEC-016, SPEC-019, SPEC-020–025 |
@@ -82,4 +82,4 @@ Goals for the preferred implementation path:
 
 ## Status
 
-**Accepted** (2026-08-10). Supersedes preferred-stack implications of GitHub Pages + generic backend as the sole recommended MVP diagram; logical modular-monolith principle is unchanged.
+**Superseded** (2026-08-13) by [ADR-013](ADR-013-cloudflare-workers-public-host.md) (Cloudflare + Supabase hosted platform). Keep this file for history. Render is no longer the preferred application host; allocation middleware, webhooks, and PostgreSQL-backed services belong on Workers talking to Supabase. Logical modular-monolith principle is unchanged.

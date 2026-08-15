@@ -303,9 +303,17 @@
       "id": "ADR-012",
       "title": "Render-First Platform and PostgreSQL Consolidation",
       "version": "1.0.0",
-      "status": "accepted",
+      "status": "superseded",
       "owner": "Platform Architecture",
       "path": "adr/ADR-012-render-first-platform.md"
+    },
+    {
+      "id": "ADR-013",
+      "title": "Cloudflare and Supabase Hosted Platform",
+      "version": "1.1.0",
+      "status": "accepted",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-013-cloudflare-workers-public-host.md"
     }
   ],
   "contracts": [

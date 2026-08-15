@@ -17,13 +17,14 @@ related_specs:
 related_adrs:
 - ADR-010
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-021: Preferred Application Stack
 | Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012 | Related contracts | None |
+| Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
@@ -31,11 +32,11 @@ Define the **preferred** AGI application stack so implementers and coding agents
 
 ## Scope
 
-Physical application platform, runtime shape, preferred source layout, and optional Render escalation services. Logical capabilities remain [SPEC-006](SPEC-006-capability-boundaries.md). Financial ownership is [SPEC-023](SPEC-023-financial-ledger-invariants.md). Integrations are [SPEC-024](SPEC-024-integration-boundaries.md). Operations are [SPEC-025](SPEC-025-operations-deploy-and-scale.md).
+Physical application platform, runtime shape, preferred source layout, and optional async extraction. Logical capabilities remain [SPEC-006](SPEC-006-capability-boundaries.md). Financial ownership is [SPEC-023](SPEC-023-financial-ledger-invariants.md). Integrations are [SPEC-024](SPEC-024-integration-boundaries.md). Operations are [SPEC-025](SPEC-025-operations-deploy-and-scale.md).
 
 ## Authority
 
-**Informative preferred architecture** under [ADR-012](../adr/ADR-012-render-first-platform.md). Do not treat this as a conformance mandate to use Render.
+**Informative preferred architecture** is [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Cloudflare + Supabase). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded. Render topology in the sections below is **historical** — do not treat it as the implementation path. Do not treat any vendor as a conformance mandate.
 
 ## Architectural rule
 
@@ -143,11 +144,11 @@ Capability modules map to glossary **Capability** / **Module** terms; package na
 
 ## Object storage
 
-Evidence binaries and large artifacts MAY use S3-compatible object storage when needed. Metadata and financial truth remain in PostgreSQL. Object storage is not required for a donation-ledger MVP that stores only structured records.
+Evidence binaries and large artifacts SHOULD use **Supabase Storage** when following [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). S3-compatible object storage remains allowed. Metadata and financial truth remain in PostgreSQL. Object storage is not required for a donation-ledger MVP that stores only structured records.
 
 ## Non-goals
 
-- Mandating Render for conformance
+- Mandating Cloudflare, Supabase, or Render for conformance
 - Prescribing microservices
-- Requiring Key Value, workers, or Workflows at MVP
+- Requiring D1, KV, or Kubernetes at MVP
 - Replacing logical capability ownership with vendor product names

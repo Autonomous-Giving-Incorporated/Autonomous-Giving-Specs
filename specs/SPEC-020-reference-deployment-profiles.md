@@ -17,17 +17,18 @@ related_adrs:
 - ADR-001
 - ADR-010
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-020: Reference Deployment Profiles
 | Version | 2.0.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-006, SPEC-021 | Related ADRs | ADR-001, ADR-010, ADR-012 | Related contracts | None |
+| Dependencies | SPEC-002A, SPEC-006, SPEC-021 | Related ADRs | ADR-001, ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
-Publish **informative** reference deployment profiles so implementers share a clear MVP path without reading premature distribution into the platform canon. Version 2 aligns the recommended physical profile with the **Render-first** preferred stack ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-021](SPEC-021-preferred-application-stack.md)).
+Publish **informative** reference deployment profiles so implementers share a clear MVP path without reading premature distribution into the platform canon. The preferred hosted platform is **Cloudflare + Supabase** ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). Version 2 Profile B diagrams that assume Render are **historical** ([ADR-012](../adr/ADR-012-render-first-platform.md) superseded); do not treat Render as the implementation path.
 
 ## Scope
 
@@ -135,8 +136,8 @@ Phase 6  Async/scale extraction (workers/cron/KV/private only with evidence)
 
 ## Historical note (superseded preferred diagrams)
 
-Earlier v1 diagrams showed **GitHub Pages + generic single backend + optional object storage** as the illustrative MVP. That logical modular-monolith idea remains valid; the **preferred physical stack** is now Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI. Pilot notes mentioning Supabase, multi-host recipes, or Vercel Edge patterns are **historical or product-local**, not the platform preferred path.
+Earlier v1 diagrams showed **GitHub Pages + generic single backend**. Version 2 Profile B diagrams showed **Render + Next.js + PostgreSQL**. Both are **historical**. The preferred hosted platform is **Cloudflare + Supabase** ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded. Residual Render, Vercel, and multi-host notes are not the implementation path.
 
 ## Non-goals
 
-This document does not force Profile D, require Kubernetes, or condition conformance on Render. It replaces any implication that distributed infrastructure or multi-vendor BaaS is the reference MVP shape.
+This document does not force Profile D, require Kubernetes, or condition conformance on Cloudflare or Supabase. Render Profile B diagrams are historical. It replaces any implication that distributed infrastructure or a second application PaaS is the reference MVP shape.
