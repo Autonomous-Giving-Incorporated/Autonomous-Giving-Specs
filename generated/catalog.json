@@ -132,7 +132,7 @@
     {
       "id": "SPEC-016",
       "title": "Security and Trust Boundaries",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-016-security-and-trust-boundaries.md"
@@ -156,7 +156,7 @@
     {
       "id": "SPEC-019",
       "title": "Identity and Authorization",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "status": "proposed",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-019-identity-and-authorization.md"
@@ -164,7 +164,7 @@
     {
       "id": "SPEC-020",
       "title": "Reference Deployment Profiles",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-020-reference-deployment-profiles.md"
@@ -172,7 +172,7 @@
     {
       "id": "SPEC-021",
       "title": "Preferred Application Stack",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-021-preferred-application-stack.md"
@@ -180,7 +180,7 @@
     {
       "id": "SPEC-022",
       "title": "PostgreSQL Persistence and Domain Ownership",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-022-postgresql-persistence.md"
@@ -196,7 +196,7 @@
     {
       "id": "SPEC-024",
       "title": "Integration Boundaries",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-024-integration-boundaries.md"
@@ -204,7 +204,7 @@
     {
       "id": "SPEC-025",
       "title": "Operations Deploy Observability and Scale",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "specs/SPEC-025-operations-deploy-and-scale.md"

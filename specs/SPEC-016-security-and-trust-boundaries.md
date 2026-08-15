@@ -1,7 +1,7 @@
 ---
 id: SPEC-016
 title: Security and Trust Boundaries
-version: 1.1.0
+version: 1.2.0
 status: proposed
 authority: normative
 owner: Platform Architecture
@@ -19,6 +19,7 @@ related_adrs:
 - ADR-006
 - ADR-007
 - ADR-012
+- ADR-013
 related_contracts:
 - CONTRACT-003
 - CONTRACT-004
@@ -27,9 +28,9 @@ related_contracts:
 ---
 
 # SPEC-016: Security and Trust Boundaries
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Proposed |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002, SPEC-006 | Related ADRs | ADR-004, ADR-006, ADR-007, ADR-012 | Related contracts | CONTRACT-003–006 |
+| Dependencies | SPEC-002, SPEC-006 | Related ADRs | ADR-004, ADR-006, ADR-007, ADR-012, ADR-013 | Related contracts | CONTRACT-003–006 |
 
 ## Purpose
 Define shared trust boundaries so implementations do not invent incompatible security controls at platform edges.
@@ -85,7 +86,7 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 
 ## Preferred deployment security notes (informative)
 
-When following [ADR-012](../adr/ADR-012-render-first-platform.md): Render hosts the web service and PostgreSQL; Clerk authenticates; AGI authorizes; Stripe processes payments; Resend delivers email. CSRF/XSS mitigations follow Next.js and framework defaults plus secure cookie/session practices from the IdP. Rate limiting SHOULD protect auth and webhook endpoints as practical.
+When following [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md): Cloudflare hosts Workers / Pages / static assets (Durable Objects and Queues/Cron Triggers only as needed); Supabase provides Auth, PostgreSQL, and Storage; AGI authorizes; Stripe processes payments if still required; Resend delivers email if still required. Clerk authenticates only if a product still requires it. CSRF/XSS mitigations follow Next.js and framework defaults plus secure cookie/session practices from the IdP. Rate limiting SHOULD protect auth and webhook endpoints as practical. [ADR-012](../adr/ADR-012-render-first-platform.md) Render hosting notes are **historical**.
 
 ## Non-goals
 This specification does not mandate a particular IdP, KMS, network mesh, service mesh, Kubernetes, or cloud provider for conformance. It does not replace product threat models for each implementation repository.

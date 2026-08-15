@@ -22,7 +22,7 @@ Authoritative **runtime evidence** lives in Portofolio-Signals / Fund-Intel [`do
 | Director JWT (`org_hacker_dojo`) | OBSERVED — Fund-Intel #72 closed |
 | Public HTTPS (Cloudflare quick tunnel) | OBSERVED ephemeral — #71 closed |
 | Seed-loop allocate→proof→packet | OBSERVED — `npm run accept:seed-loop` |
-| Durable named host (Render/Fly/…) | Recipe READY in Portofolio-Signals; public deploy optional operator. **Platform preferred host for new work:** Render ([ADR-012](../../adr/ADR-012-render-first-platform.md)) |
+| Durable named host (Render/Fly/…) | Recipe READY in Portofolio-Signals; public deploy optional operator. **Platform preferred host for new work:** Cloudflare + Supabase ([ADR-013](../../adr/ADR-013-cloudflare-workers-public-host.md)); Render is historical |
 | Live every.org webhook | **Open** — Portofolio-Signals #73 |
 | Full director browser sign-off | **Open** — #74 remainder |
 

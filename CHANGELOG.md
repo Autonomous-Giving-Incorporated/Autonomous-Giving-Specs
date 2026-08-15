@@ -5,7 +5,16 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ## [Unreleased]
 
-### Added
+### Changed
+
+- **SPEC-020** v2.1.0: Profile B (recommended), Profile C, and Evolution Phase 1 now diagram Cloudflare + Supabase (ADR-013). Render Profile B preserved only under **Historical (superseded)**.
+- **SPEC-021** v1.1.0: Baseline topology and optional escalation are Cloudflare Workers/Pages + Queues/Cron/Durable Objects + Supabase. Render web/worker/cron/KV/Workflows text is labeled historical.
+- **SPEC-025** v1.1.0: Operations contract is Cloudflare + Supabase (env catalog, deploy, backups, cron, scale). Render Blueprint section demoted to historical.
+- **SPEC-022** v1.1.0: Preferred datastore is Supabase PostgreSQL, not Render PostgreSQL. D1 remains non-canonical.
+- **SPEC-016** v1.2.0 / **SPEC-019** v1.3.0 / **SPEC-024** v1.1.0: Preferred identity is Supabase Auth; Clerk only if a product still requires it. Preferred deploy security notes follow ADR-013.
+- Moved [`render.yaml.example`](docs/historical/render.yaml.example) to `docs/historical/` and labeled **do-not-use** (pointer to ADR-013). No Wrangler/Pages deployable added to this repo.
+- Architecture overview, roadmap, recovery runbook, `.env.example`, docs index, and leftover “preferred Render” notes in superpowers plans: aligned to Cloudflare + Supabase. ADR-012 file retained as superseded.
+- README preferred physical stack and reference deployment: Cloudflare + Supabase (ADR-013); Render is not the path.
 
 - **ADR-013** Cloudflare and Supabase Hosted Platform (accepted, v1.1.0): canonical stack is Cloudflare (Workers, static assets/Pages, Durable Objects if needed, Queues/Cron Triggers) + Supabase (Auth, PostgreSQL, Storage). Allocation middleware, webhooks, and Postgres-backed services run as Workers talking to Supabase. **Supersedes ADR-012.** Stripe/Resend/OpenAI/Clerk remain only if still required.
 - **ADR-012** Render-First Platform and PostgreSQL Consolidation (superseded 2026-08-13 by ADR-013; file retained).
@@ -14,16 +23,15 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 - **SPEC-023** Financial Ledger Invariants (normative): append-only finance, webhook idempotency, state separation, AI advisory limits.
 - **SPEC-024** Integration Boundaries (informative): Clerk / Stripe / Resend / OpenAI.
 - **SPEC-025** Operations, Deploy, Observability, and Scale (informative): env catalog, environments, Blueprint, jobs, cron, backups, scale triggers.
-- [Engineering onboarding](docs/onboarding.md), [recovery runbook](docs/recovery-runbook.md), [`.env.example`](.env.example), [`render.yaml.example`](render.yaml.example).
+- [Engineering onboarding](docs/onboarding.md), [recovery runbook](docs/recovery-runbook.md), [`.env.example`](.env.example), historical [`render.yaml.example`](docs/historical/render.yaml.example).
 - Glossary TERM-021–024 (Preferred Stack, Ledger Entry, Webhook Event, Job).
 - Roadmap **Next recommended steps** (implementation order, exit criteria, immediate checklist) linked from README, onboarding, and implementation guidance.
 - Product design: [allocation middleware](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (every.org-first, pot hierarchy, exception-only ops).
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — informative map of Portofolio-Signals (Fund-Intel) pilot + suite onboarding (refreshed 2026-08-08).
 - [Suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md) — post-#112 operator workstreams (pack activate, people MFA, pilot #73/#74).
 
-### Changed
+### Changed (prior ADR-013 landing)
 
-- README preferred physical stack and reference deployment: Cloudflare + Supabase (ADR-013); Render is not the path.
 - `docs/implementation-guidance.md` and `docs/onboarding.md`: Cloudflare + Supabase; Workers (or Worker + Queue) talk to Supabase; ADR-012 superseded.
 - SPEC-020 / SPEC-021 / SPEC-002A / Constitution: preferred hosted platform is ADR-013; ADR-012 and Render diagrams are historical.
 - Glossary TERM-021: Preferred Stack is Cloudflare + Supabase (ADR-013).

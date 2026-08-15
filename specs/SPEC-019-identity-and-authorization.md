@@ -1,7 +1,7 @@
 ---
 id: SPEC-019
 title: Identity and Authorization
-version: 1.2.0
+version: 1.3.0
 status: proposed
 authority: normative
 owner: Platform Architecture
@@ -15,18 +15,19 @@ related_adrs:
 - ADR-004
 - ADR-006
 - ADR-012
+- ADR-013
 related_contracts:
 - CONTRACT-003
 - CONTRACT-006
 ---
 
 # SPEC-019: Identity and Authorization
-| Version | 1.2.0 | Owner | Platform Architecture | Status | Proposed |
+| Version | 1.3.0 | Owner | Platform Architecture | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-006, SPEC-016 | Related ADRs | ADR-004, ADR-006, ADR-012 | Related contracts | CONTRACT-003, CONTRACT-006 |
+| Dependencies | SPEC-002A, SPEC-006, SPEC-016 | Related ADRs | ADR-004, ADR-006, ADR-012, ADR-013 | Related contracts | CONTRACT-003, CONTRACT-006 |
 
 ## Purpose
-Define identity and authorization expectations at platform trust boundaries without requiring a single vendor IAM stack for conformance. The **preferred** identity provider for new product work is Clerk ([SPEC-024](SPEC-024-integration-boundaries.md), [ADR-012](../adr/ADR-012-render-first-platform.md)).
+Define identity and authorization expectations at platform trust boundaries without requiring a single vendor IAM stack for conformance. The **preferred** identity provider for new hosted-platform work is **Supabase Auth** ([SPEC-024](SPEC-024-integration-boundaries.md), [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)). Clerk remains allowed only if a product still requires it. [ADR-012](../adr/ADR-012-render-first-platform.md) Clerk-default notes are **historical**.
 
 ## Scope
 Human and workload principals that produce or consume platform events and contracts. End-user UI session design is out of scope except where it produces Approval or Notification side effects.
@@ -45,10 +46,10 @@ Human and workload principals that produce or consume platform events and contra
 
 | Concern | Owner |
 | --- | --- |
-| Authentication, sessions, OAuth, IdP MFA | **Clerk** (preferred) or equivalent IdP |
+| Authentication, sessions, OAuth, IdP MFA | **Supabase Auth** (preferred) or Clerk / equivalent IdP if still required |
 | Authorization, roles, org membership policy, financial permissions, admin scope | **AGI application** (PostgreSQL-backed policies) |
 
-Implementations MUST NOT treat “authenticated with IdP” as sufficient for financial or administrative actions. Map stable IdP subject identifiers (e.g. `clerk_user_id`) to application principals; do **not** use mutable email as the sole foreign key for domain records ([SPEC-024](SPEC-024-integration-boundaries.md)).
+Implementations MUST NOT treat “authenticated with IdP” as sufficient for financial or administrative actions. Map stable IdP subject identifiers (e.g. `supabase_user_id`, or `clerk_user_id` if Clerk is still required) to application principals; do **not** use mutable email as the sole foreign key for domain records ([SPEC-024](SPEC-024-integration-boundaries.md)).
 
 ## Requirements
 1. Every Approval record MUST identify `approvedBy` as a human principal reference suitable for audit ([EVENT-004](../events/EVENT-004-approval-granted.md)).
@@ -74,4 +75,4 @@ Implementations MUST NOT treat “authenticated with IdP” as sufficient for fi
 | Send Notification | Transparency/evidence capability with consent basis |
 
 ## Non-goals
-This specification does not standardize OAuth grant types, enterprise SSO onboarding beyond the preferred Clerk profile, Kubernetes service accounts, or service meshes. Conformance does not require Clerk; the preferred path does.
+This specification does not standardize OAuth grant types, enterprise SSO onboarding beyond the preferred Supabase Auth profile, Kubernetes service accounts, or service meshes. Conformance does not require Supabase Auth or Clerk; the preferred hosted path uses Supabase Auth.

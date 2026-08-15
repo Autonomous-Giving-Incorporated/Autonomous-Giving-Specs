@@ -1,7 +1,7 @@
 ---
 id: SPEC-025
 title: Operations Deploy Observability and Scale
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -14,21 +14,22 @@ related_specs:
 - SPEC-024
 related_adrs:
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-025: Operations, Deploy, Observability, and Scale
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-020, SPEC-021, SPEC-023 | Related ADRs | ADR-012 | Related contracts | None |
+| Dependencies | SPEC-020, SPEC-021, SPEC-023 | Related ADRs | ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
-Define preferred environment variables, Render deployment contract, environments, observability, backups/recovery, async jobs, cron, and scale triggers so deployment and operations are not inferred ad hoc.
+Define preferred environment variables, Cloudflare + Supabase deployment contract, environments, observability, backups/recovery, async jobs, cron, and scale triggers so deployment and operations are not inferred ad hoc.
 
 ## Authority
 
-**Informative** preferred operations contract under [ADR-012](../adr/ADR-012-render-first-platform.md). Financial idempotency remains normative via [SPEC-023](SPEC-023-financial-ledger-invariants.md).
+**Informative** preferred operations contract under [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). [ADR-012](../adr/ADR-012-render-first-platform.md) (Render-first) is superseded. Financial idempotency remains normative via [SPEC-023](SPEC-023-financial-ledger-invariants.md).
 
 ---
 
@@ -40,17 +41,25 @@ Never commit real secrets. Maintain a product-repo `.env.example` aligned to thi
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
-| `DATABASE_URL` | PostgreSQL connection string | Yes | all | Render Postgres / local | Rotate credentials on leak; update Render env |
+| `DATABASE_URL` | PostgreSQL connection string | Yes | all | Supabase Postgres / local | Rotate credentials on leak; update Worker/Supabase secrets |
 
-### AUTH (Clerk)
+### AUTH (Supabase — preferred)
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Client Clerk key | No | all | Clerk | Rotate via Clerk dashboard |
-| `CLERK_SECRET_KEY` | Server Clerk API | Yes | all | Clerk | Rotate immediately on leak |
+| `SUPABASE_URL` | Project URL | No | all | Supabase | Rotate via project settings if leaked with keys |
+| `SUPABASE_ANON_KEY` | Public/anon key | No | all | Supabase | Rotate on leak |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only service role | Yes | server/Worker only | Supabase | Rotate immediately on leak; never expose to browser |
+
+### AUTH (Clerk — only if a product still requires it)
+
+| Name | Purpose | Secret | Envs | Owner | Rotation |
+| --- | --- | --- | --- | --- | --- |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Client Clerk key | No | if Clerk used | Clerk | Rotate via Clerk dashboard |
+| `CLERK_SECRET_KEY` | Server Clerk API | Yes | if Clerk used | Clerk | Rotate immediately on leak |
 | `CLERK_WEBHOOK_SECRET` | Verify Clerk webhooks | Yes | staging/prod when used | Clerk | Rotate with webhook endpoint |
 
-### STRIPE
+### STRIPE (if the product still requires Stripe)
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
@@ -58,14 +67,14 @@ Never commit real secrets. Maintain a product-repo `.env.example` aligned to thi
 | `STRIPE_WEBHOOK_SECRET` | Verify Stripe webhooks | Yes | all with webhooks | Stripe | Per endpoint |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Client Stripe key | No | all | Stripe | Test vs live keys |
 
-### RESEND
+### RESEND (if the product still requires email)
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
 | `RESEND_API_KEY` | Send email | Yes | all that send mail | Resend | Rotate on leak |
 | `EMAIL_FROM` | Default From address | No | all that send mail | Operator | Domain verification |
 
-### OPENAI / AI
+### OPENAI / AI (if the product still requires AI)
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
@@ -79,18 +88,9 @@ Never commit real secrets. Maintain a product-repo `.env.example` aligned to thi
 | `APP_URL` | Canonical public base URL | No | all | Operator | Update on domain change |
 | `NODE_ENV` | runtime mode | No | all | App | N/A |
 
-### RENDER-SPECIFIC
+Do not invent unused vendor env vars. Do not add Render-injected `RENDER` / Blueprint `fromDatabase` variables as the preferred path.
 
-Document only variables actually required by the service. Common patterns:
-
-| Name | Purpose | Secret |
-| --- | --- | --- |
-| Render-provided `RENDER` / service metadata | Platform introspection | No |
-| Linked `DATABASE_URL` from Blueprint | Injected by Render when DB linked | Yes |
-
-Do not invent unused vendor env vars.
-
-Canonical example files: [`.env.example`](../.env.example), illustrative Blueprint: [`render.yaml.example`](../render.yaml.example).
+Canonical example file: [`.env.example`](../.env.example). Historical Render Blueprint (do not use): [`docs/historical/render.yaml.example`](../docs/historical/render.yaml.example).
 
 ---
 
@@ -98,9 +98,9 @@ Canonical example files: [`.env.example`](../.env.example), illustrative Bluepri
 
 | | LOCAL | STAGING | PRODUCTION |
 | --- | --- | --- | --- |
-| Database | Local Postgres or disposable Render DB | Isolated Render Postgres | Production Render Postgres |
+| Database | Local Postgres or local Supabase | Isolated Supabase project/branch | Production Supabase PostgreSQL |
+| Auth | Local Supabase Auth (or Clerk only if still required) | Staging Supabase Auth | Production Supabase Auth |
 | Stripe | Test mode keys | Test mode keys | Live mode keys |
-| Clerk | Dev instance | Staging instance | Production instance |
 | Resend | Test/dev domain or log-only | Staging sender domain | Production sender domain |
 | AI | Dev keys; spend limits | Staging keys; limits | Production keys; limits |
 | Migrations | Dev applies freely | Apply on deploy | Controlled apply on deploy |
@@ -109,31 +109,37 @@ Canonical example files: [`.env.example`](../.env.example), illustrative Bluepri
 
 ---
 
-## 3. Render Blueprint (MVP)
+## 3. Cloudflare + Supabase deploy (MVP)
 
 MVP models **only**:
 
-1. One Render **web service** (Next.js)
-2. One Render **PostgreSQL** database
+1. Cloudflare **Workers** and/or **Pages / static assets** (Next.js)
+2. One **Supabase** project: Auth, PostgreSQL, Storage
 
-Do **not** automatically add worker, cron, Key Value, or private service without product evidence.
+Do **not** automatically add Durable Objects, extra Queues, or Cron Triggers without product evidence—except that deferred, webhook, and retry work belongs on Queues / Cron Triggers when that work exists.
+
+Wrangler/Pages configuration lives in the **product** repository. This specs repository has **no** `wrangler.toml`, Pages project, or other deployable ([ADR-001](../adr/ADR-001-repository-strategy.md), [ADR-004](../adr/ADR-004-repository-ownership.md), [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)).
 
 ### Documented contract
 
 | Topic | Preference |
 | --- | --- |
-| Repository | GitHub connected to Render |
+| Repository | GitHub connected to Cloudflare (Workers / Pages) |
 | Branch | `main` → production; `staging` or preview as configured |
-| Build command | e.g. `npm ci && npm run build` |
-| Start command | e.g. `npm run start` |
+| Build / deploy | Product-repo Wrangler/Pages pipeline (e.g. `npm ci &&` documented build) |
 | Health check | HTTP path e.g. `/api/health` |
-| Env linking | Blueprint `envVars` + dashboard secrets |
-| Database | Blueprint `databases` → `DATABASE_URL` fromDB |
+| Env / secrets | Cloudflare Worker/Pages secrets + Supabase dashboard; never commit secrets |
+| Database | Supabase PostgreSQL → `DATABASE_URL` |
+| Auth / storage | Same Supabase project |
 | Auto deploy | On push to configured branch |
 | Migrations | Explicit release step: `npm run db:migrate` (or equivalent) in build/pre-deploy—not silent ORM sync |
-| Staging vs prod | Separate Render services/DBs and secret sets |
+| Staging vs prod | Separate Cloudflare envs and Supabase projects (or documented branches) and secret sets |
 
-See [`render.yaml.example`](../render.yaml.example).
+Do **not** start new Render services. Do **not** copy the historical Blueprint into a new product as the preferred path.
+
+### Historical (superseded) — Render Blueprint
+
+ADR-012 modeled one Render web service + one Render PostgreSQL via `render.yaml`. That path is **superseded**. The leftover file is [`docs/historical/render.yaml.example`](../docs/historical/render.yaml.example) and is labeled do-not-use.
 
 ---
 
@@ -164,7 +170,7 @@ Candidates: large AI jobs, email batches, report generation, reconciliation, enr
 queued → running → succeeded | failed | cancelled
 ```
 
-If a Background Worker is not yet required, implement the **same contract** in-process or via deferred tasks so extraction later is mechanical.
+If a Queue consumer is not yet required, implement the **same contract** in-process or via deferred tasks so extraction later is mechanical. When work is deferred, prefer **Cloudflare Queues** (Worker + Queue) talking to Supabase—not a Render Background Worker.
 
 ---
 
@@ -192,7 +198,7 @@ Do not schedule without a documented operational reason. Each cron job specifica
 | Scheduled donor communications | Consent-respecting campaigns |
 | Data quality checks | Orphaned rows, invariant scans |
 
-Prefer **Render Cron Jobs** when schedule is required; until then, operator-run scripts may suffice.
+Prefer **Cloudflare Cron Triggers** when schedule is required; until then, operator-run scripts may suffice. Do not add Render Cron Jobs as the preferred path.
 
 ---
 
@@ -224,7 +230,7 @@ Structured logs with:
 Developers MUST be able to locate a failed flow across:
 
 ```text
-request → Stripe → webhook → PostgreSQL → email
+request → Stripe → Worker/Queue webhook → Supabase PostgreSQL → email
 ```
 
 using correlation of request id, Stripe event id, `webhook_events` row, donation/payment ids, and `notification_events` status.
@@ -235,7 +241,7 @@ using correlation of request id, Stripe event id, `webhook_events` row, donation
 
 | Topic | Preference |
 | --- | --- |
-| Backups | Rely on Render PostgreSQL automated backups; confirm plan features for the chosen tier |
+| Backups | Rely on Supabase PostgreSQL automated backups; confirm plan features for the chosen tier |
 | PITR | Use point-in-time recovery when available on the plan; document RPO/RTO targets operationally |
 | Recovery objectives | Define product RPO/RTO (example targets: RPO ≤ 24h for MVP tier; tighten with evidence) |
 | Restore procedure | Restore to new instance → verify → cut over; see [recovery runbook](../docs/recovery-runbook.md) |
@@ -250,15 +256,15 @@ using correlation of request id, Stripe event id, `webhook_events` row, donation
 
 | Stage | Topology |
 | --- | --- |
-| **BASELINE** | 1 web service + Postgres |
-| **ADD WORKER WHEN** | Sync tasks regularly exceed latency budget; durable retries needed |
-| **ADD KEY VALUE WHEN** | Shared cache/coordination has measurable benefit |
-| **ADD PRIVATE SERVICE WHEN** | Independent lifecycle/scaling/security boundary justified |
+| **BASELINE** | Workers / Pages / static assets + Supabase Postgres |
+| **ADD QUEUE WHEN** | Sync tasks regularly exceed latency budget; durable retries or webhook deferral needed |
+| **ADD CRON WHEN** | Documented operational schedule with owner and failure visibility |
+| **ADD DURABLE OBJECT WHEN** | Live coordination is required |
 | **ADD READ REPLICA WHEN** | Read workload demonstrates DB pressure |
 | **ADD SPECIALIZED VECTOR DB WHEN** | pgvector no longer meets measured workload |
 | **ADD MICROSERVICE WHEN** | Ownership, scaling, security, or failure isolation provides measurable value |
 
-**No speculative infrastructure.**
+**No speculative infrastructure.** Do not add Render workers, D1 as canonical store, Kubernetes, or a service mesh as the scale path.
 
 ---
 
@@ -266,11 +272,11 @@ using correlation of request id, Stripe event id, `webhook_events` row, donation
 
 Aligned with [SPEC-016](SPEC-016-security-and-trust-boundaries.md):
 
-- least privilege DB users and Render service access
-- secrets only in Render env / secret store
+- least privilege DB users and Cloudflare / Supabase access
+- secrets only in Cloudflare secrets / Supabase dashboard (never in this repo)
 - webhook verification mandatory for Stripe
-- parameterized queries via Drizzle/SQL (no string-concat SQL)
-- application authorization after Clerk authentication
+- parameterized queries via ORM/SQL (no string-concat SQL)
+- application authorization after Supabase Auth (or Clerk if still required)
 - admin access audited
 - rate limiting at edge/app for auth and webhooks as practical
 - dependency scanning in CI
@@ -283,3 +289,4 @@ Aligned with [SPEC-016](SPEC-016-security-and-trust-boundaries.md):
 - Mandating a specific APM vendor
 - Requiring multi-region active-active for MVP
 - Defining every product’s exact RPO/RTO numbers as platform law
+- Shipping Wrangler or Pages config from this specifications repository

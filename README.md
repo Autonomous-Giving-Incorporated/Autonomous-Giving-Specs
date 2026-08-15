@@ -45,7 +45,7 @@ External if still required: Stripe · Resend · OpenAI · Clerk
 | C Production | Optional Durable Objects, Queues, Cron, scale-out of the same modular unit |
 | D Enterprise | Optional extraction, streaming, multi-region |
 
-Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md). SPEC-020/021 Render diagrams are historical; follow ADR-013.
+Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](specs/SPEC-020-reference-deployment-profiles.md), [SPEC-021](specs/SPEC-021-preferred-application-stack.md), [implementation guidance](docs/implementation-guidance.md), [onboarding](docs/onboarding.md). SPEC-020/021 recommended diagrams match ADR-013; residual Render text is labeled historical.
 
 **No Kubernetes, event broker, service mesh, Render app, or D1 is required for a conformant public suite or MVP.**
 

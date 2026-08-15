@@ -5,7 +5,7 @@
 - [Release process](release-process.md) defines release governance and tag conventions.
 - [Traceability matrix](traceability.md) maps lifecycle stages to their governing artifacts.
 - [Implementation consumption](implementation-consumption.md) defines how products pin and consume the canon.
-- [Implementation guidance](implementation-guidance.md) defines Render-first modular-monolith MVP guidance and extraction criteria.
+- [Implementation guidance](implementation-guidance.md) defines Cloudflare + Supabase modular-monolith MVP guidance and extraction criteria.
 - [Engineering onboarding](onboarding.md) is the short executable preferred-path checklist.
 - [Recovery runbook](recovery-runbook.md) outlines backup, restore, webhook replay, and financial reconciliation.
 - [Next recommended implementation steps](../roadmap/specification-roadmap.md#next-recommended-steps-implementation) orders product work after this specs consolidation.

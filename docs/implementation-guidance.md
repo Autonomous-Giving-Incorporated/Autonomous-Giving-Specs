@@ -30,7 +30,7 @@ Public suite (workbench, Portfolio Signals public, Impact Relay public) and allo
 | Payments | Stripe, if still required |
 | Email | Resend, if still required |
 | AI | OpenAI via provider abstraction, if still required |
-| IaC | Product repos: Wrangler/Pages + Supabase project. This specs repo has neither. Residual `render.yaml.example` is historical (ADR-012). |
+| IaC | Product repos: Wrangler/Pages + Supabase project. This specs repo has neither. Residual [`docs/historical/render.yaml.example`](historical/render.yaml.example) is superseded (ADR-012). |
 
 **Not required for MVP:** Kubernetes, event broker, service mesh, Render, D1, multiple databases, per-capability containers, separate vector DB.
 
@@ -74,7 +74,7 @@ Follow [SPEC-022](../specs/SPEC-022-postgresql-persistence.md):
 ## Environment and deploy
 
 - Env catalog: [SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md), [`.env.example`](../.env.example)
-- Host: [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Wrangler/Pages in the product repo; Supabase project). [`render.yaml.example`](../render.yaml.example) is historical.
+- Host: [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Wrangler/Pages in the product repo; Supabase project). [`docs/historical/render.yaml.example`](historical/render.yaml.example) is superseded.
 - Onboarding: [onboarding.md](onboarding.md)
 - Recovery: [recovery-runbook.md](recovery-runbook.md)
 

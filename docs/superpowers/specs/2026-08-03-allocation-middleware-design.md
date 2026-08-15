@@ -152,7 +152,7 @@ Platform vocabulary (Need, Allocation, Evidence, …) remains authoritative in S
 Modular monolith (SPEC-020 Profile B):
 
 ```text
-Web UI (historical: GitHub Pages; preferred new product UI: Next.js on Render)
+Web UI (historical: GitHub Pages / Next.js on Render; preferred new product UI: Next.js on Cloudflare + Supabase per ADR-013)
         ↓
 Single backend
   Connectors | Pots | Allocations | Exceptions | Proof | Packet | Auth

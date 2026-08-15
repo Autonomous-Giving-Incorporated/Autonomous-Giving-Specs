@@ -1,7 +1,7 @@
 ---
 id: SPEC-022
 title: PostgreSQL Persistence and Domain Ownership
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -15,17 +15,18 @@ related_specs:
 - SPEC-024
 related_adrs:
 - ADR-012
+- ADR-013
 related_contracts: []
 ---
 
 # SPEC-022: PostgreSQL Persistence and Domain Ownership
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-004, SPEC-021, SPEC-023 | Related ADRs | ADR-012 | Related contracts | None |
+| Dependencies | SPEC-004, SPEC-021, SPEC-023 | Related ADRs | ADR-012, ADR-013 | Related contracts | None |
 
 ## Purpose
 
-Make **Render PostgreSQL** the preferred canonical application datastore and define relational domain ownership, design rules, and Drizzle migration practice so implementers do not invent persistence boundaries.
+Make **Supabase PostgreSQL** the preferred canonical application datastore and define relational domain ownership, design rules, and explicit-migration practice so implementers do not invent persistence boundaries. [ADR-012](../adr/ADR-012-render-first-platform.md) Render PostgreSQL is **historical**. Do not migrate canonical application data to Cloudflare D1.
 
 ## Scope
 
@@ -33,13 +34,13 @@ Application data ownership, preferred entity set, database design guidance, exte
 
 ## Authority
 
-**Informative preferred persistence architecture.** Financial append-only and idempotency rules in SPEC-023 remain normative regardless of store technology.
+**Informative preferred persistence architecture** under [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). Financial append-only and idempotency rules in SPEC-023 remain normative regardless of store technology.
 
 ## Sources of truth (split ownership)
 
 | Concern | Source of truth | AGI PostgreSQL role |
 | --- | --- | --- |
-| Identity / sessions | **Clerk** | Store application user profile, membership, and stable `clerk_user_id` references |
+| Identity / sessions | **Supabase Auth** (Clerk only if still required) | Store application user profile, membership, and stable IdP subject references (`supabase_user_id` or `clerk_user_id`) |
 | Payment processor state | **Stripe** | Store internal financial/event records linked to Stripe IDs; never treat browser callbacks as settlement |
 | Application domain | **PostgreSQL** | Canonical AGI persistence for orgs, programs, donations, ledger, jobs, audit |
 | AI outputs | Model providers | Store outputs with provenance; never silently promote to financial truth |
@@ -50,7 +51,7 @@ Do not over-normalize prematurely. Prefer clear tables for canonical fields. Ent
 
 | Entity | Responsibility |
 | --- | --- |
-| `users` | Application profile linked to Clerk user id |
+| `users` | Application profile linked to Supabase Auth user id (or Clerk user id if still required) |
 | `organizations` | Operating or receiving organizations |
 | `organization_memberships` | Membership + application roles (authorization data) |
 | `donors` | Donor records (PII minimized; classification per SPEC-017) |
@@ -169,4 +170,4 @@ Use JSONB **only** for:
 
 - Freezing a single physical DDL as the only valid schema forever
 - Requiring every listed entity on day one of every product
-- Mandating Drizzle for conformance (it is the preferred choice under ADR-012)
+- Mandating Drizzle for conformance (explicit SQL migrations are preferred under ADR-013; Drizzle remains acceptable)

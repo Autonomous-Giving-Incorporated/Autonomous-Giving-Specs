@@ -1,6 +1,10 @@
-# Illustrative Render Blueprint for AGI preferred MVP (SPEC-020 Profile B, SPEC-025).
-# Copy to product repository as `render.yaml` and adjust names, repo, and commands.
-# MVP: one web service + one PostgreSQL. No worker/cron/KV unless justified.
+# HISTORICAL / SUPERSEDED — do not use as the preferred AGI MVP.
+# ADR-013 (accepted) superseded ADR-012. Preferred hosted stack is Cloudflare + Supabase.
+# Do not start new Render services from this file. Do not add wrangler.toml to this specs repo.
+# See: adr/ADR-013-cloudflare-workers-public-host.md
+#
+# Original title (historical): Illustrative Render Blueprint for AGI preferred MVP
+# (SPEC-020 Profile B, SPEC-025 under ADR-012). Kept only so prior Render text remains findable.
 
 databases:
   - name: agi-postgres
