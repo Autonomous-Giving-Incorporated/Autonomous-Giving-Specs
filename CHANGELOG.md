@@ -93,7 +93,7 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 - [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08 evening): people matrix (Ed = HD director only; Qi + primary master_admin); HD data gate #111/#112; pack activate still PENDING; links to continuation plan.
 - [Specification roadmap](roadmap/specification-roadmap.md): suite onboarding path + continuation plan pointer; people access note.
-- [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08): Client Onboarding Pack **code MERGED** ([Portofolio-Signals #104](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/104)); platform apply still PENDING; suite hub + CURRENT-STATE links use Portofolio-Signals; C/B/D dry-runs OBSERVED; every.org #73/#74 remain open.
+- [Implementation progress](docs/superpowers/IMPLEMENTATION-PROGRESS.md) (2026-08-08): Client Onboarding Pack **code MERGED** ([Portfolio-Signals #104](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals)); platform apply still PENDING; suite hub + CURRENT-STATE links use Portfolio-Signals; C/B/D dry-runs OBSERVED; every.org #73/#74 remain open.
 - [Specification roadmap](roadmap/specification-roadmap.md): suite onboarding path includes document pack; Portofolio-Signals naming.
 - [Pilot hosting plan](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md): refreshed status table; removed accidental shell-paste tail; linked closed #71/#72 and open #73/#74.
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) and [MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md): status lines aligned to pilot OBSERVED vs every.org pending.

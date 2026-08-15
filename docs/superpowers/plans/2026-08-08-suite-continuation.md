@@ -1,8 +1,8 @@
 # Suite continuation plan (informative)
 
 > **Status:** Draft 2026-08-08. Tracks operator- and implementation-facing work after Portofolio-Signals #104–#112.  
-> **Not a normative SPEC.** Runtime evidence remains Portofolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md).  
-> **Map:** [IMPLEMENTATION-PROGRESS](../IMPLEMENTATION-PROGRESS.md) · suite hub [SUITE-ONBOARDING](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
+> **Not a normative SPEC.** Runtime evidence remains Portfolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/CURRENT-STATE.md).  
+> **Map:** [IMPLEMENTATION-PROGRESS](../IMPLEMENTATION-PROGRESS.md) · suite hub [SUITE-ONBOARDING](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
 
 **Goal:** Finish commercial onboarding activation on platform Supabase, complete people MFA, and close the allocation pilot operator path (every.org + director sign-off)—without reopening `production_import` or outreach.
 
@@ -46,7 +46,7 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 
 **Owner:** operator with Supabase access to `utdioxwiskzatwoejgiu`  
 **Blocked on:** `supabase login` or `SUPABASE_ACCESS_TOKEN`  
-**Implementation plan:** Portofolio-Signals [`plans/2026-08-08-platform-activate-and-tenant-harden.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-platform-activate-and-tenant-harden.md)  
+**Implementation plan:** Portfolio-Signals [`plans/2026-08-08-platform-activate-and-tenant-harden.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-platform-activate-and-tenant-harden.md)  
 **Script:** `scripts/platform/activate-onboarding-pack.sh`
 
 - [x] **A1.** `supabase login` (or export access token); `supabase link --project-ref utdioxwiskzatwoejgiu`
@@ -92,7 +92,7 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 ## Workstream D — Allocation pilot close (#73 / #74)
 
 **Depends on:** director login; preferably durable HTTPS for production webhook  
-**Issues:** [Portofolio-Signals #73](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/73), [#74](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/74)
+**Issues:** [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74)
 
 - [ ] **D1.** (Optional but recommended) Durable named host — `ALLOCATION-DURABLE-HOST.md` + `npm run preflight:durable`; set `PUBLIC_BASE_URL`, `ALLOW_OPERATOR_TOKEN_FALLBACK=0`
 - [ ] **D2.** Or temporary cloudflared tunnel for a controlled test window
@@ -109,8 +109,8 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 
 | Item | When |
 | --- | --- |
-| Custom SMTP ([PLATFORM-AUTH-SMTP.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/PLATFORM-AUTH-SMTP.md)) | Invite volume / rate limits painful |
-| Secret rotation ([OPERATOR-SECRET-HYGIENE.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/OPERATOR-SECRET-HYGIENE.md)) | After share or offboard |
+| Custom SMTP ([PLATFORM-AUTH-SMTP.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/PLATFORM-AUTH-SMTP.md)) | Invite volume / rate limits painful |
+| Secret rotation ([OPERATOR-SECRET-HYGIENE.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/OPERATOR-SECRET-HYGIENE.md)) | After share or offboard |
 | Synthetic full B provision (non-HD client) | Sales path practice; do not re-activate HD |
 | Paired FI + IR second-tenant exercise | After D dry-run if sales needs demo clone |
 | AGI Project #3 / PLATFORM.md narrative sync | After pack OBSERVED or pilot close |

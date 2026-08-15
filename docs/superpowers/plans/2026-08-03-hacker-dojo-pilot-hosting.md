@@ -1,7 +1,7 @@
 # Hacker Dojo Pilot Hosting Implementation Plan
 
-> **Status (2026-08-08):** Seed-on-boot, pilot scripts, director JWT, local Node host, ephemeral public HTTPS, and seed-loop acceptance are **landed in Portofolio-Signals**. HD director membership: `ed@hackerdojo.org` on `org_hacker_dojo` only. Remaining operator steps: durable named host (optional), **live every.org webhook** ([#73](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/73)), full director browser sign-off ([#74](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/74)). Suite next steps: [suite continuation](2026-08-08-suite-continuation.md).  
-> Operator runbook: [HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md) · Evidence: [CURRENT-STATE.md](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)
+> **Status (2026-08-08):** Seed-on-boot, pilot scripts, director JWT, local Node host, ephemeral public HTTPS, and seed-loop acceptance are **landed in Portfolio-Signals**. HD director membership: `ed@hackerdojo.org` on `org_hacker_dojo` only. Remaining operator steps: durable named host (optional), **live every.org webhook** ([#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20); historical #73), full director browser sign-off (same [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20); historical #74). Suite next steps: [suite continuation](2026-08-08-suite-continuation.md).  
+> Operator runbook: [HACKER-DOJO-ALLOCATION-PILOT.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/HACKER-DOJO-ALLOCATION-PILOT.md) · Evidence: [CURRENT-STATE.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/CURRENT-STATE.md)
 
 **Goal:** Make the Hacker Dojo allocation pilot runnable with seed-on-boot, deploy/smoke scripts, director auth, and a clear operator checklist—without requiring live every.org data for the first demo path.
 
@@ -19,8 +19,8 @@
 | `pilot:smoke` / env checklist | **Done** | Local + HTTPS smoke PASS |
 | Local Node host (no Docker) | **Done** | Phase 3a default |
 | Docker Compose / Render / Railway / Fly recipes | **Done** | Durable host optional |
-| Director JWT + membership (`org_hacker_dojo`) | **Done** | [Fund-Intel#72](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/72) closed |
-| Public HTTPS (ephemeral cloudflared) | **Done** | [Fund-Intel#71](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/issues/71) closed |
+| Director JWT + membership (`org_hacker_dojo`) | **Done** | Fund-Intel #72 closed |
+| Public HTTPS (ephemeral cloudflared) | **Done** | Fund-Intel #71 closed |
 | Seed allocate → proof → packet | **Done** | `npm run accept:seed-loop` OBSERVED (#74 partial) |
 | Durable named public host | Optional | Render/Railway/Fly when every.org needs stable URL |
 | Live every.org webhook | **Open** | #73 |

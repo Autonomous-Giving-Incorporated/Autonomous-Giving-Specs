@@ -7,11 +7,11 @@
 
 | Repo | Role |
 | --- | --- |
-| [Portofolio-Signals](https://github.com/scrimshawlife-ctrl/Portofolio-Signals) (Fund-Intel) | Portfolio Signals + allocation middleware pilot |
-| [Impact-Relay](https://github.com/scrimshawlife-ctrl/Impact-Relay) | Evidence / tenant template clone |
-| [Autonomous-Giving-Incorporated](https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Incorporated) | Public suite narrative + GitHub Project #3 notes |
+| [Portfolio-Signals](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals) (Fund-Intel) | Portfolio Signals + allocation middleware pilot |
+| [Impact-Relay](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay) | Evidence / tenant template clone |
+| [Autonomous-Giving-Incorporated](https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Incorporated) | Public suite narrative + GitHub Project #3 notes |
 
-Authoritative **runtime evidence** lives in Portofolio-Signals / Fund-Intel [`docs/CURRENT-STATE.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)—not in this Specs repo.
+Authoritative **runtime evidence** lives in Portfolio-Signals / Fund-Intel [`docs/CURRENT-STATE.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/CURRENT-STATE.md)—not in this Specs repo.
 
 ## Allocation middleware (design 2026-08-03)
 
@@ -30,9 +30,9 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 
 ## Suite commercial onboarding (Portofolio-Signals + IR)
 
-**Hub:** Portofolio-Signals [`docs/SUITE-ONBOARDING.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/SUITE-ONBOARDING.md) (done without login vs needs every.org/admin).
+**Hub:** Portfolio-Signals [`docs/SUITE-ONBOARDING.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md) (done without login vs needs every.org/admin).
 
-**Evidence SoT:** Portofolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md) (labels OBSERVED / PENDING / BLOCKED).
+**Evidence SoT:** Portfolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/CURRENT-STATE.md) (labels OBSERVED / PENDING / BLOCKED).
 
 **Continuation plan (this repo):** [plans/2026-08-08-suite-continuation.md](plans/2026-08-08-suite-continuation.md).
 
@@ -42,9 +42,9 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 | --- | --- | --- | --- |
 | C | Operator / director access | `docs/OPERATOR-ACCESS-ONBOARDING.md` | **People registered** (see matrix); MFA incomplete for Qi/Ed |
 | B | Client provision → publish → activate | `docs/COMMERCIAL-CLIENT-LIFECYCLE.md` | Dry-run OBSERVED (`org_hacker_dojo`) |
-| Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Platform schema + Edge OBSERVED** 2026-08-08; MFA dry-run **PENDING** ([#104](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/104), activate [#113](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/113)) |
+| Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Platform schema + Edge OBSERVED** 2026-08-08; MFA dry-run **PENDING** ([Portfolio-Signals #18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18); historical #104/#113) |
 | D | Second tenant + IR template clone | `docs/SECOND-TENANT-ONBOARDING.md` | Dry-run OBSERVED |
-| Harden | Tenant chrome + HD data gate | — | **OBSERVED** on main [#108](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/108), [#111](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/111), [#112](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/pull/112) |
+| Harden | Tenant chrome + HD data gate | — | **OBSERVED** on main #108, #111, #112 |
 
 ### People matrix (platform `utdioxwiskzatwoejgiu`)
 
@@ -73,7 +73,7 @@ Dry-runs (C/B/D): OBSERVED. Document pack: tables REST 200 + Edge OPTIONS 200 / 
 
 **every.org setup wizard:** fixture chargeIds (`fixture-*`) do not mark Connected; only live (non-fixture) POSTs do (`counts.liveGifts` / `lastLiveGift`).
 
-**Document pack (phase 1):** upload → `campaign-private` → suggest type → human confirm → pack ready. Never auto-promotes CRM; xlsx/csv parked for future list quarantine. Design: Portofolio-Signals [`docs/superpowers/specs/2026-08-08-client-onboarding-pack-design.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/superpowers/specs/2026-08-08-client-onboarding-pack-design.md) · plan: [`plans/2026-08-08-client-onboarding-pack.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-client-onboarding-pack.md) · activate: [`plans/2026-08-08-platform-activate-and-tenant-harden.md`](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-platform-activate-and-tenant-harden.md).
+**Document pack (phase 1):** upload → `campaign-private` → suggest type → human confirm → pack ready. Never auto-promotes CRM; xlsx/csv parked for future list quarantine. Design: Portfolio-Signals [`docs/superpowers/specs/2026-08-08-client-onboarding-pack-design.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/superpowers/specs/2026-08-08-client-onboarding-pack-design.md) · plan: [`plans/2026-08-08-client-onboarding-pack.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-client-onboarding-pack.md) · activate: [`plans/2026-08-08-platform-activate-and-tenant-harden.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/superpowers/plans/2026-08-08-platform-activate-and-tenant-harden.md).
 
 **Optional ops runbooks (code/docs ready; dashboards operator):** durable host preflight, custom SMTP, secret hygiene — see suite hub.
 
