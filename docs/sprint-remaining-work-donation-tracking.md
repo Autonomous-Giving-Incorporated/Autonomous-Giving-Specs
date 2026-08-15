@@ -13,9 +13,9 @@ This page lists what product-repo files already show versus what the sprint stil
 | Worker host shape | `wrangler.toml` | Name `portfolio-signals`; `main` `workers/portfolio-signals/src/index.js`; `workers_dev = true`; assets from `.`; comment: durable state is platform Supabase `am_*` via service-role binding |
 | Public vars | `wrangler.toml` `[vars]` | `ORG_ID = "org_hacker_dojo"`; `PLATFORM_SUPABASE_URL = "https://utdioxwiskzatwoejgiu.supabase.co"` |
 | Router | `workers/portfolio-signals/src/index.js` | `POST /webhooks/every-org` → every-org handler; other `/webhooks/*` → 404; allocation API paths → allocation handler; else ASSETS |
-| `run_worker_first` | `wrangler.toml` | `/webhooks/*`, `/auth/*`, `/available`, `/allocations`, `/proofs`, `/packet`, `/exceptions`, `/labels`, `/pots/merge`, `/setup`, `/seed`, `/trail`, `/healthz`, `/readyz` |
+| `run_worker_first` | `wrangler.toml` | `/webhooks/*`, `/auth/*`, `/available`, `/allocations`, `/proofs`, `/packet`, `/exceptions`, `/labels`, `/pots/merge`, `/setup`, `/seed`, `/trail`, `/healthz`, `/readyz`, `/import/csv` |
 | Gift ingest | `every-org-webhook.js` + `connectors/everyorg.mjs` | Shared-secret token; normalize `chargeId` / `netAmount` / fundraiser / designation; persist via Supabase writer |
-| CSV twin (module) | `services/allocation-middleware/src/connectors/csv.mjs` | Parser OBSERVED; Worker `run_worker_first` has **no** CSV import route |
+| CSV twin (module + Worker) | `services/allocation-middleware/src/connectors/csv.mjs`; Worker `POST /import/csv` | Parser + Worker route **CODE_SHIPPED** (not live). Live host / every.org pointing still operator-owned |
 | Tracking tables | `supabase/migrations/202608030001_allocation_middleware.sql` | `am_gifts` (PK `charge_id`), `am_pots`, `am_allocations`, `am_proofs`, `am_exceptions`; RLS select for members; director insert on allocations/proofs |
 | Allocate / proof / inbox / trail / packet | `allocation-api.js` | Human write roles `director`, `campaign_lead`; `OVER_ALLOCATION` → 409 |
 | Static surfaces | repo root | `allocation.html`, `allocation-login.html`, `allocation-setup.html`, `donor-impact.html` / `donor-impact.js` |
@@ -31,7 +31,6 @@ Capability map for the OBSERVED package: Fund Intel observes/credits; Autonomous
 | No invented PII | SPEC-027, SPEC-017 | Send only when the connector supplied opt-in contact; skip otherwise |
 | Tenant `donation_link` | SPEC-024, SPEC-027 | Persist outbound HTTPS URL on the tenant record; tenant pages and ImpactNotice CTA use that URL; not a Checkout Session |
 | CTA on tenant / post-proof surfaces | SPEC-027 | Same outbound link so donors can give again on the third-party receiver |
-| CSV import on the Worker | SPEC-026 | Wire the OBSERVED CSV parser to an operator path; same `chargeId` idempotency as webhooks |
 | Persist raw webhook payload | SPEC-023, SPEC-026 | Confirm raw payload (or `webhook_events`) is stored with the gift; required for replay |
 | P1 adapters | SPEC-026 | Givebutter, Donorbox behind the same adapter — after P0 loop works |
 | Tenant Stripe billing | SPEC-024, ADR-015 | Only if/when tenants pay AGI; MUST NOT credit pots or write `am_gifts` |
