@@ -314,6 +314,14 @@
       "status": "accepted",
       "owner": "Platform Architecture",
       "path": "adr/ADR-013-cloudflare-workers-public-host.md"
+    },
+    {
+      "id": "ADR-014",
+      "title": "AGI-Owned Control Plane and Secure Cross-Repository Integration",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Platform Architecture",
+      "path": "adr/ADR-014-agi-control-plane.md"
     }
   ],
   "contracts": [
@@ -386,6 +394,56 @@
       "schema": "../schemas/timeline-event.json",
       "lifecycle_stage": "Notification",
       "path": "contracts/CONTRACT-007-timeline-event.md"
+    },
+    {
+      "id": "CONTRACT-008",
+      "title": "AGI Auth Context",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/auth-context.json",
+      "lifecycle_stage": "Approval",
+      "path": "contracts/CONTRACT-008-auth-context.md"
+    },
+    {
+      "id": "CONTRACT-009",
+      "title": "Tenant Project Context",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/tenant-project-context.json",
+      "lifecycle_stage": "Opportunity",
+      "path": "contracts/CONTRACT-009-tenant-project-context.md"
+    },
+    {
+      "id": "CONTRACT-010",
+      "title": "Capability Route Intent",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/route-intent.json",
+      "lifecycle_stage": "Approval",
+      "path": "contracts/CONTRACT-010-route-intent.md"
+    },
+    {
+      "id": "CONTRACT-011",
+      "title": "Delegation Approval Policy",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Autonomous Giving",
+      "schema": "../schemas/delegation-policy.json",
+      "lifecycle_stage": "Approval",
+      "path": "contracts/CONTRACT-011-delegation-policy.md"
+    },
+    {
+      "id": "CONTRACT-012",
+      "title": "Public Impact Projection",
+      "version": "1.0.0",
+      "status": "proposed",
+      "owner": "Impact Relay",
+      "schema": "../schemas/public-projection.json",
+      "lifecycle_stage": "Impact",
+      "path": "contracts/CONTRACT-012-public-projection.md"
     }
   ],
   "events": [

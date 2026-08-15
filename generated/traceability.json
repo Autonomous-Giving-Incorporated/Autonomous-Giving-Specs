@@ -19,7 +19,8 @@
         "EVENT-002"
       ],
       "contracts": [
-        "CONTRACT-001"
+        "CONTRACT-001",
+        "CONTRACT-009"
       ]
     },
     {
@@ -36,7 +37,11 @@
       "events": [
         "EVENT-004"
       ],
-      "contracts": []
+      "contracts": [
+        "CONTRACT-008",
+        "CONTRACT-010",
+        "CONTRACT-011"
+      ]
     },
     {
       "stage": "Allocation",
@@ -82,7 +87,9 @@
     {
       "stage": "Impact",
       "events": [],
-      "contracts": []
+      "contracts": [
+        "CONTRACT-012"
+      ]
     },
     {
       "stage": "Notification",
