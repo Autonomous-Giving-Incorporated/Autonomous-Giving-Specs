@@ -1,7 +1,7 @@
 ---
 id: SPEC-028
 title: AGI Control Plane
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 owner: Autonomous Giving
@@ -14,6 +14,8 @@ related_specs:
 - SPEC-024
 - SPEC-025
 - SPEC-027
+- SPEC-029
+- SPEC-030
 related_adrs:
 - ADR-006
 - ADR-013
@@ -28,7 +30,7 @@ related_contracts:
 ---
 
 # SPEC-028: AGI Control Plane
-| Version | 1.0.0 | Owner | Autonomous Giving | Status | Accepted |
+| Version | 1.1.0 | Owner | Autonomous Giving | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-006, SPEC-016, SPEC-019, SPEC-024 | Related ADRs | ADR-006, ADR-013, ADR-014, ADR-015 | Related contracts | CONTRACT-008–012 |
 
@@ -68,6 +70,21 @@ After authentication, AGI owns:
 | Money | Authorization to allocate under [ADR-006](../adr/ADR-006-human-approval.md) | Donation processing; pot-credit authority (Fund Intel observes) |
 
 Fund Intel observes and credits gift summaries. Autonomous Giving allocates under human Approval. Impact Relay proves and notifies. Intelligence never allocates. No fifth capability.
+
+## Mission Intelligence Console
+
+AGI MAY provide a first-class authenticated **Mission Intelligence Console**: an authorized projection surface that summarizes current Needs, emerging Signals, relevant Opportunities, advisory Recommendations, approvals awaiting action, active Allocations, incomplete Evidence, verified Impact, Learning Feedback, mission-intelligence metrics, provenance, and confidence state.
+
+The Console MAY support drill-down across the Mission Graph:
+
+```text
+Need → supporting Signals → Opportunity → Recommendation → human Approval
+  → Allocation → Execution → Evidence → Verification → Impact
+```
+
+Every displayed hop MUST resolve to canonical records owned by the appropriate capability. The Console MUST NOT duplicate downstream systems of record. A displayed Recommendation remains advisory and a displayed metric remains derived intelligence. A consequential UI action MUST route to the owning capability and obey its authorization boundary. Public projections MUST remain aggregate-safe.
+
+Relevant intelligence surfaces MUST keep `OBSERVED`, `INFERRED`, `SPECULATIVE`, and `NOT_COMPUTABLE` distinguishable. `NOT_COMPUTABLE` is required when the relevant evidence is missing, weak, stale, conflicting, or unauthorized. The Console does not create authority, and it does not add a lifecycle stage.
 
 ## Topology
 

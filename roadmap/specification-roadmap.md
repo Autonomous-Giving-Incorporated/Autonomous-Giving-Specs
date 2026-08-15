@@ -65,10 +65,26 @@ The platform evolves toward distribution only when operational criteria warrant 
 | 18. Cloudflare + Supabase hosted platform | Preferred physical architecture aligned to ADR-013 | ADR-013 accepted; SPEC-020–025 body diagrams match Cloudflare + Supabase |
 | 19. Donation-tracking money boundary | AGI tracks gifts; Stripe is tenant billing only | ADR-015, SPEC-023 v2, SPEC-026, SPEC-027, CONTRACT-013 accepted (already on main) |
 | 20. Control plane + trust layer | AGI admin/login surface, capability JWTs, accepted trust SPECs | SPEC-028 accepted; ADR-014 accepted; SPEC-016–019 accepted; CONTRACT-008–012 accepted |
+| 21. Closed-loop mission intelligence | Mission Graph projection, learning-feedback and metric framework | SPEC-029 and SPEC-030 proposed; no formula, forecasting, new lifecycle, or authority accepted |
 
 ## Next recommended steps (implementation)
 
-Specs Phase 0 (this repository) now includes host alignment (milestone 18), the donation-tracking money boundary (milestone 19), and the control plane + trust layer (milestone 20). Platform release **v2.0.0** pins that specification set. Pinning specs is not implementation READY and is not a live Worker. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
+Specs Phase 0 (this repository) now includes host alignment (milestone 18), the donation-tracking money boundary (milestone 19), and the control plane + trust layer (milestone 20). Platform release **v2.0.0** pins that specification set. Pinning specs is not implementation READY and is not a live Worker. The mission-intelligence specifications are proposed additions and are not an accepted platform release. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
+
+### Closed-loop mission intelligence sequence
+
+The following sequence is additive to the existing foundation, tracking, allocation, Evidence, and authorization work. It does not claim that forecasting exists.
+
+| Order | Workstream | Exit criterion |
+| --- | --- | --- |
+| 1 | Canonical Signal / Opportunity / Recommendation production | Fund Intel produces traceable advisory records under SPEC-003; no Approval or Allocation authority |
+| 2 | Mission Graph projection | Authorized linked-record traversal resolves to canonical owners; no duplicate system of record |
+| 3 | Learning-feedback ingestion | Verified or explicitly classified downstream evidence yields a new provenance-bearing Signal through Fund Intel |
+| 4 | Metric policy implementations | Each metric has retained inputs, calculation-policy version, classification, reproducibility, and `NOT_COMPUTABLE` handling; no arbitrary formula is frozen |
+| 5 | Mission Intelligence Console | Authenticated AGI projection summarizes the mission path and routes consequential actions to owning capabilities |
+| 6 | Historical metric/version storage | Historical results preserve their original policy/input references; revised policy produces distinct outputs |
+| 7 | Validation against real tenant evidence | Operator-approved empirical evaluation demonstrates data sufficiency, provenance, staleness handling, and tenant isolation |
+| 8 | Later forecasting | Consider only after sufficient validated data exists; remain advisory and evidence-bounded |
 
 | Order | Workstream | Where | Exit criterion |
 | --- | --- | --- | --- |

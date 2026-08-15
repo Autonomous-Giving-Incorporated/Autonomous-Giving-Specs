@@ -1,7 +1,7 @@
 ---
 id: SPEC-003
 title: Signals Stack
-version: 2.0.0
+version: 2.1.0
 status: accepted
 authority: normative
 owner: Fund Intel
@@ -13,6 +13,8 @@ related_specs:
 - SPEC-017
 - SPEC-023
 - SPEC-026
+- SPEC-029
+- SPEC-030
 related_adrs:
 - ADR-003
 - ADR-006
@@ -27,7 +29,7 @@ related_events:
 ---
 
 # SPEC-003: Signals Stack
-| Version | 2.0.0 | Owner | Fund Intel | Status | Accepted |
+| Version | 2.1.0 | Owner | Fund Intel | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-004, SPEC-005, SPEC-006, SPEC-026 | Related ADRs | ADR-003, ADR-006, ADR-015 | Related contracts | CONTRACT-001, CONTRACT-002 |
 
@@ -126,13 +128,24 @@ connector gift state  ≠  pot credit  ≠  Signal  ≠  Recommendation
 15. Unverified webhooks MUST NOT create Signals, Opportunities, Recommendations, or pot credits ([SPEC-016](SPEC-016-security-and-trust-boundaries.md), SPEC-026).
 16. Stripe billing webhooks MUST NOT create Signals or gift summaries.
 
+## Learning feedback may inform new Signals
+
+Verified Impact and its associated Evidence MAY inform future intelligence only through the learning-feedback relationship in [SPEC-029](SPEC-029-mission-graph-and-learning-feedback.md).
+
+17. Fund Intel MAY ingest feedback-derived evidence and create a **new immutable Signal**. That Signal MUST have its own `signalId`, `needId`, source provenance, `observedAt`, and epistemic classification.
+18. Where available, a feedback-derived Signal MUST retain references to the originating Impact, Verification, and Evidence. Those references explain provenance; they do not make downstream Impact authoritative intelligence or a Recommendation.
+19. Impact Relay provides verified outcome and provenance data. It MUST NOT create the Recommendation, Approval, or Allocation from that data.
+20. Feedback that is stale, weak, conflicting, unauthorized, or insufficient MUST NOT become authoritative automatically. Fund Intel MUST preserve its classification and return `NOT_COMPUTABLE` where a required learning conclusion cannot be supported.
+21. Feedback-derived Signals enter the existing Signal → Opportunity → Recommendation flow. They MUST NOT mutate earlier Signals, Opportunities, Recommendations, or Impact, and MUST NOT create a direct Impact → Recommendation, Approval, Allocation, or Execution path.
+22. Recommendation rationale MUST remain traceable to supporting Signals, including any feedback-derived Signals. Intelligence scoring and mission-intelligence metrics remain advisory and MUST NOT grant Approval or allocate resources.
+
 ## Provenance, confidence, and staleness
 
-17. `source` and `observedAt` are provenance. Consumers MUST be able to evaluate source quality independently of recommendation policy ([ADR-003](../adr/ADR-003-platform-canon.md)).
-18. `confidence` is an input to grouping and recommend/do-not-recommend policy. It is not authorization.
-19. A Signal is **stale** when Fund Intel’s published policy says `observedAt` (or `capturedAt` if `observedAt` is absent) is older than the configured horizon for that `source` class. Stale Signals MUST NOT be the sole support for a new Recommendation.
-20. Implementations MUST document their staleness horizon in conformance evidence. This specification does not invent a numeric TTL.
-21. Re-using a stale Signal as historical context on an Opportunity is allowed if at least one non-stale supporting Signal remains, or if Fund Intel dismisses the Opportunity instead of recommending.
+23. `source` and `observedAt` are provenance. Consumers MUST be able to evaluate source quality independently of recommendation policy ([ADR-003](../adr/ADR-003-platform-canon.md)).
+24. `confidence` is an input to grouping and recommend/do-not-recommend policy. It is not authorization.
+25. A Signal is **stale** when Fund Intel’s published policy says `observedAt` (or `capturedAt` if `observedAt` is absent) is older than the configured horizon for that `source` class. Stale Signals MUST NOT be the sole support for a new Recommendation.
+26. Implementations MUST document their staleness horizon in conformance evidence. This specification does not invent a numeric TTL.
+27. Re-using a stale Signal as historical context on an Opportunity is allowed if at least one non-stale supporting Signal remains, or if Fund Intel dismisses the Opportunity instead of recommending.
 
 ## Negative cases
 
@@ -159,4 +172,6 @@ Splitting observation from judgement lets consumers reject a Recommendation with
 - [ADR-003](../adr/ADR-003-platform-canon.md) — signals as immutable observations
 - [SPEC-005](SPEC-005-lifecycle.md) — Need → Signal → Opportunity → Recommendation
 - [SPEC-026](SPEC-026-donation-source-connectors.md) — gift summaries and pot credit
+- [SPEC-029](SPEC-029-mission-graph-and-learning-feedback.md) — learning-feedback relationship
+- [SPEC-030](SPEC-030-mission-intelligence-metrics.md) — derived intelligence metrics
 - [EVENT-001](../events/EVENT-001-signal-detected.md), [EVENT-002](../events/EVENT-002-opportunity-created.md), [EVENT-003](../events/EVENT-003-recommendation-generated.md)

@@ -33,3 +33,5 @@ All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted`
 | [SPEC-026](SPEC-026-donation-source-connectors.md) | Donation-source Connectors | Accepted (normative) |
 | [SPEC-027](SPEC-027-impact-loop.md) | Impact Loop | Accepted (normative) |
 | [SPEC-028](SPEC-028-agi-control-plane.md) | AGI Control Plane | Accepted (normative) |
+| [SPEC-029](SPEC-029-mission-graph-and-learning-feedback.md) | Mission Graph and Learning Feedback | Proposed |
+| [SPEC-030](SPEC-030-mission-intelligence-metrics.md) | Mission Intelligence Metrics | Proposed |
