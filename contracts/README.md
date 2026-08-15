@@ -11,3 +11,8 @@ Each contract has one owner, versioned schema, semantic description, validation 
 | CONTRACT-005 | [Receipt](CONTRACT-005-receipt.md) | Autonomous Giving | `receipt.json` |
 | CONTRACT-006 | [Notification](CONTRACT-006-notification.md) | Impact Relay | `notification.json` |
 | CONTRACT-007 | [TimelineEvent](CONTRACT-007-timeline-event.md) | Impact Relay | `timeline-event.json` |
+| CONTRACT-008 | [AGI Auth Context](CONTRACT-008-auth-context.md) | Autonomous Giving | `auth-context.json` |
+| CONTRACT-009 | [Tenant Project Context](CONTRACT-009-tenant-project-context.md) | Platform Architecture | `tenant-project-context.json` |
+| CONTRACT-010 | [Capability Route Intent](CONTRACT-010-route-intent.md) | Autonomous Giving | `route-intent.json` |
+| CONTRACT-011 | [Delegation Approval Policy](CONTRACT-011-delegation-policy.md) | Autonomous Giving | `delegation-policy.json` |
+| CONTRACT-012 | [Public Impact Projection](CONTRACT-012-public-projection.md) | Impact Relay | `public-projection.json` |
