@@ -34,7 +34,19 @@ The glossary is normative under [SPEC-004](../specs/SPEC-004-domain-model.md). E
 | TERM-028 | ImpactNotice | Notification projection that tells a contactable donor where/what allocated funds were used for and CTAs to the tenant Donation Link. |
 | TERM-029 | Donation Link | Outbound HTTPS URL on the tenant record pointing at the tenant’s own receiver. Not a checkout session. |
 | TERM-030 | AGI Control Plane | Autonomous Giving’s authenticated admin/login edge: session, authorization, tenant/project selection, routing, and short-lived capability JWTs. Not a fourth capability. |
+| TERM-031 | Mission Graph | Traceable projection over canonical lifecycle artifacts and supporting relationships. Not a lifecycle or system of record. |
+| TERM-032 | Learning Feedback | Provenance-preserving relationship by which verified or explicitly classified evidence informs a new immutable Signal. Not a lifecycle stage. |
+| TERM-033 | Mission Intelligence | Evidence-bounded interpretation of mission artifacts for advisory understanding, ranking, scoring, forecasting, or recommendation. Not authority. |
+| TERM-034 | Mission Intelligence Metric | Versioned, reproducible derived artifact with retained inputs, provenance, calculation-policy version, and epistemic classification. Not authority. |
+| TERM-035 | Opportunity Fit Score | Mission-intelligence metric for an Opportunity’s fit to current Need and operating context; formula is implementation-defined until validated. |
+| TERM-036 | Need Pressure Index | Mission-intelligence metric for the intensity or urgency of a Need; inputs and policy must be declared. |
+| TERM-037 | Evidence Completeness | Mission-intelligence metric for completeness of the Evidence lineage for an Allocation or related mission chain. |
+| TERM-038 | Funding-to-Impact Latency | Mission-intelligence metric for elapsed time between a configured funding/resource decision and verified Impact. |
+| TERM-039 | Mission Yield | Context-specific mission-intelligence metric relating verified outcome to a constrained resource basis; not a universal comparison. |
+| TERM-040 | Evidence Confidence | Evidence-strength classification with retained source/provenance; distinct from model confidence. |
+| TERM-041 | Opportunity Realization Rate | Versioned cohort metric for qualified Opportunity progression to a realized, verified result. |
+| TERM-042 | NOT_COMPUTABLE | Required output classification when evidence or authorized inputs are absent, weak, stale, conflicting, unsupported, or not reproducible; it is not an observed fact. |
 
 No synonym may substitute for an identified term. A proposed new concept requires a glossary identifier and a review against existing terms.
 
-**Note:** Platform vocabulary for lifecycle and domain concepts is unchanged. Capability/deployment terms, preferred-stack terms, and tracking terms (Gift Summary, Pot, Donation-source Connector, Donation Link) clarify the product without renaming Need, Allocation, Evidence, Impact, or other lifecycle terms. Product UI MAY say “proof” for Evidence. ImpactNotice is a Notification projection, not a new lifecycle stage.
+**Note:** Platform vocabulary for lifecycle and domain concepts is unchanged. Capability/deployment terms, preferred-stack terms, tracking terms (Gift Summary, Pot, Donation-source Connector, Donation Link), and mission-intelligence terms clarify the product without renaming Need, Allocation, Evidence, Impact, or other lifecycle terms. Product UI MAY say “proof” for Evidence. ImpactNotice is a Notification projection, and Learning Feedback is a relationship; neither is a lifecycle stage.

@@ -1,7 +1,7 @@
 ---
 id: SPEC-027
 title: Impact Loop
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 owner: Impact Relay
@@ -13,6 +13,7 @@ related_specs:
 - SPEC-023
 - SPEC-024
 - SPEC-026
+- SPEC-029
 related_adrs:
 - ADR-006
 - ADR-007
@@ -28,7 +29,7 @@ related_events:
 ---
 
 # SPEC-027: Impact Loop
-| Version | 1.0.0 | Owner | Impact Relay | Status | Accepted |
+| Version | 1.1.0 | Owner | Impact Relay | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-005, SPEC-017, SPEC-023, SPEC-026 | Related ADRs | ADR-006, ADR-007, ADR-015 | Related contracts | CONTRACT-004, CONTRACT-006, CONTRACT-013 |
 
@@ -52,6 +53,8 @@ donate on third party
 ```
 
 Fund Intel observes gifts. Autonomous Giving allocates. Impact Relay proves and notifies. No fifth capability.
+
+Verified Impact and its attributable evidence MAY be exposed as a provenance-bearing source for future Fund Intel Signals through [SPEC-029](SPEC-029-mission-graph-and-learning-feedback.md). This does not authorize Impact Relay to create a Recommendation, Approval, or Allocation. ImpactNotice remains a Notification projection, not learning authority; delivery success is not proof of Impact.
 
 ## Trigger
 

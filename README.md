@@ -14,6 +14,8 @@ This repository owns platform architecture, contracts, schemas, lifecycle, termi
 
 The platform converts an observed `Need` into an auditable `Impact` through a canonical lifecycle. Intelligence may discover and recommend; governance authorizes; execution performs; evidence proves. See [SPEC-005](specs/SPEC-005-lifecycle.md) and the [lifecycle diagram](diagrams/lifecycle.md).
 
+The platform is a **closed-loop mission intelligence system**: it converts observed Needs into governed action and verified Impact, then permits verified outcomes to become evidence for future Signals. This product framing does not replace the authoritative lifecycle or add Learning as a stage; feedback re-enters through Fund Intel’s normal Signal boundary ([SPEC-029](specs/SPEC-029-mission-graph-and-learning-feedback.md)).
+
 **Logical architecture** (capabilities) and **physical deployment** are independent for conformance. Fund Intel, Autonomous Giving, and Impact Relay are capabilities—not mandatory separate deployables. See [SPEC-002A](specs/SPEC-002A-architectural-principles.md) and [SPEC-006](specs/SPEC-006-capability-boundaries.md).
 
 **Preferred physical stack** ([ADR-013](adr/ADR-013-cloudflare-workers-public-host.md)): **Cloudflare + Supabase**. Cloudflare provides Workers, static assets/Pages, Durable Objects when live coordination is needed, and Queues/Cron Triggers for deferred/webhook/retry work. Supabase provides Auth, PostgreSQL (canonical datastore), and Storage. every.org is the P0 donation-source connector. Stripe is **tenant/SaaS billing only** (never donation capture). Resend and OpenAI remain externals only if the product still requires them; Clerk likewise only if still required (Supabase Auth is preferred identity). [ADR-012](adr/ADR-012-render-first-platform.md) (Render-first) is **superseded**. Kubernetes, D1, and extra app hosts are **not** baseline.
@@ -79,6 +81,7 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020
 - [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md) (tracking ledger; AGI does not process donations)
 - [Donation-source connectors](specs/SPEC-026-donation-source-connectors.md) · [Impact loop](specs/SPEC-027-impact-loop.md) · [ADR-015](adr/ADR-015-donation-tracking-money-boundary.md)
 - [AGI control plane](specs/SPEC-028-agi-control-plane.md) · [ADR-014](adr/ADR-014-agi-control-plane.md)
+- [Mission Graph and Learning Feedback](specs/SPEC-029-mission-graph-and-learning-feedback.md) · [Mission Intelligence Metrics](specs/SPEC-030-mission-intelligence-metrics.md) (proposed)
 - [Sprint remaining work](docs/sprint-remaining-work-donation-tracking.md) (informative; not READY)
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (informative; Worker/`am_*` OBSERVED in product repo files)
 - [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portofolio-Signals / Fund-Intel)
