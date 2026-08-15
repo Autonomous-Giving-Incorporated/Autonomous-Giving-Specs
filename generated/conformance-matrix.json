@@ -1,5 +1,5 @@
 {
-  "platformSpecVersion": "1.0.0",
+  "platformSpecVersion": "2.0.0",
   "services": [
     {
       "service": {
@@ -9,7 +9,7 @@
       },
       "platform_spec": {
         "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
-        "version": "1.0.0"
+        "version": "2.0.0"
       },
       "specs": [
         "SPEC-001",
@@ -61,7 +61,7 @@
       },
       "platform_spec": {
         "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
-        "version": "1.0.0"
+        "version": "2.0.0"
       },
       "specs": [
         "SPEC-001",
@@ -103,7 +103,7 @@
       },
       "platform_spec": {
         "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
-        "version": "1.0.0"
+        "version": "2.0.0"
       },
       "specs": [
         "SPEC-001",

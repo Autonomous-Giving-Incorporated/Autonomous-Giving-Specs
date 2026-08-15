@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-PLATFORM_SPEC_VERSION = "1.0.0"
+PLATFORM_SPEC_VERSION = "2.0.0"
 
 # SPEC-005 lifecycle sequence (exclusive of projections).
 CANONICAL_LIFECYCLE: list[str] = [

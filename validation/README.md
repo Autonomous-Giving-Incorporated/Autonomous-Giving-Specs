@@ -15,7 +15,7 @@ Exit code `0` means **PASS** (warnings allowed). Exit code `1` means **FAIL** (e
 
 ```json
 {
-  "platformSpecVersion": "1.0.0",
+  "platformSpecVersion": "2.0.0",
   "result": "PASS",
   "specifications": 14,
   "contracts": 7,
@@ -57,10 +57,10 @@ Writes `generated/catalog.json`, `traceability.json`, `lifecycle.json`, `ownersh
 ## Release package
 
 ```bash
-python validation/package_release.py --version 1.0.0
+python validation/package_release.py --version 2.0.0
 ```
 
-Produces `dist/autonomous-giving-spec-v1.0.0/` and `dist/checksums.txt`.
+Produces `dist/autonomous-giving-spec-v2.0.0/` and `dist/checksums.txt`.
 
 ## Meta-schemas
 
