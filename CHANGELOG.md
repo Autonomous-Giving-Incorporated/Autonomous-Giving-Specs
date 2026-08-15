@@ -5,6 +5,13 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ## [Unreleased]
 
+## [2.0.0] — 2026-08-15
+
+### Compatibility
+
+- **MAJOR:** SPEC-023 v2.0.0 is a tracking ledger. AGI never processes donations. Consumers that charged donations through AGI or Stripe Checkout/PaymentIntent are non-conformant. Migration: [v2.0.0 donation-tracking boundary](docs/migrations/v2.0.0-donation-tracking-boundary.md).
+- Pin git tag `v2.0.0`. SPEC-001–028 are accepted in this release. This pin is a specification cut, not a live Worker or product READY claim.
+
 ### Added
 
 - **SPEC-028** AGI Control Plane (normative, accepted): authenticated admin/login surface, capability JWTs (CONTRACT-008), fail-closed tenant checks, optional dual approval, Cloudflare + Supabase topology; Cloud Run historical/optional only.

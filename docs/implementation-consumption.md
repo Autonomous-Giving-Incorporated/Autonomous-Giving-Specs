@@ -4,7 +4,7 @@ This guide applies to Fund Intel, Impact Relay, Autonomous Giving Incorporated, 
 
 ## Pin an authoritative release
 
-Each consuming repository must declare the exact specification release it implements, for example `Autonomous-Giving-Specs v1.0.0`. Do not depend on an unpinned branch for a production contract. Record the release in the implementation repository’s architecture or `platform-spec/conformance.yml`.
+Each consuming repository must declare the exact specification release it implements, for example `Autonomous-Giving-Specs v2.0.0`. Do not depend on an unpinned branch for a production contract. Record the release in the implementation repository’s architecture or `platform-spec/conformance.yml`.
 
 ## Replace duplicate documentation
 
@@ -30,7 +30,7 @@ An implementation repository should maintain a declaration equivalent to:
 ```yaml
 platform_spec:
   repository: scrimshawlife-ctrl/Autonomous-Giving-Specs
-  version: 1.0.0
+  version: 2.0.0
 service:
   id: fund-intel   # capability id
   role: intelligence

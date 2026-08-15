@@ -1,6 +1,6 @@
 platform_spec:
   repository: scrimshawlife-ctrl/Autonomous-Giving-Specs
-  version: 1.0.0
+  version: 2.0.0
 
 service:
   id: fund-intel

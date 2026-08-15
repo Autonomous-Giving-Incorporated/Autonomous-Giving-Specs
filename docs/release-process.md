@@ -1,5 +1,9 @@
 # Release process
 
+## Platform Specification v2.0.0
+
+Released 2026-08-15. Consumers pin git tag `v2.0.0`. AGI tracks gifts and does not process donations (SPEC-023 v2.0.0; ADR-015). every.org is the P0 donation-source connector; Stripe is tenant/SaaS billing only. SPEC-001–028 are accepted. Migration: [v2.0.0 donation-tracking boundary](migrations/v2.0.0-donation-tracking-boundary.md). This pin is a specification cut, not a live Worker or product READY claim.
+
 ## Platform Specification v1.0
 
 The initial release contains the platform canon, lifecycle, owned contract set, JSON Schema library, deterministic demo, documentation standards, executable validation, conformance manifests, and recorded decisions (including compatibility and trust specifications).

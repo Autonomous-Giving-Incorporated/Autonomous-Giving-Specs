@@ -1,6 +1,6 @@
 # Autonomous Giving Platform Specifications
 
-**Platform Specification v1.1** · Status: proposed canon · Owner: Autonomous Giving Incorporated
+**Platform Specification v2.0.0** · Status: released canon · Owner: Autonomous Giving Incorporated
 
 ## Mission
 

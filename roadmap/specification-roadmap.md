@@ -68,7 +68,7 @@ The platform evolves toward distribution only when operational criteria warrant 
 
 ## Next recommended steps (implementation)
 
-Specs Phase 0 (this repository) now includes host alignment (milestone 18), the donation-tracking money boundary (milestone 19, already on main), and the control plane + trust layer (milestone 20). That is specification work, not a tagged platform release and not implementation READY. Pin-a-release remains operator-owned. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
+Specs Phase 0 (this repository) now includes host alignment (milestone 18), the donation-tracking money boundary (milestone 19), and the control plane + trust layer (milestone 20). Platform release **v2.0.0** pins that specification set. Pinning specs is not implementation READY and is not a live Worker. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
 
 | Order | Workstream | Where | Exit criterion |
 | --- | --- | --- | --- |
@@ -84,7 +84,7 @@ Specs Phase 0 (this repository) now includes host alignment (milestone 18), the 
 
 ### Immediate next actions (checklist)
 
-1. **Pin a specs release** that includes ADR-013 and SPEC-020–025 diagrams aligned to Cloudflare + Supabase.
+1. **Pin `v2.0.0`** (this release). Consumers should pin the tag, not floating `main`. The pin includes ADR-013 and SPEC-020–025 diagrams aligned to Cloudflare + Supabase.
 2. **Open an implementation issue/PR** in the product repo titled “Phase 1 — Cloudflare + Supabase foundation” linking SPEC-021, SPEC-022, SPEC-025, and [onboarding](../docs/onboarding.md).
 3. **Copy contracts into the product repo:** `.env.example`, onboarding checklist. Keep Wrangler/Pages config in the product repo only. Do **not** copy [`docs/historical/render.yaml.example`](../docs/historical/render.yaml.example) as the preferred path.
 4. **Do not** add Durable Objects, extra Queues, Cron, D1, or a vector database in the first PR without workload evidence (Queues/Cron are appropriate when deferred/webhook/retry work already exists).
