@@ -1,7 +1,7 @@
 ---
 id: SPEC-021
 title: Preferred Application Stack
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -22,7 +22,7 @@ related_contracts: []
 ---
 
 # SPEC-021: Preferred Application Stack
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
@@ -36,7 +36,7 @@ Physical application platform, runtime shape, preferred source layout, and optio
 
 ## Authority
 
-**Informative preferred architecture** is [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Cloudflare + Supabase). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded. Render topology in the sections below is **historical** — do not treat it as the implementation path. Do not treat any vendor as a conformance mandate.
+**Informative preferred architecture** is [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) (Cloudflare + Supabase). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded. Do not treat Render, Vercel, or GitHub Pages as the implementation path. Do not treat any vendor as a conformance mandate.
 
 ## Architectural rule
 
@@ -48,59 +48,67 @@ Physical application platform, runtime shape, preferred source layout, and optio
 [ Client browser ]
         |
         v
-[ Render Web Service ]
-   Next.js (TypeScript)
-   UI
-   Route handlers / API
-   Server actions
+[ Cloudflare ]
+   Workers / Pages / static assets
+   Next.js (TypeScript) UI
+   Worker / route handlers / API
    Domain modules (capability boundaries)
    Authorization enforcement
-   Stripe / Clerk webhook endpoints
+   Stripe webhook endpoints (if still required)
    AI orchestration entrypoints
-   PostgreSQL access (Drizzle)
+   PostgreSQL access (explicit migrations; Drizzle acceptable)
         |
+        +-- Durable Objects          (only if live coordination is needed)
+        +-- Queues / Cron Triggers   (deferred, webhook, retry)
         v
-[ Render PostgreSQL ]
+[ Supabase ]
+   Auth          (preferred identity)
+   PostgreSQL    (canonical application datastore)
+   Storage       (evidence / large artifacts)
 
-External (preferred):
-  Clerk | Stripe | Resend | OpenAI
+External if still required:
+  Stripe | Resend | OpenAI | Clerk
 
 Source control: GitHub
-IaC: render.yaml / Render Blueprints
+IaC: product-repo Wrangler/Pages + Supabase project
+     (this specs repository has neither)
 ```
 
 | Element | Preferred choice |
 | --- | --- |
-| Application platform | Render |
+| Application platform | Cloudflare Workers, static assets / Pages |
 | Application | Next.js + TypeScript |
-| Database | Render PostgreSQL |
-| ORM / migrations | Drizzle ORM (explicit SQL migrations) |
-| Auth (identity) | Clerk |
-| Payments | Stripe |
-| Email | Resend |
-| AI primary | OpenAI (provider abstraction required) |
-| Async (MVP) | In-process job contract; extract worker only when needed |
-| Scheduled (MVP) | None until operational reason documented |
-| Cache / queue | None until demonstrated requirement |
-| IaC | `render.yaml` Blueprint |
+| Database | Supabase PostgreSQL |
+| Object storage | Supabase Storage |
+| ORM / migrations | Explicit SQL migrations (Drizzle ORM acceptable) |
+| Auth (identity) | Supabase Auth |
+| Payments | Stripe, if still required |
+| Email | Resend, if still required |
+| AI primary | OpenAI (provider abstraction required), if still required |
+| Async (MVP) | In-process job contract; Queues when deferred/webhook/retry work exists |
+| Scheduled (MVP) | Cron Triggers only when an operational reason is documented |
+| Live coordination | Durable Objects only if needed |
+| Cache / D1 / KV | None until demonstrated requirement; D1 is not the canonical store |
+| IaC | Product-repo Wrangler/Pages + Supabase project |
 | VCS | GitHub |
 
 ## Modular monolith boundary
 
-The Render web service **may** contain:
+The Cloudflare Worker / static surface **may** contain:
 
-- Next.js UI
+- Next.js UI (static export and/or Workers)
 - Route handlers and API endpoints
-- Server actions
 - Domain services for Fund Intel, Autonomous Giving, and Impact Relay **modules**
 - Authorization enforcement (application-owned)
-- Stripe webhook endpoints
-- Clerk webhook endpoints (when identity sync is required)
-- Resend integration
+- Stripe webhook endpoints (when payments are used)
+- Identity webhook endpoints (Supabase Auth; Clerk only if still required)
+- Resend integration (when email is used)
 - AI orchestration entrypoints
 - PostgreSQL access
 
-Use **clear internal module boundaries** even though deployment is one service. Do **not** force microservices.
+Use **clear internal module boundaries** even though deployment is one operational unit. Do **not** force microservices.
+
+Allocation middleware, webhooks, and PostgreSQL-backed services run as **Workers (or Worker + Queue)** talking to Supabase. They are not a Render web service.
 
 ### Preferred source layout
 
@@ -117,38 +125,60 @@ src/
     evidence/          # Impact Relay concerns when co-located
     intelligence/      # Fund Intel concerns when co-located
   services/
-    database/          # Drizzle client, transactions
-    auth/              # Clerk session → AGI principal mapping
-    payments/          # Stripe client + webhook handlers
-    email/             # Resend
+    database/          # DB client, transactions
+    auth/              # Supabase Auth session → AGI principal mapping
+    payments/          # Stripe client + webhook handlers (if used)
+    email/             # Resend (if used)
     ai/                # AIProvider abstraction
-  jobs/                # Job handlers (same contract whether in-process or worker)
+  jobs/                # Job handlers (same contract whether in-process or Queue)
   lib/
   types/
 drizzle/               # schema + migrations (or equivalent paths documented in repo)
 ```
 
-Capability modules map to glossary **Capability** / **Module** terms; package names may vary if boundaries stay enforceable.
+Capability modules map to glossary **Capability** / **Module** terms; package names may vary if boundaries stay enforceable. Wrangler/Pages files belong in the **product** repository, not this specs repo.
 
 ## Optional escalation services
 
 | Service | Purpose | Introduce when |
 | --- | --- | --- |
-| Render Background Worker | Long-running or retryable work outside request latency budget | Synchronous tasks regularly exceed acceptable latency; durable retries needed |
-| Render Cron Job | Periodic reconciliation, reporting, cleanup | Documented operational schedule with owner and failure visibility |
-| Render Private Service | Internal-only independently scaled component | Distinct lifecycle, security boundary, or scaling justified |
-| Render Key Value | Cache, coordination, or lightweight queue | Measurable benefit for shared cache/coordination |
-| Render Workflows | Complex durable multi-step orchestration | Multi-step async orchestration exceeds simple job/retry model |
+| Cloudflare Queues | Long-running or retryable work outside request latency budget | Synchronous tasks regularly exceed acceptable latency; durable retries or webhook deferral needed |
+| Cron Triggers | Periodic reconciliation, reporting, cleanup | Documented operational schedule with owner and failure visibility |
+| Durable Objects | Live coordination / strongly consistent session state | Live multi-actor coordination is required |
+| Additional Worker isolates | Independently scaled internal component | Distinct lifecycle, security boundary, or scaling justified |
 
-**MVP must not prescribe these without evidence.** Document the same **job contract** ([SPEC-025](SPEC-025-operations-deploy-and-scale.md)) so later extraction is mechanical.
+**MVP must not prescribe these without evidence**, except that Queues/Cron Triggers are the directed home for deferred, webhook, and retry work when that work exists. Document the same **job contract** ([SPEC-025](SPEC-025-operations-deploy-and-scale.md)) so later extraction is mechanical.
+
+Do **not** escalate to Render Background Worker, Render Cron, Render Private Service, Render Key Value, or Render Workflows.
 
 ## Object storage
 
 Evidence binaries and large artifacts SHOULD use **Supabase Storage** when following [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). S3-compatible object storage remains allowed. Metadata and financial truth remain in PostgreSQL. Object storage is not required for a donation-ledger MVP that stores only structured records.
+
+## Historical (superseded) — Render baseline
+
+The following ADR-012 topology is **historical**. Do not implement it for new work. Residual Blueprint: [`docs/historical/render.yaml.example`](../docs/historical/render.yaml.example).
+
+```text
+[ Client browser ]
+        |
+        v
+[ Render Web Service ]
+   Next.js (TypeScript)
+   UI / route handlers / server actions
+   Domain modules / authz / Stripe / Clerk webhooks
+        |
+        v
+[ Render PostgreSQL ]
+
+IaC: render.yaml / Render Blueprints
+Escalation (historical): Render Background Worker / Cron / Private Service / KV / Workflows
+```
 
 ## Non-goals
 
 - Mandating Cloudflare, Supabase, or Render for conformance
 - Prescribing microservices
 - Requiring D1, KV, or Kubernetes at MVP
+- Adding Wrangler, Pages projects, or other deployables to this specifications repository
 - Replacing logical capability ownership with vendor product names

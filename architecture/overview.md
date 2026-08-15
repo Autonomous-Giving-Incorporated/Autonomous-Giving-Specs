@@ -31,46 +31,52 @@ See [SPEC-006](../specs/SPEC-006-capability-boundaries.md), [SPEC-002A](../specs
 
 ## Physical deployment — preferred (informative)
 
-Logical capabilities do **not** require three deployments. The **recommended MVP** is a Render modular monolith ([ADR-012](../adr/ADR-012-render-first-platform.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B, [SPEC-021](../specs/SPEC-021-preferred-application-stack.md)):
+Logical capabilities do **not** require three deployments. The **recommended MVP** is Cloudflare + Supabase ([ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile B, [SPEC-021](../specs/SPEC-021-preferred-application-stack.md)). [ADR-012](../adr/ADR-012-render-first-platform.md) Render topology is **historical**.
 
 ```text
-┌──────────────────── Render (preferred) ────────────────────┐
-│  Next.js Web Service (TypeScript modular monolith)         │
+┌──────────────── Cloudflare (preferred compute) ────────────┐
+│  Workers / Pages / static assets (TypeScript modular unit) │
 │  ┌──────────────┐ ┌────────────────────┐ ┌──────────────┐ │
 │  │ Fund Intel   │ │ Autonomous Giving  │ │ Impact Relay │ │
 │  │ module       │ │ module             │ │ module       │ │
 │  └──────────────┘ └────────────────────┘ └──────────────┘ │
-│  UI · route handlers · server actions · authz · webhooks   │
-│                           │                                │
-│                           ▼                                │
-│              Render PostgreSQL (canonical store)           │
-│              Drizzle migrations (explicit, reviewable)     │
+│  UI · Worker/route handlers · authz · webhooks             │
+│  Durable Objects only if live coordination is needed       │
+│  Queues / Cron Triggers for deferred, webhook, retry       │
 └────────────────────────────────────────────────────────────┘
-        │              │              │              │
-        ▼              ▼              ▼              ▼
-     Clerk          Stripe         Resend         OpenAI
-   (identity)     (payments)      (email)      (AI primary)
+        │
+        ▼
+┌──────────────── Supabase (preferred data) ─────────────────┐
+│  Auth · PostgreSQL (canonical store) · Storage             │
+│  Explicit SQL migrations (Drizzle acceptable)              │
+└────────────────────────────────────────────────────────────┘
+        │              │              │
+        ▼              ▼              ▼
+     Stripe         Resend         OpenAI
+   (if required)  (if required)  (if required)
+   Clerk only if a product still requires it
 
 Optional escalation (evidence-driven only):
-  Background Worker · Cron Job · Private Service · Key Value · Workflows
+  additional Queues · Cron Triggers · Durable Objects
 ```
 
 ### Baseline vs escalation
 
 | Layer | Baseline MVP | Escalation |
 | --- | --- | --- |
-| Hosting | Render web service | Private service, multi-instance |
-| Data | Render PostgreSQL | Read replica, specialized vector DB |
-| Async | In-process job contract | Background Worker / Workflows |
-| Schedule | None until needed | Cron Jobs |
-| Cache | None until needed | Key Value |
+| Hosting | Cloudflare Workers / Pages / static assets | Additional isolates; not a second PaaS |
+| Data | Supabase PostgreSQL | Read replica, specialized vector DB |
+| Auth | Supabase Auth | Clerk only if still required |
+| Async | In-process job contract; Queues when deferred work exists | Additional Queues |
+| Schedule | None until needed | Cron Triggers |
+| Live coordination | None until needed | Durable Objects |
 
 **Rule:** do not create distributed infrastructure before workload evidence requires it ([SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)).
 
 ### Financial ownership (normative invariants)
 
 - Stripe owns payment processor state; AGI owns internal ledger and donation/allocation records ([SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md)).
-- Clerk owns authentication; AGI owns authorization ([SPEC-019](../specs/SPEC-019-identity-and-authorization.md), [SPEC-024](../specs/SPEC-024-integration-boundaries.md)).
+- Supabase Auth owns authentication (Clerk only if still required); AGI owns authorization ([SPEC-019](../specs/SPEC-019-identity-and-authorization.md), [SPEC-024](../specs/SPEC-024-integration-boundaries.md)).
 - AI outputs are advisory until deterministic policy or authorized actors approve.
 
 Distributed processes, brokers, and Kubernetes appear only in optional later profiles ([SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile D).

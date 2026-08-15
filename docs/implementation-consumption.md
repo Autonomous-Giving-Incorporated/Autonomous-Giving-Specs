@@ -17,7 +17,7 @@ Keep implementation-specific material (endpoints, deployment, source layout, ope
 3. Preserve `eventId`, `correlationId`, `schemaVersion`, and aggregate identifiers across module or process boundaries.
 4. Enforce the lifecycle invariants in [SPEC-005](../specs/SPEC-005-lifecycle.md), especially human approval before allocation and append-only evidence history.
 5. Include the exact SPEC, CONTRACT, EVENT, and schema version in integration-test evidence.
-6. Prefer a Render-first modular monolith ([implementation guidance](implementation-guidance.md), [ADR-012](../adr/ADR-012-render-first-platform.md)); treat deployment topology as irrelevant to conformance ([SPEC-013](../specs/SPEC-013-repository-conformance.md)).
+6. Prefer a Cloudflare + Supabase modular monolith ([implementation guidance](implementation-guidance.md), [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md)); treat deployment topology as irrelevant to conformance ([SPEC-013](../specs/SPEC-013-repository-conformance.md)). [ADR-012](../adr/ADR-012-render-first-platform.md) is superseded.
 
 ## Change coordination
 

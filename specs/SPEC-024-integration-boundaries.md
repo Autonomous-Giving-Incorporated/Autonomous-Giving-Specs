@@ -1,7 +1,7 @@
 ---
 id: SPEC-024
 title: Integration Boundaries
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -16,14 +16,15 @@ related_specs:
 related_adrs:
 - ADR-006
 - ADR-012
+- ADR-013
 related_contracts:
 - CONTRACT-006
 ---
 
 # SPEC-024: Integration Boundaries
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-019, SPEC-021, SPEC-023 | Related ADRs | ADR-006, ADR-012 | Related contracts | CONTRACT-006 |
+| Dependencies | SPEC-019, SPEC-021, SPEC-023 | Related ADRs | ADR-006, ADR-012, ADR-013 | Related contracts | CONTRACT-006 |
 
 ## Purpose
 
@@ -31,15 +32,48 @@ Define preferred external integration boundaries so identity, payments, email, a
 
 ## Scope
 
-Clerk, Stripe, Resend, OpenAI (and optional AI providers). Application authorization and financial ledger remain AGI-owned.
+Supabase Auth (preferred identity), Stripe, Resend, OpenAI (and optional AI providers). Clerk only if a product still requires it. Application authorization and financial ledger remain AGI-owned.
 
 ## Authority
 
-**Informative preferred integrations** under [ADR-012](../adr/ADR-012-render-first-platform.md). Security and financial rules that are normative are stated in [SPEC-016](SPEC-016-security-and-trust-boundaries.md), [SPEC-019](SPEC-019-identity-and-authorization.md), and [SPEC-023](SPEC-023-financial-ledger-invariants.md).
+**Informative preferred integrations** under [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md). [ADR-012](../adr/ADR-012-render-first-platform.md) Clerk-default notes are **historical**. Security and financial rules that are normative are stated in [SPEC-016](SPEC-016-security-and-trust-boundaries.md), [SPEC-019](SPEC-019-identity-and-authorization.md), and [SPEC-023](SPEC-023-financial-ledger-invariants.md).
 
 ---
 
-## Clerk — authentication
+## Supabase Auth — authentication (preferred)
+
+### Supabase Auth owns
+
+- Authentication
+- Sessions
+- OAuth / social login
+- Identity provider concerns
+- MFA configuration at the IdP layer
+
+### AGI owns
+
+- Authorization
+- Application roles
+- Organization membership policy
+- Financial permissions
+- Operational permissions
+- Administrative scope
+
+### Synchronization model
+
+| Item | Guidance |
+| --- | --- |
+| Stable link | Store `supabase_user_id` (or equivalent) on `users` |
+| Profile fields | Cache display name/email as non-authoritative copies; do not PK on email |
+| Memberships | AGI `organization_memberships` is application authority for product roles |
+| Webhooks | Optional Auth webhooks for user/org sync; verify signatures; idempotent upserts |
+| Session | Verify Supabase session on the Worker/server; map to AGI principal for authz checks |
+
+Do **not** tightly couple domain records to mutable user-facing identity fields such as email address.
+
+---
+
+## Clerk — authentication (only if a product still requires it)
 
 ### Clerk owns
 
@@ -192,4 +226,4 @@ Prefer PostgreSQL + optional **pgvector** ([SPEC-022](SPEC-022-postgresql-persis
 
 - Replacing platform Notification contracts with vendor templates as the sole record
 - Mandating every integration on day one of every product surface
-- Standardizing enterprise SSO beyond Clerk’s capabilities in this informative profile
+- Standardizing enterprise SSO beyond Supabase Auth (or Clerk if still required) in this informative profile

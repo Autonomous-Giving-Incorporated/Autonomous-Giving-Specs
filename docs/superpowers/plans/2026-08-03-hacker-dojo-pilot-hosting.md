@@ -9,7 +9,7 @@
 
 **Tech Stack:** Node 22, existing middleware package, Local Node / Docker Compose / Render / Railway / optional Fly, shell scripts, platform Supabase Auth.
 
-> **Historical note (2026-08-10):** This pilot plan records **observed** hosting options for allocation-middleware. Platform **preferred** stack for new work is Render + Next.js + PostgreSQL + Clerk/Stripe/Resend/OpenAI ([ADR-012](../../../adr/ADR-012-render-first-platform.md), [SPEC-021](../../../specs/SPEC-021-preferred-application-stack.md)). Supabase/Railway/Fly remain pilot-local unless re-justified.
+> **Historical note (2026-08-10, corrected 2026-08-15):** This pilot plan records **observed** hosting options for allocation-middleware (including Render / Railway / Fly). Platform **preferred** stack for new work is Cloudflare + Supabase ([ADR-013](../../../adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-021](../../../specs/SPEC-021-preferred-application-stack.md)). [ADR-012](../../../adr/ADR-012-render-first-platform.md) Render-first notes are superseded. Vercel and GitHub Pages are not the preferred public host.
 
 ## Implementation status (2026-08-07)
 

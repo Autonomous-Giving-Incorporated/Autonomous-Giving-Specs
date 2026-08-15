@@ -144,4 +144,4 @@ Ordered exit criteria for the whole program: [roadmap — Next recommended steps
 - [implementation-guidance.md](implementation-guidance.md)
 - [recovery-runbook.md](recovery-runbook.md)
 - [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md) — Cloudflare + Supabase hosted platform
-- [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md) (Render diagrams historical)
+- [SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md)–[SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md) (recommended diagrams match ADR-013; residual Render text is historical)
