@@ -1,6 +1,6 @@
 ---
 id: EVENT-001
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 title: SignalDetected
@@ -27,7 +27,7 @@ related_contracts: []
 | Stage / ordering | Signal / per `signalId` |
 | Idempotency | `eventId` |
 
-Records a captured external observation. Payload contains `signalId`, `needId`, `source`, `observedAt`, and `confidence`. Example: `{"eventType":"SignalDetected","payload":{"signalId":"signal-1","needId":"need-community-ai-lab"}}`.
+Records a captured external observation ([SPEC-003](../specs/SPEC-003-signals-stack.md)). Payload requires `signalId`, `needId`, `source`, `observedAt`, and `confidence`. `subject` and `capturedAt` SHOULD be included when known; Fund Intel MUST retain them even if omitted from a v1.0 payload. Example: `{"eventType":"SignalDetected","payload":{"signalId":"signal-1","needId":"need-community-ai-lab"}}`.
 
 
 ## Example payload
@@ -37,7 +37,9 @@ Records a captured external observation. Payload contains `signalId`, `needId`, 
   "signalId": "a0c2e191-3000-4000-8000-000000000001",
   "needId": "need-community-ai-lab",
   "source": "community-needs-survey",
+  "subject": "neighborhood-ai-lab-equipment-gap",
   "observedAt": "2026-08-03T15:50:00Z",
+  "capturedAt": "2026-08-03T15:50:00Z",
   "confidence": 0.92
 }
 ```
@@ -47,3 +49,4 @@ Records a captured external observation. Payload contains `signalId`, `needId`, 
 | Version | Change |
 | --- | --- |
 | 1.0.0 | Initial canonical event definition. |
+| 1.1.0 | Optional `subject` and `capturedAt` on the payload schema (SPEC-003). |

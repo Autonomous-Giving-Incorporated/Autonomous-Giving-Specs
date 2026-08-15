@@ -15,7 +15,8 @@ idempotency: eventId
 related_specs:
 - SPEC-005
 - SPEC-008
-related_contracts: []
+related_contracts:
+- CONTRACT-011
 ---
 
 # EVENT-004: ApprovalGranted
@@ -27,7 +28,7 @@ related_contracts: []
 | Stage / ordering | Approval / per `recommendationId` |
 | Idempotency | `eventId` |
 
-Records an explicit human approval. Payload contains `approvalId`, `recommendationId`, `approvedBy`, `approvedAt`, and policy reference. Example: `{"eventType":"ApprovalGranted","payload":{"approvalId":"approval-community-ai-lab","approvedBy":"human-reviewer"}}`.
+Records an explicit human approval. Payload contains `approvalId`, `recommendationId`, `approvedBy`, `approvedAt`, and policy reference. The evaluated [CONTRACT-011](../contracts/CONTRACT-011-delegation-policy.md) policy (single or dual) MUST remain reconcilable to this event. Example: `{"eventType":"ApprovalGranted","payload":{"approvalId":"approval-community-ai-lab","approvedBy":"human-reviewer"}}`.
 
 
 ## Example payload

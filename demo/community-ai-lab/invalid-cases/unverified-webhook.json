@@ -1,0 +1,11 @@
+{
+  "name": "unverified-webhook",
+  "expect_error": "UNVERIFIED_WEBHOOK",
+  "description": "Unverified connector input must not create a gift summary or pot credit",
+  "gift": {
+    "connector": "every.org",
+    "chargeId": "synthetic-charge-unverified",
+    "netAmount": 2500,
+    "verified": false
+  }
+}

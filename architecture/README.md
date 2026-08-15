@@ -1,7 +1,7 @@
 # Architecture
 
 - [Overview](overview.md) — logical capabilities vs preferred Cloudflare + Supabase physical deployment
-- [AGI control plane](control-plane.md) — AGI authentication, authorization, tenant/project routing, and capability handoff
+- [AGI control plane](control-plane.md) — AGI authentication, authorization, tenant/project routing, and capability handoff ([SPEC-028](../specs/SPEC-028-agi-control-plane.md), [ADR-014](../adr/ADR-014-agi-control-plane.md) accepted)
 - [Secure cross-repository harness](secure-cross-repo-harness.md) — private synthetic integration and security verification direction
 - Domain and lifecycle diagrams live under [`diagrams/`](../diagrams/)
 - Capability boundaries: [SPEC-006](../specs/SPEC-006-capability-boundaries.md)

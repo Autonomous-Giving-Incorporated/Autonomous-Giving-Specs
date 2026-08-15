@@ -3,7 +3,7 @@
 ## Delivery evolution (recommended)
 
 ```text
-Phase 0  Spec consolidation          ← Cloudflare + Supabase canon (ADR-013)
+Phase 0  Spec consolidation          ← ADR-013 host · ADR-015 money · ADR-014/SPEC-028 control plane
     ↓
 Phase 1  Platform foundation         Next.js + Workers + Supabase Auth/Postgres/Storage
     ↓
@@ -47,26 +47,28 @@ The platform evolves toward distribution only when operational criteria warrant 
 | --- | --- | --- |
 | 1. Platform Canon | Constitution, vocabulary, lifecycle | SPEC-001, 002, 004, 005 accepted |
 | 2. Architectural Principles | Capability-first, deployment independence | SPEC-002A accepted |
-| 3. Signals Stack | Observation and recommendation boundary | SPEC-003 reviewed |
+| 3. Signals Stack | Observation and recommendation boundary | SPEC-003 accepted |
 | 4. Contracts | Owned interoperable messages (transport-independent) | CONTRACT-001–007 validated |
 | 5. Schemas | Versioned machine validation | SCHEMA-001–007 published |
 | 6. Capability Boundaries | Logical responsibilities without deployables | SPEC-006 accepted |
 | 7. Documentation | Cross-reference and review standard | SPEC-010 accepted |
-| 8. Design System | Audit-visible information requirements | SPEC-009 reviewed |
+| 8. Design System | Audit-visible information requirements | SPEC-009 accepted |
 | 9. Deployment Profiles | Informative MVP and evolution profiles | SPEC-020 published |
 | 10. Platform Conformance | Declared implementation coverage (topology-agnostic) | SPEC-013 accepted by consumers |
 | 11. Executable Canon | Validators, CI, indexes, release package | `validate_all.py` PASS on main |
 | 12. Consumer Manifests | Measurable capability conformance | three example manifests + schema |
 | 13. Demo Fixture | Deterministic positive/negative vectors | community-ai-lab fixtures validate |
 | 14. Compatibility Policy | Evolution without silent breaks | SPEC-015 + ADR-011 accepted |
-| 15. Trust Layer | Shared security/privacy model | SPEC-016–019 reviewed |
+| 15. Trust Layer | Shared security/privacy model | SPEC-016–019 written (later accepted in milestone 20) |
 | 16. RFC Governance | Explicit status and approval rules | rfc-process.md adopted |
 | 17. Render-first preferred stack (historical) | Prior physical architecture + financial ops contracts | ADR-012 + SPEC-020 v2 + SPEC-021–025 accepted; **superseded by milestone 18** |
 | 18. Cloudflare + Supabase hosted platform | Preferred physical architecture aligned to ADR-013 | ADR-013 accepted; SPEC-020–025 body diagrams match Cloudflare + Supabase |
+| 19. Donation-tracking money boundary | AGI tracks gifts; Stripe is tenant billing only | ADR-015, SPEC-023 v2, SPEC-026, SPEC-027, CONTRACT-013 accepted (already on main) |
+| 20. Control plane + trust layer | AGI admin/login surface, capability JWTs, accepted trust SPECs | SPEC-028 accepted; ADR-014 accepted; SPEC-016–019 accepted; CONTRACT-008–012 accepted |
 
 ## Next recommended steps (implementation)
 
-Specs Phase 0 (this repository) is complete when ADR-013 and SPEC-020–025 body diagrams match Cloudflare + Supabase. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
+Specs Phase 0 (this repository) now includes host alignment (milestone 18), the donation-tracking money boundary (milestone 19, already on main), and the control plane + trust layer (milestone 20). That is specification work, not a tagged platform release and not implementation READY. Pin-a-release remains operator-owned. **Product implementation** should proceed in order. Do not skip financial invariants for UI velocity.
 
 | Order | Workstream | Where | Exit criterion |
 | --- | --- | --- | --- |

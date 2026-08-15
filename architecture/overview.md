@@ -52,8 +52,10 @@ Logical capabilities do **not** require three deployments. The **recommended MVP
 └────────────────────────────────────────────────────────────┘
         │              │              │
         ▼              ▼              ▼
-     Stripe         Resend         OpenAI
-   (if required)  (if required)  (if required)
+     Stripe              Resend         OpenAI
+   (tenant billing     (if required)  (if required)
+    only, if required)
+   every.org is the P0 donation-source connector
    Clerk only if a product still requires it
 
 Optional escalation (evidence-driven only):
@@ -75,8 +77,8 @@ Optional escalation (evidence-driven only):
 
 ### Financial ownership (normative invariants)
 
-- Stripe owns payment processor state; AGI owns internal ledger and donation/allocation records ([SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md)).
-- Supabase Auth owns authentication (Clerk only if still required); AGI owns authorization ([SPEC-019](../specs/SPEC-019-identity-and-authorization.md), [SPEC-024](../specs/SPEC-024-integration-boundaries.md)).
+- every.org (or the CSV twin) owns donation checkout; AGI tracks gift summaries, pots, and allocations ([SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md), [ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md)). Stripe, if present, owns **tenant/SaaS billing only**.
+- Supabase Auth owns authentication (Clerk only if still required); AGI owns authorization and the control plane ([SPEC-019](../specs/SPEC-019-identity-and-authorization.md), [SPEC-024](../specs/SPEC-024-integration-boundaries.md), [SPEC-028](../specs/SPEC-028-agi-control-plane.md)).
 - AI outputs are advisory until deterministic policy or authorized actors approve.
 
 Distributed processes, brokers, and Kubernetes appear only in optional later profiles ([SPEC-020](../specs/SPEC-020-reference-deployment-profiles.md) Profile D).

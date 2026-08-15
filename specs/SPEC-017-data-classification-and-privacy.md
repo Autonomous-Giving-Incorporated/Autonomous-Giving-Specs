@@ -1,29 +1,35 @@
 ---
 id: SPEC-017
 title: Data Classification and Privacy
-version: 1.0.0
-status: proposed
+version: 1.1.0
+status: accepted
 authority: normative
 owner: Platform Architecture
 related_specs:
 - SPEC-004
 - SPEC-016
 - SPEC-019
+- SPEC-027
+- SPEC-028
 related_adrs:
 - ADR-004
 - ADR-007
+- ADR-014
+- ADR-015
 related_contracts:
 - CONTRACT-003
 - CONTRACT-004
 - CONTRACT-005
 - CONTRACT-006
 - CONTRACT-007
+- CONTRACT-012
+- CONTRACT-013
 ---
 
 # SPEC-017: Data Classification and Privacy
-| Version | 1.0.0 | Owner | Platform Architecture | Status | Proposed |
+| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-004, SPEC-016 | Related ADRs | ADR-004, ADR-007 | Related contracts | CONTRACT-003–007 |
+| Dependencies | SPEC-004, SPEC-016, SPEC-027 | Related ADRs | ADR-004, ADR-007, ADR-014, ADR-015 | Related contracts | CONTRACT-003–007, CONTRACT-012, CONTRACT-013 |
 
 ## Purpose
 Classify platform data so public, tenant, and private fields are handled consistently across capabilities.
@@ -71,6 +77,13 @@ Data at rest and in events/contracts for the Autonomous Giving Platform. Legal j
 ### Tenant boundaries
 1. Data for one organization/tenant MUST NOT be readable by another tenant’s principals by default.
 2. Cross-tenant analytics require explicit product authority and aggregation that removes `pii`.
+3. Control-plane context ([SPEC-028](SPEC-028-agi-control-plane.md)) MUST fail closed on `client_id` / `tenant_id` mismatch so classification labels cannot leak across tenants.
+
+### ImpactNotice and no invented PII
+1. [CONTRACT-013](../contracts/CONTRACT-013-impact-notice.md) MUST NOT require or include donor email, name, or phone ([SPEC-027](SPEC-027-impact-loop.md)).
+2. If the donation-source connector omits opt-in contactable identity, implementations MUST NOT emit ImpactNotice, MUST NOT send email, and MUST NOT invent an address or push target.
+3. ImpactNotice CTA is the tenant outbound Donation Link, not a checkout session ([ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md)).
+4. Public projections ([CONTRACT-012](../contracts/CONTRACT-012-public-projection.md)) MUST remain aggregate-safe: no donor identity, private evidence URL, or service credential.
 
 ## Non-goals
 This specification does not implement GDPR/CCPA compliance programs, cookie banners, or marketing consent UX. It does not store personal data in this repository.

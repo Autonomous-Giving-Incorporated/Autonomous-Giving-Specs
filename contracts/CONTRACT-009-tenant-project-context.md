@@ -1,7 +1,7 @@
 ---
 id: CONTRACT-009
 version: 1.0.0
-status: proposed
+status: accepted
 authority: normative
 title: Tenant Project Context
 owner: Autonomous Giving
@@ -15,6 +15,7 @@ related_specs:
 - SPEC-016
 - SPEC-017
 - SPEC-024
+- SPEC-028
 ---
 
 # CONTRACT-009: Tenant Project Context

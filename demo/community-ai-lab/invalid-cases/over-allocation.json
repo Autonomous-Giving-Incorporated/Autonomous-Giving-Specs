@@ -1,0 +1,15 @@
+{
+  "name": "over-allocation",
+  "expect_error": "OVER_ALLOCATION",
+  "description": "Allocation must not exceed pot available (credited minus allocated)",
+  "pot": {
+    "credited": 2500,
+    "allocated": 0,
+    "available": 2500
+  },
+  "attemptedAllocation": {
+    "allocationId": "c6c2e191-3000-4000-8000-000000000001",
+    "amount": 9999,
+    "currency": "USD"
+  }
+}

@@ -1,7 +1,7 @@
 ---
 id: CONTRACT-012
 version: 1.0.0
-status: proposed
+status: accepted
 authority: normative
 title: Public Impact Projection
 owner: Impact Relay
@@ -15,6 +15,8 @@ related_specs:
 - SPEC-017
 - SPEC-018
 - SPEC-024
+- SPEC-027
+- SPEC-028
 ---
 
 # CONTRACT-012: Public Impact Projection

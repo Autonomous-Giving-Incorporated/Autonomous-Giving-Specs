@@ -1,8 +1,8 @@
 ---
 id: SPEC-018
 title: Evidence Integrity and Provenance
-version: 1.0.0
-status: proposed
+version: 1.1.0
+status: accepted
 authority: normative
 owner: Impact Relay
 related_specs:
@@ -10,18 +10,21 @@ related_specs:
 - SPEC-005
 - SPEC-007
 - SPEC-016
+- SPEC-028
 related_adrs:
 - ADR-007
+- ADR-014
 related_contracts:
 - CONTRACT-003
 - CONTRACT-004
 - CONTRACT-005
+- CONTRACT-012
 ---
 
 # SPEC-018: Evidence Integrity and Provenance
-| Version | 1.0.0 | Owner | Impact Relay | Status | Proposed |
+| Version | 1.1.0 | Owner | Impact Relay | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002, SPEC-005, SPEC-007 | Related ADRs | ADR-007 | Related contracts | CONTRACT-003–005 |
+| Dependencies | SPEC-002, SPEC-005, SPEC-007 | Related ADRs | ADR-007, ADR-014 | Related contracts | CONTRACT-003–005, CONTRACT-012 |
 
 ## Purpose
 Ensure Evidence, Receipt, and Verification form an attributable, append-only chain from Allocation to Impact.
@@ -60,6 +63,10 @@ Contracts and events for Evidence, Receipt, Verification, and impact claims. Bin
 1. Verification MUST name one or more `evidenceIds` and an `outcome`.
 2. Verification without Evidence is non-conformant.
 3. Automated checks may assist but do not replace the Verification record requirements.
+
+### Control-plane non-duplication
+1. AGI MUST NOT duplicate Impact Relay evidence, verification, or public-projection records as a second system of record ([SPEC-028](SPEC-028-agi-control-plane.md), [ADR-014](../adr/ADR-014-agi-control-plane.md)).
+2. Public projections ([CONTRACT-012](../contracts/CONTRACT-012-public-projection.md)) MUST remain reconcilable to Verification and MUST NOT become an editable evidence store.
 
 ## Non-goals
 This specification does not require a particular blockchain, WORM appliance, or certificate authority. It does not define courtroom evidentiary standards.

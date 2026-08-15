@@ -10,7 +10,7 @@ Deterministic conformance fixture for [SPEC-011](../../specs/SPEC-011-demo-speci
 | `expected-events.jsonl` | Canonical event order and schema-valid payloads |
 | `expected-state-transitions.json` | Lifecycle stage sequence and ordering rules |
 | `expected-receipts.json` | Receipt provenance tied to `allocationId` |
-| `invalid-cases/` | Negative vectors implementations must reject |
+| `invalid-cases/` | Negative vectors implementations must reject (order/amount plus tracking: unverified webhook, duplicate `chargeId`, over-allocation, missing proof, invented PII) |
 
 ## Invariants validated by `validation/validate_demo.py`
 

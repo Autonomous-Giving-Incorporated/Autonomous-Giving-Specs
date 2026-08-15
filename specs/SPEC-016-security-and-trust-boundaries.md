@@ -1,8 +1,8 @@
 ---
 id: SPEC-016
 title: Security and Trust Boundaries
-version: 1.3.0
-status: proposed
+version: 1.4.0
+status: accepted
 authority: normative
 owner: Platform Architecture
 related_specs:
@@ -14,24 +14,27 @@ related_specs:
 - SPEC-023
 - SPEC-024
 - SPEC-025
+- SPEC-028
 related_adrs:
 - ADR-004
 - ADR-006
 - ADR-007
 - ADR-012
 - ADR-013
+- ADR-014
 - ADR-015
 related_contracts:
 - CONTRACT-003
 - CONTRACT-004
 - CONTRACT-005
 - CONTRACT-006
+- CONTRACT-008
 ---
 
 # SPEC-016: Security and Trust Boundaries
-| Version | 1.3.0 | Owner | Platform Architecture | Status | Proposed |
+| Version | 1.4.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002, SPEC-006 | Related ADRs | ADR-004, ADR-006, ADR-007, ADR-012, ADR-013 | Related contracts | CONTRACT-003–006 |
+| Dependencies | SPEC-002, SPEC-006, SPEC-019, SPEC-028 | Related ADRs | ADR-004, ADR-006, ADR-007, ADR-013, ADR-014, ADR-015 | Related contracts | CONTRACT-003–006, CONTRACT-008 |
 
 ## Purpose
 Define shared trust boundaries so implementations do not invent incompatible security controls at platform edges.
@@ -66,6 +69,8 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 12. AGI does not take donation cards. Using Stripe for **tenant/SaaS billing** reduces card-data handling scope when card data remains with Stripe; implementations MUST NOT claim PCI compliance solely because Stripe is integrated. Document residual responsibilities for keys, webhooks, and server surfaces ([SPEC-024](SPEC-024-integration-boundaries.md)).
 13. AI/agent tools MUST NOT hold unconstrained authority to move money; financial actions require deterministic application gates or authorized human/system actors ([SPEC-023](SPEC-023-financial-ledger-invariants.md)).
 14. Production database access SHOULD be least-privilege, authenticated, and auditable. Backup and recovery expectations for the preferred path are in [SPEC-025](SPEC-025-operations-deploy-and-scale.md).
+15. At capability edges, inbound AGI control-plane context MUST be verified before financial or administrative side effects: issuer, signature (published JWKS), audience, expiry, `client_id` / `tenant_id` equality and authorization, project scope when required, and requested capability ([SPEC-028](SPEC-028-agi-control-plane.md), [CONTRACT-008](../contracts/CONTRACT-008-auth-context.md), [ADR-014](../adr/ADR-014-agi-control-plane.md)). Unverified context is deny-by-default.
+16. Donation-source connector webhooks MUST verify provider signatures or shared secrets before side effects (requirement 9). That webhook verify is independent of CONTRACT-008: a valid capability JWT does not replace connector signature checks, and a valid connector signature does not replace capability-edge token verification.
 
 ## Trust-boundary diagram (logical)
 

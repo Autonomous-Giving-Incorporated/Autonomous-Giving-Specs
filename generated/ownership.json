@@ -31,10 +31,12 @@
         "EVENT-004",
         "EVENT-005",
         "EVENT-006",
-        "EVENT-008"
+        "EVENT-008",
+        "EVENT-012"
       ],
       "specs": [
-        "SPEC-023"
+        "SPEC-023",
+        "SPEC-028"
       ]
     },
     {

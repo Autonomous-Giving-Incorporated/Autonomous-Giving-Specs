@@ -1,0 +1,17 @@
+{
+  "name": "duplicate-charge-id",
+  "expect_error": "DUPLICATE_GIFT",
+  "description": "Second delivery of the same chargeId must not increase pot credited",
+  "gifts": [
+    {
+      "chargeId": "synthetic-charge-community-ai-lab",
+      "netAmount": 2500,
+      "verified": true
+    },
+    {
+      "chargeId": "synthetic-charge-community-ai-lab",
+      "netAmount": 2500,
+      "verified": true
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 id: CONTRACT-011
 version: 1.0.0
-status: proposed
+status: accepted
 authority: normative
 title: Delegation Approval Policy
 owner: Autonomous Giving
@@ -14,6 +14,7 @@ related_specs:
 - SPEC-006
 - SPEC-016
 - SPEC-019
+- SPEC-028
 ---
 
 # CONTRACT-011: Delegation Approval Policy

@@ -28,6 +28,6 @@ Freeze platform concepts and their relationships.
 ## Scope
 The canonical terms identified in the [glossary](../glossary/README.md).
 ## Requirements
-Artifacts SHALL use glossary identifiers and SHALL NOT introduce synonyms or duplicate concepts. `TimelineEvent`, `Notification`, and `ImpactNotice` are named, distinct projections. Product UI MAY label Evidence as proof; the canonical term remains Evidence. Gift Summary, Pot, Donation-source Connector, and Donation Link are tracking terms and do not replace Allocation or Receipt.
+Artifacts SHALL use glossary identifiers and SHALL NOT introduce synonyms or duplicate concepts. `TimelineEvent`, `Notification`, and `ImpactNotice` are named, distinct projections. Product UI MAY label Evidence as proof; the canonical term remains Evidence. Gift Summary, Pot, Donation-source Connector, and Donation Link are tracking terms and do not replace Allocation or Receipt. AGI Control Plane is Autonomous Giving’s edge, not a fourth capability or a lifecycle stage.
 ## Non-goals
 This is not a database or object model.

@@ -1,0 +1,10 @@
+{
+  "name": "invented-pii",
+  "expect_error": "INVENTED_PII",
+  "description": "Missing donor contact must not be filled with a fabricated address or push target",
+  "contactableDonor": false,
+  "forbidden": {
+    "inventedEmail": "donor@example.com",
+    "impactNoticeIssued": true
+  }
+}

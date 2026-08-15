@@ -14,7 +14,7 @@ The harness is an external verifier. It must assume every capability boundary ca
 - Pin every checked-out repository to an explicit commit or release.
 - Use GitHub Actions OIDC and short-lived provider credentials where access is required.
 - Use protected environments and least-privilege repository/service permissions.
-- Keep signing keys, Supabase secrets, and Cloud Run credentials outside the repository.
+- Keep signing keys, Supabase secrets, and any historical/optional host credentials (including Cloud Run, if an existing Impact Relay implementation still uses it) outside the repository.
 - Redact tokens and payloads from CI logs. Persist only test names, revision IDs, and safe reason codes.
 - A failed security check blocks acceptance; it does not fall back to a weaker test mode.
 
@@ -22,7 +22,7 @@ The harness is an external verifier. It must assume every capability boundary ca
 
 ### 1. Contract validation
 
-- Validate proposed CONTRACT-008–012 payloads against the pinned Specs schemas.
+- Validate accepted CONTRACT-008–012 payloads against the pinned Specs schemas ([SPEC-028](../specs/SPEC-028-agi-control-plane.md)).
 - Reject missing or mismatched `client_id` / `tenant_id` values.
 - Reject donor identifiers in public projection payloads.
 - Tolerate unknown compatible fields according to the pinned compatibility rules.

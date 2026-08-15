@@ -1,7 +1,7 @@
 ---
 id: CONTRACT-010
 version: 1.0.0
-status: proposed
+status: accepted
 authority: normative
 title: Capability Route Intent
 owner: Autonomous Giving
@@ -13,6 +13,7 @@ related_specs:
 - SPEC-006
 - SPEC-019
 - SPEC-024
+- SPEC-028
 ---
 
 # CONTRACT-010: Capability Route Intent
