@@ -18,6 +18,8 @@ implements:
     - SPEC-008
     - SPEC-012
     - SPEC-013
+    - SPEC-023
+    - SPEC-026
   contracts:
     produces:
       - CONTRACT-003

@@ -1,6 +1,6 @@
 ---
 id: CONTRACT-006
-version: 1.0.0
+version: 1.1.0
 status: accepted
 authority: normative
 title: Notification
@@ -12,6 +12,7 @@ consumer: Channel adapter
 related_specs:
 - SPEC-006
 - SPEC-007
+- SPEC-027
 related_events:
 - EVENT-010
 ---
@@ -20,14 +21,14 @@ related_events:
 
 | Field | Value |
 | --- | --- |
-| Version | 1.0.0 |
+| Version | 1.1.0 |
 | Owner | Impact Relay |
 | Producer / consumer | Impact Relay / Channel adapter |
 | Schema | [notification.json](../schemas/notification.json) |
 
 A delivery request describing a lifecycle update. Required: `notificationId`, `timelineEventId`, `channel`, `createdAt`. Delivery state is not proof that the underlying lifecycle event occurred. Published by [EVENT-010](../events/EVENT-010-notification-sent.md).
 
-Validation requires UUID identifiers, an allowed channel (`email`, `webhook`, or `in_app`), and an RFC 3339 creation time.
+Validation requires UUID identifiers, an allowed channel (`email`, `webhook`, `in_app`, or `push`), and an RFC 3339 creation time. `push` is a MINOR enum widening for ImpactNotice and other consented device delivery ([SPEC-027](../specs/SPEC-027-impact-loop.md)).
 
 ```json
 {"notificationId":"f6c2e191-3000-4000-8000-000000000001","timelineEventId":"a6c2e191-3000-4000-8000-000000000002","channel":"in_app","createdAt":"2026-08-03T16:30:00Z"}

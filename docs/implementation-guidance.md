@@ -11,7 +11,7 @@ GitHub → Cloudflare (Workers / Pages / static assets
            + Durable Objects if live coordination is needed
            + Queues / Cron Triggers for deferred, webhook, retry work)
        → Supabase (Auth + PostgreSQL + Storage)
-Externals if still required: Stripe · Resend · OpenAI · Clerk
+Externals: every.org (P0 connector) · Stripe (tenant billing only) · Resend · OpenAI · Clerk
 ```
 
 Public suite (workbench, Portfolio Signals public, Impact Relay public) and allocation middleware / webhooks / PostgreSQL-backed services share this path: **Workers (or Worker + Queue) talking to Supabase**, not a Render app.
@@ -27,7 +27,7 @@ Public suite (workbench, Portfolio Signals public, Impact Relay public) and allo
 | Application modules | Next.js + TypeScript (static export and/or Workers) |
 | ORM / migrations | Explicit SQL migrations against Supabase Postgres (Drizzle acceptable) |
 | Authorization | Application-owned roles and policies |
-| Payments | Stripe, if still required |
+| Payments | Stripe for tenant/SaaS billing only, if tenants are charged |
 | Email | Resend, if still required |
 | AI | OpenAI via provider abstraction, if still required |
 | IaC | Product repos: Wrangler/Pages + Supabase project. This specs repo has neither. Residual [`docs/historical/render.yaml.example`](historical/render.yaml.example) is superseded (ADR-012). |
@@ -55,11 +55,12 @@ Events describe **what happened**, not **which product hosts the queue**.
 
 ## Financial core
 
-Follow [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md):
+Follow [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md) and [ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md):
 
-- append-oriented financial history
-- Stripe webhook verification + idempotency
-- payment ≠ ledger ≠ allocation ≠ disbursement
+- append-oriented gift summaries and pot credits
+- donation-source webhook verification + idempotency (`chargeId`)
+- connector gift state ≠ pot credit ≠ allocation ≠ Evidence
+- AGI does not capture donations; Stripe is tenant billing only
 - AI recommendations advisory until authorized
 
 ## Persistence
@@ -67,7 +68,7 @@ Follow [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md):
 Follow [SPEC-022](../specs/SPEC-022-postgresql-persistence.md):
 
 - PostgreSQL is AGI canonical application store (Supabase Postgres per [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md))
-- Supabase Auth is preferred identity; Stripe remains processor truth if payments are used
+- Supabase Auth is preferred identity; every.org (or adapter) is gift-completion truth; Stripe is tenant-billing truth only if used
 - Prefer relational columns for money fields; JSONB for payloads/metadata
 - Optional pgvector before external vector DBs
 

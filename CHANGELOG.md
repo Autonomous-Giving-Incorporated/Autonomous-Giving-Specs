@@ -5,7 +5,25 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ## [Unreleased]
 
+### Added
+
+- **SPEC-026** Donation-source Connectors (normative): every.org P0 adapter, verify, raw payload, idempotent `chargeId`, `netAmount` default, auto-create pot/slice, exception catalog, CSV twin, no AGI checkout.
+- **SPEC-027** Impact Loop (normative): ImpactNotice only after Evidence or explicit human waive; channels email/push/in_app; CTA = tenant Donation Link; no invented PII.
+- **CONTRACT-013** / **SCHEMA-013** / **EVENT-011** ImpactNotice (CONTRACT-008 remains AGI Auth Context).
+- **ADR-015** Donation Tracking versus Tenant Billing (Nygard): donations tracked via connectors; Stripe = tenant billing only; tenant pages link out.
+- Glossary TERM-025–029 (Gift Summary, Pot, Donation-source Connector, ImpactNotice, Donation Link).
+- Informative [sprint remaining work](docs/sprint-remaining-work-donation-tracking.md) (OBSERVED Worker/`am_*` vs remaining code vs operator-owned; not READY).
+- Migration notes: [v2.0.0 donation-tracking boundary](docs/migrations/v2.0.0-donation-tracking-boundary.md).
+
 ### Changed
+
+- **SPEC-023** v2.0.0 (**MAJOR** artifact): tracking ledger; AGI never processes donations; connector gift state ≠ pot credit ≠ allocation ≠ Evidence. Stripe donation lifecycle withdrawn.
+- **SPEC-024** v1.2.0: every.org is P0 donation-source connector; Stripe is tenant/SaaS billing only; Resend (or equivalent) + `push` for notices; `donation_link` is an outbound tenant URL.
+- **CONTRACT-006** / notification schema v1.1.0: channel enum widened with `push` (backward compatible).
+- **SPEC-004–008**, **SPEC-016**, **SPEC-020–022**, **SPEC-025**: aligned to the money-boundary split; no fifth capability.
+- Allocation middleware design: canon pointer to SPEC-026/027 and ADR-015; historical host notes remain non-preferred.
+
+### Changed (prior)
 
 - **SPEC-020** v2.1.0: Profile B (recommended), Profile C, and Evolution Phase 1 now diagram Cloudflare + Supabase (ADR-013). Render Profile B preserved only under **Historical (superseded)**.
 - **SPEC-021** v1.1.0: Baseline topology and optional escalation are Cloudflare Workers/Pages + Queues/Cron/Durable Objects + Supabase. Render web/worker/cron/KV/Workflows text is labeled historical.

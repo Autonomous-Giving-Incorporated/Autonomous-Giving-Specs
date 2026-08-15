@@ -1,7 +1,7 @@
 ---
 id: SPEC-025
 title: Operations Deploy Observability and Scale
-version: 1.1.0
+version: 1.2.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -19,7 +19,7 @@ related_contracts: []
 ---
 
 # SPEC-025: Operations, Deploy, Observability, and Scale
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-020, SPEC-021, SPEC-023 | Related ADRs | ADR-012, ADR-013 | Related contracts | None |
 
@@ -59,7 +59,7 @@ Never commit real secrets. Maintain a product-repo `.env.example` aligned to thi
 | `CLERK_SECRET_KEY` | Server Clerk API | Yes | if Clerk used | Clerk | Rotate immediately on leak |
 | `CLERK_WEBHOOK_SECRET` | Verify Clerk webhooks | Yes | staging/prod when used | Clerk | Rotate with webhook endpoint |
 
-### STRIPE (if the product still requires Stripe)
+### STRIPE (tenant/SaaS billing only, if tenants are charged)
 
 | Name | Purpose | Secret | Envs | Owner | Rotation |
 | --- | --- | --- | --- | --- | --- |
@@ -190,8 +190,8 @@ Do not schedule without a documented operational reason. Each cron job specifica
 
 | Job | Typical purpose |
 | --- | --- |
-| Payment reconciliation | Compare Stripe vs internal payment/ledger |
-| Settlement checks | Detect stuck pending payments |
+| Gift reconciliation | Compare connector gift completions vs `am_gifts` / pot credits |
+| Tenant-billing reconciliation | Compare Stripe vs internal billing entitlements (only if tenants are charged) |
 | Reporting | Aggregate operational reports |
 | Stale job cleanup | Fail or requeue abandoned jobs |
 | Anomaly detection | Flag unusual donation patterns |
@@ -210,8 +210,8 @@ Structured logs with:
 
 - request IDs
 - job IDs
-- payment IDs
-- donation IDs
+- charge IDs / gift summary IDs
+- tenant-billing IDs (if Stripe billing is used)
 - correlation IDs
 - webhook event IDs
 - error classification
@@ -225,15 +225,15 @@ Structured logs with:
 - complete payment credentials
 - unnecessary sensitive donor PII
 
-### Failed donation/payment trace
+### Failed gift-tracking trace
 
 Developers MUST be able to locate a failed flow across:
 
 ```text
-request → Stripe → Worker/Queue webhook → Supabase PostgreSQL → email
+third-party gift → Worker webhook → verify → Supabase PostgreSQL (am_gifts / pots) → allocate → Evidence → ImpactNotice
 ```
 
-using correlation of request id, Stripe event id, `webhook_events` row, donation/payment ids, and `notification_events` status.
+using correlation of request id, connector event/`chargeId`, `webhook_events` or raw payload row, gift/pot/allocation ids, and `notification_events` status. Tenant-billing traces, if any, MUST stay on a separate Stripe correlation path.
 
 ---
 
@@ -247,8 +247,8 @@ using correlation of request id, Stripe event id, `webhook_events` row, donation
 | Restore procedure | Restore to new instance → verify → cut over; see [recovery runbook](../docs/recovery-runbook.md) |
 | Migration recovery | Prefer forward fixes; restore from backup only for catastrophic schema/data loss |
 | Accidental deletion | Compensating entries for financial; restore for bulk destruction |
-| Webhook replay | Re-fetch from Stripe / replay stored `webhook_events` with idempotent handlers |
-| Post-recovery reconciliation | Run payment reconciliation job; compare processor vs ledger |
+| Webhook replay | Re-fetch from the donation-source connector / replay stored `webhook_events` with idempotent handlers |
+| Post-recovery reconciliation | Compare connector gifts vs pots; compare Stripe vs billing entitlements only if tenants are charged |
 
 ---
 
@@ -274,7 +274,7 @@ Aligned with [SPEC-016](SPEC-016-security-and-trust-boundaries.md):
 
 - least privilege DB users and Cloudflare / Supabase access
 - secrets only in Cloudflare secrets / Supabase dashboard (never in this repo)
-- webhook verification mandatory for Stripe
+- webhook verification mandatory for donation-source connectors; Stripe only if tenant billing is used
 - parameterized queries via ORM/SQL (no string-concat SQL)
 - application authorization after Supabase Auth (or Clerk if still required)
 - admin access audited

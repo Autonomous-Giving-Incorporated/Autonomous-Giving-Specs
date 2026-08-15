@@ -7,7 +7,7 @@ Phase 0  Spec consolidation          ← Cloudflare + Supabase canon (ADR-013)
     ↓
 Phase 1  Platform foundation         Next.js + Workers + Supabase Auth/Postgres/Storage
     ↓
-Phase 2  Financial core              Stripe + donations + ledger + Worker/Queue webhook idempotency + receipts
+Phase 2  Tracking core               every.org connector + pots + Worker webhook idempotency + ImpactNotice
     ↓
 Phase 3  Allocation system           Funds, programs, allocation policies, disbursement tracking
     ↓
@@ -72,10 +72,10 @@ Specs Phase 0 (this repository) is complete when ADR-013 and SPEC-020–025 body
 | --- | --- | --- | --- |
 | 1 | Scaffold preferred stack | New or existing product repo | Next.js + TypeScript + explicit migrations; Wrangler/Pages in the **product** repo; Supabase project linked; local Postgres/Supabase + migrations apply; health check responds |
 | 2 | Platform foundation (Phase 1) | Product app | Supabase Auth session → AGI principal; `users` / `organizations` / `organization_memberships`; app deploys to Cloudflare staging talking to Supabase Postgres |
-| 3 | Financial core (Phase 2) | Product app | Stripe test mode (if required); Worker/Queue webhook verify + idempotent `webhook_events`; donations + `ledger_entries` per [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md); browser callback not authoritative for settlement |
-| 4 | Receipts and notifications | Product app | Receipt records immutable after issue; Resend non-blocking; settlement independent of email success |
+| 3 | Tracking core (Phase 2) | Product app | every.org webhook verify + idempotent `chargeId`; pots + gift summaries per [SPEC-023](../specs/SPEC-023-financial-ledger-invariants.md) / [SPEC-026](../specs/SPEC-026-donation-source-connectors.md); browser callback not authoritative; Stripe only if tenants are billed |
+| 4 | Evidence and ImpactNotice | Product app | Evidence (or human waive) then [SPEC-027](../specs/SPEC-027-impact-loop.md); Resend/push/in_app; CTA = tenant `donation_link`; no invented PII |
 | 5 | Allocation system (Phase 3) | Product app | Funds/programs; allocation attributable to source; disbursement tracking; human Approval gate where ADR-006 applies |
-| 6 | Operations (Phase 4) | Product app | Correlation IDs across request→Stripe→Worker/Queue→DB→email; reconciliation job contract; recovery drill against [recovery runbook](../docs/recovery-runbook.md) |
+| 6 | Operations (Phase 4) | Product app | Correlation IDs across connector→Worker→DB→ImpactNotice; reconciliation of gifts vs pots; recovery drill against [recovery runbook](../docs/recovery-runbook.md) |
 | 7 | AI assistance (Phase 5) | Product app | `AIProvider` abstraction; OpenAI primary if used; `agent_runs` / `agent_decisions` provenance; no unvalidated financial side effects |
 | 8 | Async/scale extraction (Phase 6) | Product app | Introduce additional Queues/Cron/Durable Objects **only** with measured latency, retry, or coordination evidence ([SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)) |
 | 9 | Pilot alignment | Portofolio-Signals / allocation-middleware | Prefer Cloudflare + Supabase for greenfield; treat Render/Vercel/multi-host recipes as historical unless re-justified; close every.org #73/#74 on existing pilot path without blocking preferred-stack greenfield |
@@ -86,6 +86,6 @@ Specs Phase 0 (this repository) is complete when ADR-013 and SPEC-020–025 body
 2. **Open an implementation issue/PR** in the product repo titled “Phase 1 — Cloudflare + Supabase foundation” linking SPEC-021, SPEC-022, SPEC-025, and [onboarding](../docs/onboarding.md).
 3. **Copy contracts into the product repo:** `.env.example`, onboarding checklist. Keep Wrangler/Pages config in the product repo only. Do **not** copy [`docs/historical/render.yaml.example`](../docs/historical/render.yaml.example) as the preferred path.
 4. **Do not** add Durable Objects, extra Queues, Cron, D1, or a vector database in the first PR without workload evidence (Queues/Cron are appropriate when deferred/webhook/retry work already exists).
-5. **Do not** claim production readiness until Stripe webhook idempotency tests (if payments are used) and a staging recovery dry-run pass.
+5. **Do not** claim production readiness until connector webhook idempotency tests and a staging recovery dry-run pass. Do not mark READY from specs alone.
 
 Detailed day-one commands: [onboarding](../docs/onboarding.md). Extraction and stack rules: [implementation guidance](../docs/implementation-guidance.md).

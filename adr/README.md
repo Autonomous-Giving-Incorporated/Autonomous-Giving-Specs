@@ -18,3 +18,4 @@ ADRs use Michael Nygard's lightweight format: context, decision, status, consequ
 | ADR-012 | [Render-First Platform and PostgreSQL Consolidation](ADR-012-render-first-platform.md) | Superseded by ADR-013 |
 | ADR-013 | [Cloudflare and Supabase Hosted Platform](ADR-013-cloudflare-workers-public-host.md) | Accepted |
 | ADR-014 | [AGI-Owned Control Plane and Secure Cross-Repository Integration](ADR-014-agi-control-plane.md) | Proposed |
+| ADR-015 | [Donation Tracking versus Tenant Billing](ADR-015-donation-tracking-money-boundary.md) | Accepted |

@@ -1,7 +1,7 @@
 ---
 id: SPEC-023
 title: Financial Ledger Invariants
-version: 1.0.0
+version: 2.0.0
 status: accepted
 authority: normative
 owner: Autonomous Giving
@@ -13,28 +13,33 @@ related_specs:
 - SPEC-018
 - SPEC-022
 - SPEC-024
+- SPEC-026
+- SPEC-027
 related_adrs:
 - ADR-005
 - ADR-006
 - ADR-007
-- ADR-012
+- ADR-013
+- ADR-015
 related_contracts:
 - CONTRACT-003
+- CONTRACT-004
 - CONTRACT-005
+- CONTRACT-013
 ---
 
 # SPEC-023: Financial Ledger Invariants
-| Version | 1.0.0 | Owner | Autonomous Giving | Status | Accepted |
+| Version | 2.0.0 | Owner | Autonomous Giving | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002, SPEC-005, SPEC-018 | Related ADRs | ADR-005, ADR-006, ADR-007, ADR-012 | Related contracts | CONTRACT-003, CONTRACT-005 |
+| Dependencies | SPEC-002, SPEC-005, SPEC-018, SPEC-026 | Related ADRs | ADR-005, ADR-006, ADR-007, ADR-013, ADR-015 | Related contracts | CONTRACT-003, CONTRACT-004, CONTRACT-005, CONTRACT-013 |
 
 ## Purpose
 
-Define **non-negotiable** financial and audit invariants for donations, payment records, allocations, disbursements, and internal ledger state. AGI handles money movement adjacent to processors; correctness is a platform requirement, not a product preference.
+Define **non-negotiable** tracking-ledger invariants for gift summaries, pot credits, allocations, and Evidence. Autonomous Giving Incorporated (**AGI**) **never processes donations**. It tracks gifts completed on third-party donation platforms and reconstructs pot, allocation, and Evidence state from append-oriented records.
 
 ## Scope
 
-Internal financial records, Stripe-linked payment handling, ledger append behavior, agent advisory limits, and reconstructability. Processor choice is preferred as Stripe ([SPEC-024](SPEC-024-integration-boundaries.md)) but invariants apply to any processor.
+Internal tracking records for inbound gift summaries, pot balances, allocations, Evidence, connector webhook/CSV ingest, agent advisory limits, and reconstructability. Donation capture, charge, checkout, payout, and refund are **out of scope**. Tenant/SaaS billing (tenants paying AGI) is not a donation flow; see [SPEC-024](SPEC-024-integration-boundaries.md) and [ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md).
 
 ## Distinct state machines
 
@@ -42,87 +47,95 @@ Implementations SHALL treat these as **distinct** concepts that must not be coll
 
 | State family | Meaning | Authoritative source |
 | --- | --- | --- |
-| **Payment state** | Processor-side payment/checkout/charge status | Stripe (or processor) + linked `payment_transactions` |
-| **Internal ledger state** | AGI books: credits/debits/balances reconstructable from entries | PostgreSQL `ledger_entries` |
-| **Allocation state** | Authorized commitment of funds under governance | `allocations` + Approval chain |
-| **Disbursement state** | Outbound movement to recipients | `disbursements` + supporting receipts/evidence |
+| **Connector gift state** | Third-party platform says a gift completed (or failed) | Donation-source connector (P0: every.org) + persisted raw payload |
+| **Pot credit** | AGI tracking books: available / allocated reconstructable from gift summaries and allocations | PostgreSQL pots (product: `am_pots`) + gift summaries (`am_gifts`) |
+| **Allocation state** | Authorized commitment of tracked funds under governance | Allocations + Approval chain |
+| **Evidence state** | Attached (or explicitly waived) proof of use | Evidence / product proof rows (`am_proofs`) |
 
 ```text
-payment state  ≠  internal ledger state  ≠  allocation state  ≠  disbursement state
+connector gift state  ≠  pot credit  ≠  allocation state  ≠  Evidence state
 ```
+
+v1 language that treated Stripe payment/checkout/charge, internal `ledger_entries` settlement, and disbursement as the donation path is **withdrawn**. Stripe MUST NOT appear as a donation processor in this specification.
 
 ## Requirements
 
-### Append-oriented financial events
+### No donation capture
 
-1. Financial events that record money movement or settlement SHALL be **append-oriented**. Silent in-place mutation of settled amounts is forbidden.
-2. Corrections SHALL use **compensating entries** (or explicitly versioned correction records linked to the original) rather than destructive overwrite.
-3. Destructive deletion of financial history is **prohibited** for convenience. Legal erasure of PII MUST preserve non-PII integrity metadata required for accountability ([SPEC-017](SPEC-017-data-classification-and-privacy.md), [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md)).
+1. AGI MUST NOT capture, charge, refund, or host checkout for donations.
+2. Tenant pages MAY show an outbound [Donation Link](../glossary/README.md) to the tenant’s own receiver (every.org fundraiser or equivalent). AGI MUST NOT host checkout or create a processor Checkout Session as a donation.
+3. Browser/client success callbacks are **never** authoritative for gift completion. Tracking requires a verified connector webhook, verified equivalent server-side confirmation, or the CSV import twin ([SPEC-026](SPEC-026-donation-source-connectors.md)).
 
-### Processor linkage
+### Append-oriented gift summaries
 
-4. Payment records MUST reference external processor IDs (e.g. Stripe PaymentIntent/Charge/Checkout Session IDs) when a processor was used.
-5. Browser/client success callbacks are **never** authoritative for payment settlement. Settlement requires verified processor webhook (or equivalent verified server-side confirmation) plus idempotent application of internal state.
+4. Gift summaries that record a completed gift SHALL be **append-oriented**. Silent in-place mutation of settled net amounts is forbidden.
+5. Corrections SHALL use **compensating entries** (or explicitly versioned correction records linked to the original) rather than destructive overwrite.
+6. Destructive deletion of tracking history is **prohibited** for convenience. Legal erasure of PII MUST preserve non-PII integrity metadata required for accountability ([SPEC-017](SPEC-017-data-classification-and-privacy.md), [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md)).
 
-### Webhook idempotency
+### Connector linkage and idempotency
 
-6. Stripe (or processor) webhooks MUST be processed **idempotently**.
-7. Duplicate webhook delivery MUST NOT duplicate money movement, duplicate ledger entries that increase balances, or double-create donations.
-8. Implementations MUST persist webhook event identity and processing outcome before or within the same transaction as financial effects (see [SPEC-022](SPEC-022-postgresql-persistence.md) transaction guidance).
-9. Out-of-order events MUST be handled safely (ignore stale transitions; never apply a terminal “failed” over a later settled state without explicit rules).
-10. Failed processing MUST leave a durable failure signal (status, error, retry eligibility) and MUST NOT partially commit inconsistent financial state.
+7. Gift summaries MUST reference the connector identity and the connector’s idempotency key (`chargeId` / `charge_id` for every.org; equivalent for later adapters).
+8. Connector webhooks MUST be processed **idempotently**. Duplicate delivery MUST NOT double-credit a pot or duplicate a gift summary.
+9. Implementations MUST persist webhook event identity (or raw payload + `chargeId`) and processing outcome before or within the same transaction as pot-credit effects (see [SPEC-022](SPEC-022-postgresql-persistence.md) transaction guidance).
+10. Out-of-order connector events MUST be handled safely (ignore stale transitions; never apply a terminal “failed” over a later completed gift without explicit rules).
+11. Failed processing MUST leave a durable failure signal (status, error, retry eligibility, or exception code) and MUST NOT partially commit inconsistent pot or gift state.
 
 ### Amounts and attribution
 
-11. Donation amount MUST NOT silently mutate after settlement. Amendments require compensating/correction flow with audit.
-12. Allocations MUST be attributable to a donation, fund, or other documented source.
-13. Disbursements MUST be traceable to authorized allocation/fund sources.
-14. Ledger entries MUST preserve provenance: source entity IDs, timestamps, actor/system identity where applicable, and linkage to processor events when relevant.
+12. Credited net amount MUST NOT silently mutate after a gift summary is applied. Amendments require compensating/correction flow with audit.
+13. Default credit amount is connector **`netAmount`** ([SPEC-026](SPEC-026-donation-source-connectors.md)). Gross `amount` is secondary display.
+14. Allocations MUST be attributable to a pot (and therefore to documented gift summaries or manual/CSV credits).
+15. Tracking records MUST preserve provenance: source entity IDs, timestamps, actor/system identity where applicable, and linkage to connector events when relevant.
 
 ### Reconstructability and audit
 
-15. Financial state MUST be **reconstructable** from authoritative records (ledger entries + linked payment/donation/allocation/disbursement rows + webhook log).
-16. Audit events for material financial actions MUST contain actor or system identity and timestamps.
-17. Receipt records remain immutable after issue per [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md); email delivery failure MUST NOT roll back settlement ([SPEC-024](SPEC-024-integration-boundaries.md)).
+16. Pot balances and allocation availability MUST be **reconstructable** from authoritative records (gift summaries + allocations + Evidence/waive records + webhook/CSV log).
+17. Audit events for material tracking actions MUST contain actor or system identity and timestamps.
+18. Receipt records remain immutable after issue per [SPEC-018](SPEC-018-evidence-integrity-and-provenance.md). Notification or ImpactNotice delivery failure MUST NOT roll back gift credit, allocation, or Evidence ([SPEC-024](SPEC-024-integration-boundaries.md), [SPEC-027](SPEC-027-impact-loop.md)).
 
 ### Agents and automation
 
-18. All agent-generated financial recommendations MUST remain **advisory** until explicitly authorized by deterministic application rules or an authorized human/system actor.
-19. AI MUST NOT directly perform unvalidated irreversible financial actions (charge, allocate, disburse, refund) without a deterministic gate.
-20. Agent runs and decisions that influence financial recommendations SHOULD store model/provider provenance when material ([SPEC-024](SPEC-024-integration-boundaries.md)).
+19. All agent-generated financial recommendations MUST remain **advisory** until explicitly authorized by deterministic application rules or an authorized human/system actor.
+20. AI MUST NOT directly perform unvalidated irreversible tracking actions (credit a pot, allocate, attach Evidence, waive Evidence, or emit ImpactNotice) without a deterministic gate.
+21. Agent runs and decisions that influence financial recommendations SHOULD store model/provider provenance when material ([SPEC-024](SPEC-024-integration-boundaries.md)).
 
 ### Approval gate
 
-21. MVP allocation continues to require human Approval where [ADR-006](../adr/ADR-006-human-approval.md) applies. Payment capture alone is not Approval.
+22. Allocation continues to require human Approval where [ADR-006](../adr/ADR-006-human-approval.md) applies. Connector gift completion alone is not Approval. Intelligence never allocates.
 
-## Stripe lifecycle (normative sequence)
+## Connector gift lifecycle (normative sequence)
 
 ```text
-User action
-  → AGI request (authenticated, authorized)
-  → Stripe operation (server-side)
-  → Stripe webhook
-  → signature verification
-  → idempotency check
-  → DB transaction (webhook_events + payment/donation/ledger updates)
-  → canonical AGI financial state
-  → receipt / notification (best-effort; non-blocking for settlement)
+Donor gives on third-party platform
+  → connector gift-completed webhook (or CSV twin)
+  → signature or shared-secret verification
+  → persist raw payload
+  → idempotency check on chargeId
+  → DB transaction (webhook/raw + gift summary + pot credit)
+  → canonical AGI tracking state
+  → human allocate (Approval gate)
+  → attach Evidence (or explicit human waive)
+  → ImpactNotice (best-effort; non-blocking for credit / allocation / Evidence)
 ```
+
+Tenant/SaaS billing, if charged, is a **separate** Stripe lifecycle and MUST NOT write gift summaries, pot credits, or donation allocations. See [SPEC-024](SPEC-024-integration-boundaries.md).
 
 ## Minimum webhook handling checklist
 
 | Step | Requirement |
 | --- | --- |
-| Signature verification | Reject unverified payloads |
-| Event persistence | Store provider event id + payload/metadata |
-| Idempotency | Unique constraint or equivalent on provider event id |
-| Atomic apply | Financial effects in same transaction as processed mark when possible |
+| Signature or shared-secret verification | Reject unverified payloads |
+| Event persistence | Store provider event id and/or raw payload |
+| Idempotency | Unique constraint or equivalent on `chargeId` (gift summary PK) |
+| Atomic apply | Pot-credit effects in same transaction as processed mark when possible |
 | Replay safety | Re-delivery yields same business outcome |
-| Duplicate handling | No-op or return success without new money movement |
-| Failure | Recorded; safe retry; no half-applied ledger |
+| Duplicate handling | No-op or return success without new pot credit |
+| Failure | Recorded; safe retry; no half-applied pot |
 
 ## Non-goals
 
-- Claiming PCI compliance solely because Stripe is used (see [SPEC-016](SPEC-016-security-and-trust-boundaries.md))
-- Defining full chart-of-accounts for every organization
-- Replacing processor dispute/chargeback systems
+- Donation processing, hosted checkout, card capture, refund, or payout rails
+- Claiming PCI compliance solely because Stripe is used for optional tenant billing (see [SPEC-016](SPEC-016-security-and-trust-boundaries.md))
+- Defining a full chart-of-accounts for every organization
+- Replacing connector dispute or refund systems
+- Treating Stripe as a donation-source connector

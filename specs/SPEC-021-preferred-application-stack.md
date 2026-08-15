@@ -1,7 +1,7 @@
 ---
 id: SPEC-021
 title: Preferred Application Stack
-version: 1.1.0
+version: 1.2.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -14,15 +14,17 @@ related_specs:
 - SPEC-023
 - SPEC-024
 - SPEC-025
+- SPEC-026
 related_adrs:
 - ADR-010
 - ADR-012
 - ADR-013
+- ADR-015
 related_contracts: []
 ---
 
 # SPEC-021: Preferred Application Stack
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-002A, SPEC-006, SPEC-020 | Related ADRs | ADR-010, ADR-012, ADR-013 | Related contracts | None |
 
@@ -54,7 +56,8 @@ Physical application platform, runtime shape, preferred source layout, and optio
    Worker / route handlers / API
    Domain modules (capability boundaries)
    Authorization enforcement
-   Stripe webhook endpoints (if still required)
+   every.org webhook endpoints (P0 donation-source)
+   Stripe billing webhooks (tenant SaaS only, if charged)
    AI orchestration entrypoints
    PostgreSQL access (explicit migrations; Drizzle acceptable)
         |
@@ -67,7 +70,7 @@ Physical application platform, runtime shape, preferred source layout, and optio
    Storage       (evidence / large artifacts)
 
 External if still required:
-  Stripe | Resend | OpenAI | Clerk
+  every.org | Stripe (tenant billing only) | Resend | OpenAI | Clerk
 
 Source control: GitHub
 IaC: product-repo Wrangler/Pages + Supabase project
@@ -82,7 +85,7 @@ IaC: product-repo Wrangler/Pages + Supabase project
 | Object storage | Supabase Storage |
 | ORM / migrations | Explicit SQL migrations (Drizzle ORM acceptable) |
 | Auth (identity) | Supabase Auth |
-| Payments | Stripe, if still required |
+| Payments | Stripe for tenant/SaaS billing only, if tenants are charged |
 | Email | Resend, if still required |
 | AI primary | OpenAI (provider abstraction required), if still required |
 | Async (MVP) | In-process job contract; Queues when deferred/webhook/retry work exists |
@@ -100,7 +103,8 @@ The Cloudflare Worker / static surface **may** contain:
 - Route handlers and API endpoints
 - Domain services for Fund Intel, Autonomous Giving, and Impact Relay **modules**
 - Authorization enforcement (application-owned)
-- Stripe webhook endpoints (when payments are used)
+- every.org (or adapter) webhook endpoints
+- Stripe billing webhook endpoints (when tenants are charged)
 - Identity webhook endpoints (Supabase Auth; Clerk only if still required)
 - Resend integration (when email is used)
 - AI orchestration entrypoints
@@ -127,7 +131,7 @@ src/
   services/
     database/          # DB client, transactions
     auth/              # Supabase Auth session → AGI principal mapping
-    payments/          # Stripe client + webhook handlers (if used)
+    payments/          # Stripe tenant-billing client + webhooks (if used)
     email/             # Resend (if used)
     ai/                # AIProvider abstraction
   jobs/                # Job handlers (same contract whether in-process or Queue)
@@ -166,7 +170,7 @@ The following ADR-012 topology is **historical**. Do not implement it for new wo
 [ Render Web Service ]
    Next.js (TypeScript)
    UI / route handlers / server actions
-   Domain modules / authz / Stripe / Clerk webhooks
+   Domain modules / authz / every.org / Stripe billing / Clerk webhooks
         |
         v
 [ Render PostgreSQL ]

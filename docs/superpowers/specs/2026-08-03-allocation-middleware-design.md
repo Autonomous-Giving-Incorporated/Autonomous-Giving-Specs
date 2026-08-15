@@ -1,10 +1,12 @@
 # Allocation Middleware Product Design
 
 **Date:** 2026-08-03  
-**Status:** Approved · MVP **shipped** in Fund-Intel · Pilot host **partially OBSERVED** (local Node, director JWT, ephemeral public HTTPS, seed-loop accept) · Live every.org webhook **open**  
+**Status:** Approved informative design · MVP package and Worker/`am_*` path **OBSERVED** in Portfolio-Signals repo files · Live every.org pointing **operator-owned** (not a production receipt)  
 **Owner:** Product / Platform Architecture  
-**Related:** Constitution, SPEC-002A, SPEC-006, SPEC-013, SPEC-020, implementation-guidance.md  
-**Implementation:** [Fund-Intel allocation-middleware](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/tree/main/services/allocation-middleware) · [MVP plan](../plans/2026-08-03-allocation-middleware.md) · [pilot hosting status](../plans/2026-08-03-hacker-dojo-pilot-hosting.md) · [Fund-Intel CURRENT-STATE](https://github.com/scrimshawlife-ctrl/Portofolio-Signals/blob/main/docs/CURRENT-STATE.md)  
+**Related:** Constitution, SPEC-002A, SPEC-006, SPEC-013, SPEC-020, [SPEC-023](../../../specs/SPEC-023-financial-ledger-invariants.md), [SPEC-026](../../../specs/SPEC-026-donation-source-connectors.md), [SPEC-027](../../../specs/SPEC-027-impact-loop.md), [ADR-015](../../../adr/ADR-015-donation-tracking-money-boundary.md), implementation-guidance.md  
+**Implementation:** [Portfolio-Signals allocation-middleware](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/tree/main/services/allocation-middleware) · [MVP plan](../plans/2026-08-03-allocation-middleware.md) · [pilot hosting status](../plans/2026-08-03-hacker-dojo-pilot-hosting.md)
+
+> **Canon alignment (2026-08-15):** Normative connector and impact-loop rules are SPEC-026 / SPEC-027 and ADR-015. This document remains the informative product design (pot hierarchy, exception catalog, every.org-first). Do not contradict those SPECs. Historical Render / GitHub Pages host notes below are **not** the preferred path ([ADR-013](../../../adr/ADR-013-cloudflare-workers-public-host.md)). Status words such as “shipped” describe repo history; they are not READY and not a live pointing receipt.  
 
 
 ## 1. Problem

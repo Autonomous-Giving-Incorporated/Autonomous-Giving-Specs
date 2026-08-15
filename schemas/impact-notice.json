@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autonomousgiving.org/schemas/impact-notice/1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "impactNoticeId",
+    "allocationId",
+    "channel",
+    "donationLink",
+    "useSummary",
+    "createdAt"
+  ],
+  "properties": {
+    "impactNoticeId": { "type": "string", "format": "uuid" },
+    "allocationId": { "type": "string", "format": "uuid" },
+    "evidenceId": { "type": "string", "format": "uuid" },
+    "proofWaived": { "type": "boolean" },
+    "channel": { "enum": ["email", "push", "in_app"] },
+    "donationLink": { "type": "string", "format": "uri" },
+    "useSummary": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "timelineEventId": { "type": "string", "format": "uuid" },
+    "chargeId": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "proofWaived": { "const": true } },
+        "required": ["proofWaived"]
+      },
+      "then": true,
+      "else": { "required": ["evidenceId"] }
+    }
+  ]
+}

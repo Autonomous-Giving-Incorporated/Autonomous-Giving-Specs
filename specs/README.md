@@ -30,3 +30,5 @@ All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted`
 | [SPEC-023](SPEC-023-financial-ledger-invariants.md) | Financial Ledger Invariants | Accepted (normative) |
 | [SPEC-024](SPEC-024-integration-boundaries.md) | Integration Boundaries | Accepted (informative) |
 | [SPEC-025](SPEC-025-operations-deploy-and-scale.md) | Operations, Deploy, Observability, and Scale | Accepted (informative) |
+| [SPEC-026](SPEC-026-donation-source-connectors.md) | Donation-source Connectors | Accepted (normative) |
+| [SPEC-027](SPEC-027-impact-loop.md) | Impact Loop | Accepted (normative) |

@@ -1,7 +1,7 @@
 ---
 id: SPEC-016
 title: Security and Trust Boundaries
-version: 1.2.0
+version: 1.3.0
 status: proposed
 authority: normative
 owner: Platform Architecture
@@ -20,6 +20,7 @@ related_adrs:
 - ADR-007
 - ADR-012
 - ADR-013
+- ADR-015
 related_contracts:
 - CONTRACT-003
 - CONTRACT-004
@@ -28,7 +29,7 @@ related_contracts:
 ---
 
 # SPEC-016: Security and Trust Boundaries
-| Version | 1.2.0 | Owner | Platform Architecture | Status | Proposed |
+| Version | 1.3.0 | Owner | Platform Architecture | Status | Proposed |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-002, SPEC-006 | Related ADRs | ADR-004, ADR-006, ADR-007, ADR-012, ADR-013 | Related contracts | CONTRACT-003–006 |
 
@@ -59,10 +60,10 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 6. Secrets, credentials, and signing keys NEVER appear in contract payloads, events, demo fixtures, or this repository.
 7. Public projections (TimelineEvent, Notification content) SHALL apply data classification and redaction rules from [SPEC-017](SPEC-017-data-classification-and-privacy.md).
 8. Threat assumptions for the platform MVP include: forged events without authz, replay of stale approvals, evidence substitution, notification leakage, and confused-deputy calls across capabilities. Mitigations are schema validation, authz checks, idempotent `eventId`, append-only evidence, and least-privilege roles. Network-level controls apply only when deployment separates processes.
-9. Inbound payment and identity webhooks MUST verify provider signatures before side effects; payment settlement MUST follow [SPEC-023](SPEC-023-financial-ledger-invariants.md) idempotency rules.
+9. Inbound donation-source and identity webhooks MUST verify provider signatures (or shared secrets) before side effects; gift-summary application MUST follow [SPEC-023](SPEC-023-financial-ledger-invariants.md) idempotency rules. Stripe webhooks, if present, are tenant-billing only ([ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md)).
 10. Secrets (API keys, webhook secrets, database credentials) MUST live in environment/secret stores, never in contracts, fixtures, client bundles intended to be private, or this repository.
 11. SQL access MUST use parameterized queries or an ORM that parameterizes; string-concatenated SQL with untrusted input is forbidden.
-12. Using Stripe reduces card-data handling scope when card data remains with Stripe; implementations MUST NOT claim PCI compliance solely because Stripe is integrated. Document residual responsibilities for keys, webhooks, and server surfaces ([SPEC-024](SPEC-024-integration-boundaries.md)).
+12. AGI does not take donation cards. Using Stripe for **tenant/SaaS billing** reduces card-data handling scope when card data remains with Stripe; implementations MUST NOT claim PCI compliance solely because Stripe is integrated. Document residual responsibilities for keys, webhooks, and server surfaces ([SPEC-024](SPEC-024-integration-boundaries.md)).
 13. AI/agent tools MUST NOT hold unconstrained authority to move money; financial actions require deterministic application gates or authorized human/system actors ([SPEC-023](SPEC-023-financial-ledger-invariants.md)).
 14. Production database access SHOULD be least-privilege, authenticated, and auditable. Backup and recovery expectations for the preferred path are in [SPEC-025](SPEC-025-operations-deploy-and-scale.md).
 
@@ -86,7 +87,7 @@ Logical trust domains for Fund Intel (intelligence), Autonomous Giving (governan
 
 ## Preferred deployment security notes (informative)
 
-When following [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md): Cloudflare hosts Workers / Pages / static assets (Durable Objects and Queues/Cron Triggers only as needed); Supabase provides Auth, PostgreSQL, and Storage; AGI authorizes; Stripe processes payments if still required; Resend delivers email if still required. Clerk authenticates only if a product still requires it. CSRF/XSS mitigations follow Next.js and framework defaults plus secure cookie/session practices from the IdP. Rate limiting SHOULD protect auth and webhook endpoints as practical. [ADR-012](../adr/ADR-012-render-first-platform.md) Render hosting notes are **historical**.
+When following [ADR-013](../adr/ADR-013-cloudflare-workers-public-host.md): Cloudflare hosts Workers / Pages / static assets (Durable Objects and Queues/Cron Triggers only as needed); Supabase provides Auth, PostgreSQL, and Storage; AGI authorizes; every.org (or the CSV twin) is the donation-source connector; Stripe processes **tenant billing** only if tenants are charged ([ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md)); Resend delivers email if still required. Clerk authenticates only if a product still requires it. CSRF/XSS mitigations follow Next.js and framework defaults plus secure cookie/session practices from the IdP. Rate limiting SHOULD protect auth and webhook endpoints as practical. [ADR-012](../adr/ADR-012-render-first-platform.md) Render hosting notes are **historical**.
 
 ## Non-goals
 This specification does not mandate a particular IdP, KMS, network mesh, service mesh, Kubernetes, or cloud provider for conformance. It does not replace product threat models for each implementation repository.

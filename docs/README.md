@@ -9,7 +9,8 @@
 - [Engineering onboarding](onboarding.md) is the short executable preferred-path checklist.
 - [Recovery runbook](recovery-runbook.md) outlines backup, restore, webhook replay, and financial reconciliation.
 - [Next recommended implementation steps](../roadmap/specification-roadmap.md#next-recommended-steps-implementation) orders product work after this specs consolidation.
-- [Allocation middleware design](superpowers/specs/2026-08-03-allocation-middleware-design.md) defines the client-facing pot/allocation product (every.org-first).
+- [Allocation middleware design](superpowers/specs/2026-08-03-allocation-middleware-design.md) defines the client-facing pot/allocation product (every.org-first). Normative rules: [SPEC-026](../specs/SPEC-026-donation-source-connectors.md), [SPEC-027](../specs/SPEC-027-impact-loop.md), [ADR-015](../adr/ADR-015-donation-tracking-money-boundary.md).
+- [Sprint remaining work — donation tracking](sprint-remaining-work-donation-tracking.md) is an informative OBSERVED-vs-remaining checklist. Not READY.
 - [Implementation progress](superpowers/IMPLEMENTATION-PROGRESS.md) is the informative map of Portofolio-Signals pilot + suite onboarding (not normative SPECs).
 - [Suite continuation plan](superpowers/plans/2026-08-08-suite-continuation.md) orders remaining operator work (pack platform, MFA, pilot close).
 - [Repository governance](repository-governance.md) defines authority, status transitions, and review roles.

@@ -35,13 +35,13 @@ Supabase
 ├── PostgreSQL                        (canonical application datastore)
 └── Storage
 
-External if still required: Stripe · Resend · OpenAI · Clerk
+External: every.org (P0 connector) · Stripe (tenant billing only) · Resend · OpenAI · Clerk
 ```
 
 | Profile | Intent |
 | --- | --- |
 | A Demo | Static fixtures, no backend |
-| **B MVP** | **Recommended:** Cloudflare + Supabase + optional Stripe/Resend/OpenAI |
+| **B MVP** | **Recommended:** Cloudflare + Supabase + every.org connector + optional Stripe billing/Resend/OpenAI |
 | C Production | Optional Durable Objects, Queues, Cron, scale-out of the same modular unit |
 | D Enterprise | Optional extraction, streaming, multi-region |
 
@@ -76,8 +76,10 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020
 - [Engineering onboarding](docs/onboarding.md) (Cloudflare + Supabase)
 - [Recovery runbook](docs/recovery-runbook.md)
 - [Next recommended implementation steps](roadmap/specification-roadmap.md#next-recommended-steps-implementation)
-- [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md)
-- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (MVP shipped; pilot partial; historical host notes)
+- [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md) (tracking ledger; AGI does not process donations)
+- [Donation-source connectors](specs/SPEC-026-donation-source-connectors.md) · [Impact loop](specs/SPEC-027-impact-loop.md) · [ADR-015](adr/ADR-015-donation-tracking-money-boundary.md)
+- [Sprint remaining work](docs/sprint-remaining-work-donation-tracking.md) (informative; not READY)
+- [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (informative; Worker/`am_*` OBSERVED in product repo files)
 - [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portofolio-Signals / Fund-Intel)
 - [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
 - [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08 evening**)

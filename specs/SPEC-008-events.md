@@ -1,7 +1,7 @@
 ---
 id: SPEC-008
 title: Events
-version: 1.1.0
+version: 1.2.0
 status: accepted
 authority: normative
 owner: Platform Architecture
@@ -20,18 +20,19 @@ related_contracts:
 - CONTRACT-005
 - CONTRACT-006
 - CONTRACT-007
+- CONTRACT-013
 ---
 
 # SPEC-008: Events
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
-| Dependencies | SPEC-002A, SPEC-005, SPEC-007 | Related ADRs | ADR-003, ADR-007 | Related contracts | CONTRACT-001–007 |
+| Dependencies | SPEC-002A, SPEC-005, SPEC-007 | Related ADRs | ADR-003, ADR-007 | Related contracts | CONTRACT-001–007, CONTRACT-013 |
 
 ## Purpose
 Define immutable lifecycle **publication semantics** (what happened, in what order, with which identity).
 
 ## Scope
-EVENT-001 through EVENT-010 and their envelope.
+EVENT-001 through EVENT-011 and their envelope.
 
 ## Requirements
 1. Every event SHALL declare producer, consumers, payload, schema, ordering, idempotency, stage, example, and version history.

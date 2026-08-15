@@ -1,7 +1,7 @@
 ---
 id: SPEC-022
 title: PostgreSQL Persistence and Domain Ownership
-version: 1.1.0
+version: 1.2.0
 status: accepted
 authority: informative
 owner: Platform Architecture
@@ -13,14 +13,16 @@ related_specs:
 - SPEC-021
 - SPEC-023
 - SPEC-024
+- SPEC-026
 related_adrs:
 - ADR-012
 - ADR-013
+- ADR-015
 related_contracts: []
 ---
 
 # SPEC-022: PostgreSQL Persistence and Domain Ownership
-| Version | 1.1.0 | Owner | Platform Architecture | Status | Accepted |
+| Version | 1.2.0 | Owner | Platform Architecture | Status | Accepted |
 | --- | --- | --- | --- | --- | --- |
 | Dependencies | SPEC-004, SPEC-021, SPEC-023 | Related ADRs | ADR-012, ADR-013 | Related contracts | None |
 
@@ -41,8 +43,9 @@ Application data ownership, preferred entity set, database design guidance, exte
 | Concern | Source of truth | AGI PostgreSQL role |
 | --- | --- | --- |
 | Identity / sessions | **Supabase Auth** (Clerk only if still required) | Store application user profile, membership, and stable IdP subject references (`supabase_user_id` or `clerk_user_id`) |
-| Payment processor state | **Stripe** | Store internal financial/event records linked to Stripe IDs; never treat browser callbacks as settlement |
-| Application domain | **PostgreSQL** | Canonical AGI persistence for orgs, programs, donations, ledger, jobs, audit |
+| Connector gift state | **Donation-source connector** (P0: every.org) | Store gift summaries, raw payloads, and pot credits; never treat browser callbacks as gift completion |
+| Tenant billing state | **Stripe** (only if tenants pay AGI) | Store billing entitlement linked to Stripe IDs; MUST NOT credit pots |
+| Application domain | **PostgreSQL** | Canonical AGI persistence for orgs, pots, gift summaries, allocations, jobs, audit |
 | AI outputs | Model providers | Store outputs with provenance; never silently promote to financial truth |
 
 ## Preferred entity ownership (relational)
@@ -52,15 +55,18 @@ Do not over-normalize prematurely. Prefer clear tables for canonical fields. Ent
 | Entity | Responsibility |
 | --- | --- |
 | `users` | Application profile linked to Supabase Auth user id (or Clerk user id if still required) |
-| `organizations` | Operating or receiving organizations |
+| `organizations` | Operating or receiving organizations; outbound `donation_link` when the tenant has a receiver URL |
 | `organization_memberships` | Membership + application roles (authorization data) |
 | `donors` | Donor records (PII minimized; classification per SPEC-017) |
 | `recipients` | Payees / beneficiary orgs for disbursement |
 | `programs` | Bounded initiatives |
 | `campaigns` | Fundraising or program campaigns |
-| `donations` | Internal donation records attributable to processor events |
-| `payment_transactions` | Processor-linked payment state snapshots/events |
-| `funds` | Pooled or restricted fund containers |
+| `am_gifts` / gift summaries | Idempotent connector credits (`charge_id` PK); OBSERVED product table |
+| `am_pots` | Campaign/program credited vs allocated; OBSERVED product table |
+| `am_allocations` / `am_proofs` / `am_exceptions` | OBSERVED product tables for allocate, Evidence, inbox |
+| `donations` | Optional synonym mapping to gift summaries; not AGI charges |
+| `payment_transactions` | Tenant-billing snapshots only, if Stripe billing is used |
+| `funds` | Pooled or restricted fund containers (logical; pots are the tracking buckets) |
 | `allocations` | Authorized commitment records (`allocationId` semantics) |
 | `disbursements` | Outbound fund movement tracking |
 | `ledger_entries` | Append-oriented internal ledger |
@@ -82,7 +88,7 @@ Additional tables for Signals, Opportunities, Recommendations, Evidence, Verific
 ### Identifiers
 
 - Prefer **UUID** (`uuid` type, generated in app or DB) for primary keys unless an existing product constraint requires otherwise.
-- External processor IDs (`stripe_*`) stored as text with **unique** constraints where one-to-one.
+- External connector IDs (`charge_id`) stored as text with **unique** constraints. Stripe IDs (`stripe_*`) only for tenant billing, if used.
 - Do not use mutable emails as primary keys or sole foreign keys.
 
 ### Timestamps
@@ -107,14 +113,14 @@ Additional tables for Signals, Opportunities, Recommendations, Evidence, Verific
 
 Operations that must settle atomically run in a **single PostgreSQL transaction**, including at minimum:
 
-- webhook idempotency insert + financial state update
-- donation settlement + ledger entry creation
+- webhook idempotency insert + gift summary + pot credit
 - allocation creation after approval checks (application rules + DB constraints)
+- tenant-billing webhook apply (if used) without pot credit
 
 ### Idempotency keys
 
-- Store explicit `idempotency_key` or natural unique keys for webhooks, payments, and jobs.
-- Duplicate processing MUST become a no-op success or controlled conflict, never double money movement ([SPEC-023](SPEC-023-financial-ledger-invariants.md)).
+- Store explicit `idempotency_key` or natural unique keys for webhooks, gift summaries (`charge_id`), and jobs.
+- Duplicate processing MUST become a no-op success or controlled conflict, never double pot credit ([SPEC-023](SPEC-023-financial-ledger-invariants.md)).
 
 ### Soft-delete policy
 
@@ -133,7 +139,7 @@ Operations that must settle atomically run in a **single PostgreSQL transaction*
 Use JSONB **only** for:
 
 - flexible metadata
-- external raw payload preservation (e.g. Stripe event body)
+- external raw payload preservation (e.g. every.org webhook body)
 - evolving non-canonical structures
 
 **Do not** place core financial invariants (amounts, currencies, status machines that gate money) solely inside arbitrary JSON blobs. Prefer relational columns for canonical fields.
