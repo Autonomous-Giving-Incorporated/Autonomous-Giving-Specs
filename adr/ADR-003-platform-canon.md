@@ -30,3 +30,7 @@ Model signals as immutable observations; derive opportunities and recommendation
 ## Consequences
 
 Consumers can evaluate source quality independently of recommendation policy.
+
+## Filename
+
+The path `adr/ADR-003-platform-canon.md` is historical. **Do not rename this file** — catalogs and consumers pin the path. The document `id` is ADR-003 (Signals Stack). Platform-canon content lives in [ADR-002](ADR-002-signals-stack.md).

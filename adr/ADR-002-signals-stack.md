@@ -32,3 +32,7 @@ Notification, TimelineEvent, and ImpactNotice are projections, not alternate sta
 ## Consequences
 
 Consumers pin a Specs release. This ADR does not invent a tag. Vocabulary changes require SPEC-004 / glossary amendment.
+
+## Filename
+
+The path `adr/ADR-002-signals-stack.md` is historical. **Do not rename this file** — catalogs and consumers pin the path. The document `id` is ADR-002 (Platform Canon). Signals-stack content lives in [ADR-003](ADR-003-platform-canon.md).
