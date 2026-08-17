@@ -8,7 +8,7 @@
         "name": "Autonomous Giving Incorporated"
       },
       "platform_spec": {
-        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "repository": "Autonomous-Giving-Incorporated/Autonomous-Giving-Specs",
         "version": "2.0.0"
       },
       "specs": [
@@ -60,7 +60,7 @@
         "name": "Fund Intel"
       },
       "platform_spec": {
-        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "repository": "Autonomous-Giving-Incorporated/Autonomous-Giving-Specs",
         "version": "2.0.0"
       },
       "specs": [
@@ -102,7 +102,7 @@
         "name": "Impact Relay"
       },
       "platform_spec": {
-        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "repository": "Autonomous-Giving-Incorporated/Autonomous-Giving-Specs",
         "version": "2.0.0"
       },
       "specs": [
