@@ -29,7 +29,7 @@ An implementation repository should maintain a declaration equivalent to:
 
 ```yaml
 platform_spec:
-  repository: scrimshawlife-ctrl/Autonomous-Giving-Specs
+  repository: Autonomous-Giving-Incorporated/Autonomous-Giving-Specs
   version: 2.0.0
 service:
   id: fund-intel   # capability id

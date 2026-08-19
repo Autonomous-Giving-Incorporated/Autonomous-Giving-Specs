@@ -1,7 +1,7 @@
 # Implementation progress (informative)
 
-**As of:** 2026-08-08 (evening)  
-**Normative SPECs are unchanged.** This page tracks how implementation repositories consume Specs products (especially allocation middleware and suite onboarding).
+**As of:** 2026-08-17  
+**Normative SPECs are unchanged.** Docs pin remains **v2.0.0** (not READY). SPEC-028 / AGI login remain **PARKED**. This page tracks how implementation repositories consume Specs products (especially allocation middleware and suite onboarding). Do not treat this file as operator acceptance.
 
 ## Repositories
 
@@ -85,5 +85,5 @@ Ordered for least external dependency first. Detail: [suite continuation plan](p
 2. **Pack dry-run:** MFA director (or master) → Workspace Onboarding pack → 5 required + park xlsx → mark CURRENT-STATE full OBSERVED.  
 3. **Live every.org webhook** for Hacker Dojo (#73) — stable HTTPS URL recommended.  
 4. **Director browser allocate** after live (or test) gift; sign off #74.  
-5. **Optional:** durable Render/Railway/Fly host; custom SMTP for invite volume.  
+5. **Optional:** durable Cloudflare Worker host for allocation middleware; custom SMTP for invite volume. Render/Fly/Railway are not the preferred path ([ADR-013](../../adr/ADR-013-cloudflare-workers-public-host.md)).  
 6. **Security:** revoke any PAT pasted into chat; regenerate if still needed.

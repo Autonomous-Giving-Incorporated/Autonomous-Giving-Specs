@@ -1127,7 +1127,7 @@ ORG_ID=org_demo npm start   # http://127.0.0.1:8787
 
 ## Design
 
-https://github.com/scrimshawlife-ctrl/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md
+https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Specs/blob/main/docs/superpowers/specs/2026-08-03-allocation-middleware-design.md
 ```
 
 Update `docs/ALLOCATION-MIDDLEWARE.md` with **Implementation status: MVP package at `services/allocation-middleware/`**.

@@ -67,7 +67,7 @@ def package(version: str, root: Path | None = None) -> Path:
         "name": "autonomous-giving-spec",
         "version": version,
         "createdAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "repository": "scrimshawlife-ctrl/Autonomous-Giving-Specs",
+        "repository": "Autonomous-Giving-Incorporated/Autonomous-Giving-Specs",
         "counts": {
             "specifications": len(index.specs),
             "contracts": len(index.contracts),

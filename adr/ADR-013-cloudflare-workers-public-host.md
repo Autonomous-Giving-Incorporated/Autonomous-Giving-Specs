@@ -46,7 +46,7 @@ Keeping Render as a second application host would contradict the designed stack 
    - **Supabase:** Auth; **PostgreSQL** as the canonical application datastore; Storage.
 3. **Allocation middleware, webhooks, and PostgreSQL-backed services** run as **Workers (or Worker + Queue)** talking to Supabase. They are not a Render web service.
 4. Remaining **externals** (already in the prior preferred path; do not invent new vendors):
-   - **Stripe** — payment processing, if the product still requires card/processor flows
+   - **Stripe** — tenant/SaaS billing only (never donation capture). AGI does not process gifts; gift tracking is third-party connectors in Portfolio Signals ([ADR-015](ADR-015-donation-tracking-money-boundary.md))
    - **Resend** — transactional email, if the product still requires it
    - **OpenAI** — primary AI provider, if the product still requires it (optional specialized providers behind abstractions)
    - **Clerk** — only if a product still requires it; **Supabase Auth** is the preferred identity for this hosted stack
@@ -81,7 +81,7 @@ Keeping Render as a second application host would contradict the designed stack 
 | GitHub Pages as sole public host | Weaker Workers path; not the directed public host |
 | Move application Postgres into D1 | No evidence that SQLite-at-the-edge fits ledger or the existing Supabase workspace |
 | Kubernetes / multi-service mesh | Premature distribution |
-| Invent additional vendors (new auth, email, or AI providers) | Not required; keep Stripe/Resend/OpenAI/Clerk only if a product still needs them |
+| Invent additional vendors (new auth, email, or AI providers) | Not required; keep Stripe as tenant billing only, plus Resend/OpenAI/Clerk only if a product still needs them |
 
 ## Status
 
