@@ -26,16 +26,16 @@ Informative product roadmap aligned to [allocation middleware design](../docs/su
 
 | Step | State | Where |
 | --- | --- | --- |
-| 1. every.org connector + campaign/program pots + allocate + exception inbox | **MVP shipped** | Portofolio-Signals `services/allocation-middleware/` |
+| 1. every.org connector + campaign/program pots + allocate + exception inbox | **MVP shipped** | Portfolio-Signals `services/allocation-middleware/` |
 | 2. Trail + board packet + proof SLA | **MVP shipped** | Same package |
 | 3a. Pilot host: seed + local Node + director JWT | **Observed** | [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · #72 |
 | 3b. Public HTTPS (ephemeral) + seed-loop accept | **Observed** | #71 · `npm run accept:seed-loop` |
-| 3c. Live every.org webhook + full director acceptance | **Open** | #73 · #74 remainder |
-| 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | Later | Adapter interface only in MVP |
+| 3c. Live every.org webhook + full director acceptance | **Open** | [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74) |
+| 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | **CODE_SHIPPED (not live)** | Draft [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52); operator-owned pointing |
 | 5. Funder multi-grantee portfolio | Later | Out of MVP scope |
 | 6. Align pilot durable host with preferred Cloudflare + Supabase path | Planned | Prefer SPEC-020/021 (ADR-013) over multi-host or Render recipe soup |
 
-**Suite onboarding (implementation repos, not Spec SPECs):** people (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Runbooks on Portofolio-Signals. Map: [IMPLEMENTATION-PROGRESS](../docs/superpowers/IMPLEMENTATION-PROGRESS.md) · continuation [2026-08-08-suite-continuation](../docs/superpowers/plans/2026-08-08-suite-continuation.md).
+**Suite onboarding (implementation repos, not Spec SPECs):** people (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Runbooks on Portfolio-Signals. Map: [IMPLEMENTATION-PROGRESS](../docs/superpowers/IMPLEMENTATION-PROGRESS.md). Operator order: Portfolio-Signals [2026-08-22 continuation plan](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/PRODUCTION-READINESS-AND-CONTINUATION-2026-08-22.md). The [2026-08-08 suite continuation note](../docs/superpowers/plans/2026-08-08-suite-continuation.md) is historical.
 
 Plans: [MVP](../docs/superpowers/plans/2026-08-03-allocation-middleware.md) · [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · [suite continuation](../docs/superpowers/plans/2026-08-08-suite-continuation.md).
 
@@ -96,7 +96,7 @@ The following sequence is additive to the existing foundation, tracking, allocat
 | 6 | Operations (Phase 4) | Product app | Correlation IDs across connector→Worker→DB→ImpactNotice; reconciliation of gifts vs pots; recovery drill against [recovery runbook](../docs/recovery-runbook.md) |
 | 7 | AI assistance (Phase 5) | Product app | `AIProvider` abstraction; OpenAI primary if used; `agent_runs` / `agent_decisions` provenance; no unvalidated financial side effects |
 | 8 | Async/scale extraction (Phase 6) | Product app | Introduce additional Queues/Cron/Durable Objects **only** with measured latency, retry, or coordination evidence ([SPEC-025](../specs/SPEC-025-operations-deploy-and-scale.md)) |
-| 9 | Pilot alignment | Portofolio-Signals / allocation-middleware | Prefer Cloudflare + Supabase for greenfield; treat Render/Vercel/multi-host recipes as historical unless re-justified; close every.org #73/#74 on existing pilot path without blocking preferred-stack greenfield |
+| 9 | Pilot alignment | Portfolio-Signals / allocation-middleware | Prefer Cloudflare + Supabase for greenfield; treat Render/Vercel/multi-host recipes as historical unless re-justified; close every.org [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) on existing pilot path without blocking preferred-stack greenfield |
 
 ### Immediate next actions (checklist)
 

@@ -87,8 +87,8 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020
 - [Allocation middleware design](docs/superpowers/specs/2026-08-03-allocation-middleware-design.md) (informative; Worker/`am_*` OBSERVED in product repo files)
 - [Allocation middleware MVP plan](docs/superpowers/plans/2026-08-03-allocation-middleware.md) (historical checklist; implemented in Portfolio-Signals)
 - [Hacker Dojo pilot hosting status](docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) (2026-08-07 implementation status)
-- [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-08 evening**)
-- [Suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md) — pack activate, people MFA, pilot #73/#74
+- [**Implementation progress**](docs/superpowers/IMPLEMENTATION-PROGRESS.md) — pilot + suite onboarding map (**current as of 2026-08-22**)
+- [Suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md) — historical 2026-08-08 note; operator order is Portfolio-Signals [#18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18) / [#19](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/19) / [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74 do not exist)
 
 ## Executable validation
 
@@ -129,4 +129,4 @@ Client product direction: transaction-light pots → allocate → proof → pack
 
 ### Suite commercial onboarding (informative)
 
-People (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Document pack phase 1 **code** is on Portfolio-Signals main (#104); platform OBSERVED still operator. HD data login-gated; Ed is HD director only. Continuation: [suite continuation plan](docs/superpowers/plans/2026-08-08-suite-continuation.md). Hub: [SUITE-ONBOARDING.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
+People (C) → client shell (B) → document pack → second tenant (D) → allocation pilot. Document pack phase 1 **code** is on Portfolio-Signals main (#104); MFA dry-run remains [Portfolio-Signals #18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18). HD data login-gated; Ed is HD director only. Operator order: Portfolio-Signals [2026-08-22 continuation plan](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/PRODUCTION-READINESS-AND-CONTINUATION-2026-08-22.md). The [2026-08-08 suite continuation note](docs/superpowers/plans/2026-08-08-suite-continuation.md) is historical. Hub: [SUITE-ONBOARDING.md](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
