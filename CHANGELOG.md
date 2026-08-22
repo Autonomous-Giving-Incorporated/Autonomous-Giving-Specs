@@ -5,6 +5,14 @@ Versions follow [SPEC-012](specs/SPEC-012-versioning.md) semantic versioning.
 
 ## [Unreleased]
 
+### Changed
+
+- **SPEC-026** v1.1.0 (MINOR amendment): tenant onboarding (`source`, optional HTTPS `donation_link`, operator-owned webhook pointing); Givebutter `transaction.succeeded` and Donorbox `donation.created` field mappings behind the same `verify_webhook` / `normalize_gift` / `list_campaign_hints` adapter; operator CSV import path; refunds and chargebacks held out of v1 (no automatic pot debit; no new exception code). Evidence labels OBSERVED / INFERRED / SPECULATIVE / NOT_COMPUTABLE. No fifth capability. No AGI checkout. No READY claim.
+
+### Added
+
+- Spec-kit slice [specs/slices/026-p1-connectors/](specs/slices/026-p1-connectors/spec.md) (`spec.md`, `plan.md`, `tasks.md`) for later runtime in Autonomous-Giving-Incorporated / Portfolio-Signals. Informative only.
+
 ## [2.0.0] — 2026-08-15
 
 ### Compatibility

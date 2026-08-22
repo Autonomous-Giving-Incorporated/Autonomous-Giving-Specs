@@ -1994,6 +1994,11 @@
     },
     {
       "from": "SPEC-026",
+      "to": "SPEC-027",
+      "type": "related_spec"
+    },
+    {
+      "from": "SPEC-026",
       "to": "ADR-006",
       "type": "related_adr"
     },
@@ -2010,6 +2015,11 @@
     {
       "from": "SPEC-026",
       "to": "CONTRACT-003",
+      "type": "related_contract"
+    },
+    {
+      "from": "SPEC-026",
+      "to": "CONTRACT-013",
       "type": "related_contract"
     },
     {
