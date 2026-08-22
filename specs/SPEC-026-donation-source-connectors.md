@@ -128,7 +128,7 @@ If `donated` and `payout` are both absent, `netAmount` is **NOT_COMPUTABLE**. Do
 
 ## Donorbox field mapping (P1)
 
-**OBSERVED** from Donorbox Help: [Custom Webhooks](https://donorbox.zendesk.com/hc/en-us/articles/4733681068820-Custom-Webhooks) and [Verify Donorbox webhook notifications](https://donorbox.zendesk.com/hc/en-us/articles/17982194843028-Verify-Donorbox-webhook-notifications) (retrieved 2026-08-22). **Not** OBSERVED from a live payload or from code in this repository.
+**OBSERVED** from Donorbox Help articles *Custom Webhooks* and *Verify Donorbox webhook notifications* (retrieved 2026-08-22). **Not** OBSERVED from a live payload or from code in this repository.
 
 Credit only `donation.created`. Prefer payload version v2 when the operator can choose it (v2 includes `event_name`). v1 array samples remain acceptable if they still carry donation `id`.
 

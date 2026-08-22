@@ -89,7 +89,7 @@ Do not publish a `workers.dev` or named-host URL in specs or product copy. The o
 | --- | --- | --- |
 | `every.org` | Shared token (`x-webhook-token` or `?token=`) | OBSERVED in SPEC-026 |
 | `givebutter` | Compare the dashboard signing secret to the request header named `Signature` | OBSERVED from [Givebutter webhook help](https://help.givebutter.com/en/articles/8828428-how-to-automate-workflows-and-data-using-webhooks) on 2026-08-22; not in-repo |
-| `donorbox` | Follow [Verify Donorbox webhook notifications](https://donorbox.zendesk.com/hc/en-us/articles/17982194843028-Verify-Donorbox-webhook-notifications). Public docs show `Donorbox-Signature` as `timestamp,hmac-sha256` | OBSERVED from that help article on 2026-08-22; not in-repo |
+| `donorbox` | Follow the Donorbox Help article *Verify Donorbox webhook notifications*. Public docs show `Donorbox-Signature` as `timestamp,hmac-sha256` | OBSERVED from that help article on 2026-08-22; not in-repo |
 | `csv` | Operator authentication on the import path; not a vendor signature | INFERRED |
 
 If the header name in current vendor docs differs at implement time, follow the vendor docs and record the delta. Do not invent a header that is not OBSERVED.
