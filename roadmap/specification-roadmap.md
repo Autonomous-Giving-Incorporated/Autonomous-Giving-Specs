@@ -31,7 +31,7 @@ Informative product roadmap aligned to [allocation middleware design](../docs/su
 | 3a. Pilot host: seed + local Node + director JWT | **Observed** | [pilot hosting](../docs/superpowers/plans/2026-08-03-hacker-dojo-pilot-hosting.md) · #72 |
 | 3b. Public HTTPS (ephemeral) + seed-loop accept | **Observed** | #71 · `npm run accept:seed-loop` |
 | 3c. Live every.org webhook + full director acceptance | **Open** | [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74) |
-| 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | **CODE_SHIPPED (not live)** | Draft [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52); operator-owned pointing |
+| 4. Additional donation-platform adapters (Givebutter, Donorbox, …) | **CODE_SHIPPED (not live)** | Merged [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) `4c38323`; operator-owned pointing |
 | 5. Funder multi-grantee portfolio | Later | Out of MVP scope |
 | 6. Align pilot durable host with preferred Cloudflare + Supabase path | Planned | Prefer SPEC-020/021 (ADR-013) over multi-host or Render recipe soup |
 
