@@ -1,8 +1,10 @@
 # Suite continuation plan (informative)
 
-> **Status:** Draft 2026-08-08. Tracks operator- and implementation-facing work after Portofolio-Signals #104–#112.  
+> **Status:** Draft 2026-08-08; pointer refresh 2026-08-22. Tracks operator- and implementation-facing work after Portfolio-Signals #104–#112.  
 > **Not a normative SPEC.** Runtime evidence remains Portfolio-Signals [`docs/CURRENT-STATE.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/CURRENT-STATE.md).  
-> **Map:** [IMPLEMENTATION-PROGRESS](../IMPLEMENTATION-PROGRESS.md) · suite hub [SUITE-ONBOARDING](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).
+> **Operator order now:** Portfolio-Signals [`PRODUCTION-READINESS-AND-CONTINUATION-2026-08-22.md`](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/PRODUCTION-READINESS-AND-CONTINUATION-2026-08-22.md) (`NO_GO`).  
+> **Map:** [IMPLEMENTATION-PROGRESS](../IMPLEMENTATION-PROGRESS.md) · suite hub [SUITE-ONBOARDING](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/blob/main/docs/SUITE-ONBOARDING.md).  
+> Historical issue numbers **#73 / #74** do not exist on current Portfolio-Signals. Use [#18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18) (MFA pack), [#19](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/19) (hosted restore), [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (durable host + live gift + director).
 
 **Goal:** Finish commercial onboarding activation on platform Supabase, complete people MFA, and close the allocation pilot operator path (every.org + director sign-off)—without reopening `production_import` or outreach.
 
@@ -28,12 +30,12 @@
 | Onboarding pack **platform** | Schema + Edge OBSERVED 2026-08-08; MFA dry-run PENDING |
 | C/B/D dry-runs | OBSERVED |
 | Allocation pilot local/ephemeral HTTPS / seed-loop | OBSERVED |
-| every.org live webhook + full #74 | OPEN |
+| every.org live webhook + director acceptance | OPEN — [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74) |
 
 ### Access model (do not confuse)
 
 | Principal | Platform admin | Clients |
-| --- | --- | --- |
+| --- | --- |
 | `scrimshawlife@gmail.com` | Yes (`master_admin`) | All (bypass) |
 | `qi@enkeyai.com` | Yes (`master_admin`) | All (bypass) |
 | `ed@hackerdojo.org` | **No** | **`org_hacker_dojo` director only** |
@@ -77,7 +79,7 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 ## Workstream C — Onboarding pack MFA dry-run
 
 **Depends on:** A + MFA for at least one director or master_admin  
-**Runbook:** Portofolio-Signals `docs/CLIENT-ONBOARDING-PACK.md`
+**Runbook:** Portfolio-Signals `docs/CLIENT-ONBOARDING-PACK.md` · issue [#18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18)
 
 - [ ] **C1.** Workspace → Onboarding pack for `org_hacker_dojo`
 - [ ] **C2.** Upload five required document types (suggest → human confirm)
@@ -89,7 +91,7 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 
 ---
 
-## Workstream D — Allocation pilot close (#73 / #74)
+## Workstream D — Allocation pilot close (#20)
 
 **Depends on:** director login; preferably durable HTTPS for production webhook  
 **Issues:** [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73/#74)
@@ -98,8 +100,8 @@ Ed sees Hacker Dojo dataset and tenant-scoped functions (workspace, onboarding p
 - [ ] **D2.** Or temporary cloudflared tunnel for a controlled test window
 - [ ] **D3.** every.org HD nonprofit admin: register webhook URL from `/setup.html`
 - [ ] **D4.** Live (non-fixture) test gift → setup shows **Connected** (`liveGifts` ≥ 1)
-- [ ] **D5.** Director browser allocate → proof → packet; comment sign-off on #74
-- [ ] **D6.** Close #73 / remaining #74 with evidence pointers (no secrets)
+- [ ] **D5.** Director browser allocate → proof → packet; comment sign-off on [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20)
+- [ ] **D6.** Close [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) with evidence pointers (no secrets). Do not invent a `workers.dev` URL
 
 **Exit:** Live gift path OBSERVED; full director acceptance recorded.
 
@@ -146,7 +148,7 @@ If Supabase token is available **today**, do **A** first (unblocks product surfa
 
 1. Pack tables + Edge OBSERVED on platform; MFA dry-run recorded.  
 2. Qi and Ed MFA enforced; Ed scoped to `org_hacker_dojo` only.  
-3. #73 live webhook path and #74 director sign-off closed or explicitly deferred with owner.  
+3. [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) live webhook path and director sign-off closed or explicitly deferred with owner.  
 4. CURRENT-STATE and this Specs progress map agree; no secrets in git.  
 5. `production_import` still BLOCKED; outreach NOT_GRANTED.
 
@@ -157,8 +159,8 @@ If Supabase token is available **today**, do **A** first (unblocks product surfa
 | Doc | Role |
 | --- | --- |
 | [IMPLEMENTATION-PROGRESS.md](../IMPLEMENTATION-PROGRESS.md) | Status map |
-| Portofolio-Signals `docs/SUITE-ONBOARDING.md` | Operator hub |
-| Portofolio-Signals `docs/CURRENT-STATE.md` | Evidence SoT |
+| Portfolio-Signals `docs/SUITE-ONBOARDING.md` | Operator hub |
+| Portfolio-Signals `docs/CURRENT-STATE.md` | Evidence SoT |
 | [2026-08-03-hacker-dojo-pilot-hosting.md](2026-08-03-hacker-dojo-pilot-hosting.md) | Pilot host status |
-| Portofolio-Signals `plans/2026-08-08-platform-activate-and-tenant-harden.md` | A checklist detail |
-| Portofolio-Signals `plans/2026-08-08-client-onboarding-pack.md` | Pack implementation history |
+| Portfolio-Signals `plans/2026-08-08-platform-activate-and-tenant-harden.md` | A checklist detail |
+| Portfolio-Signals `plans/2026-08-08-client-onboarding-pack.md` | Pack implementation history |

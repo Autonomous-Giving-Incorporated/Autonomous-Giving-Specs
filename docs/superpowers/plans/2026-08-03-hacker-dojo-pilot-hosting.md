@@ -21,10 +21,10 @@
 | Docker Compose / Render / Railway / Fly recipes | **Done** | Durable host optional |
 | Director JWT + membership (`org_hacker_dojo`) | **Done** | Fund-Intel #72 closed |
 | Public HTTPS (ephemeral cloudflared) | **Done** | Fund-Intel #71 closed |
-| Seed allocate → proof → packet | **Done** | `npm run accept:seed-loop` OBSERVED (#74 partial) |
-| Durable named public host | Optional | Render/Railway/Fly when every.org needs stable URL |
-| Live every.org webhook | **Open** | #73 |
-| Full director browser acceptance | **Open** | #74 remaining after live gift |
+| Seed allocate → proof → packet | **Done** | `npm run accept:seed-loop` OBSERVED (historical #74 partial) |
+| Durable named public host | **Open** | Designed: Cloudflare Worker `portfolio-signals` ([#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20)). Named Worker ABSENT. Do not invent a `workers.dev` URL. Render/Fly/Railway are not the path |
+| Live every.org webhook | **Open** | [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #73) |
+| Full director browser acceptance | **Open** | [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) (historical #74) |
 
 ## Global Constraints
 
@@ -76,11 +76,11 @@ Tasks below were the original implementation sequence. They are retained for aud
 | Allocate → proof → packet on seed | **Met** (`accept:seed-loop`) |
 | Process restart keeps balances (`DATA_FILE`) | **Met** (file store) |
 | `/setup.html` ready for every.org | **Met** (wizard shipped; live paste **open**) |
-| Live gift credits Available without re-seed | **Open** (#73) |
+| Live gift credits Available without re-seed | **Open** ([#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20)) |
 
 ## Out of scope (unchanged)
 
 - Live every.org admin access automation  
 - Multi-tenant multi-process fleet for pilot  
-- Givebutter/Donorbox  
+- Givebutter/Donorbox P1 is CODE_SHIPPED on draft [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52); not live; not READY  
 - Full Supabase store adapter (file volume OK for pilot)  
