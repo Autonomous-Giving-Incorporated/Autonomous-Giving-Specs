@@ -56,6 +56,7 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020
 | Path | Authority |
 | --- | --- |
 | `specs/` | Normative platform specifications |
+| `specs/slices/` | Informative spec-kit specify → plan → tasks (not new SPEC IDs) |
 | `adr/` | Architectural decisions and their context |
 | `contracts/`, `schemas/`, `events/` | Public data and event contracts |
 | `glossary/` | Canonical platform vocabulary |
@@ -79,7 +80,7 @@ Full detail: [ADR-013](adr/ADR-013-cloudflare-workers-public-host.md), [SPEC-020
 - [Recovery runbook](docs/recovery-runbook.md)
 - [Next recommended implementation steps](roadmap/specification-roadmap.md#next-recommended-steps-implementation)
 - [Financial ledger invariants](specs/SPEC-023-financial-ledger-invariants.md) (tracking ledger; AGI does not process donations)
-- [Donation-source connectors](specs/SPEC-026-donation-source-connectors.md) · [Impact loop](specs/SPEC-027-impact-loop.md) · [ADR-015](adr/ADR-015-donation-tracking-money-boundary.md)
+- [Donation-source connectors](specs/SPEC-026-donation-source-connectors.md) (v1.1.0) · [P1 spec-kit slice](specs/slices/026-p1-connectors/spec.md) · [Impact loop](specs/SPEC-027-impact-loop.md) · [ADR-015](adr/ADR-015-donation-tracking-money-boundary.md)
 - [AGI control plane](specs/SPEC-028-agi-control-plane.md) · [ADR-014](adr/ADR-014-agi-control-plane.md)
 - [Mission Graph and Learning Feedback](specs/SPEC-029-mission-graph-and-learning-feedback.md) · [Mission Intelligence Metrics](specs/SPEC-030-mission-intelligence-metrics.md) (proposed)
 - [Sprint remaining work](docs/sprint-remaining-work-donation-tracking.md) (informative; not READY)

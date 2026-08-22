@@ -2,6 +2,8 @@
 
 All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted` documents are normative; `Proposed` documents are review candidates. Informative documents (e.g. deployment profiles) do not create deployment mandates.
 
+Informative spec-kit slices (specify → plan → tasks) live under [slices/](slices/README.md). They are not new SPEC identifiers.
+
 | ID | Specification | Status |
 | --- | --- | --- |
 | [SPEC-001](SPEC-001-platform-mission.md) | Platform Mission | Accepted |
@@ -30,7 +32,7 @@ All specifications conform to the [Constitution](../CONSTITUTION.md). `Accepted`
 | [SPEC-023](SPEC-023-financial-ledger-invariants.md) | Financial Ledger Invariants | Accepted (normative) |
 | [SPEC-024](SPEC-024-integration-boundaries.md) | Integration Boundaries | Accepted (informative) |
 | [SPEC-025](SPEC-025-operations-deploy-and-scale.md) | Operations, Deploy, Observability, and Scale | Accepted (informative) |
-| [SPEC-026](SPEC-026-donation-source-connectors.md) | Donation-source Connectors | Accepted (normative) |
+| [SPEC-026](SPEC-026-donation-source-connectors.md) | Donation-source Connectors | Accepted (normative) · v1.1.0 · [P1 slice](slices/026-p1-connectors/spec.md) |
 | [SPEC-027](SPEC-027-impact-loop.md) | Impact Loop | Accepted (normative) |
 | [SPEC-028](SPEC-028-agi-control-plane.md) | AGI Control Plane | Accepted (normative) |
 | [SPEC-029](SPEC-029-mission-graph-and-learning-feedback.md) | Mission Graph and Learning Feedback | Proposed |
