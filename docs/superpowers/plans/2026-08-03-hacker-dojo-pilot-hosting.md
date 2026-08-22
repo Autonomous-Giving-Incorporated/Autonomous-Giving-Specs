@@ -82,5 +82,5 @@ Tasks below were the original implementation sequence. They are retained for aud
 
 - Live every.org admin access automation  
 - Multi-tenant multi-process fleet for pilot  
-- Givebutter/Donorbox P1 is CODE_SHIPPED on draft [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52); not live; not READY  
+- Givebutter/Donorbox P1 is CODE_SHIPPED on merged [Portfolio-Signals #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) `4c38323`; not live; not READY  
 - Full Supabase store adapter (file volume OK for pilot)  
