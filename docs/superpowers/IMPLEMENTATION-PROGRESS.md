@@ -15,22 +15,22 @@ Authoritative **continuation order** lives in Portfolio-Signals [`docs/PRODUCTIO
 | [Autonomous-Giving-Incorporated](https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Incorporated) | Public static site (`output: "export"`) on `autogive.app` |
 | [agi-cross-repo-harness](https://github.com/Autonomous-Giving-Incorporated/agi-cross-repo-harness) | Private pin + edge verifier. Not a production runtime |
 
-Harness `refs/versions.json` (observed 2026-08-22, harness #19): `specs` `c089739` (v2.0.0 docs pin); `specsMain` `f45a40bd` (this repo’s main after #14/#15). Unmerged draft SHAs are not recorded there.
+Harness `refs/versions.json` (last observed 2026-08-22, harness #19): `specs` `c089739` (v2.0.0 docs pin); `specsMain` was `f45a40bd` (pre-#17). This repo’s main is now `4aa680f` after #17. Unmerged draft SHAs are not recorded in the harness pin file.
 
 ## Since 2026-08-17 (verified 2026-08-22)
 
 | Item | State | Label |
-| --- | --- | --- |
+| --- | --- |
 | Civic Forge synthetic v1 | In-repo join-key corpus. PS [#47](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/47), IR [#12](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay/pull/12), AGI [#18](https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Incorporated/pull/18) merged. Live `data/` untouched | SYNTHETIC_ONLY |
 | C3 public-data policy | AGI `PUBLIC_DATA_POLICY.md` still PROPOSED. PS written deferral. IR restatement pointer. Chat is not the four seats | PROPOSED |
-| SPEC-026 P1 Givebutter / Donorbox / CSV twin | Draft [PS #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) CODE_SHIPPED. Not live. Not READY. No invented `workers.dev` | CODE_SHIPPED |
+| SPEC-026 P1 Givebutter / Donorbox / CSV twin | Merged [PS #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) `4c38323`. CODE_SHIPPED. Not live. Not READY. No invented `workers.dev` | CODE_SHIPPED |
 | IR public shell | `data/public-impact.json` still `outcomes: []` / `gated:public_shell` | OBSERVED empty |
 | Named Worker `portfolio-signals` | ABSENT on the connected Cloudflare account. Suite `/portfolio-signals` and `/impact-relay` still proxy GET/HEAD to Vercel | OBSERVED 2026-08-15; not re-listed |
 | Live every.org gift | Still operator-owned | PENDING [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) |
 | MFA onboarding-pack dry-run | Still operator-owned | PENDING [#18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18) |
 | Hosted isolated restore | Local-synthetic observed earlier; hosted drill still open | PENDING [#19](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/19) reopened |
-| Specs dependency pins | PyYAML `>=6.0.3,<7` (#14) and jsonschema `>=4.26.0,<5` (#15) on main `f45a40bd` | OBSERVED in-repo |
-| Optional IR doc hygiene | Draft [IR #17](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay/pull/17): 413 collected tests; personal/org Pages 404; host screens in Portfolio Signals | DRAFT docs |
+| Specs dependency pins | PyYAML `>=6.0.3,<7` (#14) and jsonschema `>=4.26.0,<5` (#15) still on main; tip is now `4aa680f` after #17 | OBSERVED in-repo |
+| Optional IR doc hygiene | Merged [IR #17](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay/pull/17) `59e3e8f`: 413 collected tests; personal/org Pages 404; host screens in Portfolio Signals | OBSERVED docs |
 
 Do not un-PARK SPEC-028. Do not add AGI auth on the public site. Do not claim `source=live` until an authorized `VERIFIED` outcome exists. Do not copy Civic Forge into live `data/`.
 
@@ -45,7 +45,7 @@ Do not un-PARK SPEC-028. Do not add AGI auth on the public site. Do not claim `s
 | Seed-loop allocate→proof→packet | OBSERVED — `npm run accept:seed-loop` |
 | Durable named host | Designed: Cloudflare Worker `portfolio-signals` + existing Supabase ([ADR-013](../../adr/ADR-013-cloudflare-workers-public-host.md)). Named Worker **ABSENT**. Do not invent a `workers.dev` URL. Render / Fly / Railway are not the path |
 | Live every.org webhook + director browser sign-off | **Open** — [Portfolio-Signals #20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20). Historical issue numbers #73 / #74 are not in this repository |
-| SPEC-026 P1 Givebutter / Donorbox | Draft [PS #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) CODE_SHIPPED; operator-owned pointing; Stripe `/webhooks/stripe` stays 404 |
+| SPEC-026 P1 Givebutter / Donorbox | Merged [PS #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) `4c38323`. CODE_SHIPPED; operator-owned pointing; Stripe `/webhooks/stripe` stays 404 |
 
 Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](plans/2026-08-03-allocation-middleware.md) · [pilot hosting](plans/2026-08-03-hacker-dojo-pilot-hosting.md).
 
@@ -60,7 +60,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 ### Slices
 
 | Slice | Topic | Runbook (Portfolio-Signals) | Status |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | C | Operator / director access | `docs/OPERATOR-ACCESS-ONBOARDING.md` | **People registered** (see matrix); MFA incomplete for Qi/Ed |
 | B | Client provision → publish → activate | `docs/COMMERCIAL-CLIENT-LIFECYCLE.md` | Dry-run OBSERVED (`org_hacker_dojo`) |
 | Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Platform schema + Edge OBSERVED** 2026-08-08; MFA dry-run **PENDING** ([Portfolio-Signals #18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18); historical #104/#113) |
@@ -72,7 +72,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 Recorded 2026-08-08. This 2026-08-22 refresh did **not** re-verify MFA enrollment.
 
 | Email | Role | Scope | MFA |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `scrimshawlife@gmail.com` | `master_admin` | All clients + platform admin | Enforced |
 | `qi@enkeyai.com` | `master_admin` | All clients + platform admin | Pending TOTP → then `set-mfa-enforced` |
 | `ed@hackerdojo.org` | **director only** | **`org_hacker_dojo` only** — not `platform_administrators`; no other client memberships | Pending TOTP → then `set-mfa-enforced` (action_link regenerated operator-local 2026-08-08) |
