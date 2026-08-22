@@ -20,7 +20,7 @@ Harness `refs/versions.json` (last observed 2026-08-22, harness #19): `specs` `c
 ## Since 2026-08-17 (verified 2026-08-22)
 
 | Item | State | Label |
-| --- | --- |
+| --- | --- | --- |
 | Civic Forge synthetic v1 | In-repo join-key corpus. PS [#47](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/47), IR [#12](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay/pull/12), AGI [#18](https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Incorporated/pull/18) merged. Live `data/` untouched | SYNTHETIC_ONLY |
 | C3 public-data policy | AGI `PUBLIC_DATA_POLICY.md` still PROPOSED. PS written deferral. IR restatement pointer. Chat is not the four seats | PROPOSED |
 | SPEC-026 P1 Givebutter / Donorbox / CSV twin | Merged [PS #52](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/pull/52) `4c38323`. CODE_SHIPPED. Not live. Not READY. No invented `workers.dev` | CODE_SHIPPED |
@@ -60,7 +60,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 ### Slices
 
 | Slice | Topic | Runbook (Portfolio-Signals) | Status |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | C | Operator / director access | `docs/OPERATOR-ACCESS-ONBOARDING.md` | **People registered** (see matrix); MFA incomplete for Qi/Ed |
 | B | Client provision → publish → activate | `docs/COMMERCIAL-CLIENT-LIFECYCLE.md` | Dry-run OBSERVED (`org_hacker_dojo`) |
 | Doc pack | Private org-proof documents | `docs/CLIENT-ONBOARDING-PACK.md` | **Platform schema + Edge OBSERVED** 2026-08-08; MFA dry-run **PENDING** ([Portfolio-Signals #18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18); historical #104/#113) |
@@ -72,7 +72,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 Recorded 2026-08-08. This 2026-08-22 refresh did **not** re-verify MFA enrollment.
 
 | Email | Role | Scope | MFA |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | `scrimshawlife@gmail.com` | `master_admin` | All clients + platform admin | Enforced |
 | `qi@enkeyai.com` | `master_admin` | All clients + platform admin | Pending TOTP → then `set-mfa-enforced` |
 | `ed@hackerdojo.org` | **director only** | **`org_hacker_dojo` only** — not `platform_administrators`; no other client memberships | Pending TOTP → then `set-mfa-enforced` (action_link regenerated operator-local 2026-08-08) |
