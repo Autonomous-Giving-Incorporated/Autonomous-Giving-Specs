@@ -72,7 +72,7 @@ Specs: [design](specs/2026-08-03-allocation-middleware-design.md) · [MVP plan](
 Recorded 2026-08-08. This 2026-08-22 refresh did **not** re-verify MFA enrollment.
 
 | Email | Role | Scope | MFA |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | `scrimshawlife@gmail.com` | `master_admin` | All clients + platform admin | Enforced |
 | `qi@enkeyai.com` | `master_admin` | All clients + platform admin | Pending TOTP → then `set-mfa-enforced` |
 | `ed@hackerdojo.org` | **director only** | **`org_hacker_dojo` only** — not `platform_administrators`; no other client memberships | Pending TOTP → then `set-mfa-enforced` (action_link regenerated operator-local 2026-08-08) |
