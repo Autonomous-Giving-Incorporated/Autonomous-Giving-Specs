@@ -15,7 +15,7 @@ Authoritative **continuation order** lives in Portfolio-Signals [`docs/PRODUCTIO
 | [Autonomous-Giving-Incorporated](https://github.com/Autonomous-Giving-Incorporated/Autonomous-Giving-Incorporated) | Public static site (`output: "export"`) on `autogive.app` |
 | [agi-cross-repo-harness](https://github.com/Autonomous-Giving-Incorporated/agi-cross-repo-harness) | Private pin + edge verifier. Not a production runtime |
 
-Harness `refs/versions.json` (observed 2026-08-22, harness #20): `specs` `c089739` (v2.0.0 docs pin); `specsMain` `4aa680f` (this repo after #17; workflows unchanged through #18). This repo’s tip is now `dcf7f6b` after #18. Unmerged draft SHAs are not recorded in the harness pin file.
+Harness `refs/versions.json` (observed 2026-08-23, harness #20 product pins): `specs` `c089739` (v2.0.0 docs pin); `specsMain` `4aa680f` (this repo after #17; workflows unchanged through #19). This repo’s tip is `385619c` after #19. Later docs-only tips are not recorded as product pins. Unmerged draft SHAs are not recorded in the harness pin file.
 
 ## Since 2026-08-17 (verified 2026-08-22)
 
@@ -29,7 +29,7 @@ Harness `refs/versions.json` (observed 2026-08-22, harness #20): `specs` `c08973
 | Live every.org gift | Still operator-owned | PENDING [#20](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/20) |
 | MFA onboarding-pack dry-run | Still operator-owned | PENDING [#18](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/18) |
 | Hosted isolated restore | Local-synthetic observed earlier; hosted drill still open | PENDING [#19](https://github.com/Autonomous-Giving-Incorporated/Portfolio-Signals/issues/19) reopened |
-| Specs dependency pins | PyYAML `>=6.0.3,<7` (#14) and jsonschema `>=4.26.0,<5` (#15) still on main; tip is now `dcf7f6b` after #18 | OBSERVED in-repo |
+| Specs dependency pins | PyYAML `>=6.0.3,<7` (#14) and jsonschema `>=4.26.0,<5` (#15) still on main; tip is now `385619c` after #19 | OBSERVED in-repo |
 | Optional IR doc hygiene | Merged [IR #17](https://github.com/Autonomous-Giving-Incorporated/Impact-Relay/pull/17) `59e3e8f`: 413 collected tests; personal/org Pages 404; host screens in Portfolio Signals | OBSERVED docs |
 
 Do not un-PARK SPEC-028. Do not add AGI auth on the public site. Do not claim `source=live` until an authorized `VERIFIED` outcome exists. Do not copy Civic Forge into live `data/`.
